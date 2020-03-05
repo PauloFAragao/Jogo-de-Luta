@@ -1,0 +1,14 @@
+/sprites - guarda todos os sprites
+/sprites/cenarios - guarda os sprites dos cenarios
+/sprites/personagens - guarda os sprites de todos os personagens
+/sprites/personagens/terry - guarda os sprites do personagem terry
+/sprites/personagens/terry/toRite - guarda os sprites do personagem terry quando virado para a direita
+/sprites/personagens/terry/toRite/standardColor - guarda os sprites do personagem terry  na cor padrão
+/sprites/personagens/terry/toRite/secondaryColor - guarda os sprites do personagem terry  na cor padrão
+/sprites/personagens/terry/notToRite - guarda os sprites do personagem terry quando virado para a esquerda
+/sprites/personagens/terry/notToRite/standardColor - guarda os sprites do personagem terry  na cor padrão
+/sprites/personagens/terry/notToRite/secondaryColor - guarda os sprites do personagem terry  na cor padrão
+/sprites/interface - guarda os sprites da interface
+
+
+
