@@ -318,10 +318,10 @@ void Player::VerticalMove()
 {
 	
 	//cria o comando para o personagem pular
-	if( button03 && y >= CHAO && !jumpComand ) 
+	if( button03 && y >= CHAO && !jumpComand /*&& playerControl*/) 
 	{
 		jumpComand=true;
-		playerControl = false;
+		//playerControl = false;
 		ChangeAction(10);
 	}
 	
@@ -1229,6 +1229,8 @@ bool Player::GetPow()
 *		quando o personagem está dando um pulo para tras é possivel canselar a animação e fazer o personagem correr para frente (possiveis outros cancelamentos)
 *			enquando o personagem estiver pulando para tras mudar o status de playerControl (não deu certo)
 *			BUG FRENTE TRAS FRENTE O PERSONAGEM PULA E ANDA PARA FRENTE
+*
+*	PROBLEMA COM A VARIAVEL playercontrol
 *
 */
 

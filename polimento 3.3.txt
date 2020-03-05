@@ -1,0 +1,11 @@
+Implementar a função ChangeAction - implementado
+
+Adicionar algumas variaveis (vida, vidaMaxima, escudo, pow) - implementado
+
+Implementar as alterações logicas para fazer com que os actions tenham mais importancia - 
+
+Implementar as ações basiado na nova regra de ações - 
+
+Mudar algumas funções para a classe terry - 
+
+Alterar a resolução das imagens - 

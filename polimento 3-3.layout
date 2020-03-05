@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Layout>
+	<Files>
+		<File Name="main.cpp" Top="No" Tabpos="1" TopLine="74">
+			<Cursor Line="118" Column="15"/>
+		</File>
+		<File Name="Player.h" Top="No" Tabpos="2" TopLine="70">
+			<Cursor Line="84" Column="136"/>
+			<Selection Line="84" Column="3"/>
+		</File>
+		<File Name="Player.cpp" Top="No" Tabpos="3" TopLine="1187">
+			<Cursor Line="1233" Column="40"/>
+		</File>
+		<File Name="Terry.h" Top="No" Tabpos="4" TopLine="1">
+			<Cursor Line="25" Column="1"/>
+			<Selection Line="25" Column="16"/>
+		</File>
+		<File Name="Terry.cpp" Top="No" Tabpos="5" TopLine="1">
+			<Cursor Line="21" Column="58"/>
+			<Selection Line="21" Column="55"/>
+		</File>
+		<File Name="Cenario.h" Top="No" Tabpos="6" TopLine="1">
+			<Cursor Line="10" Column="18"/>
+		</File>
+		<File Name="Interface.h" Top="Yes" Tabpos="7" TopLine="38">
+			<Cursor Line="62" Column="79"/>
+		</File>
+		<File Name="Interface.cpp" Top="No" Tabpos="8" TopLine="150">
+			<Cursor Line="216" Column="2"/>
+		</File>
+	</Files>
+</Layout>

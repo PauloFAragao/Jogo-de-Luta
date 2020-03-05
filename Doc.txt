@@ -1,0 +1,30 @@
+A verção polimento 3.1 é a re-emplementação do algoritimo agora orientado a objeto, nessa
+verção foi implementada pensando nas animações em conjunto com a movimentação e foram
+usadas imagens em maior resolução.
+animações implementadas:
+	-idle
+	-walk
+	-walkBack
+	-animação run incerida mais não implementada
+
+Na verção polimento 3.2 foi implementado o algoritimo de pulo lateral funcional.
+Mudança na resolução das imagens, agora estão sendo usadas as imagens com uma resolução menor
+Algoritimo para fazer o personagem dar um pulo para tras terminado.
+A forma de verificar se uma animação já foi iniciada foi alterada.
+Implementado algoritimo de imterpletação das fases do pulo
+Implementado colisão com o fim da cena
+Implementando algoritimo de se abaixar e o metodo ValidadeAction
+animações implementadas:
+	-run
+	-jumpBack
+	-animação jumpDelay (que é usa os mesmos frames que crouching)
+	-animação rising
+	-animação endOfClimp
+	-animação falling
+	-animação fall
+	-animação weakFrontalDiagonalJump
+	-animação weakBackDiagonalJump
+	-animação strongFrontalDiagonalJump
+	-animação strongBackDiagonalJump
+	-animação crouching incerida mais não implementada
+	-animação raiseCrouched incerida mais não implementada
