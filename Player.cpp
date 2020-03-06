@@ -3,11 +3,16 @@
 
 
 #define TEF 120			//tempo entre os frames
-#define GRAVIDADE 0.5	//gravidade global
-#define CHAO 400		//posição do chão
-#define VELANDAR 4		//velocidade que o personagem vai andar
-#define VELCORRIDA 10	//velocidade que o personagem vai correr
+#define GRAVIDADE 0.7	//gravidade global
+#define CHAO 80			//posição do chão
 
+#define	WALKSPEED 7				//velocidade que o personagem vai andar VELANDAR
+#define RUNSPEED 13				//velocidade que o personagem vai correr RUNSPEED
+#define WEAKJUMPSTRENGTH 17		//força do pulo fraco
+#define STRONGJUMPSTRENGTH 25	//força do pulo forte
+
+#define MINSCENARYWIDTH -290	//posição do fim do cenario a esquerda
+#define MAXSCENARYWIDTH 955		//posição do fim do cenario a direita
 
 //construtor
 Player::Player() { StartAttributes(); }
@@ -25,7 +30,8 @@ Player::~Player()
  */
 void Player::StartAttributes()
 {
-	x=500;							//posição em X do player
+	
+	x=200;							//posição em X do player
 	y=CHAO;							//posição em Y do player
 	speedX=0;						//velocidade em X do player
 	speedY=0; 						//velocidade em Y do player
@@ -54,6 +60,7 @@ void Player::StartAttributes()
 	bt6TimeCapture=false;			//variavel para captura de tempo do botão 06
 	bt7TimeCapture=false;			//variavel para captura de tempo do botão 07
 
+	
 	for (int a=0; a<8; a++)//iniciando o vetor de tempos
 	{
 		for(int b=0; b<10; b++)
@@ -61,6 +68,7 @@ void Player::StartAttributes()
 			btTPress[a][b]=0;
 		}
 	}
+	
 	
 }END_OF_FUNCTION(StartAttributes)
 
@@ -258,7 +266,7 @@ void Player::HorizontalMove()
 			if( btTPress[0][8] - btTPress[0][7] < 150 && ValidateAction(110) && !antLoopJumpBack )
 //btTPress[0][8] - btTPress[0][7] = se a difenreça de tempo entre o botão ter cido solto e pressionado é menor que 150 ms
 			{
-				speedX = -12;
+				speedX = -( RUNSPEED + 2 );
 				speedY = -10;
 				antLoopJumpBack = true;
 				ChangeAction(110);
@@ -266,7 +274,7 @@ void Player::HorizontalMove()
 			//andando para tras
 			else if( ValidateAction(30) )
 			{
-				speedX = -VELANDAR;
+				speedX = -WALKSPEED;
 				ChangeAction(30);
 			}
 		}
@@ -278,13 +286,13 @@ void Player::HorizontalMove()
 			if( btTPress[2][8] - btTPress[2][7] < 150 && ValidateAction(100))
 //btTPress[2][8] - btTPress[2][7] = se a difenreça de tempo entre o botão ter cido solto e pressionado é menor que 150 ms
 			{
-				 speedX = VELCORRIDA;
+				 speedX = RUNSPEED;
 				 ChangeAction(100);
 			}
 			//andando para frente
 			else if( ValidateAction(20) )
 			{
-				speedX = VELANDAR;
+				speedX = WALKSPEED;
 				ChangeAction(20);
 			}
 		}
@@ -296,9 +304,14 @@ void Player::HorizontalMove()
 	}	
 	
 	//calcula se o peronagem está colidindo com o fim da cena e então movimenta o personagem
-	if( x + speedX > 1142 ) 	 x = 1142;
-	else if( x + speedX < -167 ) x = -167;
-	else 						 x += speedX;
+	if( x + speedX > MAXSCENARYWIDTH ) 	    
+		x = MAXSCENARYWIDTH;
+	
+	else if( x + speedX < MINSCENARYWIDTH ) 
+		x = MINSCENARYWIDTH;
+	
+	else 						           
+		x += speedX;
 
 	
 }END_OF_FUNCTION(HorizontalMove)
@@ -340,24 +353,24 @@ void Player::VerticalMove()
 				if( button00 || ( btTPress[3][8] - btTPress[0][8] >= -30 && btTPress[3][8] - btTPress[0][8] <= 30 ) )
 	// se btTPress[3][8] - btTPress[0][8] (botão para cima e botão para tras) foi entre -30 e 30 (60 ms de diferença entre os botões terem sido pressionados)
 				{
-					if(toRight) { speedX = -10; ChangeAction(91); } //pulando na diagonal para tras
-					else 		{ speedX = 10;  ChangeAction(71); } //pulando na diagonal para frente
-					speedY = -20;
+					if(toRight) { speedX = -RUNSPEED; ChangeAction(91); } //pulando na diagonal para tras
+					else 		{ speedX = RUNSPEED;  ChangeAction(71); } //pulando na diagonal para frente
+					speedY = -STRONGJUMPSTRENGTH;
 				}
 				
 				//pulo forte na diagonal com o botão direcional para frent
 				else if( button02 || ( btTPress[3][8] - btTPress[2][8] >= -30 && btTPress[3][8] - btTPress[2][8] <= 30 ) )
 	// se btTPress[3][8] - btTPress[2][8] (botão para cima e botão para frente) foi entre -30 e 30 (60 ms de diferença entre os botões terem sido pressionados)
 				{
-					if(toRight) {speedX = 10;  ChangeAction(71);  } //pulando na diagonal para frente
-					else 		{speedX = -10; ChangeAction(91); } //pulando na diagonal para tras
-					speedY = -20;
+					if(toRight) {speedX = RUNSPEED;  ChangeAction(71);  } //pulando na diagonal para frente
+					else 		{speedX = -RUNSPEED; ChangeAction(91); } //pulando na diagonal para tras
+					speedY = -STRONGJUMPSTRENGTH;
 				}
 				
 				else//pulo apenas na vertical
 				{
 					speedX = 0;
-					speedY = -20;
+					speedY = -STRONGJUMPSTRENGTH;
 					ChangeAction(51);
 				}
 				
@@ -383,21 +396,21 @@ void Player::VerticalMove()
 					}
 					
 					speedX = 0;
-					speedY = -15;
+					speedY = -WEAKJUMPSTRENGTH;
 					ChangeAction(41);
 				}
 				
 				if( action == 60 )// pulo fraco na diagonal para frente
 				{
 					speedX = 10;
-					speedY = -15;
+					speedY = -WEAKJUMPSTRENGTH-5;
 					ChangeAction(61);
 				}
 				
 				if( action == 80 )// pulo fraco na diagonal para tras
 				{
 					speedX = -10;
-					speedY = -15;
+					speedY = -WEAKJUMPSTRENGTH-5;
 					ChangeAction(81);
 				}
 				
@@ -452,12 +465,12 @@ void Player::InterpretationEngine()
 		//continua antando para tras
 		if( button00 && toRight)
 		{
-			speedX = -VELANDAR;
+			speedX = -WALKSPEED;
 			ChangeAction(30);
 		}
 		if( button02 && !toRight)
 		{
-			speedX = VELANDAR;
+			speedX = WALKSPEED;
 			ChangeAction(30);
 		}
 	
@@ -533,7 +546,7 @@ void Player::InterpretationEngine()
 	{
 		ChangeAction( 11 );
 	}
-	if( !button01 && action == 11 )//raiseCrouched
+	if( !button01 && ( action == 11 || action == 10 ) )//raiseCrouched
 	{
 		ChangeAction( 12 );
 	}

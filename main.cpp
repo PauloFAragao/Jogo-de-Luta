@@ -31,6 +31,8 @@ int main()
     Interface ui;
     
     Scenario scenario;
+    
+    BITMAP *p2 = load_bitmap("sprites/personagens/terry/notToRight/secondaryColor/00Idle/idle000.bmp", NULL);
             
 	while(!key[KEY_ESC])
 	{
@@ -48,8 +50,9 @@ int main()
 		//cenario do jogo
 		//draw_sprite(buffer, scenario.GetScenarioSprite(), scenario.GetX(), scenario.GetY() );
 		
-		//personagem
+		//personagens
 		draw_sprite(buffer, p1.GetPlayerSprite(), p1.GetX(), p1.GetY());
+		draw_sprite(buffer, p2, 500, 80);
 		
 		//interface
 		//draw_sprite(buffer, ui.GetCompleteInterface(), 0, 0 );

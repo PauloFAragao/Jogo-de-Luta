@@ -16,4 +16,6 @@ Implementar as ações basiado na nova regra de ações - Implementado
 
 Mudar algumas funções para a classe terry - 
 
-Alterar a resolução das imagens - 180% por 180%
+Alterar a resolução das imagens - 180% por 180% ou 921 x 921
+
+Fazer as alterações nas velocidades para as novas relosuções.

@@ -36,9 +36,9 @@ Foi iniciado a implementação da classe Scenario (agora o cenario carrega pela 
 Foram feitas as alterações nas regras de action, para isso foram feitas grandes mudanças na 
 logica do jogo, agora não são mais necessarias booleanas para indicação das ações do 
 personagem.
-Os sprites foram trocados de lugar
-
-
+Os sprites foram trocados de lugar e foi iniciado o processo de alteração da resolução das
+imagens (os sprites dessas animações já estão totalmente redimencionados: idle, crouching, crouchedIdle)
+ 
 
 
 

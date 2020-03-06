@@ -20,11 +20,18 @@ class Interface
 		
 	private:
 		
-		int gameTime;						//tempo de jogo
+		int gameTime;						//tempo de jogo - ainda não usada
 		
-		int frame;							//frame da animação
+		//variaveis para imprimir on numeros na tela
+		int unitTime;
+		int tenTime;
 		int unitTimeAnimFrame;				//frame da animação das unidades
 		int tenTimeAnimFrame;				//frame da animação das dezenas
+		int capturaTempoParaNumeros;		//captura o tempo para fazer a animação dos numeros quando o tempo está acabando
+		bool activeRedNumber;				//faz os numeros vermelhos serem renderizados
+		
+		//animação dos pontos de especial
+		int frame;							//frame da animação
 		int capturaTempo;					//captura o tempo no momento que muda de frame para fazer uma verificação de quando deve trocar de frame novamente
 		bool startAnimation;				//faz a animação iniciar
 		
@@ -35,17 +42,15 @@ class Interface
 		int p1ShildBarX;					//variavel para movimentar a barra de escudo do player 1
 		int p2ShildBarX;					//variavel para movimentar a barra de escudo do player 2
 		
-		int specialBarBlueP1X;				//
-		int specialBarBlueP2X;				//
-		int specialBarPinkP1X;				//
-		int specialBarPinkP2X;				//
-		int specialBarYellowP1X;			//
-		int specialBarYellowP2X;			//
-		int powBarp1X;						//
-		int powBarp2X;						//
+		int specialBarBlueP1X;				//variavel para movimentar a barra de especial da cor azul do player 1
+		int specialBarBlueP2X;				//variavel para movimentar a barra de especial da cor azul do player 2
+		int specialBarPinkP1X;				//variavel para movimentar a barra de especial da cor rosa do player 1
+		int specialBarPinkP2X;				//variavel para movimentar a barra de especial da cor rosa do player 2
+		int specialBarYellowP1X;			//variavel para movimentar a barra de especial da cor amarela do player 1
+		int specialBarYellowP2X;			//variavel para movimentar a barra de especial da cor amarela do player 2
+		int powBarp1X;						//variavel para movimentar a barra de pow do player 1
+		int powBarp2X;						//variavel para movimentar a barra de pow do player 2
 		
-		int unitTime;						//
-		int tenTime;						//
 		
 		//variavel que vai montar a interface e ser enviada para renderização
 		BITMAP *completeInterface;
@@ -103,10 +108,14 @@ class Interface
 		
 		//Numeros para contagem de tempo
 		BITMAP *number[10][4];
+		
+		//Numeros na cor vermelha para fazer a animação de tempo acabando
+		BITMAP *redNumber[10];
 
 		//metodos privados
 		void LoadSprites();
 		void InitializeBitmaps();
+		void StartAttributes();
 		void BuildPlayerBars();
 		void BuildInterface();
 		void AnimControl();
