@@ -10,6 +10,10 @@ class Interface
 		//construtor
 		Interface();
 		
+		//destrutor
+		~Interface();
+		
+		
 		BITMAP *GetCompleteInterface();
 		
 		void Routine();
@@ -78,10 +82,10 @@ class Interface
 		BITMAP *powBarPlayer2;				//barra de tempo quando o jogador estora
 		
 		//carregar as imagens das barras de especial
-		BITMAP *specialBarBlue;		//barra azul de especial
-		BITMAP *specialBarPink;		//barra rosa de especial
-		BITMAP *specialBarYellow;	//barra amarela de especial
-		BITMAP *powBar;				//barra laranja de especial
+		BITMAP *specialBarBlue;				//barra azul de especial
+		BITMAP *specialBarPink;				//barra rosa de especial
+		BITMAP *specialBarYellow;			//barra amarela de especial
+		BITMAP *powBar;						//barra laranja de especial
 		
 		//animações da barra de especial
 		BITMAP *specialAnim[7];				//frames da animação dos pontos
@@ -97,7 +101,7 @@ class Interface
 		BITMAP *framePlayer1;
 		BITMAP *framePlayer2;
 		
-		//tempo do game
+		//Numeros para contagem de tempo
 		BITMAP *number[10][4];
 
 		//metodos privados

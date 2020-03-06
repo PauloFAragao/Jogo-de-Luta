@@ -1,7 +1,9 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+
 #include <allegro.h>
+
 
 class Player
 {
@@ -85,10 +87,7 @@ class Player
 		int frame;				//o frame que deve ser renderizado
 		bool startAnimation;	//faz a animação iniciar
 		
-		//bool playerControl;		//indica se os comandos do player podem influenciar o personagem
-		
 		bool toRight;			//indica para que lado o personagem está virado
-		bool jumpComand;		//comando para o personagem pular
 		bool antLoopJumpBack;	//para criar um controle e evitar loop quando o personagem pula para tras
 		
 	//direcionais
@@ -132,21 +131,23 @@ class Player
 		
 		void InterpretationEngine();				//responsavel por fazer as interpletações
 		
-		void Anim00();		//animação idle
-		void Anim01();		//animação crouchedIdle
-		void Anim02();		//animação crouching
-		void Anim03();		//animação raiseCrouched
-		void Anim04();		//animação walk
-		void Anim05();		//animação walkBack
-		void Anim072();		//animação rising
-		void Anim073();		//animação endOfClimp
-		void Anim074();		//animação falling
-		void Anim075();		//animação fall
-		void Anim092();		//animação strongFrontalDiagonalJump
-		void Anim112();		//animação strongBackDiagonalJump
-		void Anim12();		//animação run
-		void Anim131();		//animação jumpingBack
-		void Anim132();		//animação fallDelay-jumpingBack
+		//animações
+		void Anim00();
+		void Anim01();
+		void Anim02();
+		void Anim03();
+		void Anim04();
+		void Anim05();
+		void Anim06();	
+		void Anim07();
+		void Anim08();
+		void Anim09();
+		void Anim10();
+		void Anim11();
+		void Anim12();
+		void Anim13();
+		void Anim14();
+		
 };
 #endif//PLAYER_H
 

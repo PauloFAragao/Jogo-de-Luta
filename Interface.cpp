@@ -5,7 +5,52 @@
 #define TEF 120			//tempo entre os frames
 
 
+//construtor
 Interface::Interface(){ LoadSprites(); InitializeBitmaps(); }
+
+
+//destrutor
+Interface::~Interface()
+{
+	
+	destroy_bitmap( completeInterface );
+	destroy_bitmap( lifeBarsInterface );
+	destroy_bitmap( LifeBarOrange );
+	destroy_bitmap( player1LifeBarOrange );
+	destroy_bitmap( player2LifeBarOrange );
+	destroy_bitmap( LifeBarRed );
+	destroy_bitmap( player1LifeBarRed );
+	destroy_bitmap( player2LifeBarRed );
+	destroy_bitmap( shildBar );
+	destroy_bitmap( shildBarPlayer1 );
+	destroy_bitmap( specialInterface1Player1 );
+	destroy_bitmap( specialInterface2Player1 );
+	destroy_bitmap( specialBarBluePlayer1 );
+	destroy_bitmap( specialBarPinkPlayer1 );
+	destroy_bitmap( specialBarYellowPlayer1 );
+	destroy_bitmap( powBarPlayer1 );
+	destroy_bitmap( specialInterface1Player2 );
+	destroy_bitmap( specialInterface2Player2 );
+	destroy_bitmap( specialBarBluePlayer2 );
+	destroy_bitmap( specialBarPinkPlayer2 );
+	destroy_bitmap( specialBarYellowPlayer2 );
+	destroy_bitmap( powBarPlayer2 );
+	destroy_bitmap( specialBarBlue );
+	destroy_bitmap( specialBarPink );
+	destroy_bitmap( specialBarYellow );
+	destroy_bitmap( powBar );
+	destroy_bitmap( *specialAnim );
+	destroy_bitmap( specialAnim1 );
+	destroy_bitmap( specialAnim2 );
+	destroy_bitmap( specialAnim3 );
+	destroy_bitmap( specialAnim4 );
+	destroy_bitmap( specialAnim5 );
+	destroy_bitmap( specialAnim6 );
+	destroy_bitmap( framePlayer1 );
+	destroy_bitmap( framePlayer2 );
+	destroy_bitmap( **number );
+	
+}
 
 
 void Interface::InitializeBitmaps()
@@ -121,11 +166,11 @@ void Interface::InitializeBitmaps()
 
 void Interface::LoadSprites()
 {
-	frame =0;				//frame atual da animação
-	unitTimeAnimFrame = 3;	//
-	tenTimeAnimFrame  = 3;	//
-	gameTime = clock();		//momento que o jogo começa
-	startAnimation = false; //
+	frame =0;					//frame atual da animação
+	unitTimeAnimFrame = 3;		//
+	tenTimeAnimFrame  = 3;		//
+	gameTime = clock();			//momento que o jogo começa
+	startAnimation = false; 	//
 	
 	
 	p1LifeBarOrangeX = 150;		//variavel para movimentar a barra de vida laramja do player 1
@@ -180,73 +225,56 @@ void Interface::LoadSprites()
 	
 	
 	//animações da barra de especial
-	specialAnim[0] = load_bitmap("sprites/interface/Frame00.bmp", NULL);			//frame 0
-	specialAnim[1] = load_bitmap("sprites/interface/Frame01.bmp", NULL);			//frame 1
-	specialAnim[2] = load_bitmap("sprites/interface/Frame02.bmp", NULL);			//frame 2
-	specialAnim[3] = load_bitmap("sprites/interface/Frame03.bmp", NULL);			//frame 3
-	specialAnim[4] = load_bitmap("sprites/interface/Frame04.bmp", NULL);			//frame 4
-	specialAnim[5] = load_bitmap("sprites/interface/Frame05.bmp", NULL);			//frame 5
-	specialAnim[6] = load_bitmap("sprites/interface/Frame06.bmp", NULL);			//frame 6
+	specialAnim[0] = load_bitmap("sprites/interface/Frame00.bmp", NULL);
+	specialAnim[1] = load_bitmap("sprites/interface/Frame01.bmp", NULL);
+	specialAnim[2] = load_bitmap("sprites/interface/Frame02.bmp", NULL);
+	specialAnim[3] = load_bitmap("sprites/interface/Frame03.bmp", NULL);
+	specialAnim[4] = load_bitmap("sprites/interface/Frame04.bmp", NULL);
+	specialAnim[5] = load_bitmap("sprites/interface/Frame05.bmp", NULL);
+	specialAnim[6] = load_bitmap("sprites/interface/Frame06.bmp", NULL);
 
 	
 	number[0][0] = load_bitmap("sprites/interface/Number0-0.bmp", NULL);
 	number[0][1] = load_bitmap("sprites/interface/Number0-1.bmp", NULL);
 	number[0][2] = load_bitmap("sprites/interface/Number0-2.bmp", NULL);
 	number[0][3] = load_bitmap("sprites/interface/Number0-3.bmp", NULL);
-	
-	
 	number[1][0] = load_bitmap("sprites/interface/Number1-0.bmp", NULL);
 	number[1][1] = load_bitmap("sprites/interface/Number1-1.bmp", NULL);
 	number[1][2] = load_bitmap("sprites/interface/Number1-2.bmp", NULL);
 	number[1][3] = load_bitmap("sprites/interface/Number1-3.bmp", NULL);
-	
-	
 	number[2][0] = load_bitmap("sprites/interface/Number2-0.bmp", NULL);
 	number[2][1] = load_bitmap("sprites/interface/Number2-1.bmp", NULL);
 	number[2][2] = load_bitmap("sprites/interface/Number2-2.bmp", NULL);
 	number[2][3] = load_bitmap("sprites/interface/Number2-3.bmp", NULL);
-	
-	
 	number[3][0] = load_bitmap("sprites/interface/Number3-0.bmp", NULL);
 	number[3][1] = load_bitmap("sprites/interface/Number3-1.bmp", NULL);
 	number[3][2] = load_bitmap("sprites/interface/Number3-2.bmp", NULL);
 	number[3][3] = load_bitmap("sprites/interface/Number3-3.bmp", NULL);
-	
-	
 	number[4][0] = load_bitmap("sprites/interface/Number4-0.bmp", NULL);
 	number[4][1] = load_bitmap("sprites/interface/Number4-1.bmp", NULL);
 	number[4][2] = load_bitmap("sprites/interface/Number4-2.bmp", NULL);
 	number[4][3] = load_bitmap("sprites/interface/Number4-3.bmp", NULL);
-	
-	
 	number[5][0] = load_bitmap("sprites/interface/Number5-0.bmp", NULL);
 	number[5][1] = load_bitmap("sprites/interface/Number5-1.bmp", NULL);
 	number[5][2] = load_bitmap("sprites/interface/Number5-2.bmp", NULL);
 	number[5][3] = load_bitmap("sprites/interface/Number5-3.bmp", NULL);
-	
-	
 	number[6][0] = load_bitmap("sprites/interface/Number6-0.bmp", NULL);
 	number[6][1] = load_bitmap("sprites/interface/Number6-1.bmp", NULL);
 	number[6][2] = load_bitmap("sprites/interface/Number6-2.bmp", NULL);
 	number[6][3] = load_bitmap("sprites/interface/Number6-3.bmp", NULL);
-	
-	
 	number[7][0] = load_bitmap("sprites/interface/Number7-0.bmp", NULL);
 	number[7][1] = load_bitmap("sprites/interface/Number7-1.bmp", NULL);
 	number[7][2] = load_bitmap("sprites/interface/Number7-2.bmp", NULL);
 	number[7][3] = load_bitmap("sprites/interface/Number7-3.bmp", NULL);
-	
-	
 	number[8][0] = load_bitmap("sprites/interface/Number8-0.bmp", NULL);
 	number[8][1] = load_bitmap("sprites/interface/Number8-1.bmp", NULL);
 	number[8][2] = load_bitmap("sprites/interface/Number8-2.bmp", NULL);
 	number[8][3] = load_bitmap("sprites/interface/Number8-3.bmp", NULL);
-	
-	
 	number[9][0] = load_bitmap("sprites/interface/Number9-0.bmp", NULL);
 	number[9][1] = load_bitmap("sprites/interface/Number9-1.bmp", NULL);
 	number[9][2] = load_bitmap("sprites/interface/Number9-2.bmp", NULL);
 	number[9][3] = load_bitmap("sprites/interface/Number9-3.bmp", NULL);
+	
 }
 
 
@@ -386,8 +414,38 @@ void Interface::BuildInterface()
 	draw_sprite( completeInterface, number[tenTime][tenTimeAnimFrame], 663, 60 );	//primeiro numero
 	draw_sprite( completeInterface, number[unitTime][unitTimeAnimFrame], 720, 60 );	//segundo numero
 
-	
 }
+
+
+void Interface::AnimControl()
+{
+	if( !startAnimation )//frame 0
+	{ frame = 0; startAnimation = true; capturaTempo = clock(); }
+	if(startAnimation)
+	{
+		if( frame == 0 && clock() - capturaTempo > TEF )//frame 1
+		{ frame = 1; capturaTempo = clock(); }
+		if( frame == 1 && clock() - capturaTempo > TEF )//frame 2
+		{ frame = 2; capturaTempo = clock(); }
+		if( frame == 2 && clock() - capturaTempo > TEF )//frame 3
+		{ frame = 3; capturaTempo = clock(); }
+		if( frame == 3 && clock() - capturaTempo > TEF )//frame 4
+		{ frame = 4; capturaTempo = clock(); }
+		if( frame == 4 && clock() - capturaTempo > TEF )//frame 5
+		{ frame = 5; capturaTempo = clock(); }
+		if( frame == 5 && clock() - capturaTempo > TEF )//frame 6
+		{ frame = 6; capturaTempo = clock(); }
+		if( frame == 6 && clock() - capturaTempo > TEF )//frame 0
+		{ frame = 0; capturaTempo = clock(); }	
+	}
+}END_OF_FUNCTION(AnimControl);
+
+
+//completeInterface
+BITMAP *Interface::GetCompleteInterface()
+{
+	return completeInterface;
+}END_OF_FUNCTION(GetSprites)
 
 
 void Interface::TimerControl()
@@ -521,41 +579,430 @@ void Interface::TimerControl()
 			else if( clock() < 13200 ) 	unitTimeAnimFrame = 3;
 		break;
 	
+		case 14://caso 46 segundos
+			unitTime = 6;
+			tenTime  = 4;
+			if( clock() < 14050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 14100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 14150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 14200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 15://caso 45 segundos
+			unitTime = 5;
+			tenTime  = 4;
+			if( clock() < 15050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 15100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 15150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 15200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 16://caso 44 segundos
+			unitTime = 4;
+			tenTime  = 4;
+			if( clock() < 16050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 16100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 16150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 16200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 17://caso 43 segundos
+			unitTime = 3;
+			tenTime  = 4;
+			if( clock() < 17050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 17100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 17150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 17200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 18://caso 42 segundos
+			unitTime = 2;
+			tenTime  = 4;
+			if( clock() < 18050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 18100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 18150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 18200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 19://caso 41 segundos
+			unitTime = 1;
+			tenTime  = 4;
+			if( clock() < 19050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 19100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 19150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 19200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 20://caso 40 segundos
+			unitTime = 0;
+			tenTime  = 4;
+			if( clock() < 20050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 20100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 20150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 20200 ) 	unitTimeAnimFrame = 3;
+		break;	
+	
+		case 21://caso 39 segundos
+			unitTime = 9;
+			tenTime  = 3;
+			if( clock() < 21050) 		{ unitTimeAnimFrame = 0; tenTimeAnimFrame=0; }
+			else if( clock() < 21100 ) 	{ unitTimeAnimFrame = 1; tenTimeAnimFrame=1; }
+			else if( clock() < 21150 ) 	{ unitTimeAnimFrame = 2; tenTimeAnimFrame=2; }
+			else if( clock() < 21200 ) 	{ unitTimeAnimFrame = 3; tenTimeAnimFrame=3; }
+		break;
+		
+		case 22://caso 38 segundos
+			unitTime = 8;
+			tenTime  = 3;
+			if( clock() < 22050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 22100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 22150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 22200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 23://caso 37 segundos
+			unitTime = 7;
+			tenTime  = 3;
+			if( clock() < 23050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 23100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 23150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 23200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 24://caso 36 segundos
+			unitTime = 6;
+			tenTime  = 3;
+			if( clock() < 24050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 24100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 24150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 24200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 25://caso 35 segundos
+			unitTime = 5;
+			tenTime  = 3;
+			if( clock() < 25050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 25100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 25150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 25200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 26://caso 34 segundos
+			unitTime = 4;
+			tenTime  = 3;
+			if( clock() < 26050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 26100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 26150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 26200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 27://caso 33 segundos
+			unitTime = 3;
+			tenTime  = 3;
+			if( clock() < 27050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 27100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 27150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 27200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 28://caso 32 segundos
+			unitTime = 2;
+			tenTime  = 3;
+			if( clock() < 28050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 28100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 28150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 28200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 29://caso 31 segundos
+			unitTime = 1;
+			tenTime  = 3;
+			if( clock() < 29050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 29100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 29150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 29200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 30://caso 30 segundos
+			unitTime = 0;
+			tenTime  = 3;
+			if( clock() < 30050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 30100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 30150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 30200 ) 	unitTimeAnimFrame = 3;
+		break;	
+	
+		case 31://caso 29 segundos
+			unitTime = 9;
+			tenTime  = 2;
+			if( clock() < 31050) 		{ unitTimeAnimFrame = 0; tenTimeAnimFrame=0; }
+			else if( clock() < 31100 ) 	{ unitTimeAnimFrame = 1; tenTimeAnimFrame=1; }
+			else if( clock() < 31150 ) 	{ unitTimeAnimFrame = 2; tenTimeAnimFrame=2; }
+			else if( clock() < 31200 ) 	{ unitTimeAnimFrame = 3; tenTimeAnimFrame=3; }
+		break;
+		
+		case 32://caso 28 segundos
+			unitTime = 8;
+			tenTime  = 2;
+			if( clock() < 32050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 32100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 32150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 32200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 33://caso 27 segundos
+			unitTime = 7;
+			tenTime  = 2;
+			if( clock() < 33050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 33100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 33150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 33200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 34://caso 26 segundos
+			unitTime = 6;
+			tenTime  = 2;
+			if( clock() < 34050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 34100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 34150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 34200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 35://caso 25 segundos
+			unitTime = 5;
+			tenTime  = 2;
+			if( clock() < 35050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 35100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 35150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 35200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 36://caso 24 segundos
+			unitTime = 4;
+			tenTime  = 2;
+			if( clock() < 36050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 36100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 36150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 36200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 37://caso 23 segundos
+			unitTime = 3;
+			tenTime  = 2;
+			if( clock() < 37050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 37100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 37150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 37200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 38://caso 22 segundos
+			unitTime = 2;
+			tenTime  = 2;
+			if( clock() < 38050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 38100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 38150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 38200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 39://caso 21 segundos
+			unitTime = 1;
+			tenTime  = 2;
+			if( clock() < 39050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 39100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 39150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 39200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 40://caso 20 segundos
+			unitTime = 0;
+			tenTime  = 2;
+			if( clock() < 40050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 40100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 40150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 40200 ) 	unitTimeAnimFrame = 3;
+		break;	
+	
+		case 41://caso 19 segundos
+			unitTime = 9;
+			tenTime  = 1;
+			if( clock() < 41050) 		{ unitTimeAnimFrame = 0; tenTimeAnimFrame=0; }
+			else if( clock() < 41100 ) 	{ unitTimeAnimFrame = 1; tenTimeAnimFrame=1; }
+			else if( clock() < 41150 ) 	{ unitTimeAnimFrame = 2; tenTimeAnimFrame=2; }
+			else if( clock() < 41200 ) 	{ unitTimeAnimFrame = 3; tenTimeAnimFrame=3; }
+		break;
+		
+		case 42://caso 18 segundos
+			unitTime = 8;
+			tenTime  = 1;
+			if( clock() < 42050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 42100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 42150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 42200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 43://caso 17 segundos
+			unitTime = 7;
+			tenTime  = 1;
+			if( clock() < 43050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 43100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 43150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 43200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 44://caso 16 segundos
+			unitTime = 6;
+			tenTime  = 1;
+			if( clock() < 44050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 44100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 44150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 44200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 45://caso 15 segundos
+			unitTime = 5;
+			tenTime  = 1;
+			if( clock() < 45050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 45100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 45150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 45200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 46://caso 14 segundos
+			unitTime = 4;
+			tenTime  = 1;
+			if( clock() < 46050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 46100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 46150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 46200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 47://caso 13 segundos
+			unitTime = 3;
+			tenTime  = 1;
+			if( clock() < 47050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 47100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 47150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 47200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 48://caso 12 segundos
+			unitTime = 2;
+			tenTime  = 1;
+			if( clock() < 48050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 48100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 48150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 48200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 49://caso 11 segundos
+			unitTime = 1;
+			tenTime  = 1;
+			if( clock() < 49050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 49100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 49150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 49200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 50://caso 10 segundos
+			unitTime = 0;
+			tenTime  = 1;
+			if( clock() < 50050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 50100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 50150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 50200 ) 	unitTimeAnimFrame = 3;
+		break;	
+	
+		case 51://caso 09 segundos
+			unitTime = 9;
+			tenTime  = 0;
+			if( clock() < 51050) 		{ unitTimeAnimFrame = 0; tenTimeAnimFrame=0; }
+			else if( clock() < 51100 ) 	{ unitTimeAnimFrame = 1; tenTimeAnimFrame=1; }
+			else if( clock() < 51150 ) 	{ unitTimeAnimFrame = 2; tenTimeAnimFrame=2; }
+			else if( clock() < 51200 ) 	{ unitTimeAnimFrame = 3; tenTimeAnimFrame=3; }
+		break;
+		
+		case 52://caso 08 segundos
+			unitTime = 8;
+			tenTime  = 0;
+			if( clock() < 52050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 52100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 52150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 52200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 53://caso 07 segundos
+			unitTime = 7;
+			tenTime  = 0;
+			if( clock() < 53050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 53100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 53150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 53200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 54://caso 06 segundos
+			unitTime = 6;
+			tenTime  = 0;
+			if( clock() < 54050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 54100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 54150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 54200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 55://caso 05 segundos
+			unitTime = 5;
+			tenTime  = 0;
+			if( clock() < 55050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 55100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 55150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 55200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 56://caso 14 segundos
+			unitTime = 4;
+			tenTime  = 0;
+			if( clock() < 56050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 56100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 56150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 56200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 57://caso 03 segundos
+			unitTime = 3;
+			tenTime  = 0;
+			if( clock() < 57050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 57100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 57150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 57200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 58://caso 02 segundos
+			unitTime = 2;
+			tenTime  = 0;
+			if( clock() < 58050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 58100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 58150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 58200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 59://caso 01 segundos
+			unitTime = 1;
+			tenTime  = 0;
+			if( clock() < 59050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 59100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 59150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 59200 ) 	unitTimeAnimFrame = 3;
+		break;
+	
+		case 60://caso 00 segundos
+			unitTime = 0;
+			tenTime  = 0;
+			if( clock() < 60050) 		unitTimeAnimFrame = 0;
+			else if( clock() < 60100 ) 	unitTimeAnimFrame = 1;
+			else if( clock() < 60150 ) 	unitTimeAnimFrame = 2;
+			else if( clock() < 60200 ) 	unitTimeAnimFrame = 3;
+		break;
 	}
 }
-
-
-void Interface::AnimControl()
-{
-	if( !startAnimation )//frame 0
-	{ frame = 0; startAnimation = true; capturaTempo = clock(); }
-	if(startAnimation)
-	{
-		if( frame == 0 && clock() - capturaTempo > TEF )//frame 1
-		{ frame = 1; capturaTempo = clock(); }
-		if( frame == 1 && clock() - capturaTempo > TEF )//frame 2
-		{ frame = 2; capturaTempo = clock(); }
-		if( frame == 2 && clock() - capturaTempo > TEF )//frame 3
-		{ frame = 3; capturaTempo = clock(); }
-		if( frame == 3 && clock() - capturaTempo > TEF )//frame 4
-		{ frame = 4; capturaTempo = clock(); }
-		if( frame == 4 && clock() - capturaTempo > TEF )//frame 5
-		{ frame = 5; capturaTempo = clock(); }
-		if( frame == 5 && clock() - capturaTempo > TEF )//frame 6
-		{ frame = 6; capturaTempo = clock(); }
-		if( frame == 6 && clock() - capturaTempo > TEF )//frame 0
-		{ frame = 0; capturaTempo = clock(); }	
-	}
-}END_OF_FUNCTION(AnimControl);
-
-
-//completeInterface
-BITMAP *Interface::GetCompleteInterface()
-{
-	return completeInterface;
-}END_OF_FUNCTION(GetSprites)
-
-
 
 
 

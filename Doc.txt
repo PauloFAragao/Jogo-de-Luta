@@ -28,3 +28,14 @@ animações implementadas:
 	-animação strongBackDiagonalJump
 	-animação crouching incerida mais não implementada
 	-animação raiseCrouched incerida mais não implementada
+
+Na verção polimento 3.3 foram criadas as classes interface e cenarios.
+Foi iniciado a implementação da classe inteface
+Foi iniciado as alterações nas regras de action
+Os sprites foram trocados de lugar
+
+
+
+
+
+

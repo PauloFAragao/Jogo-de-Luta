@@ -1,10 +1,19 @@
+/*
+*	Criado por: Paulo (debek_metal@hotmail.com)
+*	Versão da biblioteca Allegro: 4.2.2
+*/
+
+
 #include <allegro.h>
 #include "Interface.h"
 #include "Player.h"
 #include "Terry.h"
+#include "Scenario.h"
+
 
 int WINDOW_WIDTH  = 1440;
 int WINDOW_HEIGHT = 900;
+
 
 int main()
 {
@@ -21,11 +30,8 @@ int main()
     
     Interface ui;
     
-    BITMAP *cenario = load_bitmap("sprites/cenarios/cenario.bmp", NULL);
-    
-    int cenarioX=0;
-    int cenarioY=0;
-    
+    Scenario scenario;
+            
 	while(!key[KEY_ESC])
 	{
         clear(buffer);
@@ -34,17 +40,21 @@ int main()
         p1.Routine();
         
         //rotina principal da classe interface
-        ui.Routine();
+        //ui.Routine();
 		
 		
-		//render
-		draw_sprite(buffer, cenario, cenarioX, cenarioY );
+	//render
 		
+		//cenario do jogo
+		//draw_sprite(buffer, scenario.GetScenarioSprite(), scenario.GetX(), scenario.GetY() );
+		
+		//personagem
 		draw_sprite(buffer, p1.GetPlayerSprite(), p1.GetX(), p1.GetY());
 		
-		draw_sprite(buffer, ui.GetCompleteInterface(), 0, 0 );
+		//interface
+		//draw_sprite(buffer, ui.GetCompleteInterface(), 0, 0 );
 		
-		/*
+		
 		//imprime as booleanas dos botões
 		if(p1.GetButton00()) 	textprintf_ex(buffer, font, 1200, 10, makecol(255, 0, 0), -1, "Direcional - tras: true ");
 		else					textprintf_ex(buffer, font, 1200, 10, makecol(255, 0, 0), -1, "Direcional - tras: false ");
@@ -112,18 +122,15 @@ int main()
 		textprintf_ex(buffer, font, 10, 100, makecol(255, 0, 0), -1, "Bt7 T0=%d  T1=%d  T2=%d  T3=%d  T4=%d  T5=%d  T6=%d  T7=%d  T8=%d  T9=%d "
 			, p1.GetBtTPress(7,0) , p1.GetBtTPress(7,1) , p1.GetBtTPress(7,2) , p1.GetBtTPress(7,3) , p1.GetBtTPress(7,4)
 			, p1.GetBtTPress(7,5) , p1.GetBtTPress(7,6) , p1.GetBtTPress(7,7) , p1.GetBtTPress(7,8) , p1.GetBtTPress(7,9) );
-			*/
-		
-		
-		textprintf_ex(buffer, font, 10, 10, makecol(255, 255, 0), -1, "%i", (int)clock()/1000);
-		
+
+
 		
 		blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
         rest(10);
     }
     
     destroy_bitmap(buffer);
-    destroy_bitmap(cenario);
+    //destroy_bitmap(cenario);
 
     allegro_exit();
     return 0;

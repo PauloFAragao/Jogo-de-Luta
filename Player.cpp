@@ -16,7 +16,7 @@ Player::Player() { StartAttributes(); }
 //destrutor
 Player::~Player()
 {
-	destroy_bitmap(*sprites);
+	destroy_bitmap( *sprites );
 }
 
 
@@ -35,7 +35,7 @@ void Player::StartAttributes()
 	frame=0;						//frame da animação
 	startAnimation=false;			//booleana para verificar se a animação iniciou
 	toRight=true;					//indica para que lado o personagem está virado
-	jumpComand=false;				//comando para o personagem pular
+	//jumpComand=false;				//comando para o personagem pular
 	antLoopJumpBack=false;			//para criar um controle e evitar loop quando o personagem pula para tras
 	button00=false;					//esquerda
 	button01=false;					//baixo
@@ -251,41 +251,41 @@ void Player::HorizontalMove()
 	//verifica para qual lado o personagem está virado
 	if(toRight)//personagem virado para a direita
 	{
-	//com o personagem virado para a direita aqui ele se move para tras
-		if(button00 && y >= CHAO)
+		
+		if(button00 && y >= CHAO)//com o personagem virado para a direita aqui ele se move para tras
 		{
 			//pulo para tras
-			if( btTPress[0][8] - btTPress[0][7] < 150 && !antLoopJumpBack)
+			if( btTPress[0][8] - btTPress[0][7] < 150 && ValidateAction(110) && !antLoopJumpBack )
 //btTPress[0][8] - btTPress[0][7] = se a difenreça de tempo entre o botão ter cido solto e pressionado é menor que 150 ms
 			{
-				antLoopJumpBack=true;
 				speedX = -12;
 				speedY = -10;
-				ChangeAction(131);
+				antLoopJumpBack = true;
+				ChangeAction(110);
 			}
 			//andando para tras
-			else
+			else if( ValidateAction(30) )
 			{
 				speedX = -VELANDAR;
-				ChangeAction(50);
+				ChangeAction(30);
 			}
 		}
 		
-	//com o personagem virado para a direita aqui ele se move para frente
-		if(button02 && y >= CHAO)
+	
+		if(button02 && y >= CHAO)//com o personagem virado para a direita aqui ele se move para frente
 		{
 			//correndo para frente
-			if( btTPress[2][8] - btTPress[2][7] < 150)
+			if( btTPress[2][8] - btTPress[2][7] < 150 && ValidateAction(100))
 //btTPress[2][8] - btTPress[2][7] = se a difenreça de tempo entre o botão ter cido solto e pressionado é menor que 150 ms
 			{
 				 speedX = VELCORRIDA;
-				 ChangeAction(120);
+				 ChangeAction(100);
 			}
 			//andando para frente
-			else 
+			else if( ValidateAction(20) )
 			{
 				speedX = VELANDAR;
-				ChangeAction(40);
+				ChangeAction(20);
 			} 
 		}
 		
@@ -293,13 +293,7 @@ void Player::HorizontalMove()
 	else//personagem virado para a esquerda
 	{
 
-	}
-	
-	
-	//reset da variavel antLoopJumpBack
-	if(antLoopJumpBack &&  toRight && !button00) antLoopJumpBack=false;
-	if(antLoopJumpBack && !toRight && !button02) antLoopJumpBack=false;
-	
+	}	
 	
 	//calcula se o peronagem está colidindo com o fim da cena e então movimenta o personagem
 	if( x + speedX > 1142 ) 	 x = 1142;
@@ -316,72 +310,106 @@ void Player::HorizontalMove()
 void Player::VerticalMove()
 {
 	
-	//cria o comando para o personagem pular
-	if( button03 && y >= CHAO && !jumpComand /*&& playerControl*/) 
+	if( button03 && y >= CHAO && ValidateAction(-5) ) 
 	{
-		jumpComand=true;
-		//playerControl = false;
-		ChangeAction(10);
+		speedX = 0;
+		if( button00 && !button02 ) 
+		{
+			if(toRight && ValidateAction(80) )	ChangeAction(80);
+			else if( ValidateAction(60) )		ChangeAction(60);
+		}
+		else if( button02 && !button00 )
+		{
+			if(toRight && ValidateAction(60) )	ChangeAction(60);
+			else if( ValidateAction(80) )		ChangeAction(80);
+		}
+		else if( ValidateAction(40) ) ChangeAction(40);
 	}
 	
-	
-	/*
-	*	Aqui faz o personagem pular depois de  um delay entre o momento que o jogador pressinou o botão e o personagem 
-	*	realizar o pulo para dar tempo do personagem realizar a animação de se preparar para pular
-	*/
-	if( jumpComand && frame == 41 && clock() - capturaTempo > TEF )
+
+	if(  action == 40 || action == 60 || action == 80 )
 	{
-		if( btTPress[3][7] - btTPress[3][8] > 120 || button03 )//pulo forte<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-//btTPress[3][7] - btTPress[3][8] > 120 = se o botão ficou pressionado mais tempo que 120 ms
+		if( frame == 41 && clock() - capturaTempo > TEF )
 		{
-			if( button00 || ( btTPress[3][8] - btTPress[0][8] >= -30 && btTPress[3][8] - btTPress[0][8] <= 30 ) )//pulo forte na diagonal com o botão direcional para tras
-// se btTPress[3][8] - btTPress[0][8] (botão para cima e botão para tras) foi entre -30 e 30 (60 ms de diferença entre os botões terem sido pressionados)
+			
+			if( btTPress[3][9] - btTPress[3][8] > 120 || button03 )//pulo forte
+	//btTPress[3][7] - btTPress[3][8] > 120 = se o botão ficou pressionado mais tempo que 120 ms
 			{
-				if(toRight) {speedX = -10; ChangeAction(112); } //pulando na diagonal para tras
-				else 		{speedX = 10;  ChangeAction(92);  } //pulando na diagonal para frente
-				speedY = -20;
+				
+				//pulo forte na diagonal com o botão direcional para tras
+				if( button00 || ( btTPress[3][8] - btTPress[0][8] >= -30 && btTPress[3][8] - btTPress[0][8] <= 30 ) )
+	// se btTPress[3][8] - btTPress[0][8] (botão para cima e botão para tras) foi entre -30 e 30 (60 ms de diferença entre os botões terem sido pressionados)
+				{
+					if(toRight) { speedX = -10; ChangeAction(91); } //pulando na diagonal para tras
+					else 		{ speedX = 10;  ChangeAction(71); } //pulando na diagonal para frente
+					speedY = -20;
+				}
+				
+				//pulo forte na diagonal com o botão direcional para frent
+				else if( button02 || ( btTPress[3][8] - btTPress[2][8] >= -30 && btTPress[3][8] - btTPress[2][8] <= 30 ) )
+	// se btTPress[3][8] - btTPress[2][8] (botão para cima e botão para frente) foi entre -30 e 30 (60 ms de diferença entre os botões terem sido pressionados)
+				{
+					if(toRight) {speedX = 10;  ChangeAction(71);  } //pulando na diagonal para frente
+					else 		{speedX = -10; ChangeAction(91); } //pulando na diagonal para tras
+					speedY = -20;
+				}
+				
+				else//pulo apenas na vertical
+				{
+					speedX = 0;
+					speedY = -20;
+					ChangeAction(51);
+				}
+				
 			}
-			else if( button02 || ( btTPress[3][8] - btTPress[2][8] >= -30 && btTPress[3][8] - btTPress[2][8] <= 30 ) )//pulo forte na diagonal com o botão direcional para frente
-// se btTPress[3][8] - btTPress[2][8] (botão para cima e botão para frente) foi entre -30 e 30 (60 ms de diferença entre os botões terem sido pressionados)
+			
+			else//pulo fraco
 			{
-				if(toRight) {speedX = 10;  ChangeAction(92);  } //pulando na diagonal para frente
-				else 		{speedX = -10; ChangeAction(112); } //pulando na diagonal para tras
-				speedY = -20;
+				   
+				if( action == 40 )//pulo normal
+				{
+					//verifica se depois que o comando de pulo foi criado houve um input em tempo proxido do botão 0
+					if( button00 || ( btTPress[0][8] - btTPress[3][8] <= 30 ) )
+					{
+						if( toRight )	ChangeAction(80);
+						else			ChangeAction(60);
+					}
+				
+					//verifica se depois que o comando de pulo foi criado houve um input em tempo proxido do botão 2
+					if( button00 || ( btTPress[2][8] - btTPress[3][8] <= 30 ) )
+					{
+						if( toRight )	ChangeAction(60);
+						else			ChangeAction(80);
+					}
+					
+					speedX = 0;
+					speedY = -15;
+					ChangeAction(41);
+				}
+				
+				if( action == 60 )// pulo fraco na diagonal para frente
+				{
+					speedX = 10;
+					speedY = -15;
+					ChangeAction(61);
+				}
+				
+				if( action == 80 )// pulo fraco na diagonal para tras
+				{
+					speedX = -10;
+					speedY = -15;
+					ChangeAction(81);
+				}
+				
+
 			}
-			else//pulo apenas na vertical
-			{
-				speedX = 0;
-				speedY = -20;
-				ChangeAction(72);
-			}
+			
 		}
-		else//pulo fraco<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-		{
-			if( button00 || (btTPress[3][8] - btTPress[0][8] >= -30 && btTPress[3][8] - btTPress[0][8] <= 30) )//pulo fraco na diagonal com o botão direcional para tras
-// se btTPress[3][8] - btTPress[0][8] (botão para cima e botão para tras) foi entre -30 e 30 (60 ms de diferença entre os botões terem sido pressionados)
-			{
-				if(toRight) {speedX = -10; ChangeAction(102); } //pulando na diagonal para tras
-				else 		{speedX = 10;  ChangeAction(82);  } //pulando na diagonal para frente
-				speedY = -15;
-			}
-			else if( button02 || (btTPress[3][8] - btTPress[2][8] >= -30 && btTPress[3][8] - btTPress[2][8] <= 30) )//pulo fraco na diagonal com o botão direcional para frente
-// se btTPress[3][8] - btTPress[2][8] (botão para cima e botão para frente) foi entre -30 e 30 (60 ms de diferença entre os botões terem sido pressionados)
-			{
-				if(toRight) {speedX = 10;  ChangeAction(82); }  //pulando na diagonal para frente
-				else 		{speedX = -10; ChangeAction(102); } //pulando na diagonal para tras
-				speedY = -15;
-			}
-			else//pulo apenas na vertical
-			{
-				speedX = 0;
-				speedY = -15;
-				ChangeAction(62);
-			}
-		}
-		jumpComand=false;
 	}
+	
 	
 	speedY+=GRAVIDADE;//ação da gravidade
+	
 	
 	if( y >= CHAO && speedY > 0)//colisão com o chão
 	{
@@ -389,118 +417,11 @@ void Player::VerticalMove()
 		y=CHAO;
 	}
 	
+	
 	y+=speedY;//movimenta o personagem
 	
+	
 }END_OF_FUNCTION(VertivalMove)
-
-
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>> Validadores <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-
-/**
- * Esse metodo vai ajudar a verificar se a ação atual pode ser cancelada
- * Recebe o valor da ação que se pretende cancelar a ação atual
- */
-bool Player::ValidateAction(int value)
-{
-	switch( value )
-	{
-		
-		case 10:
-			if( action == 0 || action == 40 || action == 50 || action == 120 ) return true;
-			else return false;
-		break;
-		
-		case 40:
-			if( action == 0 || action == 50 || action == 120 ) return true;
-			else return false;
-		break;
-	
-		case 50:
-			if( action == 0 || action == 40 || action == 120 ) return true;
-			else return false;
-		break;
-	
-		case 120:
-			if( action == 0 || action == 40 || action == 50 ) return true;
-			else return false;
-		break;
-	
-	}
-	
-	return false;
-}
-
-
-/**
- * verifica se o a animação já foi iniciada
- */
-bool Player::VerifyFrame( int value )
-{
-	//animação idle
-	if( value == 0 && frame != 0 && frame != 1 && frame != 2 
-	&& frame != 3 && frame != 4 && frame != 5 && frame !=6 
-	&& frame != 7 ) return true;
-	
-	if( value == 10 && frame != 68 && frame != 69 && frame != 70
-	&& frame != 71 && frame != 72 && frame !=73 ) return true;
-	
-	//animação crouching && raiseCrouched
-	if( ( value == 20 || value == 30 ) && frame != 40 && frame != 41 ) return true;
-	
-	//animação walk
-	if( value == 40 && frame != 8 && frame != 9 && frame != 10 
-	&& frame != 11 && frame != 12 && frame != 13 && frame !=14 
-	&& frame != 15 && frame != 16) return true;
-	
-	//animação walkBack
-	if( value == 50 && frame != 17 && frame != 18 && frame != 19 
-	&& frame != 20 && frame != 21 && frame != 22 && frame != 23 
-	&& frame != 24 && frame != 25) return true;
-	
-	//animação jumpDelay
-	if( ( value == 61 || action == 71 || action == 81 || action == 101 )
-	&& frame != 40 && frame != 41 ) return true;
-	
-	//animação rising
-	if( ( value == 62 || action == 72 || action == 82 || action == 102 )
-	&& frame != 42 ) return true;
-	
-	//animação endOfClimp
-	if( ( value == 63 || action == 73 || action == 83 || action == 103 )
-	&& frame != 43 && frame != 44 ) return true;
-
-	//animação falling
-	if( ( value == 64 || action == 74 || action == 84 || action == 104 )
-	&& frame != 45 && frame != 46 ) return true;
-
-	//animação fall
-	if( ( value == 65 || action == 75 || action == 85 || action == 105 )
-	&& frame != 47 && frame != 48 && frame != 49 && frame != 50 ) return true;
-	
-	//animação strongFrontalDiagonalJump
-	if( value == 92 && frame != 51 && frame !=  52 && frame != 53 
-	&& frame != 54 && frame != 55 && frame != 56 && frame != 57 
-	&& frame != 58 && frame != 59 ) return true;
-	
-	//animação strongBackDiagonalJump
-	if( value == 112 && frame != 60 && frame != 61 && frame != 62
-	&& frame !=63 && frame != 64 && frame != 65 && frame != 66 
-	&& frame != 67 ) return true;
-
-	//animação run
-	if( value == 120 && frame != 26 && frame != 27 && frame != 28
-	&& frame != 29 && frame != 30 && frame != 31 && frame != 32 
-	&& frame != 33 && frame != 34 ) return true;
-	
-	//animação jumpingBack
-	if( value == 131 && frame != 35 && frame != 36 && frame != 37 ) return true;
-	
-	//animação fallDelay-jumpingBack
-	if( value == 132 && frame != 38 && frame != 39 ) return true;
-	
-	return false;
-}
 
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>> Motor de interpretação <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -511,60 +432,65 @@ bool Player::VerifyFrame( int value )
  */
 void Player::InterpretationEngine()
 {
-	//walk - walkBack - run
-	if( speedX == 0 && VerifyFrame( 0 ) && ( action == 40 || action == 50 || action == 120 ) )
+	
+//walk - walkBack - run
+	if( speedX == 0 && VerifyFrame( 0 ) && ( action == 20 || action == 30 || action == 100 )  )
 	{
 		action = 0;
 		startAnimation = false;
-	}
+	}	
 	
 	
-	//jumpBack
-	if( action == 131 && y >= CHAO )//animação do personagem pulando para tras em quando está no ar
+//jumpBack
+	if( action == 110 && y >= CHAO )//animação do personagem pulando para tras em quando está no ar
 	{
-		ChangeAction(132);
+		ChangeAction(111);
 		capturaTempoParaOUltimoFrame = clock();
-		//if( VerifyFrame( 132 ) ) startAnimation = false;
 	}
-	if( action == 132 )//animação do personagem caindo no chão e se recuperando da queda
+	if( action == 111 && capturaTempoParaOUltimoFrame > TEF )//animação do personagem caindo no chão e se recuperando da queda
 	{
-		if( (button00 && toRight) || (button02 && !toRight) )//o personagem continua andando para tras
+		//continua antando para tras
+		if( button00 && toRight)
 		{
-			ChangeAction(50);
+			speedX = -VELANDAR;
+			ChangeAction(30);
 		}
-		if(speedX == 0 && capturaTempoParaOUltimoFrame > TEF )//o personagem parou de andar para tras
+		if( button02 && !toRight)
+		{
+			speedX = VELANDAR;
+			ChangeAction(30);
+		}
+	
+		if( speedX == 0 )//o personagem parou de andar para tras
 		{
 			ChangeAction(0);
 		}
 	}
+	if(antLoopJumpBack &&  toRight && !button00) antLoopJumpBack=false;
+	if(antLoopJumpBack && !toRight && !button02) antLoopJumpBack=false;
 	
 	
-	//jump
-	if( ( action == 62 || action == 72 || action == 82 || action == 102 ) && speedY > - 3)//rising
-	{
-		//aqui deve verificar se a velocidade de subida está acabando e mudar para a animação endOfClimp
-		if( action == 62  ) ChangeAction(63);
-		if( action == 72  ) ChangeAction(73);
-		if( action == 82  ) ChangeAction(83);
-		if( action == 102 ) ChangeAction(103);
-	}
-	if( ( action == 63 || action == 73 || action == 83 || action == 103 ) && speedY > 5)//endOfClimp
-	{
-		//aqui deve verificar se a velocidade de descida já está alta e alterar para a animação falling
-		if( action == 63  ) ChangeAction(64);
-		if( action == 73  ) ChangeAction(74);
-		if( action == 83  ) ChangeAction(84);
-		if( action == 103 ) ChangeAction(104);
-	}
-	if( ( action == 64 || action == 74 || action == 84 || action == 104 ) && y >= CHAO)//falling
-	{
-		//aqui deve verificar se o personagem encostou no chão e alterar para a animação fall
-		if( action == 64  ) ChangeAction(65);
-		if( action == 74  ) ChangeAction(75);
-		if( action == 84  ) ChangeAction(85);
-		if( action == 104 ) ChangeAction(95);
-	}
-	if( ( action == 65 || action == 75 || action == 84 || action == 104 ) )//fall
+//jump
+	//muda de rising para endOfClimp
+	if( action == 41 && speedY > - 3 ) ChangeAction( 42 );
+	if( action == 51 && speedY > - 3 ) ChangeAction( 52 );
+	if( action == 61 && speedY > - 3 ) ChangeAction( 62 );
+	if( action == 81 && speedY > - 3 ) ChangeAction( 82 );
+
+	//muda de endOfClimp para falling
+	if( action == 42 && speedY > 5 ) ChangeAction( 43 );
+	if( action == 52 && speedY > 5 ) ChangeAction( 53 );
+	if( action == 62 && speedY > 5 ) ChangeAction( 63 );
+	if( action == 82 && speedY > 5 ) ChangeAction( 83 );
+	
+	//muda de falling para fall
+	if( action == 43 && y >= CHAO ) ChangeAction( 44 );
+	if( action == 53 && y >= CHAO ) ChangeAction( 54 );
+	if( action == 63 && y >= CHAO ) ChangeAction( 64 );
+	if( action == 83 && y >= CHAO ) ChangeAction( 84 );
+	
+	//muda de fall para idle
+	if( action == 44 || action == 54 || action == 64 || action == 84 )
 	{
 		//aqui a animação deve ser completamente executada e depois mudar para a animação idle
 		if( frame == 50 ) capturaTempoParaOUltimoFrame = clock();
@@ -574,63 +500,58 @@ void Player::InterpretationEngine()
 		}
 	}
 	
-
-	//strongFrontalDiagonalJump
-	if( action == 92 )//strongFrontalDiagonalJump
+//strongFrontalDiagonalJump
+	if( action == 71 )//strongFrontalDiagonalJump
 	{
 		//essa animação deve rodar até o ultimo frame e entao mudar para a animação falling
 		if( frame == 59 ) capturaTempoParaOUltimoFrame = clock();
 		if( frame == 59 && capturaTempoParaOUltimoFrame > TEF-20)
 		{
-			ChangeAction(64);
+			ChangeAction(43);
 		}
 	}
 	
 	
-	//strongBackDiagonalJump
-	if( action == 112 )//strongFrontalDiagonalJump
+//strongBackDiagonalJump
+	if( action == 91 )//strongFrontalDiagonalJump
 	{
 		//essa animação deve rodar até o ultimo frame e entao mudar para a animação falling
 		if( frame == 67 ) capturaTempoParaOUltimoFrame = clock();
 		if( frame == 67 && capturaTempoParaOUltimoFrame > TEF-20)
 		{
-			ChangeAction(64);
+			ChangeAction(43);
 		}
 	}
 	
 	
-	//weak jump - strong jump ISSO SÓ ESTÀ QUEBRANDO UM GALHO
-	if( speedY == 0 && y >= CHAO &&  VerifyFrame( 0 ) && ( action == 82 ||action == 92 || action == 102 || action == 112 ) )
+//crouched
+	if( button01 && ValidateAction( 10 ) )//crouching
 	{
-		ChangeAction(0);
+		ChangeAction( 10 );
 	}
-	
-	
-	//crouched
-	if( button01 && action != 10 && ValidateAction( 10 ) )//crouching
+	if(button01 && action == 10 && frame == 41)//crouchedIdle
 	{
-		ChangeAction(20);
+		ChangeAction( 20 );
 	}
-	if(button01 && action == 20 && frame == 41)//crouchedIdle
+	if( !button01 && action == 20 )//raiseCrouched
 	{
-		ChangeAction(10);
-	}
-	if( !button01 && action == 10 )//raiseCrouched
-	{
-		ChangeAction(30);
+		ChangeAction( 30 );
 	}
 	if( !button01 && action == 30 && frame == 40)//idle
 	{
-		ChangeAction(0);
+		ChangeAction( 0 );
 	}
 	
-
+	
 }END_OF_FUNCTION(InterpretationEngine);
 
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Animações <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
+/**
+ * controle central da animação do player
+ */
 /**
  * controle central da animação do player
  */
@@ -642,91 +563,82 @@ void Player::PlayerBasicAnimations()
 			Anim00();
 		break;
 		
-		case 10://crouchedIdle
+		case 10://Crouching
+		case 40://Jump Start
+		case 60://Jump Start
+		case 80://Jump Start
 			Anim01();
 		break;
-	
-		case 20://crouching
+		
+		case 11://Crouched Idle
 			Anim02();
 		break;
-			
-		case 30://raiseCrouched
+		
+		case 12://Raise Crouched
 			Anim03();
 		break;
-	
-		case 40://walk
+		
+		case 20://Walk
 			Anim04();
 		break;
 		
-		case 50://walkBack
+		case 30://Walk Back
 			Anim05();
 		break;
-	
-		//jumpDelay
-		case 61:
-		case 71:
-		case 81:
-		case 91:
-		case 101:
-		case 111:
-			Anim02();
-		break;
-	
-		//rising
-		case 62:
-		case 72:
-		case 82:
-		case 102:
-			Anim072();
+		
+		case 41://Rising
+		case 51://Rising
+		case 61://Rising
+		case 81://Rising
+			Anim06();
 		break;
 		
-		//endOfClimp 
-		case 63:
-		case 73:
-		case 83:
-		case 103:
-			Anim073();
+		case 42://End of Climp
+		case 52://End of Climp
+		case 62://End of Climp
+		case 82://End of Climp
+			Anim07();
 		break;
-	
-		//falling
-		case 64:
-		case 74:
-		case 84:
-		case 104:
-			Anim074();
+		
+		case 43://Falling
+		case 53://Falling
+		case 63://Falling
+		case 73://Falling
+		case 83://Falling
+		case 93://Falling
+			Anim08();
 		break;
-	
-		//fall
-		case 65:
-		case 75:
-		case 85:
-		case 95:
-		case 105:
-		case 115:
-			Anim075();
+		
+		case 44://Fall
+		case 54://Fall
+		case 64://Fall
+		case 74://Fall
+		case 84://Fall
+		case 94://Fall
+			Anim09();
 		break;
-	
-		case 92://strongFrontalDiagonalJump
-			Anim092();
+		
+		case 71://Strong Frontal Diagonal Jump
+			Anim10();
 		break;
-	
-		case 112://strongBackDiagonalJump
-			Anim112();
+		
+		case 91://Strong Back Diagonal Jump
+			Anim11();
 		break;
-	
-		case 120://run
+		
+		case 100://Run
 			Anim12();
 		break;
 		
-		case 131://jumpingBack
-			Anim131();
+		case 110://Jumping Back
+			Anim13();
 		break;
-	
-		case 132://fallDelay-jumpingBack
-			Anim132();
+		
+		case 111://Fall - depois de Jumping Back
+			Anim14();
 		break;
-	
-		default:
+		
+		default: //ERROR
 			frame = 0;
 		break;
 	}
@@ -758,7 +670,19 @@ void Player::Anim00()//idle
 	}
 }END_OF_FUNCTION(anim00);
 
-void Player::Anim01()//crouchedIdle
+void Player::Anim01()//crouching 
+{
+	if( !startAnimation )//frame 0
+	{ frame = 40; startAnimation = true; capturaTempo = clock(); }
+	if(startAnimation)
+	{
+		if( frame == 40 && clock() - capturaTempo > TEF )//frame 1
+		{ frame = 41; capturaTempo = clock(); }
+		
+	}
+}END_OF_FUNCTION(anim01);
+
+void Player::Anim02()//crouchedIdle
 {
 	if( !startAnimation )//frame 0
 	{ frame = 68; startAnimation = true; capturaTempo = clock(); }
@@ -776,18 +700,6 @@ void Player::Anim01()//crouchedIdle
 		{ frame = 73; capturaTempo = clock(); }
 		if( frame == 73 && clock() - capturaTempo > TEF+10 )//frame 0
 		{ frame = 68; capturaTempo = clock(); }
-	}
-}END_OF_FUNCTION(anim01);
-
-void Player::Anim02()//crouching 
-{
-	if( !startAnimation )//frame 0
-	{ frame = 40; startAnimation = true; capturaTempo = clock(); }
-	if(startAnimation)
-	{
-		if( frame == 40 && clock() - capturaTempo > TEF )//frame 1
-		{ frame = 41; capturaTempo = clock(); }
-		
 	}
 }END_OF_FUNCTION(anim02);
 
@@ -857,14 +769,14 @@ void Player::Anim05()//walkBack
 	}
 }END_OF_FUNCTION(anim05);
 
-void Player::Anim072()//rising 
+void Player::Anim06()//rising 
 {
 	if( !startAnimation )//frame 0
 	{ frame = 42; startAnimation = true;capturaTempo = clock(); }
 
-}END_OF_FUNCTION(anim072);
+}END_OF_FUNCTION(anim06);
 
-void Player::Anim073()//endOfClimp
+void Player::Anim07()//endOfClimp
 {
 	if( !startAnimation )//frame 0
 	{ frame = 43; startAnimation = true; capturaTempo = clock(); }
@@ -873,9 +785,9 @@ void Player::Anim073()//endOfClimp
 		if( frame == 43 && clock() - capturaTempo > TEF )//frame 1
 		{ frame = 44; capturaTempo = clock(); }
 	}
-}END_OF_FUNCTION(anim073);
+}END_OF_FUNCTION(anim07);
 
-void Player::Anim074()//falling
+void Player::Anim08()//falling
 {
 	if( !startAnimation )//frame 0
 	{ frame = 45; startAnimation = true; capturaTempo = clock(); }
@@ -884,9 +796,9 @@ void Player::Anim074()//falling
 		if( frame == 45 && clock() - capturaTempo > TEF+50 )//frame 1
 		{ frame = 46; capturaTempo = clock(); }
 	}
-}END_OF_FUNCTION(anim074);
+}END_OF_FUNCTION(anim08);
 
-void Player::Anim075()//fall
+void Player::Anim09()//fall
 {
 	if( !startAnimation )//frame 0
 	{ frame = 47; startAnimation = true; capturaTempo = clock(); }
@@ -899,9 +811,10 @@ void Player::Anim075()//fall
 		if( frame == 49 && clock() - capturaTempo > TEF-20 )//frame 3
 		{ frame = 50; capturaTempo = clock(); }
 	}
-}END_OF_FUNCTION(anim075);
+}END_OF_FUNCTION(anim09);
 
-void Player::Anim092()//strongFrontalDiagonalJump
+
+void Player::Anim10()//strongFrontalDiagonalJump
 {
 	if( !startAnimation )//frame 0
 	{ frame = 51; startAnimation = true; capturaTempo = clock(); }
@@ -924,9 +837,9 @@ void Player::Anim092()//strongFrontalDiagonalJump
 		if( frame == 58 && clock() - capturaTempo > TEF-20 )//frame 8
 		{ frame = 59; capturaTempo = clock(); }
 	}
-}END_OF_FUNCTION(anim092);
+}END_OF_FUNCTION(anim10);
 
-void Player::Anim112()//strongBackDiagonalJump
+void Player::Anim11()//strongBackDiagonalJump
 {
 	if( !startAnimation )//frame 0
 	{ frame = 60; startAnimation = true; capturaTempo = clock(); }
@@ -947,7 +860,7 @@ void Player::Anim112()//strongBackDiagonalJump
 		if( frame == 66 && clock() - capturaTempo > TEF-20 )//frame 7
 		{ frame = 67; capturaTempo = clock(); }
 	}
-}END_OF_FUNCTION(Anim112);
+}END_OF_FUNCTION(Anim11);
 
 void Player::Anim12()//run
 {
@@ -976,7 +889,7 @@ void Player::Anim12()//run
 	}
 }END_OF_FUNCTION(Anim12);
 
-void Player::Anim131()//jumpingBack
+void Player::Anim13()//jumpingBack
 {
 	if( !startAnimation )//frame 0
 	{ frame = 35; startAnimation = true; capturaTempo = clock(); }
@@ -987,9 +900,9 @@ void Player::Anim131()//jumpingBack
 		if( frame == 36 && clock() - capturaTempo > TEF+50 )//frame 2
 		{ frame = 37; capturaTempo = clock(); }
 	}
-}END_OF_FUNCTION(Anim131);
+}END_OF_FUNCTION(Anim13);
 
-void Player::Anim132()//fallDelay-jumpingBack
+void Player::Anim14()//fall
 {
 	if( !startAnimation )//frame 0
 	{ frame = 38; startAnimation = true; capturaTempo = clock(); }
@@ -998,8 +911,7 @@ void Player::Anim132()//fallDelay-jumpingBack
 		if( frame == 38 && clock() - capturaTempo > TEF )//frame 1
 		{ frame = 39; capturaTempo = clock(); }
 	}
-}END_OF_FUNCTION(Anim132);
-
+}END_OF_FUNCTION(Anim14);
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> sets && gets <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -1216,20 +1128,193 @@ bool Player::GetPow()
 	return pow;
 }END_OF_FUNCTION(GetPow);
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>> Validadores <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+
+/**
+ * Esse metodo vai ajudar a verificar se a ação atual pode ser cancelada
+ * Recebe o valor da ação que se pretende cancelar a ação atual
+ * 		ValidateAction(-5) - verifica se um comando de pulo já foi gerado
+ */
+bool Player::ValidateAction(int value)
+{
+	
+	switch(value)
+	{	
+		case -5://verifica se já está fazendo alguma dessas ações quando o personagem vai pular
+			if( action != 80 || action != 60 || action != 40 )
+				return true;
+			else return false;
+		break;
+		
+		case 10: //Crouched
+		case 20: //Walk
+		case 30: //Walk Back
+		case 40: //Weak Jump
+			if( action == 0 )
+				return true;
+			else return false;
+		break;
+	
+		case 60://Weak Frontal Diagonal Jump
+			if( action == 0 || action == 20 || action == 100 )
+				return true;
+			else return false;
+		break;
+	
+		case 80://Weak Back Diagonal Jump
+			if( action == 0 || action == 30 )
+				return true;
+			else return false;
+		break;
+	
+		case 100: //Run
+			if( action == 0 || action == 20 )
+				return true;
+			else return false;
+		break;
+	
+		case 110: //Jump Back
+			if( action == 0 || action == 30 )
+				return true;
+			else return false;
+		break;
+	
+		default:
+			return false;
+		break;
+	}
+	
+	return true;
+}END_OF_FUNCTION(ValidateAction);
+
+
+/**
+ * verifica se o a animação já foi iniciada
+ */
+/**
+ * verifica se o a animação já foi iniciada
+ */
+bool Player::VerifyFrame( int value )
+{
+	switch( value )
+	{
+		case 0://idle
+			if(frame != 0 && frame != 1 && frame != 2 
+			&& frame != 3 && frame != 4 && frame != 5 && frame !=6 
+			&& frame != 7 ) 
+				return true;
+		break;
+		
+		case 10://Crouching
+		case 12://Raise Crouched - Crouching ao contrario
+		case 40://Jump Start
+		case 60://Jump Start
+		case 80://Jump Start
+			if(	frame != 40 && frame != 41 ) 
+				return true;
+		break;
+		
+		case 11://Crouched Idle
+			//crouchedIdle
+			if(frame != 68 && frame != 69 && frame != 70 && 
+			frame != 71 && frame != 72 && frame != 73 ) 
+				return true;
+		break;
+		
+		case 20://Walk
+			if( frame != 8 && frame != 9 && frame != 10 && 
+			frame != 11 && frame != 12 && frame != 13 &&
+			frame != 14 && frame != 15 && frame != 16 )
+				return true;
+		break;
+		
+		case 30://Walk Back
+			if( frame != 17 && frame != 18 && frame != 19 && 
+			frame != 20 && frame != 21 && frame != 22 &&
+			frame != 23 && frame != 24 && frame != 25 )
+				return true;
+		break;
+		
+		case 41://Rising
+		case 51://Rising
+		case 61://Rising
+		case 81://Rising
+			if( frame != 42 )
+				return true;
+		break;
+		
+		case 42://End of Climp
+		case 52://End of Climp
+		case 62://End of Climp
+		case 82://End of Climp
+			if(	frame != 43 && frame != 44 ) 
+				return true;
+		break;
+		
+		case 43://Falling
+		case 53://Falling
+		case 63://Falling
+		case 73://Falling
+		case 83://Falling
+		case 93://Falling
+			if(	frame != 45 && frame != 46 ) 
+				return true;
+		break;
+		
+		case 44://Fall
+		case 54://Fall
+		case 64://Fall
+		case 74://Fall
+		case 84://Fall
+		case 94://Fall
+			if(	frame != 47 && frame != 48 && frame != 49 && 
+			frame != 50 ) 
+				return true;
+		break;
+		
+		case 71://Strong Frontal Diagonal Jump
+			if(	frame != 51 && frame != 52 && frame != 53 && 
+			frame != 54 && frame != 55 && frame != 56 && 
+			frame != 57 && frame != 58 && frame != 59 ) 
+				return true;
+		break;
+		
+		case 91://Strong Back Diagonal Jump
+			if(	frame != 60 && frame != 61 && frame != 62 && 
+			frame != 63 && frame != 64 && frame != 65 && 
+			frame != 66 && frame != 67 ) 
+				return true;
+		break;
+		
+		case 100://Run
+			if(	frame != 27 && frame != 28 && frame != 29 && 
+			frame != 30 && frame != 31 && frame != 32 && 
+			frame != 34 ) 
+				return true;
+		break;
+		
+		case 110://Jumping Back
+			if(	frame != 35 && frame != 36 && frame != 37 ) 
+				return true;
+		break;
+		
+		case 111://Fall - depois de Jumping Back
+			if(	frame != 38 && frame != 39 ) 
+				return true;
+		break;
+		
+		default: //ERROR
+			frame = 0;
+		break;
+	}
+	
+	return false;
+}END_OF_FUNCTION(VerifyFrame);
 
 /*
-*	Observação a variavel playerControl é um quebra galho até a implementação da função ValidateAction
 *
-*	Necessidade de implementação
-*		Terminar de implementar playerControl
-*
-*	BUGS
-*		quando o personagem está dando um pulo para tras é possivel canselar a animação e fazer o personagem correr para frente (possiveis outros cancelamentos)
-*			enquando o personagem estiver pulando para tras mudar o status de playerControl (não deu certo)
-*			BUG FRENTE TRAS FRENTE O PERSONAGEM PULA E ANDA PARA FRENTE
-*
-*	PROBLEMA COM A VARIAVEL playercontrol
+*	a action crouche não terminou de ser implementada
 *
 */
 
