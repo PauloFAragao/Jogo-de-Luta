@@ -113,7 +113,11 @@ int main()
 			, p1.GetBtTPress(7,0) , p1.GetBtTPress(7,1) , p1.GetBtTPress(7,2) , p1.GetBtTPress(7,3) , p1.GetBtTPress(7,4)
 			, p1.GetBtTPress(7,5) , p1.GetBtTPress(7,6) , p1.GetBtTPress(7,7) , p1.GetBtTPress(7,8) , p1.GetBtTPress(7,9) );
 			*/
-			
+		
+		
+		textprintf_ex(buffer, font, 10, 10, makecol(255, 255, 0), -1, "%i", (int)clock()/1000);
+		
+		
 		blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
         rest(10);
     }

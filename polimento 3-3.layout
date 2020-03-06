@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout>
 	<Files>
-		<File Name="main.cpp" Top="No" Tabpos="1" TopLine="74">
-			<Cursor Line="118" Column="15"/>
+		<File Name="main.cpp" Top="No" Tabpos="1" TopLine="15">
+			<Cursor Line="38" Column="3"/>
 		</File>
-		<File Name="Player.h" Top="No" Tabpos="2" TopLine="70">
-			<Cursor Line="84" Column="136"/>
-			<Selection Line="84" Column="3"/>
+		<File Name="Player.h" Top="No" Tabpos="2" TopLine="64">
+			<Cursor Line="78" Column="18"/>
+			<Selection Line="78" Column="49"/>
 		</File>
-		<File Name="Player.cpp" Top="No" Tabpos="3" TopLine="1187">
-			<Cursor Line="1233" Column="40"/>
+		<File Name="Player.cpp" Top="Yes" Tabpos="3" TopLine="705">
+			<Cursor Line="718" Column="13"/>
 		</File>
 		<File Name="Terry.h" Top="No" Tabpos="4" TopLine="1">
 			<Cursor Line="25" Column="1"/>
@@ -20,13 +20,14 @@
 			<Selection Line="21" Column="55"/>
 		</File>
 		<File Name="Cenario.h" Top="No" Tabpos="6" TopLine="1">
-			<Cursor Line="10" Column="18"/>
+			<Cursor Line="8" Column="2"/>
 		</File>
-		<File Name="Interface.h" Top="Yes" Tabpos="7" TopLine="38">
-			<Cursor Line="62" Column="79"/>
+		<File Name="Interface.h" Top="No" Tabpos="7" TopLine="14">
+			<Cursor Line="22" Column="24"/>
+			<Selection Line="22" Column="7"/>
 		</File>
-		<File Name="Interface.cpp" Top="No" Tabpos="8" TopLine="150">
-			<Cursor Line="216" Column="2"/>
+		<File Name="Interface.cpp" Top="No" Tabpos="8" TopLine="472">
+			<Cursor Line="522" Column="9"/>
 		</File>
 	</Files>
 </Layout>

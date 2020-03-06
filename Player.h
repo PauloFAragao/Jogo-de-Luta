@@ -85,7 +85,7 @@ class Player
 		int frame;				//o frame que deve ser renderizado
 		bool startAnimation;	//faz a animação iniciar
 		
-		bool playerControl;		//indica se os comandos do player podem influenciar o personagem
+		//bool playerControl;		//indica se os comandos do player podem influenciar o personagem
 		
 		bool toRight;			//indica para que lado o personagem está virado
 		bool jumpComand;		//comando para o personagem pular

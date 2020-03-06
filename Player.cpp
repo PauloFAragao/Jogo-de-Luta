@@ -34,7 +34,6 @@ void Player::StartAttributes()
 	capturaTempo=0;					//captura o tempo
 	frame=0;						//frame da animação
 	startAnimation=false;			//booleana para verificar se a animação iniciou
-	playerControl=true;			//indica se os comandos do player podem influenciar o personagem
 	toRight=true;					//indica para que lado o personagem está virado
 	jumpComand=false;				//comando para o personagem pular
 	antLoopJumpBack=false;			//para criar um controle e evitar loop quando o personagem pula para tras
@@ -250,7 +249,7 @@ void Player::HorizontalMove()
 
 	
 	//verifica para qual lado o personagem está virado
-	if(toRight && playerControl)//personagem virado para a direita
+	if(toRight)//personagem virado para a direita
 	{
 	//com o personagem virado para a direita aqui ele se move para tras
 		if(button00 && y >= CHAO)
@@ -291,7 +290,7 @@ void Player::HorizontalMove()
 		}
 		
 	}
-	else if(playerControl)//personagem virado para a esquerda
+	else//personagem virado para a esquerda
 	{
 
 	}

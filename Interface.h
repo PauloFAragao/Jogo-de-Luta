@@ -19,6 +19,8 @@ class Interface
 		int gameTime;						//tempo de jogo
 		
 		int frame;							//frame da animação
+		int unitTimeAnimFrame;				//frame da animação das unidades
+		int tenTimeAnimFrame;				//frame da animação das dezenas
 		int capturaTempo;					//captura o tempo no momento que muda de frame para fazer uma verificação de quando deve trocar de frame novamente
 		bool startAnimation;				//faz a animação iniciar
 		
@@ -35,6 +37,11 @@ class Interface
 		int specialBarPinkP2X;				//
 		int specialBarYellowP1X;			//
 		int specialBarYellowP2X;			//
+		int powBarp1X;						//
+		int powBarp2X;						//
+		
+		int unitTime;						//
+		int tenTime;						//
 		
 		//variavel que vai montar a interface e ser enviada para renderização
 		BITMAP *completeInterface;
@@ -60,6 +67,7 @@ class Interface
 		BITMAP *specialBarBluePlayer1;		//barra azul de especial do personagem 1
 		BITMAP *specialBarPinkPlayer1;		//barra rosa de especial do personagem 1
 		BITMAP *specialBarYellowPlayer1;	//barra amarela de especial do personagem 1
+		BITMAP *powBarPlayer1;				//barra de tempo quando o jogador estora	
 		
 		//barras de especial do player 2
 		BITMAP *specialInterface1Player2;	//interface da barra de especial do player 2
@@ -67,11 +75,13 @@ class Interface
 		BITMAP *specialBarBluePlayer2;		//barra azul de especial do personagem 2
 		BITMAP *specialBarPinkPlayer2;		//barra rosa de especial do personagem 2
 		BITMAP *specialBarYellowPlayer2;	//barra amarela de especial do personagem 2
+		BITMAP *powBarPlayer2;				//barra de tempo quando o jogador estora
 		
 		//carregar as imagens das barras de especial
-		BITMAP *specialBarBlue;		//barra azul de especial do personagem 2
-		BITMAP *specialBarPink;		//barra rosa de especial do personagem 2
-		BITMAP *specialBarYellow;	//barra amarela de especial do personagem 2
+		BITMAP *specialBarBlue;		//barra azul de especial
+		BITMAP *specialBarPink;		//barra rosa de especial
+		BITMAP *specialBarYellow;	//barra amarela de especial
+		BITMAP *powBar;				//barra laranja de especial
 		
 		//animações da barra de especial
 		BITMAP *specialAnim[7];				//frames da animação dos pontos
@@ -88,16 +98,7 @@ class Interface
 		BITMAP *framePlayer2;
 		
 		//tempo do game
-		BITMAP *number0[4];
-		BITMAP *number1[4];
-		BITMAP *number2[4];
-		BITMAP *number3[4];
-		BITMAP *number4[4];
-		BITMAP *number5[4];
-		BITMAP *number6[4];
-		BITMAP *number7[4];
-		BITMAP *number8[4];
-		BITMAP *number9[4];
+		BITMAP *number[10][4];
 
 		//metodos privados
 		void LoadSprites();
