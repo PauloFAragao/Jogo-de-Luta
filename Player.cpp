@@ -286,7 +286,7 @@ void Player::HorizontalMove()
 			{
 				speedX = VELANDAR;
 				ChangeAction(20);
-			} 
+			}
 		}
 		
 	}
@@ -438,7 +438,7 @@ void Player::InterpretationEngine()
 	{
 		action = 0;
 		startAnimation = false;
-	}	
+	}
 	
 	
 //jumpBack
@@ -531,13 +531,13 @@ void Player::InterpretationEngine()
 	}
 	if(button01 && action == 10 && frame == 41)//crouchedIdle
 	{
-		ChangeAction( 20 );
+		ChangeAction( 11 );
 	}
-	if( !button01 && action == 20 )//raiseCrouched
+	if( !button01 && action == 11 )//raiseCrouched
 	{
-		ChangeAction( 30 );
+		ChangeAction( 12 );
 	}
-	if( !button01 && action == 30 && frame == 40)//idle
+	if( !button01 && action == 12 && frame == 40)//idle
 	{
 		ChangeAction( 0 );
 	}
@@ -804,11 +804,11 @@ void Player::Anim09()//fall
 	{ frame = 47; startAnimation = true; capturaTempo = clock(); }
 	if(startAnimation)
 	{
-		if( frame == 47 && clock() - capturaTempo > TEF-20 )//frame 1
+		if( frame == 47 && clock() - capturaTempo > TEF-40 )//frame 1
 		{ frame = 48; capturaTempo = clock(); }
-		if( frame == 48 && clock() - capturaTempo > TEF-20 )//frame 2
+		if( frame == 48 && clock() - capturaTempo > TEF-40 )//frame 2
 		{ frame = 49; capturaTempo = clock(); }
-		if( frame == 49 && clock() - capturaTempo > TEF-20 )//frame 3
+		if( frame == 49 && clock() - capturaTempo > TEF-40 )//frame 3
 		{ frame = 50; capturaTempo = clock(); }
 	}
 }END_OF_FUNCTION(anim09);
@@ -1312,11 +1312,7 @@ bool Player::VerifyFrame( int value )
 	return false;
 }END_OF_FUNCTION(VerifyFrame);
 
-/*
-*
-*	a action crouche não terminou de ser implementada
-*
-*/
+
 
 
 

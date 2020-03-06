@@ -29,9 +29,13 @@ animações implementadas:
 	-animação crouching incerida mais não implementada
 	-animação raiseCrouched incerida mais não implementada
 
-Na verção polimento 3.3 foram criadas as classes interface e cenarios.
-Foi iniciado a implementação da classe inteface
-Foi iniciado as alterações nas regras de action
+Na verção polimento 3.3 foram criadas as classes Interface e Scenario.
+Foi iniciado a implementação da classe Inteface (agora o jogo tem uma interface simples 
+com um contador funcional)
+Foi iniciado a implementação da classe Scenario (agora o cenario carrega pela classe)
+Foram feitas as alterações nas regras de action, para isso foram feitas grandes mudanças na 
+logica do jogo, agora não são mais necessarias booleanas para indicação das ações do 
+personagem.
 Os sprites foram trocados de lugar
 
 
