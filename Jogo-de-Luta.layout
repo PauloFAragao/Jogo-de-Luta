@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout>
 	<Files>
-		<File Name="main.cpp" Top="No" Tabpos="1" TopLine="1">
-			<Cursor Line="43" Column="9"/>
+		<File Name="main.cpp" Top="No" Tabpos="1" TopLine="4">
+			<Cursor Line="16" Column="25"/>
 		</File>
-		<File Name="Player.h" Top="No" Tabpos="2" TopLine="113">
-			<Cursor Line="97" Column="24"/>
+		<File Name="Player.h" Top="No" Tabpos="2" TopLine="115">
+			<Cursor Line="124" Column="66"/>
 		</File>
-		<File Name="Player.cpp" Top="No" Tabpos="3" TopLine="513">
-			<Cursor Line="541" Column="3"/>
+		<File Name="Player.cpp" Top="Yes" Tabpos="3" TopLine="264">
+			<Cursor Line="281" Column="5"/>
 		</File>
-		<File Name="Interface.cpp" Top="No" Tabpos="4" TopLine="418">
-			<Cursor Line="464" Column="3"/>
+		<File Name="TerryAnim.cpp" Top="No" Tabpos="4" TopLine="1">
+			<Cursor Line="1" Column="1"/>
 		</File>
-		<File Name="Interface.h" Top="Yes" Tabpos="5" TopLine="16">
-			<Cursor Line="54" Column="3"/>
+		<File Name="Terry.cpp" Top="No" Tabpos="5" TopLine="73">
+			<Cursor Line="88" Column="43"/>
 		</File>
 	</Files>
 </Layout>

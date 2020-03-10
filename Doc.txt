@@ -1,20 +1,20 @@
-A verção polimento 3.1 é a re-emplementação do algoritimo agora orientado a objeto, nessa
+-A verção polimento 3.1 é a re-emplementação do algoritimo agora orientado a objeto, nessa
 verção foi implementada pensando nas animações em conjunto com a movimentação e foram
 usadas imagens em maior resolução.
-animações implementadas:
+-Animações implementadas:
 	-idle
 	-walk
 	-walkBack
 	-animação run incerida mais não implementada
 
-Na verção polimento 3.2 foi implementado o algoritimo de pulo lateral funcional.
-Mudança na resolução das imagens, agora estão sendo usadas as imagens com uma resolução menor
-Algoritimo para fazer o personagem dar um pulo para tras terminado.
-A forma de verificar se uma animação já foi iniciada foi alterada.
-Implementado algoritimo de imterpletação das fases do pulo
-Implementado colisão com o fim da cena
-Implementando algoritimo de se abaixar e o metodo ValidadeAction
-animações implementadas:
+-Na verção polimento 3.2 foi implementado o algoritimo de pulo lateral funcional.
+-Mudança na resolução das imagens, agora estão sendo usadas as imagens com uma resolução menor
+-Algoritimo para fazer o personagem dar um pulo para tras terminado.
+-A forma de verificar se uma animação já foi iniciada foi alterada.
+-Implementado algoritimo de imterpletação das fases do pulo
+-Implementado colisão com o fim da cena
+-Implementando algoritimo de se abaixar e o metodo ValidadeAction
+-Animações implementadas:
 	-run
 	-jumpBack
 	-animação jumpDelay (que é usa os mesmos frames que crouching)
@@ -29,17 +29,22 @@ animações implementadas:
 	-animação crouching incerida mais não implementada
 	-animação raiseCrouched incerida mais não implementada
 
-Na verção polimento 3.3 foram criadas as classes Interface e Scenario.
-Foi iniciado a implementação da classe Inteface (agora o jogo tem uma interface simples 
+-Na verção polimento 3.3 foram criadas as classes Interface e Scenario.
+-Foi iniciado a implementação da classe Inteface (agora o jogo tem uma interface simples 
 com um contador funcional)
-Foi iniciado a implementação da classe Scenario (agora o cenario carrega pela classe)
-Foram feitas as alterações nas regras de action, para isso foram feitas grandes mudanças na 
-logica do jogo, agora não são mais necessarias booleanas para indicação das ações do 
+-Foi iniciado a implementação da classe Scenario (agora o cenario carrega pela classe)
+-Foram feitas as alterações nas regras de action, para isso foram feitas grandes mudanças na 
+logica do jogo, redusindo a quantidade de variaveis para indicação das ações do 
 personagem.
-Os sprites foram trocados de lugar e foi iniciado o processo de alteração da resolução das
+-Foi adicionado um modo onde ou o cenario e a interface são carregados ou os outputs de debug
+-Forão criados novos arquivos para implementação dos metodos das classes diminuindo a quantidade de
+informação em um unico arquivo
+-A logica de movimentação das ações: andar, correr, andar para tras e pular para tras foi completamente
+alterada (essa alteração foi feita por uma intepletação errada de algo que não era um bug, mais foi 
+mantida por diminuir a quantidade de variaveis)
+-Os sprites foram trocados de lugar e foi iniciado o processo de alteração da resolução das
 imagens (os sprites dessas animações já estão totalmente redimencionados: idle, crouching, crouchedIdle)
- 
-
-
+-Animações implementadas:
+	-slide
 
 

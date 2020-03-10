@@ -1,124 +1,210 @@
 #include <allegro.h>
 #include "Terry.h"
 
+
+#define TEF 120					//tempo entre os frames
+#define CHAO 80					//posição do chão
+
+#define	WALKSPEED 7				//velocidade que o personagem vai andar VELANDAR
+#define RUNSPEED 13				//velocidade que o personagem vai correr RUNSPEED
+#define WEAKJUMPSTRENGTH 17		//força do pulo fraco
+#define STRONGJUMPSTRENGTH 25	//força do pulo forte
+
+
 //construtor
-Terry::Terry(){LoadSprites();}
+Terry::Terry(){ LoadSprites(); StartAttributes();}
+
 
 //destrutor
 Terry::~Terry(){}
 
 
-void  Terry::TerryAnimations()//animações de ataques especificos
+void Terry::StartAttributes()
 {
 	
-}END_OF_FUNCTION(TerryAnimations)
+	SetIdle( 0, 0 );
+	SetIdle( 7, 1 );
+	SetCrouching( 40, 0 );
+	SetCrouching( 41, 1 );
+	SetCrouchedIdle( 68, 0 );
+	SetCrouchedIdle( 73, 1 );
+	SetWalk( 8, 0 );
+	SetWalk( 16, 1 );
+	SetWalkBack( 17, 0 );
+	SetWalkBack( 25, 1 );
+	SetRising( 42, 0 );
+	SetRising( 42, 1 );
+	SetEndOfClimp( 43, 0 );
+	SetEndOfClimp( 44, 1 );
+	SetFalling( 45, 0 );
+	SetFalling( 46, 1 );
+	SetFall( 47, 0 );
+	SetFall( 50, 1 );
+	SetStrongFrontalDJ( 51, 0 );
+	SetStrongFrontalDJ( 59, 1 );
+	SetStrongBackDJ( 60, 0 );
+	SetStrongBackDJ( 67, 1 );
+	SetRun( 27, 0 );
+	SetRun( 34, 1 );
+	SetJumpBack( 35, 0 );
+	SetJumpBack( 37, 1 );
+	SetJumpBackFall( 38, 0 );
+	SetJumpBackFall( 39, 1 );
+	SetSlide( 74, 0 );
+	SetSlide( 77, 0 );
+	
+}
 
 
-void Terry::LoadSprites()
+/**
+ * função para ser chamada na rotina principal do alegro
+ */
+void Terry::Routine()
+{
+	//motor de interpretação
+	InterpretationEngine();
+	
+	//rotina da classe player
+	PlayerRoutine();
+	
+	//controle das animações do personagem
+	TerryAnimations();
+	
+}END_OF_FUNCTION(PlayerRoutine)
+
+
+/**
+ * Esse metodo é responsavel por imterpletar as situações em que o personagem se encontra e mudar os valores de action
+ */
+void Terry::InterpretationEngine()
 {
 	
-	//idle
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/00Idle/idle000.bmp", NULL), 0 );//frame 0
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/00Idle/idle001.bmp", NULL), 1 );//frame 1
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/00Idle/idle002.bmp", NULL), 2 );//frame 2
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/00Idle/idle003.bmp", NULL), 3 );//frame 3
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/00Idle/idle004.bmp", NULL), 4 );//frame 4
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/00Idle/idle005.bmp", NULL), 5 );//frame 5
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/00Idle/idle006.bmp", NULL), 6 );//frame 6
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/00Idle/idle007.bmp", NULL), 7 );//frame 7
-	
-	//walk
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/04Walk/walk00.bmp", NULL), 8 );//frame 0
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/04Walk/walk01.bmp", NULL), 9 );//frame 1
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/04Walk/walk02.bmp", NULL), 10);//frame 2
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/04Walk/walk03.bmp", NULL), 11);//frame 3
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/04Walk/walk04.bmp", NULL), 12);//frame 4
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/04Walk/walk05.bmp", NULL), 13);//frame 5
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/04Walk/walk06.bmp", NULL), 14);//frame 6
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/04Walk/walk07.bmp", NULL), 15);//frame 7
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/04Walk/walk08.bmp", NULL), 16);//frame 8
-	
-	//walkBack
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/05WalkBack/WalkBack00.bmp", NULL), 17);//frame 0
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/05WalkBack/WalkBack01.bmp", NULL), 18);//frame 1
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/05WalkBack/WalkBack02.bmp", NULL), 19);//frame 2
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/05WalkBack/WalkBack03.bmp", NULL), 20);//frame 3
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/05WalkBack/WalkBack04.bmp", NULL), 21);//frame 4
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/05WalkBack/WalkBack05.bmp", NULL), 22);//frame 5
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/05WalkBack/WalkBack06.bmp", NULL), 23);//frame 6
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/05WalkBack/WalkBack07.bmp", NULL), 24);//frame 7
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/05WalkBack/WalkBack08.bmp", NULL), 25);//frame 8
-	
-	//run
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/12Run/run00.bmp", NULL), 26);//frame 0
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/12Run/run01.bmp", NULL), 27);//frame 1
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/12Run/run02.bmp", NULL), 28);//frame 2
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/12Run/run03.bmp", NULL), 29);//frame 3
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/12Run/run04.bmp", NULL), 30);//frame 4
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/12Run/run05.bmp", NULL), 31);//frame 5
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/12Run/run06.bmp", NULL), 32);//frame 6
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/12Run/run07.bmp", NULL), 33);//frame 7
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/12Run/run08.bmp", NULL), 34);//frame 8
-	
-	//jumpBack
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/13jumpBack/jumpBack00.bmp", NULL), 35);//frame 0
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/13jumpBack/jumpBack01.bmp", NULL), 36);//frame 1
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/13jumpBack/jumpBack02.bmp", NULL), 37);//frame 2
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/13jumpBack/jumpBack03.bmp", NULL), 38);//frame 3
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/13jumpBack/jumpBack04.bmp", NULL), 39);//frame 4
-	
-	//crouching 
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/01crouching/crouching00.bmp", NULL), 40);//frame 0
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/01crouching/crouching01.bmp", NULL), 41);//frame 1
-	
-	//rising
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/06rising/jump00.bmp", NULL), 42);//frame 0
-	
-	//endOfClimp
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/07endOfClimp/endOfClimp00.bmp", NULL), 43);//frame 0
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/07endOfClimp/endOfClimp01.bmp", NULL), 44);//frame 1
-	
-	//falling
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/08falling/falling00.bmp", NULL), 45);//frame 0
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/08falling/falling01.bmp", NULL), 46);//frame 1
-	
-	//fall
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/09fall/fall00.bmp", NULL), 47);//frame 0
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/09fall/fall01.bmp", NULL), 48);//frame 1
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/09fall/fall02.bmp", NULL), 49);//frame 2
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/09fall/fall03.bmp", NULL), 50);//frame 3
-	
-	//strongFrontalDiagonalJump
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/10strongFrontalDiagonalJump/strongFrontalDiagonalJump00.bmp", NULL), 51);//frame 0
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/10strongFrontalDiagonalJump/strongFrontalDiagonalJump01.bmp", NULL), 52);//frame 1
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/10strongFrontalDiagonalJump/strongFrontalDiagonalJump02.bmp", NULL), 53);//frame 2
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/10strongFrontalDiagonalJump/strongFrontalDiagonalJump03.bmp", NULL), 54);//frame 3
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/10strongFrontalDiagonalJump/strongFrontalDiagonalJump04.bmp", NULL), 55);//frame 4
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/10strongFrontalDiagonalJump/strongFrontalDiagonalJump05.bmp", NULL), 56);//frame 5
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/10strongFrontalDiagonalJump/strongFrontalDiagonalJump06.bmp", NULL), 57);//frame 6
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/10strongFrontalDiagonalJump/strongFrontalDiagonalJump07.bmp", NULL), 58);//frame 7
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/10strongFrontalDiagonalJump/strongFrontalDiagonalJump08.bmp", NULL), 59);//frame 8
-	
-	//strongBackDiagonalJump
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/11strongBackDiagonalJump/strongBackDiagonalJump00.bmp", NULL), 60);//frame 0
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/11strongBackDiagonalJump/strongBackDiagonalJump01.bmp", NULL), 61);//frame 1
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/11strongBackDiagonalJump/strongBackDiagonalJump02.bmp", NULL), 62);//frame 2
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/11strongBackDiagonalJump/strongBackDiagonalJump03.bmp", NULL), 63);//frame 3
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/11strongBackDiagonalJump/strongBackDiagonalJump04.bmp", NULL), 64);//frame 4
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/11strongBackDiagonalJump/strongBackDiagonalJump05.bmp", NULL), 65);//frame 5
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/11strongBackDiagonalJump/strongBackDiagonalJump06.bmp", NULL), 66);//frame 6
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/11strongBackDiagonalJump/strongBackDiagonalJump07.bmp", NULL), 67);//frame 7
-	
-	//crouchedIdle
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/02crouchedIdle/crouchedIdle00.bmp", NULL), 68);//frame 0
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/02crouchedIdle/crouchedIdle01.bmp", NULL), 69);//frame 1
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/02crouchedIdle/crouchedIdle02.bmp", NULL), 70);//frame 2
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/02crouchedIdle/crouchedIdle03.bmp", NULL), 71);//frame 3
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/02crouchedIdle/crouchedIdle04.bmp", NULL), 72);//frame 4
-	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/02crouchedIdle/crouchedIdle05.bmp", NULL), 73);//frame 5
+//walk - walkBack - run
+	if( GetSpeedX() == 0 && VerifyFrame( 0 ) && ( GetAction() == 20 || GetAction() == 30 || GetAction() == 100 || GetAction() == 101 )  )
+	{
+		SetAction(0);
+		SetStartAnimation(false);
+	}
+	if( GetAction() == 100 && GetSpeedX() != 0 )
+	{
+		if( GetToRight() && !GetButton02() )
+		{
+			ChangeAction(101);
+		}
+		else if( !GetToRight() && !GetButton00() )
+		{
+			ChangeAction(101);
+		}
+	}
 	
 
-}END_OF_FUNCTION(LoadSprites)
+//jumpBack
+	if( GetAction() == 110 && GetY() >= CHAO )//animação do personagem pulando para tras em quando está no ar
+	{
+		ChangeAction(111);
+		SetCapturaTParaOUltimoFrame( clock() );
+	}
+	if( GetAction() == 111 && GetCapturaTParaOUltimoFrame() > TEF )//animação do personagem caindo no chão e se recuperando da queda
+	{
+		//continua antando para tras
+		if( GetButton00() && GetToRight() )
+		{
+			SetSpeedX( -WALKSPEED );
+			ChangeAction(30);
+		}
+		if( GetButton02() && !GetToRight() )
+		{
+			SetSpeedX( WALKSPEED );
+			ChangeAction(30);
+		}
+		
+		//o personagem parou de andar para tras
+		if( GetSpeedX() == 0 )
+		{
+			ChangeAction(0);
+		}
+	}
+
+
+//jump
+	//muda de rising para endOfClimp
+	if( GetAction() == 41 && GetSpeedY() > - 3 ) ChangeAction( 42 );
+	if( GetAction() == 51 && GetSpeedY() > - 3 ) ChangeAction( 52 );
+	if( GetAction() == 61 && GetSpeedY() > - 3 ) ChangeAction( 62 );
+	if( GetAction() == 81 && GetSpeedY() > - 3 ) ChangeAction( 82 );
+
+	//muda de endOfClimp para falling
+	if( GetAction() == 42 && GetSpeedY() > 5 ) ChangeAction( 43 );
+	if( GetAction() == 52 && GetSpeedY() > 5 ) ChangeAction( 53 );
+	if( GetAction() == 62 && GetSpeedY() > 5 ) ChangeAction( 63 );
+	if( GetAction() == 82 && GetSpeedY() > 5 ) ChangeAction( 83 );
+	
+	//muda de falling para fall
+	if( GetAction() == 43 && GetY() >= CHAO ) ChangeAction( 44 );
+	if( GetAction() == 53 && GetY() >= CHAO ) ChangeAction( 54 );
+	if( GetAction() == 63 && GetY() >= CHAO ) ChangeAction( 64 );
+	if( GetAction() == 83 && GetY() >= CHAO ) ChangeAction( 84 );
+	
+	//muda de fall para idle
+	if( GetAction() == 44 || GetAction() == 54 || GetAction() == 64 || GetAction() == 84 )
+	{
+		//aqui a animação deve ser completamente executada e depois mudar para a animação idle
+		if( GetFrame() == 50 ) SetCapturaTParaOUltimoFrame( clock() );
+		if( GetFrame() == 50 && GetCapturaTParaOUltimoFrame() > TEF-20 )
+		{
+			ChangeAction(0);
+		}
+	}
+	
+
+//strongFrontalDiagonalJump
+	if( GetAction() == 71 )//strongFrontalDiagonalJump
+	{
+		//essa animação deve rodar até o ultimo frame e entao mudar para a animação falling
+		if( GetFrame() == 59 ) SetCapturaTParaOUltimoFrame( clock() );
+		if( GetFrame() == 59 && GetCapturaTParaOUltimoFrame() > TEF-20 )
+		{
+			ChangeAction(43);
+		}
+	}
+	
+	
+//strongBackDiagonalJump
+	if( GetAction() == 91 )//strongFrontalDiagonalJump
+	{
+		//essa animação deve rodar até o ultimo frame e entao mudar para a animação falling
+		if( GetFrame() == 67 ) SetCapturaTParaOUltimoFrame( clock() );
+		if( GetFrame() == 67 && GetCapturaTParaOUltimoFrame() > TEF-20 )
+		{
+			ChangeAction(43);
+		}
+	}
+	
+	
+//crouched
+	if( GetButton01() && ValidateAction( 10 ) )//crouching
+	{
+		ChangeAction( 10 );
+	}
+	if( GetButton01() && GetAction() == 10 && GetFrame() == 41)//crouchedIdle
+	{
+		ChangeAction( 11 );
+	}
+	if( !GetButton01() && ( GetAction() == 11 || GetAction() == 10 ) )//raiseCrouched
+	{
+		ChangeAction( 12 );
+	}
+	if( !GetButton01() && GetAction() == 12 && GetFrame() == 40)//idle
+	{
+		ChangeAction( 0 );
+	}
+
+	
+}END_OF_FUNCTION(InterpretationEngine);
+
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>> Validadores <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 
 
 

@@ -16,7 +16,14 @@ class Player
 		~Player();
 		
 		//Metodos publicos
-		void Routine();
+		void PlayerRoutine();
+		
+		bool ValidateAction(int value);				//verifica se uma ação pode ser feita
+		bool VerifyFrame(int value);
+		void ChangeAction(int value);				//muda o valor da ação
+		
+		
+		//---gets & sets---
 		
 		float GetX();
 		void  SetX(float x);
@@ -28,6 +35,8 @@ class Player
 		void  SetSpeedY(float speedY);
 		int   GetFrame();
 		void  SetFrame(int frame);
+		bool  GetStartAnimation();
+		void  SetStartAnimation(bool startAnimation);
 		int   GetAction();
 		void  SetAction(int action);
 		bool  GetToRight();
@@ -46,8 +55,31 @@ class Player
 		int   GetPowTime();
 		void  SetPow(int pow);
 		bool  GetPow();
+		
+		int  GetCapturaTParaOUltimoFrame();
+		void SetCapturaTParaOUltimoFrame(int capturaTempoParaOUltimoFrame);
 
+		
+		int  GetCapturaTempo();
+		void SetCapturaTempo(int capturaTempo);
+		
 		int GetBtTPress(int botao, int pos);
+		
+		void SetIdle(int idle, int index);
+		void SetCrouching(int crouching, int index);
+		void SetCrouchedIdle(int crouchedIdle, int index);
+		void SetWalk(int walk, int index);
+		void SetWalkBack(int walkBack, int index);
+		void SetRising(int rising, int index);
+		void SetEndOfClimp(int endOfClimp, int index);
+		void SetFalling(int falling, int index);
+		void SetFall(int fall, int index);
+		void SetStrongFrontalDJ(int strongFrontalDJ, int index);
+		void SetStrongBackDJ(int strongBackDJ, int index);
+		void SetRun(int run, int index);
+		void SetJumpBack(int jumpBack, int index);
+		void SetJumpBackFall(int jumpBackFall, int index);
+		void SetSlide(int slide, int index);
 		
 		BITMAP *GetPlayerSprite();
 		BITMAP *GetSprites(int index);
@@ -82,13 +114,16 @@ class Player
 		//para todas as vezes que o ultimo frame precisa ser renderizado por algum tempo mais não pode ser controlado dentro da função especifica da animação
 		int capturaTempoParaOUltimoFrame;
 		
-	//variaveis relacionadas a animação
-		int capturaTempo;		//captura o tempo no momento que muda de frame para fazer uma verificação de quando deve trocar de frame novamente
+		//variaveis relacionadas a animação
 		int frame;				//o frame que deve ser renderizado
+		int capturaTempo;		//captura o tempo no momento que muda de frame para fazer uma verificação de quando deve trocar de frame novamente
 		bool startAnimation;	//faz a animação iniciar
 		
 		bool toRight;			//indica para que lado o personagem está virado
-		bool antLoopJumpBack;	//para criar um controle e evitar loop quando o personagem pula para tras
+
+		//variaveis para resolver o bug da corrida
+		bool antLoopBT0;
+		bool antLoopBT2;
 		
 	//direcionais
 		bool button00;	//esquerda
@@ -110,7 +145,24 @@ class Player
 		bool bt5TimeCapture;
 		bool bt6TimeCapture;
 		bool bt7TimeCapture;
-				
+		
+		//tempos das animações para o controle
+		int idle[2];				//animação numero 0
+		int crouching[2];			//animação numero 1
+		int crouchedIdle[2];		//animação numero 2 e 3
+		int walk[2];				//animação numero 4
+		int walkBack[2];			//animação numero 5
+		int rising[2];				//animação numero 6
+		int endOfClimp[2];			//animação numero 7
+		int falling[2];				//animação numero 8
+		int fall[2];				//animação numero 9
+		int strongFrontalDJ[2];		//animação numero 10
+		int strongBackDJ[2];		//animação numero 11
+		int run[2];					//animação numero 12
+		int jumpBack[2];			//animação numero 13
+		int jumpBackFall[2];		//animação numero 14
+		int slide[2];				//animação numero 25
+		
 		//tempos em que os botões são pressionados
 		int btTPress[8][10];
 		
@@ -119,34 +171,10 @@ class Player
 		
 		//Metodos privados
 		void TrackImputs();							//captura os imputs do player
-		void PlayerBasicAnimations();				//centro das animações basicas
 		void HorizontalMove();						//movimentação do personagem na horizontal
 		void VerticalMove();						//movimentação do personagem na vertical
 		void writeOnBtTmPress(int pos, bool valor);	//escreve no array de tempos os tempos em que os botões foram pressionados
-		void ChangeAction(int value);				//muda o valor da ação
 		void StartAttributes();						//inicia os atributos com os valores coretos
-		
-		bool ValidateAction(int value);				//verifica se uma ação pode ser feita
-		bool VerifyFrame(int value);				//verifica se o a animação já foi iniciada
-		
-		void InterpretationEngine();				//responsavel por fazer as interpletações
-		
-		//animações
-		void Anim00();
-		void Anim01();
-		void Anim02();
-		void Anim03();
-		void Anim04();
-		void Anim05();
-		void Anim06();	
-		void Anim07();
-		void Anim08();
-		void Anim09();
-		void Anim10();
-		void Anim11();
-		void Anim12();
-		void Anim13();
-		void Anim14();
 		
 };
 #endif//PLAYER_H

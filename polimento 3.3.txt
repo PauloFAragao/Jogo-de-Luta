@@ -14,8 +14,8 @@ Implementar as alterações logicas para fazer com que os actions tenham mais im
 
 Implementar as ações basiado na nova regra de ações - Implementado
 
-Mudar algumas funções para a classe terry - 
+Mudar algumas funções para a classe terry - Implementado
 
-Alterar a resolução das imagens - 180% por 180% ou 921 x 921
+Alterar a resolução das imagens - 180% por 180% ou 921 x 921 - Implementado
 
-Fazer as alterações nas velocidades para as novas relosuções.
+Fazer as alterações nas velocidades para as novas relosuções - Implementado

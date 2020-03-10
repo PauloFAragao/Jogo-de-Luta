@@ -30,14 +30,17 @@
 	<AppType Value="GUI"/>
 	<Files>
 		<File Name="main.cpp"/>
-		<File Name="Terry.h"/>
-		<File Name="Terry.cpp"/>
 		<File Name="Player.h"/>
 		<File Name="Player.cpp"/>
-		<File Name="Scenario.h"/>
-		<File Name="Scenario.cpp"/>
+		<File Name="PlayerSetsGets.cpp"/>
+		<File Name="Terry.h"/>
+		<File Name="Terry.cpp"/>
+		<File Name="TerryAnim.cpp"/>
+		<File Name="TerryLoadSprites.cpp"/>
 		<File Name="Interface.h"/>
 		<File Name="Interface.cpp"/>
+		<File Name="Scenario.h"/>
+		<File Name="Scenario.cpp"/>
 	</Files>
 	<AppIcon>
 		0000010001003030000001002000A82500001600000028000000300000006000
