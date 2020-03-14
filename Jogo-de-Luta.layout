@@ -3,11 +3,10 @@
 	<Files>
 		<File Name="Interface.h" Top="No" Tabpos="1" TopLine="31">
 			<Cursor Line="55" Column="1"/>
-			<Selection Line="57" Column="23"/>
+			<Selection Line="57" Column="3"/>
 		</File>
 		<File Name="Interface.cpp" Top="Yes" Tabpos="2" TopLine="182">
-			<Cursor Line="214" Column="18"/>
-			<Selection Line="214" Column="101"/>
+			<Cursor Line="214" Column="2"/>
 		</File>
 		<File Name="InterfaceBuild.cpp" Top="No" Tabpos="3" TopLine="165">
 			<Cursor Line="11" Column="1"/>
