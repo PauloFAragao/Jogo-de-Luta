@@ -18,6 +18,9 @@ class Interface
 		
 		void Routine();
 		
+		
+		int getShildPointsP1();
+		
 	private:
 		
 		int gameTime;						//tempo de jogo - ainda não usada
@@ -35,21 +38,42 @@ class Interface
 		int capturaTempo;					//captura o tempo no momento que muda de frame para fazer uma verificação de quando deve trocar de frame novamente
 		bool startAnimation;				//faz a animação iniciar
 		
-		int p1LifeBarOrangeX;				//variavel para movimentar a barra de vida laramja do player 1
-		int p2LifeBarOrangeX;				//variavel para movimentar a barra de vida laramja do player 2
-		int p1LifeBarRedX;					//variavel para movimentar a barra de vida vermelha do player 1
-		int p2LifeBarRedX;					//variavel para movimentar a barra de vida vermelha do player 2
-		int p1ShildBarX;					//variavel para movimentar a barra de escudo do player 1
-		int p2ShildBarX;					//variavel para movimentar a barra de escudo do player 2
+		float p1LifeBarOrangeX;				//variavel para movimentar a barra de vida laramja do player 1
+		float p2LifeBarOrangeX;				//variavel para movimentar a barra de vida laramja do player 2
+		float p1LifeBarRedX;				//variavel para movimentar a barra de vida vermelha do player 1
+		float p2LifeBarRedX;				//variavel para movimentar a barra de vida vermelha do player 2
+		float p1ShildBarX;					//variavel para movimentar a barra de escudo do player 1
+		float p2ShildBarX;					//variavel para movimentar a barra de escudo do player 2
 		
-		int specialBarBlueP1X;				//variavel para movimentar a barra de especial da cor azul do player 1
-		int specialBarBlueP2X;				//variavel para movimentar a barra de especial da cor azul do player 2
-		int specialBarPinkP1X;				//variavel para movimentar a barra de especial da cor rosa do player 1
-		int specialBarPinkP2X;				//variavel para movimentar a barra de especial da cor rosa do player 2
-		int specialBarYellowP1X;			//variavel para movimentar a barra de especial da cor amarela do player 1
-		int specialBarYellowP2X;			//variavel para movimentar a barra de especial da cor amarela do player 2
-		int powBarp1X;						//variavel para movimentar a barra de pow do player 1
-		int powBarp2X;						//variavel para movimentar a barra de pow do player 2
+		float specialBarBlueP1X;			//variavel para movimentar a barra de especial da cor azul do player 1
+		float specialBarBlueP2X;			//variavel para movimentar a barra de especial da cor azul do player 2
+		float specialBarPinkP1X;			//variavel para movimentar a barra de especial da cor rosa do player 1
+		float specialBarPinkP2X;			//variavel para movimentar a barra de especial da cor rosa do player 2
+		float specialBarYellowP1X;			//variavel para movimentar a barra de especial da cor amarela do player 1
+		float specialBarYellowP2X;			//variavel para movimentar a barra de especial da cor amarela do player 2
+		float powBarp1X;					//variavel para movimentar a barra de pow do player 1
+		float powBarp2X;					//variavel para movimentar a barra de pow do player 2
+		
+		
+		//VARIAVEIS TEMPORARIAS
+		int lifePointsP1Memory;		//variavel para animar a barra vermelha
+		int lifePointsP1;			//TEMP
+		int lifePointsP1Max;		//TEMP				
+		int shildPointsP1;			//TEMP
+		int especialBarP1;			//TEMP
+		int especialQuantityP1;		//TEMP
+		int powTimeP1;				//TEMP
+		bool powP1;					//TEMP
+		
+		
+		int lifePointsP2Memory;		//variavel para animar a barra vermelha
+		int lifePointsP2;			//TEMP
+		int lifePointsP2Max;		//TEMP
+		int shildPointsP2;			//TEMP
+		int especialBarP2;			//TEMP
+		int especialQuantityP2;		//TEMP
+		int powTimeP2;				//TEMP
+		bool powP2;					//TEMP
 		
 		
 		//variavel que vai montar a interface e ser enviada para renderização
@@ -120,6 +144,7 @@ class Interface
 		void BuildInterface();
 		void AnimControl();
 		void TimerControl();
+		void Calculation();
 		
 };
 #endif//INTERFACE_H

@@ -45,8 +45,8 @@ class Player
 		int   GetLifePoints();
 		void  SetLifePointsMax(int lifePointsMax);
 		int   GetLifePointsMax();
-		void  SetDefence(int defence);
-		int   GetDefence();
+		void  SetShild(int shild);
+		int   GetShild();
 		void  SetEspecialBar(int especialBar);
 		int   GetEspecialBar();
 		void  SetEspecialQuantity(int especialQuantity);
@@ -105,7 +105,7 @@ class Player
 		//caracteristicas do personagem
 		int lifePoints;			//quantidade de pontos de vida atual do personagem
 		int lifePointsMax;		//quantidade maxima de pontos de vida do personagem
-		int defence;			//quantidade de pontos de defesa atual do personagem
+		int shild;				//quantidade de pontos de defesa atual do personagem
 		int especialBar;		//quantidade de pontos de especial
 		int especialQuantity;	//quantos pontos de especial o personagem tem
 		int powTime;			//tempo restante da barra quando o jogador esroura uma barra
@@ -126,15 +126,15 @@ class Player
 		bool antLoopBT2;
 		
 	//direcionais
-		bool button00;	//esquerda
-		bool button01;	//baixo
-		bool button02;	//direita
-		bool button03;	//cima
+		bool button00;			//esquerda
+		bool button01;			//baixo
+		bool button02;			//direita
+		bool button03;			//cima
 	//action buttons
-		bool button04;	//soco fraco
-		bool button05;	//soco forte
-		bool button06;	//chute fraco
-		bool button07;	//chute forte
+		bool button04;			//soco fraco
+		bool button05;			//soco forte
+		bool button06;			//chute fraco
+		bool button07;			//chute forte
 		
 	//variaveis relacionadas a captura dos tempos em que os botões são pressionados
 		bool bt0TimeCapture;

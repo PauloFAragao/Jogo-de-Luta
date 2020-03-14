@@ -10,10 +10,10 @@
 #include "Terry.h"
 #include "Scenario.h"
 
-#define COMPLETERENDER false
+#define COMPLETERENDER true
 
 
-int WINDOW_WIDTH  = 1440;
+int WINDOW_WIDTH  = 1728;
 int WINDOW_HEIGHT = 900;
 
 volatile int exitGame=false;
@@ -37,7 +37,7 @@ int main()
     
     Scenario scenario;
     
-    BITMAP *p2 = load_bitmap("sprites/personagens/terry/notToRight/secondaryColor/00Idle/idle000.bmp", NULL);
+    //BITMAP *p2 = load_bitmap("sprites/personagens/terry/notToRight/secondaryColor/00Idle/idle000.bmp", NULL);
             
 	while(!exitGame)
 	{
@@ -63,34 +63,34 @@ int main()
 		
 		//interface
 		if(COMPLETERENDER) draw_sprite(buffer, ui.GetCompleteInterface(), 0, 0 );
-		
+				
 		if(!COMPLETERENDER)
 		{
 			//imprime as booleanas dos botões
-			if(p1.GetButton00()) 	textprintf_ex(buffer, font, 1200, 10, makecol(255, 0, 0), -1, "Direcional - tras: true ");
-			else					textprintf_ex(buffer, font, 1200, 10, makecol(255, 0, 0), -1, "Direcional - tras: false ");
-			if(p1.GetButton01()) 	textprintf_ex(buffer, font, 1200, 20, makecol(255, 0, 0), -1, "Direcional - baixo: true ");
-			else					textprintf_ex(buffer, font, 1200, 20, makecol(255, 0, 0), -1, "Direcional - baixo: false ");
-			if(p1.GetButton02()) 	textprintf_ex(buffer, font, 1200, 30, makecol(255, 0, 0), -1, "Direcional - frente: true ");
-			else					textprintf_ex(buffer, font, 1200, 30, makecol(255, 0, 0), -1, "Direcional - frente: false ");
-			if(p1.GetButton03()) 	textprintf_ex(buffer, font, 1200, 40, makecol(255, 0, 0), -1, "Direcional - cima: true ");
-			else					textprintf_ex(buffer, font, 1200, 40, makecol(255, 0, 0), -1, "Direcional - cima: false ");
-			if(p1.GetButton04()) 	textprintf_ex(buffer, font, 1200, 60, makecol(255, 0, 0), -1, "Soco fraco: true ");
-			else					textprintf_ex(buffer, font, 1200, 60, makecol(255, 0, 0), -1, "Soco fraco: false ");
-			if(p1.GetButton05()) 	textprintf_ex(buffer, font, 1200, 70, makecol(255, 0, 0), -1, "Soco forte: true ");
-			else					textprintf_ex(buffer, font, 1200, 70, makecol(255, 0, 0), -1, "Soco forte: false ");
-			if(p1.GetButton06()) 	textprintf_ex(buffer, font, 1200, 80, makecol(255, 0, 0), -1, "Chute fraco: true ");
-			else					textprintf_ex(buffer, font, 1200, 80, makecol(255, 0, 0), -1, "Chute fraco: false ");
-			if(p1.GetButton07()) 	textprintf_ex(buffer, font, 1200, 90, makecol(255, 0, 0), -1, "Chute forte: true ");
-			else					textprintf_ex(buffer, font, 1200, 90, makecol(255, 0, 0), -1, "Chute forte: false ");
+			if(p1.GetButton00()) 	textprintf_ex(buffer, font, 1500, 10, makecol(255, 0, 0), -1, "Direcional - tras: true ");
+			else					textprintf_ex(buffer, font, 1500, 10, makecol(255, 0, 0), -1, "Direcional - tras: false ");
+			if(p1.GetButton01()) 	textprintf_ex(buffer, font, 1500, 20, makecol(255, 0, 0), -1, "Direcional - baixo: true ");
+			else					textprintf_ex(buffer, font, 1500, 20, makecol(255, 0, 0), -1, "Direcional - baixo: false ");
+			if(p1.GetButton02()) 	textprintf_ex(buffer, font, 1500, 30, makecol(255, 0, 0), -1, "Direcional - frente: true ");
+			else					textprintf_ex(buffer, font, 1500, 30, makecol(255, 0, 0), -1, "Direcional - frente: false ");
+			if(p1.GetButton03()) 	textprintf_ex(buffer, font, 1500, 40, makecol(255, 0, 0), -1, "Direcional - cima: true ");
+			else					textprintf_ex(buffer, font, 1500, 40, makecol(255, 0, 0), -1, "Direcional - cima: false ");
+			if(p1.GetButton04()) 	textprintf_ex(buffer, font, 1500, 60, makecol(255, 0, 0), -1, "Soco fraco: true ");
+			else					textprintf_ex(buffer, font, 1500, 60, makecol(255, 0, 0), -1, "Soco fraco: false ");
+			if(p1.GetButton05()) 	textprintf_ex(buffer, font, 1500, 70, makecol(255, 0, 0), -1, "Soco forte: true ");
+			else					textprintf_ex(buffer, font, 1500, 70, makecol(255, 0, 0), -1, "Soco forte: false ");
+			if(p1.GetButton06()) 	textprintf_ex(buffer, font, 1500, 80, makecol(255, 0, 0), -1, "Chute fraco: true ");
+			else					textprintf_ex(buffer, font, 1500, 80, makecol(255, 0, 0), -1, "Chute fraco: false ");
+			if(p1.GetButton07()) 	textprintf_ex(buffer, font, 1500, 90, makecol(255, 0, 0), -1, "Chute forte: true ");
+			else					textprintf_ex(buffer, font, 1500, 90, makecol(255, 0, 0), -1, "Chute forte: false ");
 			
 			
 			//posições e velocidade
-			textprintf_ex(buffer, font, 1200, 110, makecol(255, 255, 0), -1, "pos X  %f ", p1.GetX());
-			textprintf_ex(buffer, font, 1200, 120, makecol(255, 255, 0), -1, "pos y  %f ", p1.GetY());
-			textprintf_ex(buffer, font, 1200, 130, makecol(255, 255, 0), -1, "speed X  %f ", p1.GetSpeedX());
-			textprintf_ex(buffer, font, 1200, 140, makecol(255, 255, 0), -1, "speed y  %f ", p1.GetSpeedY());
-			textprintf_ex(buffer, font, 1200, 150, makecol(255, 255, 0), -1, "action: %d ", p1.GetAction());
+			textprintf_ex(buffer, font, 1500, 110, makecol(255, 255, 0), -1, "pos X  %f ", p1.GetX());
+			textprintf_ex(buffer, font, 1500, 120, makecol(255, 255, 0), -1, "pos y  %f ", p1.GetY());
+			textprintf_ex(buffer, font, 1500, 130, makecol(255, 255, 0), -1, "speed X  %f ", p1.GetSpeedX());
+			textprintf_ex(buffer, font, 1500, 140, makecol(255, 255, 0), -1, "speed y  %f ", p1.GetSpeedY());
+			textprintf_ex(buffer, font, 1500, 150, makecol(255, 255, 0), -1, "action: %d ", p1.GetAction());
 			
 			
 			//imprime o frame
@@ -151,7 +151,7 @@ END_OF_MAIN();
 
 
 
-
+//threaded
 
 
 

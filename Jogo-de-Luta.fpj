@@ -17,7 +17,7 @@
 	</VersionInfo>
 	<Libs Value="-mwindows -static -lalleg -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lole32 -ldinput -lddraw -ldxguid -lwinmm -ldsound"/>
 	<Flags Value="-DALLEGRO_STATICLINK"/>
-	<Target Value="Allegro Application1.exe"/>
+	<Target Value="FightingGame.exe"/>
 	<CommandLine Value=""/>
 	<CompilerOptions Value="-Wall -s"/>
 	<DeleteObjectsBefore Value="Yes"/>
@@ -39,6 +39,9 @@
 		<File Name="TerryLoadSprites.cpp"/>
 		<File Name="Interface.h"/>
 		<File Name="Interface.cpp"/>
+		<File Name="InterfaceLoadSprites.cpp"/>
+		<File Name="InterfaceAnim.cpp"/>
+		<File Name="InterfaceBuild.cpp"/>
 		<File Name="Scenario.h"/>
 		<File Name="Scenario.cpp"/>
 	</Files>

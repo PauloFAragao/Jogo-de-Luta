@@ -174,14 +174,14 @@ int Player::GetLifePointsMax()
 }END_OF_FUNCTION(GetLifePointsMax);
 
 //defence
-void Player::SetDefence(int defence)
+void Player::SetShild(int shild)
 {
-	this->defence = defence;
-}END_OF_FUNCTION(SetDefence);
-int Player::GetDefence()
+	this->shild = shild;
+}END_OF_FUNCTION(SetShild);
+int Player::GetShild()
 {
-	return defence;
-}END_OF_FUNCTION(GetDefence);
+	return shild;
+}END_OF_FUNCTION(GetShild);
 
 //especialBar
 void Player::SetEspecialBar(int especialBar)

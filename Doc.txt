@@ -47,4 +47,19 @@ imagens (os sprites dessas animações já estão totalmente redimencionados: id
 -Animações implementadas:
 	-slide
 
+-Na verção polimento 3.4 a resolução da tela foi almentada para 1728x900
+-As imagens da interface foram redimencionadas e suas posições corigidas
+-Foi iniciado o processo de implementação das barras (vida, escudo, especial) na classe interface
+
+
+
+
+
+
+
+
+
+
+
+
 

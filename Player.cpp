@@ -11,8 +11,8 @@
 #define WEAKJUMPSTRENGTH 17		//força do pulo fraco
 #define STRONGJUMPSTRENGTH 25	//força do pulo forte
 
-#define MINSCENARYWIDTH -290	//posição do fim do cenario a esquerda
-#define MAXSCENARYWIDTH 955		//posição do fim do cenario a direita
+#define MINSCENARYWIDTH -290	  //posição do fim do cenario a esquerda
+#define MAXSCENARYWIDTH 1242	  //posição do fim do cenario a direita
 
 
 //construtor

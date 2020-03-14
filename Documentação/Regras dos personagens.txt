@@ -1,0 +1,7 @@
+int lifePoints		quantidade variavel dependando do personagem
+int lifePointsMax	quantidade variavel dependando do personagem
+int shild		200 pontos
+int especialBar		100 pontos
+int especialQuantity	3 pontos
+int powTime		15 segundos ( 15000 )
+bool pow		verdadeiro ou falso
