@@ -220,6 +220,9 @@ void Interface::Routine()
 
 void Interface::Calculation()
 {
+	/*if( key[KEY_MINUS]  ) lifePointsP1 -=100;
+	if( key[KEY_EQUALS] ) lifePointsP1 +=50;*/
+	
 //barra de vida laranja do player 1
 	p1LifeBarOrangeX = ( 582 * ( 100 * ( lifePointsP1Max - lifePointsP1 ) ) / lifePointsP1Max ) / 100 ;
 	

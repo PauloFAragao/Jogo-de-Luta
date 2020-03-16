@@ -223,15 +223,6 @@ bool Player::GetPow()
 	return pow;
 }END_OF_FUNCTION(GetPow);
 
-//capturaTempoParaOUltimoFrame
-int Player::GetCapturaTParaOUltimoFrame()
-{
-	return capturaTempoParaOUltimoFrame;
-}
-void Player::SetCapturaTParaOUltimoFrame(int capturaTempoParaOUltimoFrame)
-{
-	this->capturaTempoParaOUltimoFrame = capturaTempoParaOUltimoFrame;
-}
 
 //capturaTempo
 int Player::GetCapturaTempo()
@@ -300,9 +291,61 @@ void Player::SetJumpBackFall(int jumpBackFall, int index)
 {
 	this->jumpBackFall[index] = jumpBackFall;
 }
+void Player::SetDefending (int defending, int index)
+{
+	this->defending[index] = defending;
+}
+void Player::SetDefence(int defence, int index)
+{
+	this->defence[index] = defence;
+}
+void Player::SetTakingDamage(int takingDamage, int index)
+{
+	this->takingDamage[index] = takingDamage;
+}
+void Player::SetDefendExit(int defendExit, int index)
+{
+	this->defendExit[index] = defendExit;
+}
+void Player::SetDefendingCrouched(int defendingCrouched, int index)
+{
+	this->defendingCrouched[index] = defendingCrouched;
+}
+void Player::SetDefenceCrouched(int defenceCrouched, int index)
+{
+	this->defenceCrouched[index]= defenceCrouched;
+}
+void Player::SetTakingDamageCrouched(int takingDamageCrouched, int index)
+{
+	this->takingDamageCrouched[index] = takingDamageCrouched;
+}
+void Player::SetDefendExitCrouched(int defendExitCrouched, int index)
+{
+	this->defendExitCrouched[index] = defendExitCrouched;
+}
+void Player::SetFrontRolling(int frontRolling, int index)
+{
+	this->frontRolling[index] = frontRolling;
+}
+void Player::SetBackRolling(int backRolling, int index)
+{
+	this->backRolling[index] = backRolling;
+}
 void Player::SetSlide(int slide, int index)
 {
 	this->slide[index] = slide;
+}
+void Player::SetFrontRollingEnd(int frontRollingEnd, int index)
+{
+	this->frontRollingEnd[index] = frontRollingEnd;
+}
+void Player::SetBackRollingEnd(int backRollingEnd, int index)
+{
+	this->backRollingEnd[index] = backRollingEnd;
+}
+void Player::SetTakingDmg(bool takingDmg)
+{
+	this->takingDmg = takingDmg;
 }
 
 

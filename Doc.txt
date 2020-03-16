@@ -17,17 +17,17 @@ usadas imagens em maior resolução.
 -Animações implementadas:
 	-run
 	-jumpBack
-	-animação jumpDelay (que é usa os mesmos frames que crouching)
-	-animação rising
-	-animação endOfClimp
-	-animação falling
-	-animação fall
-	-animação weakFrontalDiagonalJump
-	-animação weakBackDiagonalJump
-	-animação strongFrontalDiagonalJump
-	-animação strongBackDiagonalJump
-	-animação crouching incerida mais não implementada
-	-animação raiseCrouched incerida mais não implementada
+	-jumpDelay (que é usa os mesmos frames que crouching)
+	-rising
+	-endOfClimp
+	-falling
+	-fall
+	-weakFrontalDiagonalJump
+	-weakBackDiagonalJump
+	-strongFrontalDiagonalJump
+	-strongBackDiagonalJump
+	-crouching incerida mais não implementada
+	-raiseCrouched incerida mais não implementada
 
 -Na verção polimento 3.3 foram criadas as classes Interface e Scenario.
 -Foi iniciado a implementação da classe Inteface (agora o jogo tem uma interface simples 
@@ -50,8 +50,18 @@ imagens (os sprites dessas animações já estão totalmente redimencionados: id
 -Na verção polimento 3.4 a resolução da tela foi almentada para 1728x900
 -As imagens da interface foram redimencionadas e suas posições corigidas
 -Foi iniciado o processo de implementação das barras (vida, escudo, especial) na classe interface
-
-
+-O metodo InterpletationEngine foi colocado de volta na classe player
+-Animações implementadas:
+	-defending
+	-defence
+	-taking Damage
+	-defend Exit
+	-defending Crouched
+	-defence Crouched
+	-taking Damage Crouched
+	-defend Exit Crouched
+	-front Rolling(ainda não funcionais)
+	-back Rolling(ainda não funcionais)
 
 
 

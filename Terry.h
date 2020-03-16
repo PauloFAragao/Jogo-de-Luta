@@ -20,9 +20,9 @@ class Terry:public Player
 			
 	private:
 
+
 		//metodos privados
 		void LoadSprites();						//carrega os sprites na memoria
-		void InterpretationEngine();			//motor te interpletação
 		void StartAttributes();					//inicia os valores das variaveis
 		void TerryAnimations();					//centro das animações basicas
 		
@@ -43,7 +43,19 @@ class Terry:public Player
 		void Anim12();
 		void Anim13();
 		void Anim14();
+		void Anim15();
+		void Anim16();
+		void Anim17();
+		void Anim18();
+		void Anim19();
+		void Anim20();
+		void Anim21();
+		void Anim22();
+		void Anim23();
+		void Anim24();
 		void Anim25();
+		void Anim26();
+		void Anim27();
 		
 };
 #endif//TERRY_H

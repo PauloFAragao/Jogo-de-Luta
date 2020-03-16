@@ -55,9 +55,6 @@ class Player
 		int   GetPowTime();
 		void  SetPow(int pow);
 		bool  GetPow();
-		
-		int  GetCapturaTParaOUltimoFrame();
-		void SetCapturaTParaOUltimoFrame(int capturaTempoParaOUltimoFrame);
 
 		
 		int  GetCapturaTempo();
@@ -79,7 +76,21 @@ class Player
 		void SetRun(int run, int index);
 		void SetJumpBack(int jumpBack, int index);
 		void SetJumpBackFall(int jumpBackFall, int index);
+		void SetDefending(int defending, int index);
+		void SetDefence(int defence, int index);
+		void SetTakingDamage(int takingDamage, int index);
+		void SetDefendExit(int defendExit, int index);
+		void SetDefendingCrouched(int defendingCrouched, int index);
+		void SetDefenceCrouched(int defenceCrouched, int index);
+		void SetTakingDamageCrouched(int takingDamageCrouched, int index);
+		void SetDefendExitCrouched(int defendExitCrouched, int index);
+		void SetFrontRolling(int frontRolling, int index);
+		void SetBackRolling(int backRolling, int index);
 		void SetSlide(int slide, int index);
+		void SetFrontRollingEnd(int frontRollingEnd, int index);
+		void SetBackRollingEnd(int backRollingEnd, int index);
+		void SetTakingDmg(bool takingDmg);
+
 		
 		BITMAP *GetPlayerSprite();
 		BITMAP *GetSprites(int index);
@@ -110,10 +121,7 @@ class Player
 		int especialQuantity;	//quantos pontos de especial o personagem tem
 		int powTime;			//tempo restante da barra quando o jogador esroura uma barra
 		bool pow;				//se o jogador estourou uma barra
-		
-		//para todas as vezes que o ultimo frame precisa ser renderizado por algum tempo mais não pode ser controlado dentro da função especifica da animação
-		int capturaTempoParaOUltimoFrame;
-		
+				
 		//variaveis relacionadas a animação
 		int frame;				//o frame que deve ser renderizado
 		int capturaTempo;		//captura o tempo no momento que muda de frame para fazer uma verificação de quando deve trocar de frame novamente
@@ -146,6 +154,10 @@ class Player
 		bool bt6TimeCapture;
 		bool bt7TimeCapture;
 		
+		bool attacking;				//indica que o personagema está atacando
+		bool opponentAttacking;		//indica que o oponente está atacando
+		bool takingDmg;			//indica que o personagem sofreu dano <<< VARIAVEL TEMPORARIA
+		
 		//tempos das animações para o controle
 		int idle[2];				//animação numero 0
 		int crouching[2];			//animação numero 1
@@ -161,13 +173,25 @@ class Player
 		int run[2];					//animação numero 12
 		int jumpBack[2];			//animação numero 13
 		int jumpBackFall[2];		//animação numero 14
+		int defending[2];			//animação numero 15
+		int defence[2];				//animação numero 16
+		int takingDamage[2];		//animação numero 17
+		int defendExit[2];			//animação numero 18
+		int defendingCrouched[2];	//animação numero 19
+		int defenceCrouched[2];		//animação numero 20
+		int takingDamageCrouched[2];//animação numero 21
+		int defendExitCrouched[2];	//animação numero 22
+		int frontRolling[2];		//animação numero 23
+		int backRolling[2];			//animação numero 24
 		int slide[2];				//animação numero 25
+		int frontRollingEnd[2];		//animação numero 26
+		int backRollingEnd[2];		//animação numero 27
 		
 		//tempos em que os botões são pressionados
 		int btTPress[8][10];
 		
 		//array para carregar os sprites
-		BITMAP *sprites[100];
+		BITMAP *sprites[124];
 		
 		//Metodos privados
 		void TrackImputs();							//captura os imputs do player
@@ -175,10 +199,9 @@ class Player
 		void VerticalMove();						//movimentação do personagem na vertical
 		void writeOnBtTmPress(int pos, bool valor);	//escreve no array de tempos os tempos em que os botões foram pressionados
 		void StartAttributes();						//inicia os atributos com os valores coretos
-		
+		void InterpretationEngine();
 };
 #endif//PLAYER_H
-
 
 
 

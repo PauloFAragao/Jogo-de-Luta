@@ -50,10 +50,34 @@ void Terry::StartAttributes()
 	SetJumpBack( 37, 1 );
 	SetJumpBackFall( 38, 0 );
 	SetJumpBackFall( 39, 1 );
+	SetDefending( 78, 0 );
+	SetDefending( 81, 1 );
+	SetDefence( 82, 0 );
+	SetDefence( 82, 1 );
+	SetTakingDamage( 114, 0 );
+	SetTakingDamage( 118, 1 );
+	SetDefendExit( 79, 0 );
+	SetDefendExit( 81, 1 );
+	SetDefendingCrouched( 83, 0 );
+	SetDefendingCrouched( 86, 1 );
+	SetDefenceCrouched( 87, 0 );
+	SetDefenceCrouched( 87, 1 );
+	SetTakingDamageCrouched( 119, 0 );
+	SetTakingDamageCrouched( 123, 1 );
+	SetDefendExitCrouched( 84, 0 );
+	SetDefendExitCrouched( 85, 1 );
+	SetFrontRolling( 88, 0 );
+	SetFrontRolling( 93, 1 );
+	SetBackRolling( 100, 0 );
+	SetBackRolling( 105, 1 );
 	SetSlide( 74, 0 );
-	SetSlide( 77, 0 );
+	SetSlide( 77, 1 );
+	SetFrontRollingEnd( 94, 0 );
+	SetFrontRollingEnd( 99, 1 );
+	SetBackRollingEnd( 106, 0 );
+	SetBackRollingEnd( 113, 1 );
 	
-}
+}END_OF_FUNCTION(StartAttributes);
 
 
 /**
@@ -61,9 +85,6 @@ void Terry::StartAttributes()
  */
 void Terry::Routine()
 {
-	//motor de interpretação
-	InterpretationEngine();
-	
 	//rotina da classe player
 	PlayerRoutine();
 	
@@ -71,147 +92,6 @@ void Terry::Routine()
 	TerryAnimations();
 	
 }END_OF_FUNCTION(PlayerRoutine)
-
-
-/**
- * Esse metodo é responsavel por imterpletar as situações em que o personagem se encontra e mudar os valores de action
- */
-void Terry::InterpretationEngine()
-{
-	
-//walk - walkBack - run
-	if( GetSpeedX() == 0 && VerifyFrame( 0 ) && ( GetAction() == 20 || GetAction() == 30 || GetAction() == 100 || GetAction() == 101 )  )
-	{
-		SetAction(0);
-		SetStartAnimation(false);
-	}
-	if( GetAction() == 100 && GetSpeedX() != 0 )
-	{
-		if( GetToRight() && !GetButton02() )
-		{
-			ChangeAction(101);
-		}
-		else if( !GetToRight() && !GetButton00() )
-		{
-			ChangeAction(101);
-		}
-	}
-	
-
-//jumpBack
-	if( GetAction() == 110 && GetY() >= CHAO )//animação do personagem pulando para tras em quando está no ar
-	{
-		ChangeAction(111);
-		SetCapturaTParaOUltimoFrame( clock() );
-	}
-	if( GetAction() == 111 && GetCapturaTParaOUltimoFrame() > TEF )//animação do personagem caindo no chão e se recuperando da queda
-	{
-		//continua antando para tras
-		if( GetButton00() && GetToRight() )
-		{
-			SetSpeedX( -WALKSPEED );
-			ChangeAction(30);
-		}
-		if( GetButton02() && !GetToRight() )
-		{
-			SetSpeedX( WALKSPEED );
-			ChangeAction(30);
-		}
-		
-		//o personagem parou de andar para tras
-		if( GetSpeedX() == 0 )
-		{
-			ChangeAction(0);
-		}
-	}
-
-
-//jump
-	//muda de rising para endOfClimp
-	if( GetAction() == 41 && GetSpeedY() > - 3 ) ChangeAction( 42 );
-	if( GetAction() == 51 && GetSpeedY() > - 3 ) ChangeAction( 52 );
-	if( GetAction() == 61 && GetSpeedY() > - 3 ) ChangeAction( 62 );
-	if( GetAction() == 81 && GetSpeedY() > - 3 ) ChangeAction( 82 );
-
-	//muda de endOfClimp para falling
-	if( GetAction() == 42 && GetSpeedY() > 5 ) ChangeAction( 43 );
-	if( GetAction() == 52 && GetSpeedY() > 5 ) ChangeAction( 53 );
-	if( GetAction() == 62 && GetSpeedY() > 5 ) ChangeAction( 63 );
-	if( GetAction() == 82 && GetSpeedY() > 5 ) ChangeAction( 83 );
-	
-	//muda de falling para fall
-	if( GetAction() == 43 && GetY() >= CHAO ) ChangeAction( 44 );
-	if( GetAction() == 53 && GetY() >= CHAO ) ChangeAction( 54 );
-	if( GetAction() == 63 && GetY() >= CHAO ) ChangeAction( 64 );
-	if( GetAction() == 83 && GetY() >= CHAO ) ChangeAction( 84 );
-	
-	//muda de fall para idle
-	if( GetAction() == 44 || GetAction() == 54 || GetAction() == 64 || GetAction() == 84 )
-	{
-		//aqui a animação deve ser completamente executada e depois mudar para a animação idle
-		if( GetFrame() == 50 ) SetCapturaTParaOUltimoFrame( clock() );
-		if( GetFrame() == 50 && GetCapturaTParaOUltimoFrame() > TEF-20 )
-		{
-			ChangeAction(0);
-		}
-	}
-	
-
-//strongFrontalDiagonalJump
-	if( GetAction() == 71 )//strongFrontalDiagonalJump
-	{
-		//essa animação deve rodar até o ultimo frame e entao mudar para a animação falling
-		if( GetFrame() == 59 ) SetCapturaTParaOUltimoFrame( clock() );
-		if( GetFrame() == 59 && GetCapturaTParaOUltimoFrame() > TEF-20 )
-		{
-			ChangeAction(43);
-		}
-	}
-	
-	
-//strongBackDiagonalJump
-	if( GetAction() == 91 )//strongFrontalDiagonalJump
-	{
-		//essa animação deve rodar até o ultimo frame e entao mudar para a animação falling
-		if( GetFrame() == 67 ) SetCapturaTParaOUltimoFrame( clock() );
-		if( GetFrame() == 67 && GetCapturaTParaOUltimoFrame() > TEF-20 )
-		{
-			ChangeAction(43);
-		}
-	}
-	
-	
-//crouched
-	if( GetButton01() && ValidateAction( 10 ) )//crouching
-	{
-		ChangeAction( 10 );
-	}
-	if( GetButton01() && GetAction() == 10 && GetFrame() == 41)//crouchedIdle
-	{
-		ChangeAction( 11 );
-	}
-	if( !GetButton01() && ( GetAction() == 11 || GetAction() == 10 ) )//raiseCrouched
-	{
-		ChangeAction( 12 );
-	}
-	if( !GetButton01() && GetAction() == 12 && GetFrame() == 40)//idle
-	{
-		ChangeAction( 0 );
-	}
-
-	
-}END_OF_FUNCTION(InterpretationEngine);
-
-
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>> Validadores <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-
-
-
-
-
-
-
 
 
 

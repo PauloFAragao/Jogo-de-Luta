@@ -114,6 +114,73 @@ void Terry::LoadSprites()
 	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/25slide/slide02.bmp", NULL), 76);//frame 2
 	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/25slide/slide03.bmp", NULL), 77);//frame 3
 	
+	//defending
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/15defending/defending00.bmp", NULL), 78);//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/15defending/defending01.bmp", NULL), 79);//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/15defending/defending02.bmp", NULL), 80);//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/15defending/defending03.bmp", NULL), 81);//frame 3
+	
+	//defence
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/16defence/defence.bmp", NULL), 82);//frame 0
+	
+	//defendingCrouched
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/19defendingCrouched/crouchedDefend00.bmp", NULL), 83);//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/19defendingCrouched/crouchedDefend01.bmp", NULL), 84);//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/19defendingCrouched/crouchedDefend02.bmp", NULL), 85);//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/19defendingCrouched/crouchedDefend03.bmp", NULL), 86);//frame 3
+	
+	//defenceCrouched
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/20defenceCrouched/crouchedDefence.bmp", NULL), 87);//frame 0
+	
+	//frontRolling
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/23frontRolling/frontRolling00.bmp", NULL), 88);//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/23frontRolling/frontRolling01.bmp", NULL), 89);//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/23frontRolling/frontRolling02.bmp", NULL), 90);//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/23frontRolling/frontRolling03.bmp", NULL), 91);//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/23frontRolling/frontRolling04.bmp", NULL), 92);//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/23frontRolling/frontRolling05.bmp", NULL), 93);//frame 5
+
+	
+	//frontRollingEnd
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/23frontRolling/frontRolling06.bmp", NULL), 94);//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/23frontRolling/frontRolling07.bmp", NULL), 95);//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/23frontRolling/frontRolling08.bmp", NULL), 96);//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/23frontRolling/frontRolling09.bmp", NULL), 97);//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/23frontRolling/frontRolling10.bmp", NULL), 98);//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/23frontRolling/frontRolling11.bmp", NULL), 99);//frame 5
+	
+	//backRolling
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/24backRolling/backRolling00.bmp", NULL), 100);//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/24backRolling/backRolling01.bmp", NULL), 101);//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/24backRolling/backRolling02.bmp", NULL), 102);//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/24backRolling/backRolling03.bmp", NULL), 103);//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/24backRolling/backRolling04.bmp", NULL), 104);//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/24backRolling/backRolling05.bmp", NULL), 105);//frame 5
+	
+	//backRollingEnd
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/24backRolling/backRolling06.bmp", NULL), 106);//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/24backRolling/backRolling07.bmp", NULL), 107);//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/24backRolling/backRolling08.bmp", NULL), 108);//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/24backRolling/backRolling09.bmp", NULL), 109);//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/24backRolling/backRolling10.bmp", NULL), 110);//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/24backRolling/backRolling11.bmp", NULL), 111);//frame 5
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/24backRolling/backRolling12.bmp", NULL), 112);//frame 6
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/24backRolling/backRolling13.bmp", NULL), 113);//frame 7
+	
+	//takingDamage
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/17takingDamage/takingDamage00.bmp", NULL), 114);//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/17takingDamage/takingDamage01.bmp", NULL), 115);//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/17takingDamage/takingDamage02.bmp", NULL), 116);//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/17takingDamage/takingDamage03.bmp", NULL), 117);//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/17takingDamage/takingDamage04.bmp", NULL), 118);//frame 4
+	
+	//takingDamageCrouched
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/21takingDamageCrouched/takingDamageCrouched00.bmp", NULL), 119);//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/21takingDamageCrouched/takingDamageCrouched01.bmp", NULL), 120);//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/21takingDamageCrouched/takingDamageCrouched02.bmp", NULL), 121);//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/21takingDamageCrouched/takingDamageCrouched03.bmp", NULL), 122);//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/21takingDamageCrouched/takingDamageCrouched04.bmp", NULL), 123);//frame 4
+	
 	
 }END_OF_FUNCTION(LoadSprites)
 

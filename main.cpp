@@ -1,6 +1,11 @@
 /*
+*
 *	Criado por: Paulo (debek_metal@hotmail.com)
+*	Programa: Jogo de luta escrito em c++ usando a biblioteca allegro 4 ( Baseado nos jogos da franquia the king of fighters )
+*	Nome da ide: falcon c++
+*	Verção da ide: 3.3.0.0
 *	Versão da biblioteca Allegro: 4.2.2
+*	
 */
 
 
@@ -10,14 +15,15 @@
 #include "Terry.h"
 #include "Scenario.h"
 
-#define COMPLETERENDER true
+
+#define COMPLETERENDER false
 
 
 int WINDOW_WIDTH  = 1728;
 int WINDOW_HEIGHT = 900;
 
 volatile int exitGame=false;
-void handler(){exitGame=true;}
+void handler(){exitGame=true;}END_OF_FUNCTION(handler);
 
 int main()
 {

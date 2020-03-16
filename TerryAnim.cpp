@@ -80,17 +80,65 @@ void Terry::TerryAnimations()
 		case 100://Run
 			Anim12();
 		break;
+	
+		case 101://Slide
+			Anim25();
+		break;
 		
 		case 110://Jumping Back
 			Anim13();
 		break;
-
+	
 		case 111://Fall - depois de Jumping Back
 			Anim14();
 		break;
+	
+		case 120://Defending
+			Anim15();
+		break;
+			
+		case 121://Defence
+			Anim16();
+		break;
+	
+		case 122://Taking Damage
+			Anim17();
+		break;
+	
+		case 123://Defend Exit
+			Anim18();
+		break;	
+	
+		case 130://Defending Crouched
+			Anim19();
+		break;
 		
-		case 101://Slide
-			Anim25();
+		case 131://Defence Crouched
+			Anim20();
+		break;
+	
+		case 132://Taking Damage Crouched
+			Anim21();
+		break;
+	
+		case 133://Defend Exit Crouched
+			Anim22();
+		break;
+	
+		case 140://Front Rolling
+			Anim23();
+		break;
+	
+		case 141://Front Rolling End
+			Anim26();
+		break;
+	
+		case 150://Back Rolling
+			Anim24();
+		break;
+	
+		case 151://Back Rolling End
+			Anim27();
 		break;
 	
 		default: //ERROR
@@ -382,6 +430,155 @@ void Terry::Anim14()//fall
 }END_OF_FUNCTION(Anim14);
 
 
+void Terry::Anim15()//Defending					78-81
+{
+	if( !GetStartAnimation() )
+	{ SetFrame(78); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
+	else
+	{
+		if( GetFrame() == 78 && clock() - GetCapturaTempo() > TEF-50 )//frame 1
+		{ SetFrame(79); SetCapturaTempo(clock()); }
+		if( GetFrame() == 79 && clock() - GetCapturaTempo() > TEF-50 )//frame 2
+		{ SetFrame(80); SetCapturaTempo(clock()); }
+		if( GetFrame() == 80 && clock() - GetCapturaTempo() > TEF-50 )//frame 3
+		{ SetFrame(81); SetCapturaTempo(clock()); }
+	}
+}END_OF_FUNCTION(Anim15);
+
+
+void Terry::Anim16()//Defence					82
+{
+	if( !GetStartAnimation() )
+	{ SetFrame(82); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
+}END_OF_FUNCTION(Anim16);
+
+
+void Terry::Anim17()//Taking Damage				114-118
+{
+	if( !GetStartAnimation() )
+	{ SetFrame(114); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
+	else
+	{
+		if( GetFrame() == 114 && clock() - GetCapturaTempo() > 75 )//frame 1
+		{ SetFrame(115); SetCapturaTempo(clock()); }
+		if( GetFrame() == 115 && clock() - GetCapturaTempo() > 75 )//frame 2
+		{ SetFrame(116); SetCapturaTempo(clock()); }
+		if( GetFrame() == 116 && clock() - GetCapturaTempo() > 75 )//frame 3
+		{ SetFrame(117); SetCapturaTempo(clock()); }
+		if( GetFrame() == 117 && clock() - GetCapturaTempo() > 75 )//frame 4
+		{ SetFrame(118); SetCapturaTempo(clock()); }
+	}
+}END_OF_FUNCTION(Anim17);
+
+
+void Terry::Anim18()//Defend Exit				81-79
+{
+	if( !GetStartAnimation() )
+	{ SetFrame(81); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
+	else
+	{
+		if( GetFrame() == 81 && clock() - GetCapturaTempo() > TEF )//frame 1
+		{ SetFrame(80); SetCapturaTempo(clock()); }
+		if( GetFrame() == 80 && clock() - GetCapturaTempo() > TEF )//frame 2
+		{ SetFrame(79); SetCapturaTempo(clock()); }
+	}
+}END_OF_FUNCTION(Anim18);
+
+
+void Terry::Anim19()//Defending Crouched		83-86		
+{
+	if( !GetStartAnimation() )
+	{ SetFrame(83); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
+	else
+	{
+		if( GetFrame() == 83 && clock() - GetCapturaTempo() > TEF-20 )//frame 1
+		{ SetFrame(84); SetCapturaTempo(clock()); }
+		if( GetFrame() == 84 && clock() - GetCapturaTempo() > TEF-20 )//frame 2
+		{ SetFrame(85); SetCapturaTempo(clock()); }
+		if( GetFrame() == 85 && clock() - GetCapturaTempo() > TEF-20 )//frame 3
+		{ SetFrame(86); SetCapturaTempo(clock()); }
+	}
+}END_OF_FUNCTION(Anim19);
+
+
+void Terry::Anim20()//Defence Crouched			87
+{
+	if( !GetStartAnimation() )
+	{ SetFrame(87); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
+}END_OF_FUNCTION(Anim20);
+
+
+void Terry::Anim21()//Taking Damage Crouched	119-123
+{
+	if( !GetStartAnimation() )
+	{ SetFrame(119); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
+	else
+	{
+		if( GetFrame() == 119 && clock() - GetCapturaTempo() > 75 )//frame 1
+		{ SetFrame(120); SetCapturaTempo(clock()); }
+		if( GetFrame() == 120 && clock() - GetCapturaTempo() > 75 )//frame 2
+		{ SetFrame(121); SetCapturaTempo(clock()); }
+		if( GetFrame() == 121 && clock() - GetCapturaTempo() > 75 )//frame 3
+		{ SetFrame(122); SetCapturaTempo(clock()); }
+		if( GetFrame() == 122 && clock() - GetCapturaTempo() > 75 )//frame 4
+		{ SetFrame(123); SetCapturaTempo(clock()); }
+	}
+}END_OF_FUNCTION(Anim21);
+
+
+void Terry::Anim22()//Defend Exit Crouched		85-84
+{
+		if( !GetStartAnimation() )
+	{ SetFrame(85); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
+	else
+	{
+		if( GetFrame() == 85 && clock() - GetCapturaTempo() > TEF )//frame 1
+		{ SetFrame(84); SetCapturaTempo(clock()); }
+	}
+}END_OF_FUNCTION(Anim22);
+
+
+void Terry::Anim23()//Front Rolling				88-93
+{
+	if( !GetStartAnimation() )
+	{ SetFrame(88); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
+	else
+	{
+		if( GetFrame() == 88 && clock() - GetCapturaTempo() > TEF-60 )//frame 1
+		{ SetFrame(89); SetCapturaTempo(clock()); }
+		if( GetFrame() == 89 && clock() - GetCapturaTempo() > TEF-60 )//frame 2
+		{ SetFrame(90); SetCapturaTempo(clock()); }
+		if( GetFrame() == 90 && clock() - GetCapturaTempo() > TEF-60 )//frame 3
+		{ SetFrame(91); SetCapturaTempo(clock()); }
+		if( GetFrame() == 91 && clock() - GetCapturaTempo() > TEF-60 )//frame 4
+		{ SetFrame(92); SetCapturaTempo(clock()); }
+		if( GetFrame() == 92 && clock() - GetCapturaTempo() > TEF-60 )//frame 5
+		{ SetFrame(93); SetCapturaTempo(clock()); }
+	}
+}END_OF_FUNCTION(Anim23);
+
+
+void Terry::Anim24()//Back Rolling				100-107
+{
+	if( !GetStartAnimation() )
+	{ SetFrame(100); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
+	else
+	{
+		if( GetFrame() == 100 && clock() - GetCapturaTempo() > TEF-60 )//frame 1
+		{ SetFrame(101); SetCapturaTempo(clock()); }
+		if( GetFrame() == 101 && clock() - GetCapturaTempo() > TEF-60 )//frame 2
+		{ SetFrame(102); SetCapturaTempo(clock()); }
+		if( GetFrame() == 102 && clock() - GetCapturaTempo() > TEF-60 )//frame 3
+		{ SetFrame(103); SetCapturaTempo(clock()); }
+		if( GetFrame() == 103 && clock() - GetCapturaTempo() > TEF-60 )//frame 4
+		{ SetFrame(104); SetCapturaTempo(clock()); }
+		if( GetFrame() == 104 && clock() - GetCapturaTempo() > TEF-60 )//frame 5
+		{ SetFrame(105); SetCapturaTempo(clock()); }
+
+	}
+}END_OF_FUNCTION(Anim24);
+
+
 void Terry::Anim25()//slide
 {
 	if( !GetStartAnimation() )
@@ -396,6 +593,54 @@ void Terry::Anim25()//slide
 		{ SetFrame(77); SetCapturaTempo(clock()); }
 	}
 }END_OF_FUNCTION(Anim25);
+
+
+void Terry::Anim26()//Front Rolling End					94-99
+{
+	if( !GetStartAnimation() )
+	{ SetFrame(94); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
+	else
+	{
+		if( GetFrame() == 94 && clock() - GetCapturaTempo() > TEF-60 )//frame 6
+		{ SetFrame(95); SetCapturaTempo(clock()); }
+		if( GetFrame() == 95 && clock() - GetCapturaTempo() > TEF-60 )//frame 2
+		{ SetFrame(96); SetCapturaTempo(clock()); }
+		if( GetFrame() == 96 && clock() - GetCapturaTempo() > TEF-60 )//frame 3
+		{ SetFrame(97); SetCapturaTempo(clock()); }
+		if( GetFrame() == 97 && clock() - GetCapturaTempo() > TEF-60 )//frame 4
+		{ SetFrame(98); SetCapturaTempo(clock()); }
+		if( GetFrame() == 98 && clock() - GetCapturaTempo() > TEF-60 )//frame 5
+		{ SetFrame(99); SetCapturaTempo(clock()); }
+			
+	}
+}END_OF_FUNCTION(Anim26);
+
+
+void Terry::Anim27()//Back Rolling End					106 - 113
+{
+	if( !GetStartAnimation() )
+	{ SetFrame(106); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
+	else
+	{
+		if( GetFrame() == 106 && clock() - GetCapturaTempo() > TEF-60 )//frame 1
+		{ SetFrame(107); SetCapturaTempo(clock()); }
+		if( GetFrame() == 107 && clock() - GetCapturaTempo() > TEF-60 )//frame 2
+		{ SetFrame(108); SetCapturaTempo(clock()); }
+		if( GetFrame() == 108 && clock() - GetCapturaTempo() > TEF-60 )//frame 3
+		{ SetFrame(109); SetCapturaTempo(clock()); }
+		if( GetFrame() == 109 && clock() - GetCapturaTempo() > TEF-60 )//frame 4
+		{ SetFrame(110); SetCapturaTempo(clock()); }
+		if( GetFrame() == 110 && clock() - GetCapturaTempo() > TEF-60 )//frame 5
+		{ SetFrame(111); SetCapturaTempo(clock()); }
+		if( GetFrame() == 111 && clock() - GetCapturaTempo() > TEF-60 )//frame 6
+		{ SetFrame(112); SetCapturaTempo(clock()); }
+		if( GetFrame() == 112 && clock() - GetCapturaTempo() > TEF-60 )//frame 7
+		{ SetFrame(113); SetCapturaTempo(clock()); }
+	}
+}END_OF_FUNCTION(Anim27);
+
+
+
 
 
 
