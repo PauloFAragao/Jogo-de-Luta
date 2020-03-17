@@ -60,8 +60,8 @@ imagens (os sprites dessas animações já estão totalmente redimencionados: id
 	-defence Crouched
 	-taking Damage Crouched
 	-defend Exit Crouched
-	-front Rolling(ainda não funcionais)
-	-back Rolling(ainda não funcionais)
+	-front Rolling
+	-back Rolling
 
 
 

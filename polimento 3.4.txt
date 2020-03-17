@@ -5,10 +5,6 @@ Mudar a resolução para: 1728x900 - Implementado
 Tornar a classe interface mais completa
 	fazer as barras serem funcionais - Implementado
 
-Iniciar a implementação para o caso do personagem estar virado para a esquerda - 
-
-Terminar de corrigir as imagens - Implementando
-
 Implementar o resto das animações basicas - Implementando
 	15-Defending - Implementado
 	16-Defence - Implementado
@@ -18,12 +14,17 @@ Implementar o resto das animações basicas - Implementando
 	20-Defence Crouched - Implementado
 	21-Taking Damage Crouched - Implementado
 	22-Defend Exit Crouched ( crouchedDefend00, crouchedDefend01 ) - Implementado
-	23-Front Rolling
-	24-Back Rolling
+	23-Front Rolling - Implementado
+	24-Back Rolling - Implementado
 
+Criar mais arquivos .cpp para desentulhar os arquivos onde são implementados os metodos 
+das classes - Implementando
 
 Modificar a função InterpletationEngine colocando algumas cosias que estão dentro dela 
 nas funções HorizontalMove e VerticalMove - Implementando
 
-Criar mais arquivos .cpp para desentulhar os arquivos onde são implementados os metodos 
-das classes - Implementando
+Terminar de corrigir as imagens - Implementado
+
+Iniciar a implementação para o caso do personagem estar virado para a esquerda - 
+	Inverter as imagens de lado
+	Implementar a logica

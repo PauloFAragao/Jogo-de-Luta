@@ -56,8 +56,9 @@ void Player::StartAttributes()
 	bt7TimeCapture=false;			//variavel para captura de tempo do botão 07
 	
 	attacking=false;				//indica que o personagema está atacando
+	takingDmg=false;				//indica que o personagem foi atacado enquanto estava na defesa
 	opponentAttacking=false;		//indica que o oponente está atacando
-	takingDmg=false;
+	
 	
 	antLoopBT0 = true;
 	antLoopBT2 = true;
@@ -85,6 +86,8 @@ void Player::PlayerRoutine()
 	if( !key[ KEY_0_PAD ] ) opponentAttacking = false;
 	
 	if( key[ KEY_1_PAD ]  ) takingDmg = true;
+	
+	if( key[ KEY_2_PAD ]  ) toRight = !toRight;
 	
 	//captura os imputs do plauer
 	TrackImputs();
@@ -454,7 +457,7 @@ void Player::VerticalMove()
 	// se btTPress[3][8] - btTPress[0][8] (botão para cima e botão para tras) foi entre -30 e 30 (60 ms de diferença entre os botões terem sido pressionados)
 				{
 					if(toRight) { speedX = -RUNSPEED; ChangeAction(91); } //pulando na diagonal para tras
-					else 		{ speedX = RUNSPEED;  ChangeAction(71); } //pulando na diagonal para frente
+					else 		{ speedX = -RUNSPEED; ChangeAction(71); } //pulando na diagonal para frente
 					speedY = -STRONGJUMPSTRENGTH;
 				}
 				
@@ -462,8 +465,8 @@ void Player::VerticalMove()
 				else if( button02 || ( btTPress[3][8] - btTPress[2][8] >= -30 && btTPress[3][8] - btTPress[2][8] <= 30 ) )
 	// se btTPress[3][8] - btTPress[2][8] (botão para cima e botão para frente) foi entre -30 e 30 (60 ms de diferença entre os botões terem sido pressionados)
 				{
-					if(toRight) {speedX = RUNSPEED;  ChangeAction(71);  } //pulando na diagonal para frente
-					else 		{speedX = -RUNSPEED; ChangeAction(91); } //pulando na diagonal para tras
+					if(toRight) {speedX =  RUNSPEED; ChangeAction(71);  } //pulando na diagonal para frente
+					else 		{speedX =  RUNSPEED; ChangeAction(91); } //pulando na diagonal para tras
 					speedY = -STRONGJUMPSTRENGTH;
 				}
 				
@@ -500,14 +503,16 @@ void Player::VerticalMove()
 				
 				if( action == 60 )// pulo fraco na diagonal para frente
 				{
-					speedX = 10;
+					if( toRight )	speedX = 10;
+					else			speedX = -10;
 					speedY = -WEAKJUMPSTRENGTH-5;
 					ChangeAction(61);
 				}
 				
 				if( action == 80 )// pulo fraco na diagonal para tras
 				{
-					speedX = -10;
+					if( toRight )	speedX = -10;
+					else			speedX = 10;
 					speedY = -WEAKJUMPSTRENGTH-5;
 					ChangeAction(81);
 				}
@@ -664,9 +669,9 @@ void Player::InterpretationEngine()
 	{
 		takingDmg = false;
 		if( toRight && button00  ) ChangeAction(121);
-		if( !toRight && button01 ) ChangeAction(121);
+		if( !toRight && button02 ) ChangeAction(121);
 	}
-	if( ( action == 120 || action == 121 ) && ( !button00 || !opponentAttacking) )//animação de saida da defesa
+	if( ( action == 120 || action == 121 ) && ( ( !button00 && toRight ) || ( !button02 && !toRight ) || !opponentAttacking) )//animação de saida da defesa
 	{
 		ChangeAction(123);
 	}
@@ -690,9 +695,9 @@ void Player::InterpretationEngine()
 	{
 		takingDmg = false;
 		if( toRight && button00  ) ChangeAction(131);
-		if( !toRight && button01 ) ChangeAction(131);
+		if( !toRight && button02 ) ChangeAction(131);
 	}
-	if( ( action == 130 || action == 131 ) && ( !button00 || !opponentAttacking) )//animação de saida da defesa
+	if( ( action == 130 || action == 131 ) && ( ( !button00 && toRight ) || ( !button02 && !toRight ) || !opponentAttacking) )//animação de saida da defesa
 	{
 		ChangeAction(133);
 	}

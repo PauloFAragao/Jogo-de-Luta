@@ -4,7 +4,11 @@
 //sprites
 BITMAP* Player::GetPlayerSprite()//esse metodo retorna o frame que deve ser renderizado
 {
-	return sprites[ frame ];
+	if( toRight ) 
+		return sprites[ frame ];
+	else 
+		return spritesToLeft[ frame ];
+	
 }END_OF_FUNCTION(GetPlayerSprite);
 
 //sprites
@@ -16,7 +20,13 @@ BITMAP* Player::GetSprites(int index)
 //sprites
 void Player::SetSrites(BITMAP *sprite, int index)
 {
-	sprites[index] = sprite;
+	this->sprites[index] = sprite;
+}END_OF_FUNCTION(SetSrite)
+
+//spritesToLeft
+void Player::SetSpritesToLeft(BITMAP *spritesToLeft, int index)
+{
+	this->spritesToLeft[index] = spritesToLeft;
 }END_OF_FUNCTION(SetSrite)
 
 //x

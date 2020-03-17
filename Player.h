@@ -1,9 +1,9 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-
 #include <allegro.h>
 
+#define QTDFRAMES 124
 
 class Player
 {
@@ -95,6 +95,7 @@ class Player
 		BITMAP *GetPlayerSprite();
 		BITMAP *GetSprites(int index);
 		void    SetSrites(BITMAP *sprite, int index);
+		void 	SetSpritesToLeft(BITMAP *spritesToLeft, int index);
 		
 		bool GetButton00();
 		bool GetButton01();
@@ -191,7 +192,8 @@ class Player
 		int btTPress[8][10];
 		
 		//array para carregar os sprites
-		BITMAP *sprites[124];
+		BITMAP *sprites[QTDFRAMES];
+		BITMAP *spritesToLeft[QTDFRAMES];
 		
 		//Metodos privados
 		void TrackImputs();							//captura os imputs do player
