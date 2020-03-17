@@ -183,6 +183,15 @@ void Terry::LoadSprites()
 	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/21takingDamageCrouched/takingDamageCrouched03.bmp", NULL), 122);//frame 3
 	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/21takingDamageCrouched/takingDamageCrouched04.bmp", NULL), 123);//frame 4
 	
+	//changeSide
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/28changeSide/changeSide00.bmp", NULL), 124);//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/28changeSide/changeSide01.bmp", NULL), 125);//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/28changeSide/changeSide02.bmp", NULL), 126);//frame 2
+	
+	//changeSideCrouched
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/29changeSideCrouched/changeSideCrouched00.bmp", NULL), 127);//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/29changeSideCrouched/changeSideCrouched01.bmp", NULL), 128);//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/29changeSideCrouched/changeSideCrouched02.bmp", NULL), 129);//frame 2
 	
 	
 //Sprites do personagem virado para a esquerda
@@ -360,6 +369,15 @@ void Terry::LoadSprites()
 	SetSpritesToLeft( load_bitmap("sprites/personagens/terry/notToRight/standardColor/21takingDamageCrouched/takingDamageCrouched03.bmp", NULL), 122);//frame 3
 	SetSpritesToLeft( load_bitmap("sprites/personagens/terry/notToRight/standardColor/21takingDamageCrouched/takingDamageCrouched04.bmp", NULL), 123);//frame 4
 	
+	//changeSide
+	SetSpritesToLeft( load_bitmap("sprites/personagens/terry/notToRight/standardColor/28changeSide/changeSide00.bmp", NULL), 124);//frame 0
+	SetSpritesToLeft( load_bitmap("sprites/personagens/terry/notToRight/standardColor/28changeSide/changeSide01.bmp", NULL), 125);//frame 1
+	SetSpritesToLeft( load_bitmap("sprites/personagens/terry/notToRight/standardColor/28changeSide/changeSide02.bmp", NULL), 126);//frame 2
+	
+	//changeSideCrouched
+	SetSpritesToLeft( load_bitmap("sprites/personagens/terry/notToRight/standardColor/29changeSideCrouched/changeSideCrouched00.bmp", NULL), 127);//frame 0
+	SetSpritesToLeft( load_bitmap("sprites/personagens/terry/notToRight/standardColor/29changeSideCrouched/changeSideCrouched01.bmp", NULL), 128);//frame 1
+	SetSpritesToLeft( load_bitmap("sprites/personagens/terry/notToRight/standardColor/29changeSideCrouched/changeSideCrouched02.bmp", NULL), 129);//frame 2
 	
 	
 }END_OF_FUNCTION(LoadSprites)

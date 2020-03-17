@@ -76,6 +76,10 @@ void Terry::StartAttributes()
 	SetFrontRollingEnd( 99, 1 );
 	SetBackRollingEnd( 106, 0 );
 	SetBackRollingEnd( 113, 1 );
+	SetChangeSide( 124, 0 );
+	SetChangeSide( 126, 1 );
+	SetChangeSideCrouched( 127, 0 );
+	SetChangeSideCrouched( 129, 1 );
 	
 }END_OF_FUNCTION(StartAttributes);
 

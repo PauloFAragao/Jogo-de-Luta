@@ -59,6 +59,7 @@ void Player::StartAttributes()
 	takingDmg=false;				//indica que o personagem foi atacado enquanto estava na defesa
 	opponentAttacking=false;		//indica que o oponente está atacando
 	
+	antLoopChangeSide = false;
 	
 	antLoopBT0 = true;
 	antLoopBT2 = true;
@@ -87,7 +88,6 @@ void Player::PlayerRoutine()
 	
 	if( key[ KEY_1_PAD ]  ) takingDmg = true;
 	
-	if( key[ KEY_2_PAD ]  ) toRight = !toRight;
 	
 	//captura os imputs do plauer
 	TrackImputs();
@@ -671,10 +671,11 @@ void Player::InterpretationEngine()
 		if( toRight && button00  ) ChangeAction(121);
 		if( !toRight && button02 ) ChangeAction(121);
 	}
-	if( ( action == 120 || action == 121 ) && ( ( !button00 && toRight ) || ( !button02 && !toRight ) || !opponentAttacking) )//animação de saida da defesa
+	if( ( action == 120 || action == 121 || action == 122 ) && ( ( !button00 && toRight ) || ( !button02 && !toRight ) || !opponentAttacking) )//animação de saida da defesa
 	{
 		ChangeAction(123);
 	}
+
 	if( action == 123 && frame == defendExit[0] && clock() - capturaTempo > TEF )//voltando para idle
 	{
 		ChangeAction(0);
@@ -697,7 +698,7 @@ void Player::InterpretationEngine()
 		if( toRight && button00  ) ChangeAction(131);
 		if( !toRight && button02 ) ChangeAction(131);
 	}
-	if( ( action == 130 || action == 131 ) && ( ( !button00 && toRight ) || ( !button02 && !toRight ) || !opponentAttacking) )//animação de saida da defesa
+	if( ( action == 130 || action == 131  || action == 132 ) && ( ( !button00 && toRight ) || ( !button02 && !toRight ) || !opponentAttacking) )//animação de saida da defesa
 	{
 		ChangeAction(133);
 	}
@@ -726,6 +727,46 @@ void Player::InterpretationEngine()
 	{
 		ChangeAction(0);
 	}
+	
+//mudar de lado <<<< TEMPORARIO
+	//mudar de lado em pé
+	if( key[ KEY_2_PAD ] && !button01 && !antLoopChangeSide )
+	{
+		antLoopChangeSide = true;
+		
+		if( ValidateAction(160) )
+			ChangeAction(160);
+
+		else
+			toRight = !toRight;
+	}
+	if( action == 160 && frame == changeSide[1] && clock() - capturaTempo > TEF-50 )
+	{
+		toRight = !toRight;
+		ChangeAction(0);
+	}
+	if( antLoopChangeSide && !key[ KEY_2_PAD ] )
+		antLoopChangeSide = false;
+	
+	//mudar de lado agachado
+	if( key[ KEY_2_PAD ] && button01 && !antLoopChangeSide )
+	{
+		antLoopChangeSide = true;
+		
+		if( ValidateAction(170) )
+			ChangeAction(170);
+
+		else
+			toRight = !toRight;
+	}
+	if( action == 170 && frame == changeSideCrouched[1] && clock() - capturaTempo > TEF-50 )
+	{
+		toRight = !toRight;
+		ChangeAction(11);
+	}
+	if( antLoopChangeSide && !key[ KEY_2_PAD ] )
+		antLoopChangeSide = false;
+	
 	
 }END_OF_FUNCTION(InterpretationEngine);
 
@@ -822,6 +863,18 @@ bool Player::ValidateAction(int value)
 			else return false;
 		break;
 	
+		case 160://changeSide
+			if( action == 0 )
+				return true;
+			else return false;
+		break;
+	
+		case 170://changeSideCrouched
+			if( action == 11 )
+				return true;
+			else return false;
+		break;
+		
 		default:
 			return false;
 		break;
@@ -990,6 +1043,16 @@ bool Player::VerifyFrame(int value)
 	
 		case 151://BackRollingEnd
 			if(	frame <= backRollingEnd[0] || frame >= backRollingEnd[1] ) 
+				return true;
+		break;
+	
+		case 160://changeSide
+			if(	frame <= changeSide[0] || frame >= changeSide[1] ) 
+				return true;
+		break;
+	
+		case 170://changeSideCrouched
+			if(	frame <= changeSideCrouched[0] || frame >= changeSideCrouched[1] ) 
 				return true;
 		break;
 	

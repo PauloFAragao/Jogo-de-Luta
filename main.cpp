@@ -97,6 +97,10 @@ int main()
 			textprintf_ex(buffer, font, 1500, 130, makecol(255, 255, 0), -1, "speed X  %f ", p1.GetSpeedX());
 			textprintf_ex(buffer, font, 1500, 140, makecol(255, 255, 0), -1, "speed y  %f ", p1.GetSpeedY());
 			textprintf_ex(buffer, font, 1500, 150, makecol(255, 255, 0), -1, "action: %d ", p1.GetAction());
+			if( p1.GetToRight() ) 
+				textprintf_ex(buffer, font, 1500, 160, makecol(255, 255, 0), -1, "Virado para a direita");
+			else
+				textprintf_ex(buffer, font, 1500, 160, makecol(255, 255, 0), -1, "Virado para a esquerda");
 			
 			
 			//imprime o frame

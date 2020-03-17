@@ -49,8 +49,13 @@ imagens (os sprites dessas animações já estão totalmente redimencionados: id
 
 -Na verção polimento 3.4 a resolução da tela foi almentada para 1728x900
 -As imagens da interface foram redimencionadas e suas posições corigidas
--Foi iniciado o processo de implementação das barras (vida, escudo, especial) na classe interface
+-Foi implementada a logica das barras da classe interface (vida, escudo, especial)
 -O metodo InterpletationEngine foi colocado de volta na classe player
+-Foram criados novos arquivos .cpp distribuindo melhor os metodos das classes
+-O contorno rosa das imagens foi retirando porem as imagens perderam qualidade
+-O personagem agora pode virar para a esquerda
+-As imagens não estão centralizadas então quando a animação de mudar de lado roda acontece uma mudança
+brusca da posição do personagem
 -Animações implementadas:
 	-defending
 	-defence
@@ -62,8 +67,8 @@ imagens (os sprites dessas animações já estão totalmente redimencionados: id
 	-defend Exit Crouched
 	-front Rolling
 	-back Rolling
-
-
+	-changeSide
+	-changeSideCrouched
 
 
 

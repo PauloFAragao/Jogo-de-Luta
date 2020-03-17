@@ -353,6 +353,14 @@ void Player::SetBackRollingEnd(int backRollingEnd, int index)
 {
 	this->backRollingEnd[index] = backRollingEnd;
 }
+void Player::SetChangeSide(int changeSide, int index)
+{
+	this->changeSide[index] = changeSide;
+}
+void Player::SetChangeSideCrouched(int changeSideCrouched, int index)
+{
+	this->changeSideCrouched[index] = changeSideCrouched;
+}
 void Player::SetTakingDmg(bool takingDmg)
 {
 	this->takingDmg = takingDmg;

@@ -141,6 +141,14 @@ void Terry::TerryAnimations()
 			Anim27();
 		break;
 	
+		case 160://changeSide
+			Anim28();
+		break;
+	
+		case 170://changeSideCrouched
+			Anim29();
+		break;
+	
 		default: //ERROR
 			SetFrame(0);
 		break;
@@ -640,8 +648,32 @@ void Terry::Anim27()//Back Rolling End					106 - 113
 }END_OF_FUNCTION(Anim27);
 
 
+void Terry::Anim28()//changeSide						124-126
+{
+	if( !GetStartAnimation() )
+	{ SetFrame(124); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
+	else
+	{
+		if( GetFrame() == 124 && clock() - GetCapturaTempo() > TEF-50 )//frame 1
+		{ SetFrame(125); SetCapturaTempo(clock()); }
+		if( GetFrame() == 125 && clock() - GetCapturaTempo() > TEF-50 )//frame 2
+		{ SetFrame(126); SetCapturaTempo(clock()); }
+	}
+}END_OF_FUNCTION(Anim18);
 
 
+void Terry::Anim29()//changeSideCrouched				127-129
+{
+	if( !GetStartAnimation() )
+	{ SetFrame(127); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
+	else
+	{
+		if( GetFrame() == 127 && clock() - GetCapturaTempo() > TEF-50 )//frame 1
+		{ SetFrame(128); SetCapturaTempo(clock()); }
+		if( GetFrame() == 128 && clock() - GetCapturaTempo() > TEF-50 )//frame 2
+		{ SetFrame(129); SetCapturaTempo(clock()); }
+	}
+}END_OF_FUNCTION(Anim18);
 
 
 

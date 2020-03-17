@@ -3,7 +3,7 @@
 
 #include <allegro.h>
 
-#define QTDFRAMES 124
+#define QTDFRAMES 130
 
 class Player
 {
@@ -89,7 +89,10 @@ class Player
 		void SetSlide(int slide, int index);
 		void SetFrontRollingEnd(int frontRollingEnd, int index);
 		void SetBackRollingEnd(int backRollingEnd, int index);
+		void SetChangeSide(int changeSide, int index);
+		void SetChangeSideCrouched(int changeSideCrouched, int index);
 		void SetTakingDmg(bool takingDmg);
+
 
 		
 		BITMAP *GetPlayerSprite();
@@ -129,6 +132,8 @@ class Player
 		bool startAnimation;	//faz a animação iniciar
 		
 		bool toRight;			//indica para que lado o personagem está virado
+		
+		bool antLoopChangeSide;//VARIAVEL TEMPORARIA
 
 		//variaveis para resolver o bug da corrida
 		bool antLoopBT0;
@@ -187,6 +192,8 @@ class Player
 		int slide[2];				//animação numero 25
 		int frontRollingEnd[2];		//animação numero 26
 		int backRollingEnd[2];		//animação numero 27
+		int changeSide[2];			//animação numero 28
+		int changeSideCrouched[2];	//animação numero 29
 		
 		//tempos em que os botões são pressionados
 		int btTPress[8][10];
