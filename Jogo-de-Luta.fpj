@@ -39,7 +39,7 @@
 		<File Name="TerryLoadSprites.cpp"/>
 		<File Name="Interface.h"/>
 		<File Name="Interface.cpp"/>
-		<File Name="InterfaceLoadSprites.cpp"/>
+		<File Name="InterfaceLoadBitmaps.cpp"/>
 		<File Name="InterfaceAnim.cpp"/>
 		<File Name="InterfaceBuild.cpp"/>
 		<File Name="Scenario.h"/>

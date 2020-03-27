@@ -4,15 +4,15 @@
 
 #define TEF 120					//tempo entre os frames
 #define GRAVIDADE 0.7			//gravidade global
-#define CHAO 80					//posição do chão
+#define CHAO 160				//posição do chão
 
-#define	WALKSPEED 7				//velocidade que o personagem vai andar VELANDAR
-#define RUNSPEED 13				//velocidade que o personagem vai correr RUNSPEED
+#define	WALKSPEED 5				//velocidade que o personagem vai andar VELANDAR
+#define RUNSPEED 10				//velocidade que o personagem vai correr RUNSPEED
 #define WEAKJUMPSTRENGTH 17		//força do pulo fraco
 #define STRONGJUMPSTRENGTH 25	//força do pulo forte
 
-#define MINSCENARYWIDTH -290	  //posição do fim do cenario a esquerda
-#define MAXSCENARYWIDTH 1242	  //posição do fim do cenario a direita
+#define MINSCENARYWIDTH -200	  //posição do fim do cenario a esquerda
+#define MAXSCENARYWIDTH 825	  //posição do fim do cenario a direita
 
 
 //construtor
@@ -446,7 +446,7 @@ void Player::VerticalMove()
 
 	if(  action == 40 || action == 60 || action == 80 )
 	{
-		if( frame == 41 && clock() - capturaTempo > TEF )
+		if( frame == crouching[1] && clock() - capturaTempo > TEF )
 		{
 			if( btTPress[3][9] - btTPress[3][8] > 120 || button03 )//pulo forte
 	//btTPress[3][7] - btTPress[3][8] > 120 = se o botão ficou pressionado mais tempo que 120 ms
@@ -461,12 +461,12 @@ void Player::VerticalMove()
 					speedY = -STRONGJUMPSTRENGTH;
 				}
 				
-				//pulo forte na diagonal com o botão direcional para frent
+				//pulo forte na diagonal com o botão direcional para frente
 				else if( button02 || ( btTPress[3][8] - btTPress[2][8] >= -30 && btTPress[3][8] - btTPress[2][8] <= 30 ) )
 	// se btTPress[3][8] - btTPress[2][8] (botão para cima e botão para frente) foi entre -30 e 30 (60 ms de diferença entre os botões terem sido pressionados)
 				{
 					if(toRight) {speedX =  RUNSPEED; ChangeAction(71);  } //pulando na diagonal para frente
-					else 		{speedX =  RUNSPEED; ChangeAction(91); } //pulando na diagonal para tras
+					else 		{speedX =  RUNSPEED; ChangeAction(91); }  //pulando na diagonal para tras
 					speedY = -STRONGJUMPSTRENGTH;
 				}
 				

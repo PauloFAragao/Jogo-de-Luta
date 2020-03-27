@@ -1,0 +1,24 @@
+modificação geral da resolução  - 512x512 nos sprites do personagem - implementado
+				- 1080x610 tela do jogo - implementado
+
+Inplementações para a função Interface - implementando
+	contador decrescente
+	
+Distribuir o que as funções horizontalMove e VerticalMove e talvez o que a função
+InterpletationEngine em outroas funções
+
+verificar se é possivel otimizar as funções de animação - implementado
+
+fazer o player 2
+	criar uma forma de imputs para o player 2
+	colocar no construtor da classe player se ele é o player 1 ou o 2
+
+verificar a viabilidade de fazer uma classe game que vai ser herdada por scenario
+	essa classe pode controlar até onde os personagens podem ir
+
+bug na verção 3.4 se o jogador pressionar o botão para baixo no momento que o jogo 
+está executando a ação 12 (se levantar)
+
+Implementação necessaria para quando o personagem virar para o outro lado - o 
+personagem precisa primeiro terminar a animação que está executano para o lado que 
+está executando para depois virar para o outro lado

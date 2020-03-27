@@ -16,11 +16,11 @@
 #include "Scenario.h"
 
 
-#define COMPLETERENDER false
+#define COMPLETERENDER true
 
 
-int WINDOW_WIDTH  = 1728;
-int WINDOW_HEIGHT = 900;
+int WINDOW_WIDTH  = 1140;
+int WINDOW_HEIGHT = 630;
 
 volatile int exitGame=false;
 void handler(){exitGame=true;}END_OF_FUNCTION(handler);
@@ -53,54 +53,52 @@ int main()
         
         //rotina principal da classe player
         p1.Routine();
-        
-        //rotina principal da classe interface
-        if(COMPLETERENDER) ui.Routine();
 		
 		
 	//render
 		
 		//cenario do jogo
-		if(COMPLETERENDER) draw_sprite(buffer, scenario.GetScenarioSprite(), scenario.GetX(), scenario.GetY() );
+		if(COMPLETERENDER) draw_sprite( buffer, scenario.GetScenarioSprite(), scenario.GetX(), scenario.GetY() );
 		
 		//personagens
-		draw_sprite(buffer, p1.GetPlayerSprite(), p1.GetX(), p1.GetY());
+		draw_sprite( buffer, p1.GetPlayerSprite(), p1.GetX(), p1.GetY());
 		//draw_sprite(buffer, p2, 500, 80);
 		
 		//interface
-		if(COMPLETERENDER) draw_sprite(buffer, ui.GetCompleteInterface(), 0, 0 );
-				
+		if(COMPLETERENDER) draw_sprite( buffer, ui.GetCompleteInterface(), 0, 0 );
+		
+		
 		if(!COMPLETERENDER)
 		{
 			//imprime as booleanas dos botões
-			if(p1.GetButton00()) 	textprintf_ex(buffer, font, 1500, 10, makecol(255, 0, 0), -1, "Direcional - tras: true ");
-			else					textprintf_ex(buffer, font, 1500, 10, makecol(255, 0, 0), -1, "Direcional - tras: false ");
-			if(p1.GetButton01()) 	textprintf_ex(buffer, font, 1500, 20, makecol(255, 0, 0), -1, "Direcional - baixo: true ");
-			else					textprintf_ex(buffer, font, 1500, 20, makecol(255, 0, 0), -1, "Direcional - baixo: false ");
-			if(p1.GetButton02()) 	textprintf_ex(buffer, font, 1500, 30, makecol(255, 0, 0), -1, "Direcional - frente: true ");
-			else					textprintf_ex(buffer, font, 1500, 30, makecol(255, 0, 0), -1, "Direcional - frente: false ");
-			if(p1.GetButton03()) 	textprintf_ex(buffer, font, 1500, 40, makecol(255, 0, 0), -1, "Direcional - cima: true ");
-			else					textprintf_ex(buffer, font, 1500, 40, makecol(255, 0, 0), -1, "Direcional - cima: false ");
-			if(p1.GetButton04()) 	textprintf_ex(buffer, font, 1500, 60, makecol(255, 0, 0), -1, "Soco fraco: true ");
-			else					textprintf_ex(buffer, font, 1500, 60, makecol(255, 0, 0), -1, "Soco fraco: false ");
-			if(p1.GetButton05()) 	textprintf_ex(buffer, font, 1500, 70, makecol(255, 0, 0), -1, "Soco forte: true ");
-			else					textprintf_ex(buffer, font, 1500, 70, makecol(255, 0, 0), -1, "Soco forte: false ");
-			if(p1.GetButton06()) 	textprintf_ex(buffer, font, 1500, 80, makecol(255, 0, 0), -1, "Chute fraco: true ");
-			else					textprintf_ex(buffer, font, 1500, 80, makecol(255, 0, 0), -1, "Chute fraco: false ");
-			if(p1.GetButton07()) 	textprintf_ex(buffer, font, 1500, 90, makecol(255, 0, 0), -1, "Chute forte: true ");
-			else					textprintf_ex(buffer, font, 1500, 90, makecol(255, 0, 0), -1, "Chute forte: false ");
+			if(p1.GetButton00()) 	textprintf_ex(buffer, font, 920, 10, makecol(255, 255, 255), -1, "Direcional - tras: true ");
+			else					textprintf_ex(buffer, font, 920, 10, makecol(255, 255, 255), -1, "Direcional - tras: false ");
+			if(p1.GetButton01()) 	textprintf_ex(buffer, font, 920, 20, makecol(255, 255, 255), -1, "Direcional - baixo: true ");
+			else					textprintf_ex(buffer, font, 920, 20, makecol(255, 255, 255), -1, "Direcional - baixo: false ");
+			if(p1.GetButton02()) 	textprintf_ex(buffer, font, 920, 30, makecol(255, 255, 255), -1, "Direcional - frente: true ");
+			else					textprintf_ex(buffer, font, 920, 30, makecol(255, 255, 255), -1, "Direcional - frente: false ");
+			if(p1.GetButton03()) 	textprintf_ex(buffer, font, 920, 40, makecol(255, 255, 255), -1, "Direcional - cima: true ");
+			else					textprintf_ex(buffer, font, 920, 40, makecol(255, 255, 255), -1, "Direcional - cima: false ");
+			if(p1.GetButton04()) 	textprintf_ex(buffer, font, 920, 60, makecol(255, 255, 255), -1, "Soco fraco: true ");
+			else					textprintf_ex(buffer, font, 920, 60, makecol(255, 255, 255), -1, "Soco fraco: false ");
+			if(p1.GetButton05()) 	textprintf_ex(buffer, font, 920, 70, makecol(255, 255, 255), -1, "Soco forte: true ");
+			else					textprintf_ex(buffer, font, 920, 70, makecol(255, 255, 255), -1, "Soco forte: false ");
+			if(p1.GetButton06()) 	textprintf_ex(buffer, font, 920, 80, makecol(255, 255, 255), -1, "Chute fraco: true ");
+			else					textprintf_ex(buffer, font, 920, 80, makecol(255, 255, 255), -1, "Chute fraco: false ");
+			if(p1.GetButton07()) 	textprintf_ex(buffer, font, 920, 90, makecol(255, 255, 255), -1, "Chute forte: true ");
+			else					textprintf_ex(buffer, font, 920, 90, makecol(255, 255, 255), -1, "Chute forte: false ");
 			
 			
 			//posições e velocidade
-			textprintf_ex(buffer, font, 1500, 110, makecol(255, 255, 0), -1, "pos X  %f ", p1.GetX());
-			textprintf_ex(buffer, font, 1500, 120, makecol(255, 255, 0), -1, "pos y  %f ", p1.GetY());
-			textprintf_ex(buffer, font, 1500, 130, makecol(255, 255, 0), -1, "speed X  %f ", p1.GetSpeedX());
-			textprintf_ex(buffer, font, 1500, 140, makecol(255, 255, 0), -1, "speed y  %f ", p1.GetSpeedY());
-			textprintf_ex(buffer, font, 1500, 150, makecol(255, 255, 0), -1, "action: %d ", p1.GetAction());
+			textprintf_ex(buffer, font, 920, 110, makecol(255, 255, 0), -1, "pos X  %f ", p1.GetX());
+			textprintf_ex(buffer, font, 920, 120, makecol(255, 255, 0), -1, "pos y  %f ", p1.GetY());
+			textprintf_ex(buffer, font, 920, 130, makecol(255, 255, 0), -1, "speed X  %f ", p1.GetSpeedX());
+			textprintf_ex(buffer, font, 920, 140, makecol(255, 255, 0), -1, "speed y  %f ", p1.GetSpeedY());
+			textprintf_ex(buffer, font, 920, 150, makecol(255, 255, 0), -1, "action: %d ", p1.GetAction());
 			if( p1.GetToRight() ) 
-				textprintf_ex(buffer, font, 1500, 160, makecol(255, 255, 0), -1, "Virado para a direita");
+				textprintf_ex(buffer, font, 920, 160, makecol(255, 255, 0), -1, "Virado para a direita");
 			else
-				textprintf_ex(buffer, font, 1500, 160, makecol(255, 255, 0), -1, "Virado para a esquerda");
+				textprintf_ex(buffer, font, 920, 160, makecol(255, 255, 0), -1, "Virado para a esquerda");
 			
 			
 			//imprime o frame

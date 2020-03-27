@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Layout>
+	<Files>
+		<File Name="Interface.h" Top="Yes" Tabpos="1" TopLine="1">
+			<Cursor Line="208" Column="1"/>
+			<Selection Line="209" Column="20"/>
+		</File>
+		<File Name="Interface.cpp" Top="No" Tabpos="2" TopLine="197">
+			<Cursor Line="215" Column="3"/>
+		</File>
+		<File Name="InterfaceBuild.cpp" Top="No" Tabpos="3" TopLine="233">
+			<Cursor Line="281" Column="1"/>
+		</File>
+		<File Name="InterfaceLoadBitmaps.cpp" Top="No" Tabpos="4" TopLine="1">
+			<Cursor Line="74" Column="71"/>
+		</File>
+		<File Name="InterfaceAnim.cpp" Top="No" Tabpos="5" TopLine="1">
+			<Cursor Line="4" Column="1"/>
+		</File>
+		<File Name="main.cpp" Top="No" Tabpos="6" TopLine="25">
+			<Cursor Line="1" Column="1"/>
+		</File>
+	</Files>
+</Layout>

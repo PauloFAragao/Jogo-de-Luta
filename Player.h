@@ -3,7 +3,7 @@
 
 #include <allegro.h>
 
-#define QTDFRAMES 130
+#define QTDFRAMES 131
 
 class Player
 {
@@ -62,35 +62,66 @@ class Player
 		
 		int GetBtTPress(int botao, int pos);
 		
+		int GetIdle( int index );
 		void SetIdle(int idle, int index);
+		int GetCrouching( int index );
 		void SetCrouching(int crouching, int index);
+		int GetCrouchedIdle( int index );
 		void SetCrouchedIdle(int crouchedIdle, int index);
+		int GetWalk( int index );
 		void SetWalk(int walk, int index);
+		int GetWalkBack( int index );
 		void SetWalkBack(int walkBack, int index);
+		int GetRising( int index );
 		void SetRising(int rising, int index);
+		int GetEndOfClimp( int index );
 		void SetEndOfClimp(int endOfClimp, int index);
+		int GetFalling( int index );
 		void SetFalling(int falling, int index);
+		int GetFall( int index );
 		void SetFall(int fall, int index);
+		int GetStrongFrontalDJ( int index );
 		void SetStrongFrontalDJ(int strongFrontalDJ, int index);
+		int GetStrongBackDJ( int index );
 		void SetStrongBackDJ(int strongBackDJ, int index);
+		int GetRun( int index );
 		void SetRun(int run, int index);
+		int GetJumpBack( int index );
 		void SetJumpBack(int jumpBack, int index);
+		int GetJumpBackFall( int index );
 		void SetJumpBackFall(int jumpBackFall, int index);
+		int GetDefending( int index );
 		void SetDefending(int defending, int index);
+		int GetDefence( int index );
 		void SetDefence(int defence, int index);
+		int GetTakingDamage( int index );
 		void SetTakingDamage(int takingDamage, int index);
+		int GetDefendExit( int index );
 		void SetDefendExit(int defendExit, int index);
+		int GetDefendingCrouched( int index );
 		void SetDefendingCrouched(int defendingCrouched, int index);
+		int GetDefenceCrouched( int index );
 		void SetDefenceCrouched(int defenceCrouched, int index);
+		int GetTakingDamageCrouched( int index );
 		void SetTakingDamageCrouched(int takingDamageCrouched, int index);
+		int GetDefendExitCrouched( int index );
 		void SetDefendExitCrouched(int defendExitCrouched, int index);
+		int GetFrontRolling( int index );
 		void SetFrontRolling(int frontRolling, int index);
+		int GetBackRolling( int index );
 		void SetBackRolling(int backRolling, int index);
+		int GetSlide( int index );
 		void SetSlide(int slide, int index);
+		int GetFrontRollingEnd( int index );
 		void SetFrontRollingEnd(int frontRollingEnd, int index);
+		int GetBackRollingEnd( int index );
 		void SetBackRollingEnd(int backRollingEnd, int index);
+		int GetChangeSide( int index );
 		void SetChangeSide(int changeSide, int index);
+		int GetChangeSideCrouched( int index );
 		void SetChangeSideCrouched(int changeSideCrouched, int index);
+
+		
 		void SetTakingDmg(bool takingDmg);
 
 
