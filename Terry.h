@@ -17,6 +17,8 @@ class Terry:public Player
 			
 		//Metodos publicos
 		void Routine();
+		
+		BITMAP* GetPlayerSprite();
 			
 	private:
 

@@ -24,7 +24,6 @@ class Player
 		
 		
 		//---gets & sets---
-		
 		float GetX();
 		void  SetX(float x);
 		float GetY();
@@ -57,7 +56,6 @@ class Player
 		void  SetPow(int pow);
 		bool  GetPow();
 
-		
 		int  GetCapturaTempo();
 		void SetCapturaTempo(int capturaTempo);
 		
@@ -122,15 +120,11 @@ class Player
 		int GetChangeSideCrouched( int index );
 		void SetChangeSideCrouched(int changeSideCrouched, int index);
 
-		
 		void SetTakingDmg(bool takingDmg);
 
-
-		
-		BITMAP *GetPlayerSprite();
-		BITMAP *GetSprites(int index);
-		void    SetSrites(BITMAP *sprite, int index);
-		void 	SetSpritesToLeft(BITMAP *spritesToLeft, int index);
+		//BITMAP *GetPlayerSprite();
+		BITMAP *GetSprites(int side, int index);
+		void SetSrites(BITMAP *sprite, int index, int side );
 		
 		bool GetButton00();
 		bool GetButton01();
@@ -149,7 +143,16 @@ class Player
 		void VerticalMove();						//movimentação do personagem na vertical
 		void writeOnBtTmPress(int pos, bool valor);	//escreve no array de tempos os tempos em que os botões foram pressionados
 		void StartAttributes();						//inicia os atributos com os valores coretos
-		void InterpretationEngine();
+
+		//motor de imterpletação
+		void InterpretationWalkWalkBackRun();
+		void InterpretationJumpBack();
+		void InterpretationJump();
+		void InterpretationStrongDiagonalJump();
+		void InterpretationCrouch();
+		void InterpretationDefence();
+		void InterpretationRolling();
+		void InterpretationChangeSide();
 
 		//atributos privados
 		float x;				//posição em X do player
@@ -240,8 +243,12 @@ class Player
 		int btTPress[8][10];
 		
 		//array para carregar os sprites
-		BITMAP *sprites[QTDFRAMES];
-		BITMAP *spritesToLeft[QTDFRAMES];
+		//BITMAP *sprites[QTDFRAMES];
+		//BITMAP *spritesToLeft[QTDFRAMES];
+		
+		//0 - personagem virado para a direita
+		//1 - personagem virado para a esquerda
+		BITMAP *sprites[2][QTDFRAMES];
 
 };
 #endif//PLAYER_H

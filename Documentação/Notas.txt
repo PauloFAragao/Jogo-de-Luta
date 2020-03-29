@@ -1,3 +1,12 @@
-construtor da classe interface precisa receber os seguintes argumentos:
+Construtor da classe Interface precisa receber os seguintes argumentos:
 vida maxima do personagem 1
 vida maxima do personagem 2
+
+Construtor da classe Player
+player number
+
+
+
+
+
+

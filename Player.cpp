@@ -11,8 +11,8 @@
 #define WEAKJUMPSTRENGTH 17		//força do pulo fraco
 #define STRONGJUMPSTRENGTH 25	//força do pulo forte
 
-#define MINSCENARYWIDTH -200	  //posição do fim do cenario a esquerda
-#define MAXSCENARYWIDTH 825	  //posição do fim do cenario a direita
+#define MINSCENARYWIDTH -200	//posição do fim do cenario a esquerda
+#define MAXSCENARYWIDTH 825	  	//posição do fim do cenario a direita
 
 
 //construtor
@@ -22,8 +22,7 @@ Player::Player() { StartAttributes(); }
 //destrutor
 Player::~Player()
 {
-	destroy_bitmap( *sprites );
-	destroy_bitmap( *spritesToLeft );
+	destroy_bitmap( **sprites );
 }
 
 
@@ -56,7 +55,7 @@ void Player::StartAttributes()
 	bt6TimeCapture=false;			//variavel para captura de tempo do botão 06
 	bt7TimeCapture=false;			//variavel para captura de tempo do botão 07
 
-	shild = 0;						//quantidade de pontos de defesa atual do personagem
+	shild = 200;					//quantidade de pontos de defesa atual do personagem
 	especialBar = 0;				//quantidade de pontos de especial
 	especialQuantity = 0;			//quantos pontos de especial o personagem tem
 	powTime = 0;					//tempo restante da barra quando o jogador esroura uma barra
@@ -105,8 +104,16 @@ void Player::PlayerRoutine()
 	//movimenta o player na vertical
 	VerticalMove();
 	
-	//motor de imterpletação
-	InterpretationEngine();
+	//motor de imterpletação	
+	InterpretationWalkWalkBackRun();
+	InterpretationJumpBack();
+	InterpretationJump();
+	InterpretationStrongDiagonalJump();
+	InterpretationCrouch();
+	InterpretationDefence();
+	InterpretationRolling();
+	InterpretationChangeSide();
+	
 		
 }END_OF_FUNCTION(PlayerRoutine);
 
@@ -545,239 +552,6 @@ void Player::VerticalMove()
 }END_OF_FUNCTION(VertivalMove);
 
 
-/**
- * Esse metodo é responsavel por imterpletar as situações em que o personagem se encontra e mudar os valores de action
- */
-void Player::InterpretationEngine()
-{
-	
-	//walk - walkBack - run
-	if( speedX == 0 && VerifyFrame( 0 ) && ( action == 20 || action == 30 || action == 100 || action == 101 )  )
-		ChangeAction(0);
-	if( action == 100 && speedX != 0 )
-	{
-		if( toRight && !button02 )
-		{
-			ChangeAction(101);
-		}
-		else if( !toRight && !button00 )
-		{
-			ChangeAction(101);
-		}
-	}
-	
-	
-	//jumpBack
-	if( action == 110 && y >= CHAO )//animação do personagem pulando para tras em quando está no ar
-	{
-		ChangeAction(111);
-	}
-	if( action == 111 && clock() - capturaTempo > TEF )//animação do personagem caindo no chão e se recuperando da queda
-	{
-		//continua antando para tras
-		if( button00 && toRight )
-		{
-			speedX = -WALKSPEED;
-			ChangeAction(30);
-		}
-		if( button02 && !toRight )
-		{
-			speedX = WALKSPEED;
-			ChangeAction(30);
-		}
-		
-		//o personagem parou de andar para tras
-		if( speedX == 0 )
-		{
-			ChangeAction(0);
-		}
-	}
-	
-	
-//jump
-	//muda de rising para endOfClimp
-	if( action == 41 && speedY > - 3 ) ChangeAction( 42 );
-	if( action == 51 && speedY > - 3 ) ChangeAction( 52 );
-	if( action == 61 && speedY > - 3 ) ChangeAction( 62 );
-	if( action == 81 && speedY > - 3 ) ChangeAction( 82 );
-	//muda de endOfClimp para falling
-	if( action == 42 && speedY > 5 ) ChangeAction( 43 );
-	if( action == 52 && speedY > 5 ) ChangeAction( 53 );
-	if( action == 62 && speedY > 5 ) ChangeAction( 63 );
-	if( action == 82 && speedY > 5 ) ChangeAction( 83 );
-	//muda de falling para fall
-	if( action == 43 && y >= CHAO ) { ChangeAction( 44 ); speedX = 0; }
-	if( action == 53 && y >= CHAO ) { ChangeAction( 54 ); speedX = 0; }
-	if( action == 63 && y >= CHAO ) { ChangeAction( 64 ); speedX = 0; }
-	if( action == 83 && y >= CHAO ) { ChangeAction( 84 ); speedX = 0; }
-	//muda de fall para idle
-	if( action == 44 || action == 54 || action == 64 || action == 84 )
-	{
-		//aqui a animação deve ser completamente executada e depois mudar para a animação idle
-		if( frame == fall[1] && clock() - capturaTempo > TEF  )
-		{
-			ChangeAction(0);
-		}
-	}
-	
-	
-//strongFrontalDiagonalJump
-	if( action == 71 )
-	{
-		//essa animação deve rodar até o ultimo frame e entao mudar para a animação falling
-		if( frame == strongFrontalDJ[1] && clock() - capturaTempo > TEF )
-		{
-			ChangeAction(43);
-		}
-	}
-	
-	
-//strongBackDiagonalJump
-	if( action == 91 )
-	{
-		//essa animação deve rodar até o ultimo frame e entao mudar para a animação falling
-		if( frame == strongBackDJ[1] && clock() - capturaTempo > TEF )
-		{
-			ChangeAction(43);
-		}
-	}
-	
-	
-//crouched
-	if( button01 && ValidateAction( 10 ) )//crouching
-	{
-		ChangeAction( 10 );
-	}
-	if( button01 && action == 10 && frame == crouching[1] && clock() - capturaTempo > TEF )//crouchedIdle
-	{
-		ChangeAction( 11 );
-	}
-	if(! button01 && ( action == 10 || action == 11 ) )//raiseCrouched
-	{
-		ChangeAction( 12 );
-	}
-	if( !button01 && action == 12 && frame == crouching[0] && clock() - capturaTempo > TEF )//idle
-	{
-		ChangeAction( 0 );
-	}
-
-	
-//defence
-	if( action == 120 && opponentAttacking && frame == defending[1] && clock() - capturaTempo > TEF )//animação que inicia a defesa
-	{
-		if( toRight && button00  ) ChangeAction(121);
-		if( !toRight && button01 ) ChangeAction(121);
-	}
-	if( takingDmg && ( action == 120 || action == 121 ) )//animação de sofrendo dano
-	{
-		ChangeAction(122);
-	}
-	if( action == 122 && frame == takingDamage[1] && clock() - capturaTempo > TEF )//animação de defesa
-	{
-		takingDmg = false;
-		if( toRight && button00  ) ChangeAction(121);
-		if( !toRight && button02 ) ChangeAction(121);
-	}
-	if( ( action == 120 || action == 121 || action == 122 ) && ( ( !button00 && toRight ) || ( !button02 && !toRight ) || !opponentAttacking) )//animação de saida da defesa
-	{
-		ChangeAction(123);
-	}
-
-	if( action == 123 && frame == defendExit[0] && clock() - capturaTempo > TEF )//voltando para idle
-	{
-		ChangeAction(0);
-	}
-
-	
-//Defence Crouched
-	if( action == 130 && opponentAttacking && frame == defendingCrouched[1] && clock() - capturaTempo > TEF )//animação que inicia a defesa
-	{
-		if( toRight && button00  ) ChangeAction(131);
-		if( !toRight && button01 ) ChangeAction(131);
-	}
-	if( takingDmg && ( action == 130 || action == 131 ) )//animação de sofrendo dano
-	{
-		ChangeAction(132);
-	}
-	if( action == 132 && frame == takingDamageCrouched[1] && clock() - capturaTempo > TEF )//animação de defesa
-	{
-		takingDmg = false;
-		if( toRight && button00  ) ChangeAction(131);
-		if( !toRight && button02 ) ChangeAction(131);
-	}
-	if( ( action == 130 || action == 131  || action == 132 ) && ( ( !button00 && toRight ) || ( !button02 && !toRight ) || !opponentAttacking) )//animação de saida da defesa
-	{
-		ChangeAction(133);
-	}
-	if( action == 133 && frame == defendExitCrouched[0] && clock() - capturaTempo > TEF )//voltando para idle
-	{
-		ChangeAction(11);
-	}
-	
-	
-//rolamento para frente
-	if( action == 140 && frame == frontRolling[1] && clock() - capturaTempo > TEF-60 )
-	{
-		ChangeAction(141);
-	}
-	if( action == 141 && frame == frontRollingEnd[1] && clock() - capturaTempo > TEF-60 )
-	{
-		ChangeAction(0);
-	}
-	
-//rolamento para tras
-	if( action == 150 && frame == backRolling[1] && clock() - capturaTempo > TEF-60 )
-	{
-		ChangeAction(151);
-	}
-	if( action == 151 && frame == backRollingEnd[1] && clock() - capturaTempo > TEF-60 )
-	{
-		ChangeAction(0);
-	}
-	
-//mudar de lado <<<< TEMPORARIO
-	//mudar de lado em pé
-	if( key[ KEY_2_PAD ] && !button01 && !antLoopChangeSide )
-	{
-		antLoopChangeSide = true;
-		
-		if( ValidateAction(160) )
-			ChangeAction(160);
-
-		else
-			toRight = !toRight;
-	}
-	if( action == 160 && frame == changeSide[1] && clock() - capturaTempo > TEF-50 )
-	{
-		toRight = !toRight;
-		ChangeAction(0);
-	}
-	if( antLoopChangeSide && !key[ KEY_2_PAD ] )
-		antLoopChangeSide = false;
-	
-	//mudar de lado agachado
-	if( key[ KEY_2_PAD ] && button01 && !antLoopChangeSide )
-	{
-		antLoopChangeSide = true;
-		
-		if( ValidateAction(170) )
-			ChangeAction(170);
-
-		else
-			toRight = !toRight;
-	}
-	if( action == 170 && frame == changeSideCrouched[1] && clock() - capturaTempo > TEF-50 )
-	{
-		toRight = !toRight;
-		ChangeAction(11);
-	}
-	if( antLoopChangeSide && !key[ KEY_2_PAD ] )
-		antLoopChangeSide = false;
-	
-	
-}END_OF_FUNCTION(InterpretationEngine);
-
-
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>> Validadores <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
@@ -798,6 +572,11 @@ bool Player::ValidateAction(int value)
 		break;
 		
 		case 10: //Crouched
+			if( action == 0 || action == 12 )
+				return true;
+			else return false;
+		break;
+	
 		case 40: //Weak Jump
 			if( action == 0 )
 				return true;

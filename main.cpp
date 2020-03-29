@@ -39,7 +39,7 @@ int main()
 			
 		blit( g.GetGameScreen() , screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
 	
-        rest(20);
+        rest(10);
     }
 
     allegro_exit();

@@ -2,51 +2,15 @@
 #include "Player.h"
 
 //sprites
-BITMAP* Player::GetPlayerSprite()//esse metodo retorna o frame que deve ser renderizado
+BITMAP* Player::GetSprites(int side, int index)
 {
-
-	if( key[ KEY_0_PAD ]  ) opponentAttacking = true;
-	if( !key[ KEY_0_PAD ] ) opponentAttacking = false;
-	
-	if( key[ KEY_1_PAD ]  ) takingDmg = true;
-
-	
-	//captura os imputs do plauer
-	TrackImputs();
-	
-	//movimenta o player na horizontal
-	HorizontalMove();
-	
-	//movimenta o player na vertical
-	VerticalMove();
-	
-	//motor de imterpletação
-	InterpretationEngine();
-	
-	
-	if( toRight ) 
-		return sprites[ frame ];
-	else 
-		return spritesToLeft[ frame ];
-	
-}END_OF_FUNCTION(GetPlayerSprite);
-
-//sprites
-BITMAP* Player::GetSprites(int index)
-{
-	return sprites[index];
+	return sprites[side][index];
 }END_OF_FUNCTION(GetSprites)
 
 //sprites
-void Player::SetSrites(BITMAP *sprite, int index)
+void Player::SetSrites(BITMAP *sprite, int index, int side )
 {
-	this->sprites[index] = sprite;
-}END_OF_FUNCTION(SetSrite)
-
-//spritesToLeft
-void Player::SetSpritesToLeft(BITMAP *spritesToLeft, int index)
-{
-	this->spritesToLeft[index] = spritesToLeft;
+	this->sprites[side][index] = sprite;
 }END_OF_FUNCTION(SetSrite)
 
 //x

@@ -73,13 +73,16 @@ brusca da posição do personagem
 -Na verção polimento 3.5 a resolução da tela foi alterada para 1140x630
 -Os sprites estão sendo utilizados na resolução 512x512 (resolução original)
 -A interface foi adaptada para a nova resolução e a classe interface sofreu varias mudanças
--As funções de animação do personagem foram alteradas
+-As funções de animação do personagem foram otimizadas
 -Foi criada uma nova classe chamada Game, essa classe vai receber todas as declarações de 
 objetos, vai montar a tela do jogo e retornar para a função principal, vai fazer o 
 controle do game pause, etc
-
-
-
+-O vetor de bitmap onde eram carregados os sprites do personagem foi transformado em uma matrix,
+agora os sprites do personagem virado para a esquerda são carregados no mesmo lugar que os sprites
+do personagem virado para a direita
+-Os objetos dos personagens agora são alocados na memoria de forma dinamica
+-O metodo InterpletationEngine da classe player foi substituido por uma serie de outros metodos
+-Bug da animação agachar resolvido
 
 
 

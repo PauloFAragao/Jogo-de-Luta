@@ -1,1 +1,0 @@
-Na ação 12 se o jogador pressionar para baixo o jogo buga e mantem o frame travado

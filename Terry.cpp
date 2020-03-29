@@ -103,6 +103,21 @@ void Terry::Routine()
 
 
 
+BITMAP* Terry::GetPlayerSprite()//esse metodo retorna o frame que deve ser renderizado
+{
+	//rotina da classe player
+	PlayerRoutine();
+	
+	//controle das animações do personagem
+	TerryAnimations();
+	
+	if( GetToRight() ) 
+		return GetSprites( 0, GetFrame() );
+	else 
+		return GetSprites( 1, GetFrame() );
+	
+}END_OF_FUNCTION(GetPlayerSprite);
+
 
 
 

@@ -3,21 +3,23 @@ modificação geral da resolução  - 512x512 nos sprites do personagem - implem
 
 Inplementações para a função Interface - implementado
 		
-Distribuir o que as funções horizontalMove e VerticalMove e talvez o que a função
-InterpletationEngine em outroas funções
+Distribuir a função InterpletationEngine em outroas funções - implementado
 
 verificar se é possivel otimizar as funções de animação - implementado
+
+
+Criar classe game, essa classe vai receber todas as declarações de objetos, vai 
+montar a tela do jogo e retornar para a função principal, vai fazer o controle do
+game pause, etc - implementando
+
+bug na verção 3.4 se o jogador pressionar o botão para baixo no momento que o jogo 
+está executando a ação 12 (se levantar) - implementado
+
+fazer as alterações necessarias nos construtores das classes
 
 fazer o player 2
 	criar uma forma de imputs para o player 2
 	colocar no construtor da classe player se ele é o player 1 ou o 2
-
-Criar classe game, essa classe vai receber todas as declarações de objetos, vai 
-montar a tela do jogo e retornar para a função principal, vai fazer o controle do
-game pause, etc implementando
-
-bug na verção 3.4 se o jogador pressionar o botão para baixo no momento que o jogo 
-está executando a ação 12 (se levantar)
 
 Implementação necessaria para quando o personagem virar para o outro lado - o 
 personagem precisa primeiro terminar a animação que está executano para o lado que 

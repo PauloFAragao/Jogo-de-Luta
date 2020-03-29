@@ -24,6 +24,7 @@ class Game
 	//atributos privados
 		
 		bool gameStart;
+		bool antLoopGameStart;
 		bool gamePause;
 		bool antLoopPause;
 		
@@ -37,11 +38,11 @@ class Game
 		Scenario scenario;
 		Interface ui;
 		
-		//Terry *terryP1;
-		//Terry *terryP2;
+		Terry *terryP1;
+		Terry *terryP2;
 		
-		Terry terryP1;
-		Terry terryP2;
+		//Terry terryP1;
+		//Terry terryP2;
 		
 		BITMAP* gameScreen;
 		
