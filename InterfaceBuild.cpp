@@ -5,7 +5,7 @@
 /**
  *	Metodo responsavel por construir a interface do jogo
  */
-void Interface::BuildInterface()
+void Interface::BuildInterface( int gameTime, int lifePointsP1, int lifePointsP2, int lifePointsMaxP1, int lifePointsMaxP2, int shildP1, int shildP2, int especialBarP1, int especialBarP2, int especialQuantityP1, int especialQuantityP2, int powTimeP1, int powTimeP2, bool powP1, bool powP2 )
 {
 	clear( completeInterface );//limpa a imterface
 	rectfill( completeInterface, 0, 0, SCREEN_W, SCREEN_H, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
@@ -14,11 +14,11 @@ void Interface::BuildInterface()
 	draw_sprite( completeInterface, framePlayer1, 0, 0 );
 	draw_sprite( completeInterface, framePlayer2, 968, 0 );
 
-	BuildPlayer1LifeBar();	//barra de vida do personagem 1
-	BuildPlayer2LifeBar();	//barra de vida do personagem2
-	BuildPlayer1ShildBar();	//barra de escudo do personagem 1
-	BuildPlayer2ShildBar();	//barra de escudo do personagem 1
-	BuildTimer();			//contador de tempo
+	BuildPlayer1LifeBar( lifePointsP1, lifePointsMaxP1 );	//barra de vida do personagem 1
+	BuildPlayer2LifeBar( lifePointsP2, lifePointsMaxP2 );	//barra de vida do personagem2
+	BuildPlayer1ShildBar( shildP1 );	//barra de escudo do personagem 1
+	BuildPlayer2ShildBar( shildP2 );	//barra de escudo do personagem 1
+	BuildTimer( gameTime );			//contador de tempo
 	
 	//interface de barras de vida
 	draw_sprite( completeInterface, lifeBarsInterface, 105, 48 );
@@ -26,11 +26,11 @@ void Interface::BuildInterface()
 	
 //especial do player 1
 	//barras de especial do 0 ao 4
-	if ( especialQuantityP1 >= 0 && especialQuantityP1 < 5 ) BuildPlayer1SpecialBar();
+	if ( especialQuantityP1 >= 0 && especialQuantityP1 < 5 ) BuildPlayer1SpecialBar( especialQuantityP1, especialBarP1 );
 	
 	if( powP1 )
 	{
-		BuildPlayer1PowBar();
+		BuildPlayer1PowBar( powTimeP1 );
 		draw_sprite( completeInterface, specialInterface2Player1, 21, 541 );//interface de especial para pow ativo
 	}
 	else draw_sprite(completeInterface, specialInterface1Player1, 21, 541 );//interface de especial
@@ -40,15 +40,15 @@ void Interface::BuildInterface()
 		 draw_sprite( completeInterface, maximumSpecialBarP1, 85, 567 );
 
 	//imprime o numero de barras de especial na interface
-	BuildPlayer1SpecialPoints();
+	BuildPlayer1SpecialPoints( especialQuantityP1 );
 	
 //especial do player 2
 	//barras de especial do 0 ao 4
-	if ( especialQuantityP2 >= 0 && especialQuantityP2 < 5 ) BuildPlayer2SpecialBar();
+	if ( especialQuantityP2 >= 0 && especialQuantityP2 < 5 ) BuildPlayer2SpecialBar( especialQuantityP2, especialBarP2 );
 	
 	if( powP2 )
 	{
-		BuildPlayer2PowBar();
+		BuildPlayer2PowBar( powTimeP2 );
 		draw_sprite( completeInterface, specialInterface2Player2, 829, 541 );//interface de especial para pow ativo
 	}
 	else draw_sprite(completeInterface, specialInterface1Player2, 829, 541 );//interface de especial
@@ -57,14 +57,15 @@ void Interface::BuildInterface()
 	if( especialQuantityP2 == 5 ) 
 		draw_sprite( completeInterface, maximumSpecialBarP2, 836, 567 );
 	
-	BuildPlayer2SpecialPoints();
+	BuildPlayer2SpecialPoints( especialQuantityP2 );
+	
 }END_OF_FUNCTION(BuildInterface);
 
 
 /**
  *	Metodo responsavel por construir a barra de vida do personagem 1
  */
-void Interface::BuildPlayer1LifeBar()
+void Interface::BuildPlayer1LifeBar( int lifePointsP1, int lifePointsP1Max )
 {
 //barra vermelha
 	if( lifePointsP1 != lifePointsP1Memory )
@@ -91,7 +92,7 @@ void Interface::BuildPlayer1LifeBar()
 /**
  *	Metodo responsavel por construir a barra de vida do personagem 2
  */
-void Interface::BuildPlayer2LifeBar()
+void Interface::BuildPlayer2LifeBar( int lifePointsP2, int lifePointsP2Max )
 {
 //barra de vida vermelha
 	if( lifePointsP2 != lifePointsP2Memory )
@@ -118,7 +119,7 @@ void Interface::BuildPlayer2LifeBar()
 /**
  *	Metodo responsavel por construir a barra de escudo do personagem 1
  */
-void Interface::BuildPlayer1ShildBar()
+void Interface::BuildPlayer1ShildBar( int shildPointsP1 )
 {
 	//limpa o bitmap
 	clear( shildBarPlayer1 );
@@ -134,7 +135,7 @@ void Interface::BuildPlayer1ShildBar()
 /**
  *	Metodo responsavel por construir a barra de escudo do personagem 2
  */
-void Interface::BuildPlayer2ShildBar()
+void Interface::BuildPlayer2ShildBar( int shildPointsP2 )
 {
 	//limpa o bitmap
 	clear( shildBarPlayer2 );
@@ -150,30 +151,197 @@ void Interface::BuildPlayer2ShildBar()
 /**
  *	Metodo responsavel por construir o contador de tempo da partida
  */
-void Interface::BuildTimer()
+void Interface::BuildTimer( int gameTime )
 {
 	
-	clear( conterDozen );//limpa o bitmap
-	rectfill( conterDozen, 0, 0, 35, 65, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
-	
-	draw_sprite( conterDozen, number3Frame3, 0, 0 );
-	
-	
+	//unidade
 	clear( conterUnity );//limpa o bitmap
 	rectfill( conterUnity, 0, 0, 35, 65, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
 	
-	draw_sprite( conterUnity, number5Frame3, 0, 0 );
+	//dezena
+	clear( conterDozen );//limpa o bitmap
+	rectfill( conterDozen, 0, 0, 35, 65, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
 	
+	if( gameTime < 58999 )
+	{
+		//controle da animação
+		if( gameTime > 50000 )
+		{
+			//entre 10 e 5
+			if( gameTime > 50000 && gameTime < 55000 )
+			{
+				if( gameTime % 1000 > 750 ) 	 numberAnimation = false;
+				else if( gameTime % 1000 > 500 ) numberAnimation = true;
+				else if( gameTime % 1000 > 250 ) numberAnimation = false;
+				else 							 numberAnimation = true;	
+			}
+			//menos que 5
+			else
+			{
+				if( gameTime % 1000 > 900 ) 	 numberAnimation = false;
+				else if( gameTime % 1000 > 800 ) numberAnimation = true;
+				else if( gameTime % 1000 > 700 ) numberAnimation = false;
+				else if( gameTime % 1000 > 600 ) numberAnimation = true;
+				else if( gameTime % 1000 > 500 ) numberAnimation = false;
+				else if( gameTime % 1000 > 400 ) numberAnimation = true;
+				else if( gameTime % 1000 > 300 ) numberAnimation = false;
+				else if( gameTime % 1000 > 200 ) numberAnimation = true;
+				else if( gameTime % 1000 > 100 ) numberAnimation = false;
+				else 							 numberAnimation = true;
+			}
+		}
+		
+	//unidade
+		if( gameTime == 0 ) draw_sprite( conterUnity, number0Frame3, 0, 0 );
+		if( (-1*(gameTime-60000)) % 10000 > 0 && (-1*(gameTime-60000) ) % 10000 <= 999 )
+		{
+			if( (-1*(gameTime-60000)) % 10000 < 25 ) draw_sprite( conterUnity, number0Frame0, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 50 ) draw_sprite( conterUnity, number0Frame1, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 75 ) draw_sprite( conterUnity, number0Frame2, 0, 0 );
+			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number0Frame3, 0, 0 );
+			else draw_sprite( conterUnity, number0RedFrame, 0, 0 );
+		}
+		else if( (-1*(gameTime-60000)) % 10000 > 1000 && (-1*(gameTime-60000)) % 10000 <= 1999 )
+		{
+			if( (-1*(gameTime-60000)) % 10000 < 1025 ) draw_sprite( conterUnity, number1Frame0, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 1050 ) draw_sprite( conterUnity, number1Frame1, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 1075 ) draw_sprite( conterUnity, number1Frame2, 0, 0 );
+			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number1Frame3, 0, 0 );
+			else draw_sprite( conterUnity, number1RedFrame, 0, 0 );
+		}
+		else if( (-1*(gameTime-60000)) % 10000 > 2000 && (-1*(gameTime-60000)) % 10000 <= 2999 )
+		{
+			if( (-1*(gameTime-60000)) % 10000 < 2025 ) draw_sprite( conterUnity, number2Frame0, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 2050 ) draw_sprite( conterUnity, number2Frame1, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 2075 ) draw_sprite( conterUnity, number2Frame2, 0, 0 );
+			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number2Frame3, 0, 0 );
+			else draw_sprite( conterUnity, number2RedFrame, 0, 0 );
+		}
+		else if( (-1*(gameTime-60000)) % 10000 > 3000 && (-1*(gameTime-60000)) % 10000 <= 3999 )
+		{
+			if( (-1*(gameTime-60000)) % 10000 < 3025 ) draw_sprite( conterUnity, number3Frame0, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 3050 ) draw_sprite( conterUnity, number3Frame1, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 3075 ) draw_sprite( conterUnity, number3Frame2, 0, 0 );
+			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number3Frame3, 0, 0 );
+			else draw_sprite( conterUnity, number3RedFrame, 0, 0 );
+		}
+		else if( (-1*(gameTime-60000)) % 10000 > 4000 && (-1*(gameTime-60000)) % 10000 <= 4999 )
+		{
+			if( (-1*(gameTime-60000)) % 10000 < 4025 ) draw_sprite( conterUnity, number4Frame0, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 4050 ) draw_sprite( conterUnity, number4Frame1, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 4075 ) draw_sprite( conterUnity, number4Frame2, 0, 0 );
+			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number4Frame3, 0, 0 );
+			else draw_sprite( conterUnity, number4RedFrame, 0, 0 );
+		}
+		else if( (-1*(gameTime-60000)) % 10000 > 5000 && (-1*(gameTime-60000)) % 10000 <= 5999 )
+		{
+			if( (-1*(gameTime-60000)) % 10000 < 5025 ) draw_sprite( conterUnity, number5Frame0, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 5050 ) draw_sprite( conterUnity, number5Frame1, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 5075 ) draw_sprite( conterUnity, number5Frame2, 0, 0 );
+			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number5Frame3, 0, 0 );
+			else draw_sprite( conterUnity, number5RedFrame, 0, 0 );
+		}
+		else if( (-1*(gameTime-60000)) % 10000 > 6000 && (-1*(gameTime-60000)) % 10000 <= 6999 )
+		{
+			if( (-1*(gameTime-60000)) % 10000 < 6025 ) draw_sprite( conterUnity, number6Frame0, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 6050 ) draw_sprite( conterUnity, number6Frame1, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 6075 ) draw_sprite( conterUnity, number6Frame2, 0, 0 );
+			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number6Frame3, 0, 0 );
+			else draw_sprite( conterUnity, number6RedFrame, 0, 0 );
+		}
+		else if( (-1*(gameTime-60000)) % 10000 > 7000 && (-1*(gameTime-60000)) % 10000 <= 7999 )
+		{
+			if( (-1*(gameTime-60000)) % 10000 < 7025 ) draw_sprite( conterUnity, number7Frame0, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 7050 ) draw_sprite( conterUnity, number7Frame1, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 7075 ) draw_sprite( conterUnity, number7Frame2, 0, 0 );
+			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number7Frame3, 0, 0 );
+			else draw_sprite( conterUnity, number7RedFrame, 0, 0 );
+		}
+		else if( (-1*(gameTime-60000)) % 10000 > 8000 && (-1*(gameTime-60000)) % 10000 <= 8999 )
+		{
+			if( (-1*(gameTime-60000)) % 10000 < 8025 ) draw_sprite( conterUnity, number8Frame0, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 8050 ) draw_sprite( conterUnity, number8Frame1, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 8075 ) draw_sprite( conterUnity, number8Frame2, 0, 0 );
+			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number8Frame3, 0, 0 );
+			else draw_sprite( conterUnity, number8RedFrame, 0, 0 );
+		}
+		else if( (-1*(gameTime-60000)) % 10000 > 9000 && (-1*(gameTime-60000)) % 10000 <= 9999 )
+		{
+			if( (-1*(gameTime-60000)) % 10000 < 9025 ) draw_sprite( conterUnity, number9Frame0, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 9050 ) draw_sprite( conterUnity, number9Frame1, 0, 0 );
+			else if( (-1*(gameTime-60000)) % 10000 < 9075 ) draw_sprite( conterUnity, number9Frame2, 0, 0 );
+			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number9Frame3, 0, 0 );
+			else draw_sprite( conterUnity, number9RedFrame, 0, 0 );
+		}
 	
+	//dezena
+		if( (-1*(gameTime-60000)) < 9999)
+		{
+			if( (-1*(gameTime-60000)) < 9925 )
+			{
+				if( gameTime < 50000 || numberAnimation ) draw_sprite( conterDozen, number0Frame3, 0, 0 );
+				else draw_sprite( conterDozen, number0RedFrame, 0, 0 );
+			}
+			else if( (-1*(gameTime-60000)) < 9950 )  draw_sprite( conterDozen, number0Frame2, 0, 0 );
+			else if( (-1*(gameTime-60000)) < 9975 )  draw_sprite( conterDozen, number0Frame1, 0, 0 );
+			else draw_sprite( conterDozen, number0Frame0, 0, 0 );
+		}
+		else if( (-1*(gameTime-60000)) < 19999)
+		{
+			if( (-1*(gameTime-60000)) < 19925 ) draw_sprite( conterDozen, number1Frame3, 0, 0 );
+			else if( (-1*(gameTime-60000)) < 19950 )  draw_sprite( conterDozen, number1Frame2, 0, 0 );
+			else if( (-1*(gameTime-60000)) < 19975 )  draw_sprite( conterDozen, number1Frame1, 0, 0 );
+			else draw_sprite( conterDozen, number1Frame0, 0, 0 );
+		}
+		else if( (-1*(gameTime-60000)) < 29999)
+		{
+			if( (-1*(gameTime-60000)) < 29925 ) draw_sprite( conterDozen, number2Frame3, 0, 0 );
+			else if( (-1*(gameTime-60000)) < 29950 )  draw_sprite( conterDozen, number2Frame2, 0, 0 );
+			else if( (-1*(gameTime-60000)) < 29975 )  draw_sprite( conterDozen, number2Frame1, 0, 0 );
+			else draw_sprite( conterDozen, number2Frame0, 0, 0 );
+		}
+		else if( (-1*(gameTime-60000)) < 39999)
+		{
+			if( (-1*(gameTime-60000)) < 39925 ) draw_sprite( conterDozen, number3Frame3, 0, 0 );
+			else if( (-1*(gameTime-60000)) < 39950 )  draw_sprite( conterDozen, number3Frame2, 0, 0 );
+			else if( (-1*(gameTime-60000)) < 39975 )  draw_sprite( conterDozen, number3Frame1, 0, 0 );
+			else draw_sprite( conterDozen, number3Frame0, 0, 0 );
+		}
+		else if( (-1*(gameTime-60000)) < 49999)
+		{
+			if( (-1*(gameTime-60000)) < 49925 ) draw_sprite( conterDozen, number4Frame3, 0, 0 );
+			else if( (-1*(gameTime-60000)) < 49950 )  draw_sprite( conterDozen, number4Frame2, 0, 0 );
+			else if( (-1*(gameTime-60000)) < 49975 )  draw_sprite( conterDozen, number4Frame1, 0, 0 );
+			else draw_sprite( conterDozen, number4Frame0, 0, 0 );
+		}
+		else if( (-1*(gameTime-60000)) < 59999)
+		{
+			if( (-1*(gameTime-60000)) < 59925 ) draw_sprite( conterDozen, number5Frame3, 0, 0 );
+			else if( (-1*(gameTime-60000)) < 59950 )  draw_sprite( conterDozen, number5Frame2, 0, 0 );
+			else if( (-1*(gameTime-60000)) < 59975 )  draw_sprite( conterDozen, number5Frame1, 0, 0 );
+			else draw_sprite( conterDozen, number5Frame0, 0, 0 );
+		}
+		else if( (-1*(gameTime-60000)) < 69999) draw_sprite( conterDozen, number6Frame3, 0, 0 );
+		
+	}
+	//tempo finalizado
+	else
+	{
+		draw_sprite( conterUnity, number0RedFrame, 0, 0 );
+		draw_sprite( conterDozen, number0RedFrame, 0, 0 );
+	}
+	
+	//imprime no bitmap da interface os numeros
 	draw_sprite( completeInterface, conterUnity, 572, 43);
 	draw_sprite( completeInterface, conterDozen, 533, 43);
+	
 }END_OF_FUNCTION(BuildTimer);
 
 
 /**
  *	Metodo responsavel por construir as barras de especial do personagem 1
  */
-void Interface::BuildPlayer1SpecialBar()
+void Interface::BuildPlayer1SpecialBar( int especialQuantityP1, int especialBarP1 )
 {
 	if( especialQuantityP1 == 0 )
 	{
@@ -214,7 +382,7 @@ void Interface::BuildPlayer1SpecialBar()
 /**
  *	Metodo responsavel por construir as barras de especial do personagem 2
  */
-void Interface::BuildPlayer2SpecialBar()
+void Interface::BuildPlayer2SpecialBar( int especialQuantityP2, int especialBarP2 )
 {
 	if( especialQuantityP2 == 0 )
 	{
@@ -256,7 +424,7 @@ void Interface::BuildPlayer2SpecialBar()
 /**
  *	Metodo responsavel por construir a barra de tempo do pow do jogador 1
  */
-void Interface::BuildPlayer1PowBar()
+void Interface::BuildPlayer1PowBar( int powTimeP1 )
 {
 	//limpa o bitmap
 	clear( powBarPlayer1 );
@@ -272,7 +440,7 @@ void Interface::BuildPlayer1PowBar()
 /**
  *	Metodo responsavel por construir a barra de tempo do pow do jogador 2
  */
-void Interface::BuildPlayer2PowBar()
+void Interface::BuildPlayer2PowBar( int powTimeP2 )
 {
 	//limpa o bitmap
 	clear( powBarPlayer2 );
@@ -288,7 +456,7 @@ void Interface::BuildPlayer2PowBar()
 /**
  *	Metodo responsavel por construir os numeros de especial do jogador 1
  */
-void Interface::BuildPlayer1SpecialPoints()
+void Interface::BuildPlayer1SpecialPoints( int especialQuantityP1 )
 {
 	//limpa o bitmap
 	clear( specialNumberP1 );
@@ -309,7 +477,7 @@ void Interface::BuildPlayer1SpecialPoints()
 /**
  *	Metodo responsavel por construir os numeros de especial do jogador 2
  */
-void Interface::BuildPlayer2SpecialPoints()
+void Interface::BuildPlayer2SpecialPoints( int especialQuantityP2 )
 {
 	//limpa o bitmap
 	clear( specialNumberP2 );

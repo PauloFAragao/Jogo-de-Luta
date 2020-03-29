@@ -23,6 +23,9 @@ Terry::~Terry(){}
 void Terry::StartAttributes()
 {
 	
+	SetLifePoints( 1000 );
+	SetLifePointsMax( 1000 );
+	
 	SetIdle( 0, 0 );
 	SetIdle( 7, 1 );
 	SetCrouching( 8, 0 );
@@ -97,9 +100,6 @@ void Terry::Routine()
 	TerryAnimations();
 	
 }END_OF_FUNCTION(PlayerRoutine)
-
-
-
 
 
 

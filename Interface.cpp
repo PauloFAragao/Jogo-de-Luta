@@ -100,37 +100,9 @@ Interface::~Interface()
  */
 void Interface::StartAttributes()
 {
-	unitTimeAnimFrame = 3;		//frame da animação das unidades
-	tenTimeAnimFrame  = 3;		//frame da animação das dezenas
-	gameTime = clock();			//momento que o jogo começa
-	
-
-	
-	
-	//variaveis para imprimir on numeros na tela
-	unitTime = 0;
-	tenTime  = 0;
-	capturaTempoParaNumeros = 0;//captura o tempo para fazer a animação dos numeros quando o tempo está acabando
-	activeRedNumber = false;
-	
-	
-	lifePointsP1 = 1000;
-	lifePointsP1Memory = 1000;
-	lifePointsP1Max = 1000;
-	shildPointsP1 = 200;
-	especialBarP1 = 0;
-	especialQuantityP1 = 0;
-	powTimeP1 = 0;
-	powP1 = false;
-	
-	lifePointsP2 = 1000;
-	lifePointsP2Memory = 1000;
-	lifePointsP2Max = 1000;
-	shildPointsP2 = 200;
-	especialBarP2 = 0;
-	especialQuantityP2 = 0;
-	powTimeP2 = 0;
-	powP2 = false;
+	numberAnimation = false;
+	lifePointsP1Memory = 1000;		//<<<<<<<<<<<<<TEMP
+	lifePointsP2Memory = 1000;		//<<<<<<<<<<<<<TEMP
 	
 }END_OF_FUNCTION(StartAttributes);
 
@@ -145,8 +117,8 @@ void Interface::Calculation()
 		//lifePointsP2 -=25;
 		//shildPointsP1 -=5;
 		//shildPointsP2 -=5;
-		especialBarP1 -=1;
-		especialBarP2 -=1;
+		//especialBarP1 -=1;
+		//especialBarP2 -=1;
 		//powTimeP1 -= 100;
 		//powTimeP2 -= 100;
 	}
@@ -156,13 +128,13 @@ void Interface::Calculation()
 		//lifePointsP2 +=25;
 		//shildPointsP1 +=5;
 		//shildPointsP2 +=5;
-		especialBarP1 +=1;
-		especialBarP2 +=1;
+		//especialBarP1 +=1;
+		//especialBarP2 +=1;
 		//powTimeP1 += 100;
 		//powTimeP2 += 100;
 	}
 	//controle temporario << esse controle deve destar dentro da classe player
-	if( especialBarP1 >= 100 )
+	/*if( especialBarP1 >= 100 )
 	{
 		especialBarP1 = 0;
 		if( especialQuantityP1 < 5 ) especialQuantityP1++;
@@ -171,7 +143,7 @@ void Interface::Calculation()
 	{
 		especialBarP2 = 0;
 		if( especialQuantityP2 < 5 ) especialQuantityP2++;
-	}
+	}*/
 
 }END_OF_FUNCTION(Calculation);
 
@@ -179,24 +151,31 @@ void Interface::Calculation()
  * Esse metodo chama todos os metodos necessarios para construir a interface e 
  * retorna um bitmap com a interface para ser renderizada
  */
-BITMAP *Interface::GetCompleteInterface()
+BITMAP *Interface::GetCompleteInterface( int gameTime, int lifePointsP1, int lifePointsP2, int lifePointsMaxP1, int lifePointsMaxP2, int shildP1, int shildP2, int especialBarP1, int especialBarP2, int especialQuantityP1, int especialQuantityP2, int powTimeP1, int powTimeP2, bool powP1, bool powP2 )
 {
 
 	//calculos para movimentar as barras
-	Calculation();
+	Calculation(  );
 	
 	//metodo responsavel por construir graficamente a interface do jogo
-	BuildInterface();
+	BuildInterface( gameTime, 
+					lifePointsP1, lifePointsP2, 
+					lifePointsMaxP1, lifePointsMaxP2, 
+					shildP1, shildP2, 
+					especialBarP1, especialBarP2, 
+					especialQuantityP1, especialQuantityP2, 
+					powTimeP1, powTimeP2, 
+					powP1, powP2 );
 	
-	//metodo responsavel por animar e controlar o timer
-	TimerControl();
-
+	//	textprintf_ex(completeInterface, font, 10, 315, makecol(255, 0, 0), -1, "gameTime: %d", gameTime );
 	
 	//retorna a interface completa
 	return completeInterface;
-	
+
 	
 }END_OF_FUNCTION(GetSprites);
+
+
 
 
 

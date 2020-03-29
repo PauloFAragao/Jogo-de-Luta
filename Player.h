@@ -41,6 +41,7 @@ class Player
 		void  SetAction(int action);
 		bool  GetToRight();
 		void  SetToRight(bool toRight);
+		
 		void  SetLifePoints(int lifePoints);
 		int   GetLifePoints();
 		void  SetLifePointsMax(int lifePointsMax);
@@ -142,6 +143,15 @@ class Player
 		
 	private:
 		
+		//Metodos privados
+		void TrackImputs();							//captura os imputs do player
+		void HorizontalMove();						//movimentação do personagem na horizontal
+		void VerticalMove();						//movimentação do personagem na vertical
+		void writeOnBtTmPress(int pos, bool valor);	//escreve no array de tempos os tempos em que os botões foram pressionados
+		void StartAttributes();						//inicia os atributos com os valores coretos
+		void InterpretationEngine();
+
+		//atributos privados
 		float x;				//posição em X do player
 		float y;				//posição em Y do player
 		float speedX;			//velocidade em X do player
@@ -232,14 +242,7 @@ class Player
 		//array para carregar os sprites
 		BITMAP *sprites[QTDFRAMES];
 		BITMAP *spritesToLeft[QTDFRAMES];
-		
-		//Metodos privados
-		void TrackImputs();							//captura os imputs do player
-		void HorizontalMove();						//movimentação do personagem na horizontal
-		void VerticalMove();						//movimentação do personagem na vertical
-		void writeOnBtTmPress(int pos, bool valor);	//escreve no array de tempos os tempos em que os botões foram pressionados
-		void StartAttributes();						//inicia os atributos com os valores coretos
-		void InterpretationEngine();
+
 };
 #endif//PLAYER_H
 

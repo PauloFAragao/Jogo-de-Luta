@@ -1,0 +1,3 @@
+construtor da classe interface precisa receber os seguintes argumentos:
+vida maxima do personagem 1
+vida maxima do personagem 2

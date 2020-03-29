@@ -74,7 +74,9 @@ brusca da posição do personagem
 -Os sprites estão sendo utilizados na resolução 512x512 (resolução original)
 -A interface foi adaptada para a nova resolução e a classe interface sofreu varias mudanças
 -As funções de animação do personagem foram alteradas
-
+-Foi criada uma nova classe chamada Game, essa classe vai receber todas as declarações de 
+objetos, vai montar a tela do jogo e retornar para a função principal, vai fazer o 
+controle do game pause, etc
 
 
 

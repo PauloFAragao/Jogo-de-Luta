@@ -4,6 +4,26 @@
 //sprites
 BITMAP* Player::GetPlayerSprite()//esse metodo retorna o frame que deve ser renderizado
 {
+
+	if( key[ KEY_0_PAD ]  ) opponentAttacking = true;
+	if( !key[ KEY_0_PAD ] ) opponentAttacking = false;
+	
+	if( key[ KEY_1_PAD ]  ) takingDmg = true;
+
+	
+	//captura os imputs do plauer
+	TrackImputs();
+	
+	//movimenta o player na horizontal
+	HorizontalMove();
+	
+	//movimenta o player na vertical
+	VerticalMove();
+	
+	//motor de imterpletação
+	InterpretationEngine();
+	
+	
 	if( toRight ) 
 		return sprites[ frame ];
 	else 

@@ -23,6 +23,7 @@ Player::Player() { StartAttributes(); }
 Player::~Player()
 {
 	destroy_bitmap( *sprites );
+	destroy_bitmap( *spritesToLeft );
 }
 
 
@@ -54,6 +55,12 @@ void Player::StartAttributes()
 	bt5TimeCapture=false;			//variavel para captura de tempo do botão 05
 	bt6TimeCapture=false;			//variavel para captura de tempo do botão 06
 	bt7TimeCapture=false;			//variavel para captura de tempo do botão 07
+
+	shild = 0;						//quantidade de pontos de defesa atual do personagem
+	especialBar = 0;				//quantidade de pontos de especial
+	especialQuantity = 0;			//quantos pontos de especial o personagem tem
+	powTime = 0;					//tempo restante da barra quando o jogador esroura uma barra
+	pow = false;					//se o jogador estourou uma barra
 	
 	attacking=false;				//indica que o personagema está atacando
 	takingDmg=false;				//indica que o personagem foi atacado enquanto estava na defesa
@@ -82,12 +89,12 @@ void Player::StartAttributes()
  */
 void Player::PlayerRoutine()
 {
-	
+
 	if( key[ KEY_0_PAD ]  ) opponentAttacking = true;
 	if( !key[ KEY_0_PAD ] ) opponentAttacking = false;
 	
 	if( key[ KEY_1_PAD ]  ) takingDmg = true;
-	
+
 	
 	//captura os imputs do plauer
 	TrackImputs();

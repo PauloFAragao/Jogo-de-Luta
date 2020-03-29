@@ -44,6 +44,8 @@
 		<File Name="InterfaceBuild.cpp"/>
 		<File Name="Scenario.h"/>
 		<File Name="Scenario.cpp"/>
+		<File Name="Game.h"/>
+		<File Name="Game.cpp"/>
 	</Files>
 	<AppIcon>
 		0000010001003030000001002000A82500001600000028000000300000006000

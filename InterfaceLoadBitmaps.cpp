@@ -87,9 +87,9 @@ void Interface::LoadSprites()
 	number7Frame3 = load_bitmap("sprites/interface/Number7-3.bmp", NULL);
 	
 	number8Frame0 = load_bitmap("sprites/interface/Number8-0.bmp", NULL);
-	number8Frame0 = load_bitmap("sprites/interface/Number8-1.bmp", NULL);
-	number8Frame0 = load_bitmap("sprites/interface/Number8-2.bmp", NULL);
-	number8Frame0 = load_bitmap("sprites/interface/Number8-3.bmp", NULL);
+	number8Frame1 = load_bitmap("sprites/interface/Number8-1.bmp", NULL);
+	number8Frame2 = load_bitmap("sprites/interface/Number8-2.bmp", NULL);
+	number8Frame3 = load_bitmap("sprites/interface/Number8-3.bmp", NULL);
 	
 	number9Frame0 = load_bitmap("sprites/interface/Number9-0.bmp", NULL);
 	number9Frame1 = load_bitmap("sprites/interface/Number9-1.bmp", NULL);

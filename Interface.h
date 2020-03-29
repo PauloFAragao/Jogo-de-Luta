@@ -15,40 +15,22 @@ class Interface
 		//destrutor
 		~Interface();
 		
-		BITMAP *GetCompleteInterface();
+		BITMAP *GetCompleteInterface( int gameTime, 
+									int lifePointsP1, int lifePointsP2, 
+									int lifePointsMaxP1, int lifePointsMaxP2,
+									int shildP1, int shildP2, 
+									int especialBarP1, int especialBarP2, 
+									int especialQuantityP1, int especialQuantityP2, 
+									int powTimeP1, int powTimeP2, 
+									bool powP1, bool powP2 );
 
 	private:
 
-		int gameTime;						//tempo de jogo - ainda não usada
-		
-		//variaveis para imprimir on numeros na tela
-		int unitTime;
-		int tenTime;
-		int unitTimeAnimFrame;				//frame da animação das unidades
-		int tenTimeAnimFrame;				//frame da animação das dezenas
-		int capturaTempoParaNumeros;		//captura o tempo para fazer a animação dos numeros quando o tempo está acabando
-		bool activeRedNumber;				//faz os numeros vermelhos serem renderizados
-		
-		
-		//VARIAVEIS TEMPORARIAS
+		bool numberAnimation;				//variavel para animar os numeros do timer
+
 		int lifePointsP1Memory;				//variavel para animar a barra vermelha
-		int lifePointsP1;			//TEMP
-		int lifePointsP1Max;		//TEMP				
-		int shildPointsP1;			//TEMP
-		int especialBarP1;			//TEMP
-		int especialQuantityP1;		//TEMP
-		int powTimeP1;				//TEMP
-		bool powP1;					//TEMP
-		
-		
 		int lifePointsP2Memory;				//variavel para animar a barra vermelha
-		int lifePointsP2;			//TEMP
-		int lifePointsP2Max;		//TEMP
-		int shildPointsP2;			//TEMP
-		int especialBarP2;			//TEMP
-		int especialQuantityP2;		//TEMP
-		int powTimeP2;				//TEMP
-		bool powP2;					//TEMP
+
 		
 //BitMaps que vão ser manipuladas
 		//variavel que vai montar a interface e ser enviada para renderização
@@ -171,19 +153,26 @@ class Interface
 		void InitializeBitmaps();
 		void StartAttributes();
 		
-		void BuildInterface();
+		void BuildInterface( int gameTime, 
+							int lifePointsP1, int lifePointsP2, 
+							int lifePointsMaxP1, int lifePointsMaxP2, 
+							int shildP1, int shildP2, 
+							int especialBarP1, int especialBarP2, 
+							int especialQuantityP1, int especialQuantityP2, 
+							int powTimeP1, int powTimeP2, 
+							bool powP1, bool powP2 );
 		
-		void BuildPlayer1LifeBar();	
-		void BuildPlayer2LifeBar();	
-		void BuildPlayer1ShildBar();	
-		void BuildPlayer2ShildBar();	
-		void BuildTimer();			
-		void BuildPlayer1SpecialBar();
-		void BuildPlayer2SpecialBar();
-		void BuildPlayer1SpecialPoints();
-		void BuildPlayer2SpecialPoints();
-		void BuildPlayer1PowBar();
-		void BuildPlayer2PowBar();
+		void BuildPlayer1LifeBar( int lifePointsP1, int lifePointsP1Max );	
+		void BuildPlayer2LifeBar( int lifePointsP2, int lifePointsP2Max );	
+		void BuildPlayer1ShildBar( int shildPointsP1 );	
+		void BuildPlayer2ShildBar( int shildPointsP2 );	
+		void BuildTimer( int gameTime );			
+		void BuildPlayer1SpecialBar( int especialQuantityP1, int especialBarP1 );
+		void BuildPlayer2SpecialBar( int especialQuantityP2, int especialBarP2 );
+		void BuildPlayer1SpecialPoints( int especialQuantityP1 );
+		void BuildPlayer2SpecialPoints( int especialQuantityP2 );
+		void BuildPlayer1PowBar( int powTimeP1 );
+		void BuildPlayer2PowBar( int powTimeP2 );
 		void TimerControl();
 		void Calculation();
 
