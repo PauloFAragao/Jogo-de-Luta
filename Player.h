@@ -10,7 +10,8 @@ class Player
 	public :
 		
 		//construtor
-		Player();
+		Player(){}
+		Player( int playerNumber ) ;
 		
 		//destrutor
 		~Player();
@@ -160,6 +161,7 @@ class Player
 		float speedX;			//velocidade em X do player
 		float speedY; 			//velocidade em Y do player
 		int action;				//define a ação que o player está executando
+		int playerNumber;		//define se o personagem é o jogador numero 1 ou 2
 		
 		//caracteristicas do personagem
 		int lifePoints;			//quantidade de pontos de vida atual do personagem
@@ -242,10 +244,7 @@ class Player
 		//tempos em que os botões são pressionados
 		int btTPress[8][10];
 		
-		//array para carregar os sprites
-		//BITMAP *sprites[QTDFRAMES];
-		//BITMAP *spritesToLeft[QTDFRAMES];
-		
+		//array para carregar os sprites		
 		//0 - personagem virado para a direita
 		//1 - personagem virado para a esquerda
 		BITMAP *sprites[2][QTDFRAMES];

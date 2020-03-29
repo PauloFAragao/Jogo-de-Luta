@@ -5,7 +5,8 @@ vida maxima do personagem 2
 Construtor da classe Player
 player number
 
-
+Construtor da classe Terry
+player number
 
 
 

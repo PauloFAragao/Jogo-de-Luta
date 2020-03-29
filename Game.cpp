@@ -43,7 +43,7 @@ void Game::AllocateMemoryP1( int p1Index )
 	switch(p1Index)
 	{
 		case 1:
-			terryP1 = new Terry();
+			terryP1 = new Terry( 1 );
 		break;
 	}
 }
@@ -54,7 +54,7 @@ void Game::AllocateMemoryP2( int p2Index )
 	switch(p2Index)
 	{
 		case 1:
-			terryP2 = new Terry();
+			terryP2 = new Terry( 2 );
 		break;
 	}
 }
@@ -72,8 +72,7 @@ void Game::BuildGameScreen()
 	switch( p1Index )
 	{
 		case 1:
-			//terryP1->Routine();
-			draw_sprite( gameScreen, terryP1->GetPlayerSprite( /*gamePause*/ ), terryP1->GetX(), terryP1->GetY() );
+			draw_sprite( gameScreen, terryP1->GetPlayerSprite( gamePause, gameStart ), terryP1->GetX(), terryP1->GetY() );
 		break;
 	}
 	
@@ -81,7 +80,7 @@ void Game::BuildGameScreen()
 	switch( p2Index )
 	{
 		case 1:
-			//draw_sprite( gameScreen, terryP2->GetPlayerSprite( /* gamePause */ ), terryP2->GetX(), terryP2->GetY());
+			draw_sprite( gameScreen, terryP2->GetPlayerSprite( gamePause, gameStart ), terryP2->GetX(), terryP2->GetY());
 		break;
 	}
 	

@@ -32,6 +32,7 @@
 		<File Name="main.cpp"/>
 		<File Name="Player.h"/>
 		<File Name="Player.cpp"/>
+		<File Name="PlayerImputs.cpp"/>
 		<File Name="PlayerSetsGets.cpp"/>
 		<File Name="PlayerInterpretation.cpp"/>
 		<File Name="Terry.h"/>

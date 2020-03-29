@@ -10,15 +10,14 @@ class Terry:public Player
 	public :
 		
 		//construtor
-			Terry();
+			Terry(){}
+			Terry( int playerNumber );
 		
 		//destrutor
 			~Terry();
 			
 		//Metodos publicos
-		void Routine();
-		
-		BITMAP* GetPlayerSprite();
+		BITMAP* GetPlayerSprite( bool gamePause, bool gameStart );
 			
 	private:
 

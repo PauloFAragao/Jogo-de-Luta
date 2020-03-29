@@ -15,11 +15,11 @@ game pause, etc - implementando
 bug na verção 3.4 se o jogador pressionar o botão para baixo no momento que o jogo 
 está executando a ação 12 (se levantar) - implementado
 
-fazer as alterações necessarias nos construtores das classes
+fazer as alterações necessarias nos construtores das classes - implementando
 
-fazer o player 2
+fazer o player 2 - implementando
 	criar uma forma de imputs para o player 2
-	colocar no construtor da classe player se ele é o player 1 ou o 2
+	colocar no construtor da classe player se ele é o player 1 ou o 2 - implementado
 
 Implementação necessaria para quando o personagem virar para o outro lado - o 
 personagem precisa primeiro terminar a animação que está executano para o lado que 

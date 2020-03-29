@@ -12,7 +12,8 @@
 
 
 //construtor
-Terry::Terry(){ LoadSprites(); StartAttributes();}
+Terry::Terry( int playerNumber ):Player( playerNumber )
+{ LoadSprites(); StartAttributes(); }
 
 
 //destrutor
@@ -89,27 +90,18 @@ void Terry::StartAttributes()
 
 
 /**
- * função para ser chamada na rotina principal do alegro
+ * Metodo que faz toda a rotina para movimentação do personagem
  */
-void Terry::Routine()
+BITMAP* Terry::GetPlayerSprite( bool gamePause, bool gameStart )//esse metodo retorna o frame que deve ser renderizado
 {
-	//rotina da classe player
-	PlayerRoutine();
-	
-	//controle das animações do personagem
-	TerryAnimations();
-	
-}END_OF_FUNCTION(PlayerRoutine)
-
-
-
-BITMAP* Terry::GetPlayerSprite()//esse metodo retorna o frame que deve ser renderizado
-{
-	//rotina da classe player
-	PlayerRoutine();
-	
-	//controle das animações do personagem
-	TerryAnimations();
+	if( !gamePause )
+	{
+		//rotina da classe player
+		if( gameStart ) PlayerRoutine();
+		
+		//controle das animações do personagem
+		TerryAnimations();
+	}
 	
 	if( GetToRight() ) 
 		return GetSprites( 0, GetFrame() );

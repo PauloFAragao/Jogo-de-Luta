@@ -16,8 +16,11 @@
 
 
 //construtor
-Player::Player() { StartAttributes(); }
-
+Player::Player( int playerNumber )
+{
+	this->playerNumber = playerNumber;
+	StartAttributes(); 
+}
 
 //destrutor
 Player::~Player()
@@ -32,12 +35,22 @@ Player::~Player()
 void Player::StartAttributes()
 {
 	
-	x=0;							//posição em X do player
 	y=CHAO;							//posição em Y do player
 	speedX=0;						//velocidade em X do player
 	speedY=0; 						//velocidade em Y do player
 	action=0;						//define a ação que o player está executando
-	toRight=true;					//indica para que lado o personagem está virado
+	
+	if( playerNumber == 1 )
+	{
+		toRight=true;				//indica para que lado o personagem está virado
+		x=-50;						//posição em X do player
+	}
+	else
+	{
+		toRight=false;				//indica para que lado o personagem está virado
+		x=680;						//posição em X do player
+	}
+	
 	button00=false;					//esquerda
 	button01=false;					//baixo
 	button02=false;					//direita
@@ -145,126 +158,6 @@ void Player::ChangeAction(int value)
 	action = value;	
 	if( VerifyFrame( value ) ) startAnimation = false;
 }END_OF_FUNCTION(ChangeAction);
-
-
-/**
- * Esse metodo captura os imputs do player e os tempos em que o jogador pressiona e solta os botões.
- */
-void Player::TrackImputs()
-{
-	//botão 0
-	if(key[KEY_A] && !bt0TimeCapture)//captura o tempo em que o botão foi pressionado
-	{
-		button00 = true;
-		bt0TimeCapture=true;
-		writeOnBtTmPress(0,true);
-	}
-	if(bt0TimeCapture && !key[KEY_A])//captura o tempo em que o botão foi solto
-	{
-		button00 = false;
-		bt0TimeCapture=false;
-		writeOnBtTmPress(0,false);
-	}
-	
-	//botão 1
-	if(key[KEY_S] && !bt1TimeCapture)//captura o tempo em que o botão foi pressionado
-	{
-		button01 = true;
-		bt1TimeCapture=true;
-		writeOnBtTmPress(1,true);
-	}
-	if(bt1TimeCapture && !key[KEY_S])//captura o tempo em que o botão foi solto
-	{
-		button01 = false;
-		bt1TimeCapture=false;
-		writeOnBtTmPress(1,false);
-	}
-	
-	//botão 2
-	if(key[KEY_D] && !bt2TimeCapture)//captura o tempo em que o botão foi pressionado
-	{
-		button02 = true;
-		bt2TimeCapture=true;
-		writeOnBtTmPress(2,true);
-	}
-	if(bt2TimeCapture && !key[KEY_D])//captura o tempo em que o botão foi solto
-	{
-		button02 = false;
-		bt2TimeCapture=false;
-		writeOnBtTmPress(2,false);
-	}
-	
-	//botão 3
-	if(key[KEY_W] && !bt3TimeCapture)//captura o tempo em que o botão foi pressionado
-	{
-		button03 = true;
-		bt3TimeCapture=true;
-		writeOnBtTmPress(3,true);
-	}
-	if(bt3TimeCapture && !key[KEY_W])//captura o tempo em que o botão foi solto
-	{
-		button03 = false;
-		bt3TimeCapture=false;
-		writeOnBtTmPress(3,false);
-	}
-	
-	//botão 4
-	if(key[KEY_U] && !bt4TimeCapture)//captura o tempo em que o botão foi pressionado
-	{
-		button04 = true;
-		bt4TimeCapture=true;
-		writeOnBtTmPress(4,true);
-	}
-	if(bt4TimeCapture && !key[KEY_U])//captura o tempo em que o botão foi solto
-	{
-		button04 = false;
-		bt4TimeCapture=false;
-		writeOnBtTmPress(4,false);
-	}
-	
-	//botão 5
-	if(key[KEY_J] && !bt5TimeCapture)//captura o tempo em que o botão foi pressionado
-	{
-		button05 = true;
-		bt5TimeCapture=true;
-		writeOnBtTmPress(5,true);
-	}
-	if(bt5TimeCapture && !key[KEY_J])//captura o tempo em que o botão foi solto
-	{
-		button05 = false;
-		bt5TimeCapture=false;
-		writeOnBtTmPress(5,false);
-	}
-	
-	//botão 6
-	if(key[KEY_I] && !bt6TimeCapture)//captura o tempo em que o botão foi pressionado
-	{
-		button06 = true;
-		bt6TimeCapture=true;
-		writeOnBtTmPress(6,true);
-	}
-	if(bt6TimeCapture && !key[KEY_I])//captura o tempo em que o botão foi solto
-	{
-		button06 = false;
-		bt6TimeCapture=false;
-		writeOnBtTmPress(6,false);
-	}
-	
-	//botão 7
-	if(key[KEY_K] && !bt7TimeCapture)//captura o tempo em que o botão foi pressionado
-	{
-		button07 = true;
-		bt7TimeCapture=true;
-		writeOnBtTmPress(7,true);
-	}
-	if(bt7TimeCapture && !key[KEY_K])//captura o tempo em que o botão foi solto
-	{
-		button07 = false;
-		bt7TimeCapture=false;
-		writeOnBtTmPress(7,false);
-	}
-	
-}END_OF_FUNCTION(trackImputs);
 
 
 /**
