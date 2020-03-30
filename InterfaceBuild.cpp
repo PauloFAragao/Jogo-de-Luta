@@ -192,136 +192,215 @@ void Interface::BuildTimer( int gameTime )
 		}
 		
 	//unidade
-		if( gameTime == 0 ) draw_sprite( conterUnity, number0Frame3, 0, 0 );
-		if( (-1*(gameTime-60000)) % 10000 > 0 && (-1*(gameTime-60000) ) % 10000 <= 999 )
+		if ( gameTime % 10000 < 1000 && gameTime % 10000 != 0 )//qualquer numero terminado em 9
 		{
-			if( (-1*(gameTime-60000)) % 10000 < 25 ) draw_sprite( conterUnity, number0Frame0, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 50 ) draw_sprite( conterUnity, number0Frame1, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 75 ) draw_sprite( conterUnity, number0Frame2, 0, 0 );
-			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number0Frame3, 0, 0 );
-			else draw_sprite( conterUnity, number0RedFrame, 0, 0 );
-		}
-		else if( (-1*(gameTime-60000)) % 10000 > 1000 && (-1*(gameTime-60000)) % 10000 <= 1999 )
-		{
-			if( (-1*(gameTime-60000)) % 10000 < 1025 ) draw_sprite( conterUnity, number1Frame0, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 1050 ) draw_sprite( conterUnity, number1Frame1, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 1075 ) draw_sprite( conterUnity, number1Frame2, 0, 0 );
-			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number1Frame3, 0, 0 );
-			else draw_sprite( conterUnity, number1RedFrame, 0, 0 );
-		}
-		else if( (-1*(gameTime-60000)) % 10000 > 2000 && (-1*(gameTime-60000)) % 10000 <= 2999 )
-		{
-			if( (-1*(gameTime-60000)) % 10000 < 2025 ) draw_sprite( conterUnity, number2Frame0, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 2050 ) draw_sprite( conterUnity, number2Frame1, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 2075 ) draw_sprite( conterUnity, number2Frame2, 0, 0 );
-			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number2Frame3, 0, 0 );
-			else draw_sprite( conterUnity, number2RedFrame, 0, 0 );
-		}
-		else if( (-1*(gameTime-60000)) % 10000 > 3000 && (-1*(gameTime-60000)) % 10000 <= 3999 )
-		{
-			if( (-1*(gameTime-60000)) % 10000 < 3025 ) draw_sprite( conterUnity, number3Frame0, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 3050 ) draw_sprite( conterUnity, number3Frame1, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 3075 ) draw_sprite( conterUnity, number3Frame2, 0, 0 );
-			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number3Frame3, 0, 0 );
-			else draw_sprite( conterUnity, number3RedFrame, 0, 0 );
-		}
-		else if( (-1*(gameTime-60000)) % 10000 > 4000 && (-1*(gameTime-60000)) % 10000 <= 4999 )
-		{
-			if( (-1*(gameTime-60000)) % 10000 < 4025 ) draw_sprite( conterUnity, number4Frame0, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 4050 ) draw_sprite( conterUnity, number4Frame1, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 4075 ) draw_sprite( conterUnity, number4Frame2, 0, 0 );
-			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number4Frame3, 0, 0 );
-			else draw_sprite( conterUnity, number4RedFrame, 0, 0 );
-		}
-		else if( (-1*(gameTime-60000)) % 10000 > 5000 && (-1*(gameTime-60000)) % 10000 <= 5999 )
-		{
-			if( (-1*(gameTime-60000)) % 10000 < 5025 ) draw_sprite( conterUnity, number5Frame0, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 5050 ) draw_sprite( conterUnity, number5Frame1, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 5075 ) draw_sprite( conterUnity, number5Frame2, 0, 0 );
-			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number5Frame3, 0, 0 );
-			else draw_sprite( conterUnity, number5RedFrame, 0, 0 );
-		}
-		else if( (-1*(gameTime-60000)) % 10000 > 6000 && (-1*(gameTime-60000)) % 10000 <= 6999 )
-		{
-			if( (-1*(gameTime-60000)) % 10000 < 6025 ) draw_sprite( conterUnity, number6Frame0, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 6050 ) draw_sprite( conterUnity, number6Frame1, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 6075 ) draw_sprite( conterUnity, number6Frame2, 0, 0 );
-			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number6Frame3, 0, 0 );
-			else draw_sprite( conterUnity, number6RedFrame, 0, 0 );
-		}
-		else if( (-1*(gameTime-60000)) % 10000 > 7000 && (-1*(gameTime-60000)) % 10000 <= 7999 )
-		{
-			if( (-1*(gameTime-60000)) % 10000 < 7025 ) draw_sprite( conterUnity, number7Frame0, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 7050 ) draw_sprite( conterUnity, number7Frame1, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 7075 ) draw_sprite( conterUnity, number7Frame2, 0, 0 );
-			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number7Frame3, 0, 0 );
-			else draw_sprite( conterUnity, number7RedFrame, 0, 0 );
-		}
-		else if( (-1*(gameTime-60000)) % 10000 > 8000 && (-1*(gameTime-60000)) % 10000 <= 8999 )
-		{
-			if( (-1*(gameTime-60000)) % 10000 < 8025 ) draw_sprite( conterUnity, number8Frame0, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 8050 ) draw_sprite( conterUnity, number8Frame1, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 8075 ) draw_sprite( conterUnity, number8Frame2, 0, 0 );
-			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number8Frame3, 0, 0 );
-			else draw_sprite( conterUnity, number8RedFrame, 0, 0 );
-		}
-		else if( (-1*(gameTime-60000)) % 10000 > 9000 && (-1*(gameTime-60000)) % 10000 <= 9999 )
-		{
-			if( (-1*(gameTime-60000)) % 10000 < 9025 ) draw_sprite( conterUnity, number9Frame0, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 9050 ) draw_sprite( conterUnity, number9Frame1, 0, 0 );
-			else if( (-1*(gameTime-60000)) % 10000 < 9075 ) draw_sprite( conterUnity, number9Frame2, 0, 0 );
-			else if( gameTime < 50000 || numberAnimation ) draw_sprite( conterUnity, number9Frame3, 0, 0 );
-			else draw_sprite( conterUnity, number9RedFrame, 0, 0 );
-		}
-	
-	//dezena
-		if( (-1*(gameTime-60000)) < 9999)
-		{
-			if( (-1*(gameTime-60000)) < 9925 )
+			if( gameTime % 1000 > 25 )
 			{
-				if( gameTime < 50000 || numberAnimation ) draw_sprite( conterDozen, number0Frame3, 0, 0 );
+				if( gameTime < 50000 || numberAnimation )
+					draw_sprite( conterUnity, number9Frame3, 0, 0 );
+				else
+					draw_sprite( conterUnity, number9RedFrame, 0, 0 );
+			}
+			else if( gameTime % 1000 > 50 )
+				draw_sprite( conterUnity, number9Frame2, 0, 0 );
+			else if( gameTime % 1000 > 75 )
+				draw_sprite( conterUnity, number9Frame1, 0, 0 );
+			else
+				draw_sprite( conterUnity, number9Frame0, 0, 0 );
+		}
+		else if ( gameTime % 10000 < 2000 && gameTime % 10000 != 0 )//qualquer numero terminado em 8
+		{
+			if( gameTime % 1000 > 25 )
+			{
+				if( gameTime < 50000 || numberAnimation )
+					draw_sprite( conterUnity, number8Frame3, 0, 0 );
+				else
+					draw_sprite( conterUnity, number8RedFrame, 0, 0 );
+			}
+			else if( gameTime % 1000 > 50 )
+				draw_sprite( conterUnity, number8Frame2, 0, 0 );
+			else if( gameTime % 1000 > 75 )
+				draw_sprite( conterUnity, number8Frame1, 0, 0 );
+			else
+				draw_sprite( conterUnity, number8Frame0, 0, 0 );
+		}
+		else if ( gameTime % 10000 < 3000 && gameTime % 10000 != 0 )//qualquer numero terminado em 7
+		{
+			if( gameTime % 1000 > 25 )
+			{
+				if( gameTime < 50000 || numberAnimation )
+					draw_sprite( conterUnity, number7Frame3, 0, 0 );
+				else
+					draw_sprite( conterUnity, number7RedFrame, 0, 0 );
+			}
+			else if( gameTime % 1000 > 50 )
+				draw_sprite( conterUnity, number7Frame2, 0, 0 );
+			else if( gameTime % 1000 > 75 )
+				draw_sprite( conterUnity, number7Frame1, 0, 0 );
+			else
+				draw_sprite( conterUnity, number7Frame0, 0, 0 );
+		}
+		else if ( gameTime % 10000 < 4000 && gameTime % 10000 != 0 )//qualquer numero terminado em 6
+		{
+			if( gameTime % 1000 > 25 )
+			{
+				if( gameTime < 50000 || numberAnimation )
+					draw_sprite( conterUnity, number6Frame3, 0, 0 );
+				else
+					draw_sprite( conterUnity, number6RedFrame, 0, 0 );
+			}
+			else if( gameTime % 1000 > 50 )
+				draw_sprite( conterUnity, number6Frame2, 0, 0 );
+			else if( gameTime % 1000 > 75 )
+				draw_sprite( conterUnity, number6Frame1, 0, 0 );
+			else
+				draw_sprite( conterUnity, number6Frame0, 0, 0 );
+		}
+		else if ( gameTime % 10000 < 5000 && gameTime % 10000 != 0 )//qualquer numero terminado em 5
+		{
+			if( gameTime % 1000 > 25 )
+			{
+				if( gameTime < 50000 || numberAnimation )
+					draw_sprite( conterUnity, number5Frame3, 0, 0 );
+				else
+					draw_sprite( conterUnity, number5RedFrame, 0, 0 );
+			}
+			else if( gameTime % 1000 > 50 )
+				draw_sprite( conterUnity, number5Frame2, 0, 0 );
+			else if( gameTime % 1000 > 75 )
+				draw_sprite( conterUnity, number5Frame1, 0, 0 );
+			else
+				draw_sprite( conterUnity, number5Frame0, 0, 0 );
+		}
+		else if ( gameTime % 10000 < 6000 && gameTime % 10000 != 0 )//qualquer numero terminado em 4
+		{
+			if( gameTime % 1000 > 25 )
+			{
+				if( gameTime < 50000 || numberAnimation )
+					draw_sprite( conterUnity, number4Frame3, 0, 0 );
+				else
+					draw_sprite( conterUnity, number4RedFrame, 0, 0 );
+			}
+			else if( gameTime % 1000 > 50 )
+				draw_sprite( conterUnity, number4Frame2, 0, 0 );
+			else if( gameTime % 1000 > 75 )
+				draw_sprite( conterUnity, number4Frame1, 0, 0 );
+			else
+				draw_sprite( conterUnity, number4Frame0, 0, 0 );
+		}
+		else if ( gameTime % 10000 < 7000 && gameTime % 10000 != 0 )//qualquer numero terminado em 3
+		{
+			if( gameTime % 1000 > 25 )
+			{
+				if( gameTime < 50000 || numberAnimation )
+					draw_sprite( conterUnity, number3Frame3, 0, 0 );
+				else
+					draw_sprite( conterUnity, number3RedFrame, 0, 0 );
+			}
+			else if( gameTime % 1000 > 50 )
+				draw_sprite( conterUnity, number3Frame2, 0, 0 );
+			else if( gameTime % 1000 > 75 )
+				draw_sprite( conterUnity, number3Frame1, 0, 0 );
+			else
+				draw_sprite( conterUnity, number3Frame0, 0, 0 );
+		}
+		else if ( gameTime % 10000 < 8000 && gameTime % 10000 != 0 )//qualquer numero terminado em 2
+		{
+			if( gameTime % 1000 > 25 )
+			{
+				if( gameTime < 50000 || numberAnimation )
+					draw_sprite( conterUnity, number2Frame3, 0, 0 );
+				else
+					draw_sprite( conterUnity, number2RedFrame, 0, 0 );
+			}
+			else if( gameTime % 1000 > 50 )
+				draw_sprite( conterUnity, number2Frame2, 0, 0 );
+			else if( gameTime % 1000 > 75 )
+				draw_sprite( conterUnity, number2Frame1, 0, 0 );
+			else
+				draw_sprite( conterUnity, number2Frame0, 0, 0 );
+		}
+		else if ( gameTime % 10000 < 9000 && gameTime % 10000 != 0 )//qualquer numero terminado em 1
+		{
+			if( gameTime % 1000 > 25 )
+			{
+				if( gameTime < 50000 || numberAnimation )
+					draw_sprite( conterUnity, number1Frame3, 0, 0 );
+				else
+					draw_sprite( conterUnity, number1RedFrame, 0, 0 );
+			}
+			else if( gameTime % 1000 > 50 )
+				draw_sprite( conterUnity, number1Frame2, 0, 0 );
+			else if( gameTime % 1000 > 75 )
+				draw_sprite( conterUnity, number1Frame1, 0, 0 );
+			else
+				draw_sprite( conterUnity, number1Frame0, 0, 0 );
+		}
+		else if ( gameTime % 10000 < 9999 || gameTime % 10000 == 0 )//qualquer numero terminado em 0
+		{
+			if( gameTime % 1000 > 25 || gameTime % 10000 == 0 )
+			{
+				if( gameTime < 50000 || numberAnimation )
+					draw_sprite( conterUnity, number0Frame3, 0, 0 );
+				else
+					draw_sprite( conterUnity, number0RedFrame, 0, 0 );
+			}
+			else if( gameTime % 1000 > 50 )
+				draw_sprite( conterUnity, number0Frame2, 0, 0 );
+			else if( gameTime % 1000 > 75 )
+				draw_sprite( conterUnity, number0Frame1, 0, 0 );
+			else
+				draw_sprite( conterUnity, number0Frame0, 0, 0 );
+		}
+		
+	//dezena
+		if( gameTime > 50000 )//numeros comecados com 0
+		{
+			if( gameTime > 50100 )
+			{
+				if( numberAnimation ) draw_sprite( conterDozen, number0Frame3, 0, 0 );
 				else draw_sprite( conterDozen, number0RedFrame, 0, 0 );
 			}
-			else if( (-1*(gameTime-60000)) < 9950 )  draw_sprite( conterDozen, number0Frame2, 0, 0 );
-			else if( (-1*(gameTime-60000)) < 9975 )  draw_sprite( conterDozen, number0Frame1, 0, 0 );
+			else if( gameTime > 50075 )  draw_sprite( conterDozen, number0Frame2, 0, 0 );
+			else if( gameTime > 50050 )  draw_sprite( conterDozen, number0Frame1, 0, 0 );
 			else draw_sprite( conterDozen, number0Frame0, 0, 0 );
 		}
-		else if( (-1*(gameTime-60000)) < 19999)
+		else if( gameTime > 40000 )//numeros comecados com 1
 		{
-			if( (-1*(gameTime-60000)) < 19925 ) draw_sprite( conterDozen, number1Frame3, 0, 0 );
-			else if( (-1*(gameTime-60000)) < 19950 )  draw_sprite( conterDozen, number1Frame2, 0, 0 );
-			else if( (-1*(gameTime-60000)) < 19975 )  draw_sprite( conterDozen, number1Frame1, 0, 0 );
+			if( gameTime > 40100 ) draw_sprite( conterDozen, number1Frame3, 0, 0 );
+			else if( gameTime > 40075 )  draw_sprite( conterDozen, number1Frame2, 0, 0 );
+			else if( gameTime > 40050 )  draw_sprite( conterDozen, number1Frame1, 0, 0 );
 			else draw_sprite( conterDozen, number1Frame0, 0, 0 );
 		}
-		else if( (-1*(gameTime-60000)) < 29999)
+		else if( gameTime > 30000 )//numeros comecados com 2
 		{
-			if( (-1*(gameTime-60000)) < 29925 ) draw_sprite( conterDozen, number2Frame3, 0, 0 );
-			else if( (-1*(gameTime-60000)) < 29950 )  draw_sprite( conterDozen, number2Frame2, 0, 0 );
-			else if( (-1*(gameTime-60000)) < 29975 )  draw_sprite( conterDozen, number2Frame1, 0, 0 );
+			if( gameTime > 30100 ) draw_sprite( conterDozen, number2Frame3, 0, 0 );
+			else if( gameTime > 30075 )  draw_sprite( conterDozen, number2Frame2, 0, 0 );
+			else if( gameTime > 30050 )  draw_sprite( conterDozen, number2Frame1, 0, 0 );
 			else draw_sprite( conterDozen, number2Frame0, 0, 0 );
 		}
-		else if( (-1*(gameTime-60000)) < 39999)
+		else if( gameTime > 20000 )//numeros comecados com 3
 		{
-			if( (-1*(gameTime-60000)) < 39925 ) draw_sprite( conterDozen, number3Frame3, 0, 0 );
-			else if( (-1*(gameTime-60000)) < 39950 )  draw_sprite( conterDozen, number3Frame2, 0, 0 );
-			else if( (-1*(gameTime-60000)) < 39975 )  draw_sprite( conterDozen, number3Frame1, 0, 0 );
+			if( gameTime > 20100 ) draw_sprite( conterDozen, number3Frame3, 0, 0 );
+			else if( gameTime > 20075 )  draw_sprite( conterDozen, number3Frame2, 0, 0 );
+			else if( gameTime > 20050 )  draw_sprite( conterDozen, number3Frame1, 0, 0 );
 			else draw_sprite( conterDozen, number3Frame0, 0, 0 );
 		}
-		else if( (-1*(gameTime-60000)) < 49999)
+		else if( gameTime > 10000 )//numeros comecados com 4
 		{
-			if( (-1*(gameTime-60000)) < 49925 ) draw_sprite( conterDozen, number4Frame3, 0, 0 );
-			else if( (-1*(gameTime-60000)) < 49950 )  draw_sprite( conterDozen, number4Frame2, 0, 0 );
-			else if( (-1*(gameTime-60000)) < 49975 )  draw_sprite( conterDozen, number4Frame1, 0, 0 );
+			if( gameTime > 10100 ) draw_sprite( conterDozen, number4Frame3, 0, 0 );
+			else if( gameTime > 10075 )  draw_sprite( conterDozen, number4Frame2, 0, 0 );
+			else if( gameTime > 10050 )  draw_sprite( conterDozen, number4Frame1, 0, 0 );
 			else draw_sprite( conterDozen, number4Frame0, 0, 0 );
 		}
-		else if( (-1*(gameTime-60000)) < 59999)
+		else if( gameTime > 0 )//numeros comecados com 5
 		{
-			if( (-1*(gameTime-60000)) < 59925 ) draw_sprite( conterDozen, number5Frame3, 0, 0 );
-			else if( (-1*(gameTime-60000)) < 59950 )  draw_sprite( conterDozen, number5Frame2, 0, 0 );
-			else if( (-1*(gameTime-60000)) < 59975 )  draw_sprite( conterDozen, number5Frame1, 0, 0 );
+			if( gameTime > 100 ) draw_sprite( conterDozen, number5Frame3, 0, 0 );
+			else if( gameTime > 75 )  draw_sprite( conterDozen, number5Frame2, 0, 0 );
+			else if( gameTime > 50 )  draw_sprite( conterDozen, number5Frame1, 0, 0 );
 			else draw_sprite( conterDozen, number5Frame0, 0, 0 );
 		}
-		else if( (-1*(gameTime-60000)) < 69999) draw_sprite( conterDozen, number6Frame3, 0, 0 );
+		else draw_sprite( conterDozen, number6Frame3, 0, 0 );
 		
 	}
 	//tempo finalizado

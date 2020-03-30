@@ -83,6 +83,7 @@ do personagem virado para a direita
 -Os objetos dos personagens agora são alocados na memoria de forma dinamica
 -O metodo InterpletationEngine da classe player foi substituido por uma serie de outros metodos
 -Bug da animação agachar resolvido
-
+-Foi iniciada a implementação do segundo personagem
+	-O segundo personagem tem os seus proprios inputs
 
 
