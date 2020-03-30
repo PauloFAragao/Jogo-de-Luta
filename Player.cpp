@@ -81,7 +81,6 @@ void Player::StartAttributes()
 	antLoopBT0 = true;
 	antLoopBT2 = true;
 	
-	
 	for (int a=0; a<8; a++)//iniciando o vetor de tempos
 	{
 		for(int b=0; b<10; b++)
@@ -99,13 +98,28 @@ void Player::StartAttributes()
  */
 void Player::PlayerRoutine( bool flipCharacter )
 {
-
-	if( key[ KEY_0_PAD ]  ) opponentAttacking = true;
-	if( !key[ KEY_0_PAD ] ) opponentAttacking = false;
-	
-	if( key[ KEY_1_PAD ]  ) takingDmg = true;
-
-	
+		//TEMPORARIO
+		if( key[ KEY_0_PAD ]  ) opponentAttacking = true;
+		if( !key[ KEY_0_PAD ] ) opponentAttacking = false;
+		
+		if( key[ KEY_1_PAD ]  ) takingDmg = true;
+		
+		if( key[KEY_MINUS]  ) 
+		{
+			//lifePoints -=25;
+			//shildPoints -=5;
+			especialBar -=1;
+			//powTime -= 100;
+		}
+		if( key[KEY_EQUALS] ) 
+		{
+			//lifePoints +=25;
+			//shildPoints +=5;
+			especialBar +=1;
+			//powTime += 100;
+		}
+		//TEMPORARIO
+		
 	//captura os imputs do plauer
 	TrackImputs();
 	
@@ -124,7 +138,7 @@ void Player::PlayerRoutine( bool flipCharacter )
 	InterpretationDefence();
 	InterpretationRolling();
 	InterpretationChangeSide( flipCharacter );
-	
+	SpecialControl();
 		
 }END_OF_FUNCTION(PlayerRoutine);
 

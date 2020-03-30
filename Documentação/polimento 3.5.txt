@@ -14,10 +14,10 @@ game pause, etc - implementado
 bug na verção 3.4 se o jogador pressionar o botão para baixo no momento que o jogo 
 está executando a ação 12 (se levantar) - implementado
 
-fazer as alterações necessarias nos construtores das classes - implementando
+fazer as alterações necessarias nos construtores das classes - implementado
 
 fazer o player 2 - implementando
-	criar uma forma de imputs para o player 2 - implementando
+	criar uma forma de imputs para o player 2 - implementado
 	colocar no construtor da classe player se ele é o player 1 ou o 2 - implementado
 
 Implementação necessaria para quando o personagem virar para o outro lado - o 
@@ -31,4 +31,4 @@ que está executando para depois virar para o outro lado
 	o metodo ValidateAction  - implementado
 
 Mudar o controle das barras de especial para a classe player (estão na classe 
-interface) - 
+interface) - implementado

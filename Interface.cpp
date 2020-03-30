@@ -106,46 +106,6 @@ void Interface::StartAttributes()
 	
 }END_OF_FUNCTION(StartAttributes);
 
-/**
- * Esse metodo faz os calculos de porcentagem para movimentação das barras
- */
-void Interface::Calculation()
-{
-	if( key[KEY_MINUS]  ) 
-	{
-		//lifePointsP1 -=25;
-		//lifePointsP2 -=25;
-		//shildPointsP1 -=5;
-		//shildPointsP2 -=5;
-		//especialBarP1 -=1;
-		//especialBarP2 -=1;
-		//powTimeP1 -= 100;
-		//powTimeP2 -= 100;
-	}
-	if( key[KEY_EQUALS] ) 
-	{
-		//lifePointsP1 +=25;
-		//lifePointsP2 +=25;
-		//shildPointsP1 +=5;
-		//shildPointsP2 +=5;
-		//especialBarP1 +=1;
-		//especialBarP2 +=1;
-		//powTimeP1 += 100;
-		//powTimeP2 += 100;
-	}
-	//controle temporario << esse controle deve destar dentro da classe player
-	/*if( especialBarP1 >= 100 )
-	{
-		especialBarP1 = 0;
-		if( especialQuantityP1 < 5 ) especialQuantityP1++;
-	}
-	if( especialBarP2 >= 100 )
-	{
-		especialBarP2 = 0;
-		if( especialQuantityP2 < 5 ) especialQuantityP2++;
-	}*/
-
-}END_OF_FUNCTION(Calculation);
 
 /**
  * Esse metodo chama todos os metodos necessarios para construir a interface e 
@@ -153,10 +113,6 @@ void Interface::Calculation()
  */
 BITMAP *Interface::GetCompleteInterface( int gameTime, int lifePointsP1, int lifePointsP2, int lifePointsMaxP1, int lifePointsMaxP2, int shildP1, int shildP2, int especialBarP1, int especialBarP2, int especialQuantityP1, int especialQuantityP2, int powTimeP1, int powTimeP2, bool powP1, bool powP2 )
 {
-
-	//calculos para movimentar as barras
-	Calculation(  );
-	
 	//metodo responsavel por construir graficamente a interface do jogo
 	BuildInterface( gameTime, 
 					lifePointsP1, lifePointsP2, 

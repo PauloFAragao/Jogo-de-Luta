@@ -156,6 +156,7 @@ class Player
 		void InterpretationDefence();
 		void InterpretationRolling();
 		void InterpretationChangeSide( bool flipCharacter );
+		void SpecialControl();
 
 		//atributos privados
 		float x;				//posição em X do player
@@ -181,8 +182,6 @@ class Player
 		
 		bool toRight;			//indica para que lado o personagem está virado
 		
-
-
 		//variaveis para resolver o bug da corrida
 		bool antLoopBT0;
 		bool antLoopBT2;

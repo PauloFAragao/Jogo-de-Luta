@@ -174,7 +174,6 @@ class Interface
 		void BuildPlayer1PowBar( int powTimeP1 );
 		void BuildPlayer2PowBar( int powTimeP2 );
 		void TimerControl();
-		void Calculation();
 
 };
 #endif//INTERFACE_H

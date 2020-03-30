@@ -232,6 +232,7 @@ void Player::InterpretationRolling()
  */
 void Player::InterpretationChangeSide( bool flipCharacter )
 {
+//personagem em pé
 	if( !button01 && flipCharacter )
 	{
 		if( ValidateAction(160) )
@@ -245,6 +246,7 @@ void Player::InterpretationChangeSide( bool flipCharacter )
 		ChangeAction(0);
 	}
 	
+//personagem agachado
 	if( button01 && flipCharacter )
 	{
 		if( ValidateAction(170) )
@@ -259,6 +261,21 @@ void Player::InterpretationChangeSide( bool flipCharacter )
 	}
 	
 }END_OF_FUNCTION(InterpretationChangeSide);
+
+/**
+ * Esse metodo é responsavel por fazer o controle da barra de especial e o 
+ * controle da quantidade de especiais que o personagem tem
+ */
+void Player::SpecialControl()
+{
+	if( especialBar >= 100 )
+	{
+		especialBar = 0;
+		if( especialQuantity < 5 ) especialQuantity++;
+	}
+}
+
+
 
 
 

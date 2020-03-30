@@ -84,6 +84,8 @@ do personagem virado para a direita
 -O metodo InterpletationEngine da classe player foi substituido por uma serie de outros metodos
 -Bug da animação agachar resolvido
 -Foi iniciada a implementação do segundo personagem
+	-O controle da quantidade de barra e da quantidade de especiais foi movido para
+	a classe player em definitivo
 	-O segundo personagem tem os seus proprios inputs
 	-Os personagem mudam de lado quando o outro personagem passa para as suas costas
 
