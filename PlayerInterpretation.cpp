@@ -26,6 +26,7 @@ void Player::InterpretationWalkWalkBackRun()
 	}
 }END_OF_FUNCTION(InterpretationWalkWalkBackRun);
 
+
 /**
  *	Esse metodo é responsavel por imterpetar a ação: jumpBack-110/111
  */
@@ -58,6 +59,7 @@ void Player::InterpretationJumpBack()
 	}
 }END_OF_FUNCTION(InterpretationJumpBack);
 
+
 /**
  *	Esse metodo é responsavel por imterpetar as ações: (jump) endOfClimp-42/52/62/82, falling-43/53/63/83, fall-44/54/64/84
  */
@@ -89,6 +91,7 @@ void Player::InterpretationJump()
 	}
 }END_OF_FUNCTION(InterpretationJump);
 
+
 /**
  *	Esse metodo é responsavel por imterpetar as ações: (Strong Diagonal Jump) strongFrontalDiagonalJump-71, strongBackDiagonalJump-91
  */
@@ -114,6 +117,7 @@ void Player::InterpretationStrongDiagonalJump()
 	}
 }END_OF_FUNCTION(InterpretationStrongDiagonalJump);
 
+
 /**
  *	Esse metodo é responsavel por imterpetar as ações: (crouched) crouching-10, crouchedIdle-11, crouchedIdle-12
  */
@@ -136,6 +140,7 @@ void Player::InterpretationCrouch()
 		ChangeAction( 0 );
 	}
 }END_OF_FUNCTION(InterpretationCrouch);
+
 
 /**
  *	Esse metodo é responsavel por imterpetar as ações: (defence) Defending-120/130, Defence-121/131, Taking Damage-122/132, Defend Exit-123/133
@@ -194,6 +199,7 @@ void Player::InterpretationDefence()
 	}
 }END_OF_FUNCTION(InterpretationDefence);
 
+
 /**
  *	Esse metodo é responsavel por imterpetar as ações: (rolling) Front Rolling-140, Front Rolling End-141, Back Rolling-150, Back Rolling End-151
  */
@@ -220,48 +226,38 @@ void Player::InterpretationRolling()
 	}
 }END_OF_FUNCTION(InterpretationRolling);
 
+
 /**
  *	Esse metodo é responsavel por imterpetar as ações: (Change Side)
  */
-void Player::InterpretationChangeSide()//<<<< TEMPORARIO
+void Player::InterpretationChangeSide( bool flipCharacter )
 {
-	//mudar de lado em pé
-	if( key[ KEY_2_PAD ] && !button01 && !antLoopChangeSide )
+	if( !button01 && flipCharacter )
 	{
-		antLoopChangeSide = true;
-		
 		if( ValidateAction(160) )
+		{
 			ChangeAction(160);
-
-		else
-			toRight = !toRight;
+		}
 	}
 	if( action == 160 && frame == changeSide[1] && clock() - capturaTempo > TEF-50 )
 	{
 		toRight = !toRight;
 		ChangeAction(0);
 	}
-	if( antLoopChangeSide && !key[ KEY_2_PAD ] )
-		antLoopChangeSide = false;
-
-	//mudar de lado agachado
-	if( key[ KEY_2_PAD ] && button01 && !antLoopChangeSide )
+	
+	if( button01 && flipCharacter )
 	{
-		antLoopChangeSide = true;
-		
 		if( ValidateAction(170) )
+		{
 			ChangeAction(170);
-
-		else
-			toRight = !toRight;
+		}
 	}
 	if( action == 170 && frame == changeSideCrouched[1] && clock() - capturaTempo > TEF-50 )
 	{
 		toRight = !toRight;
 		ChangeAction(11);
 	}
-	if( antLoopChangeSide && !key[ KEY_2_PAD ] )
-		antLoopChangeSide = false;
+	
 }END_OF_FUNCTION(InterpretationChangeSide);
 
 

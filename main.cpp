@@ -8,13 +8,10 @@
 *	
 */
 
-
 #include <allegro.h>
 #include "Game.h"
 
-
 #define COMPLETERENDER true
-
 
 int WINDOW_WIDTH  = 1140;
 int WINDOW_HEIGHT = 630;
@@ -50,11 +47,4 @@ END_OF_MAIN();
 
 
 
-
-
-//threaded
-
-
-
-
-
+//threaded nome da parada que pode ajudar a fazer uma barra de loading

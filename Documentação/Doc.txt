@@ -85,5 +85,5 @@ do personagem virado para a direita
 -Bug da animação agachar resolvido
 -Foi iniciada a implementação do segundo personagem
 	-O segundo personagem tem os seus proprios inputs
-
+	-Os personagem mudam de lado quando o outro personagem passa para as suas costas
 

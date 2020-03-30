@@ -92,12 +92,12 @@ void Terry::StartAttributes()
 /**
  * Metodo que faz toda a rotina para movimentação do personagem
  */
-BITMAP* Terry::GetPlayerSprite( bool gamePause, bool gameStart )//esse metodo retorna o frame que deve ser renderizado
+BITMAP* Terry::GetPlayerSprite( int enemyX, int enemyY, bool gamePause, bool gameStart, bool enemyAttacking, bool takingDmg, bool flipCharacter )
 {
 	if( !gamePause )
 	{
 		//rotina da classe player
-		if( gameStart ) PlayerRoutine();
+		if( gameStart ) PlayerRoutine( flipCharacter );
 		
 		//controle das animações do personagem
 		TerryAnimations();

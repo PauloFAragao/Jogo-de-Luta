@@ -23,7 +23,7 @@ void Scenario::StartAttributes()
 {
 	x = 0;
     y = 0;
-}
+}END_OF_FUNCTION(StartAttributes);
 
 
 void Scenario::SetScenarioSprite( BITMAP *scenarioSprite )
@@ -41,25 +41,25 @@ BITMAP *Scenario::GetScenarioSprite()
 void Scenario::SetX( int x )
 {
 	this->x = x;
-}END_OF_FUNCTION();
+}END_OF_FUNCTION(SetX);
 
 
 int Scenario::GetX()
 {
 	return x;
-}END_OF_FUNCTION();
+}END_OF_FUNCTION(GetX);
 
 
 void Scenario::SetY( int y )
 {
 	this->y = y;
-}END_OF_FUNCTION();
+}END_OF_FUNCTION(SetY);
 
 
 int Scenario::GetY()
 {
 	return y;
-}END_OF_FUNCTION();
+}END_OF_FUNCTION(GetY);
 
 
 

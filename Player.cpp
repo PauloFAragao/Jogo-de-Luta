@@ -78,8 +78,6 @@ void Player::StartAttributes()
 	takingDmg=false;				//indica que o personagem foi atacado enquanto estava na defesa
 	opponentAttacking=false;		//indica que o oponente está atacando
 	
-	antLoopChangeSide = false;
-	
 	antLoopBT0 = true;
 	antLoopBT2 = true;
 	
@@ -93,13 +91,13 @@ void Player::StartAttributes()
 	}
 	
 	
-}END_OF_FUNCTION(StartAttributes)
+}END_OF_FUNCTION(StartAttributes);
 
 
 /**
  * Esse metodo faz a chamada dos outros metodos importantes da classe player
  */
-void Player::PlayerRoutine()
+void Player::PlayerRoutine( bool flipCharacter )
 {
 
 	if( key[ KEY_0_PAD ]  ) opponentAttacking = true;
@@ -125,7 +123,7 @@ void Player::PlayerRoutine()
 	InterpretationCrouch();
 	InterpretationDefence();
 	InterpretationRolling();
-	InterpretationChangeSide();
+	InterpretationChangeSide( flipCharacter );
 	
 		
 }END_OF_FUNCTION(PlayerRoutine);
@@ -567,7 +565,6 @@ bool Player::ValidateAction(int value)
  */
 bool Player::VerifyFrame(int value)
 {
-
 	switch( value )
 	{
 		case 0://idle
@@ -739,7 +736,6 @@ bool Player::VerifyFrame(int value)
 			return false;
 		break;
 	}
-	
 	return false;
 }END_OF_FUNCTION(VerifyFrame);
 

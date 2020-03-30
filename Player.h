@@ -17,7 +17,7 @@ class Player
 		~Player();
 		
 		//Metodos publicos
-		void PlayerRoutine();
+		void PlayerRoutine( bool flipCharacter );
 		
 		bool ValidateAction(int value);				//verifica se uma ação pode ser feita
 		bool VerifyFrame(int value);
@@ -121,7 +121,9 @@ class Player
 		int GetChangeSideCrouched( int index );
 		void SetChangeSideCrouched(int changeSideCrouched, int index);
 
-		void SetTakingDmg(bool takingDmg);
+		void SetTakingDmg( bool takingDmg );
+		bool GetAttacking();
+		void SetAttacking( bool attacking);
 
 		//BITMAP *GetPlayerSprite();
 		BITMAP *GetSprites(int side, int index);
@@ -153,7 +155,7 @@ class Player
 		void InterpretationCrouch();
 		void InterpretationDefence();
 		void InterpretationRolling();
-		void InterpretationChangeSide();
+		void InterpretationChangeSide( bool flipCharacter );
 
 		//atributos privados
 		float x;				//posição em X do player
@@ -179,7 +181,7 @@ class Player
 		
 		bool toRight;			//indica para que lado o personagem está virado
 		
-		bool antLoopChangeSide;//VARIAVEL TEMPORARIA
+
 
 		//variaveis para resolver o bug da corrida
 		bool antLoopBT0;
@@ -207,8 +209,8 @@ class Player
 		bool bt7TimeCapture;
 		
 		bool attacking;				//indica que o personagema está atacando
-		bool opponentAttacking;		//indica que o oponente está atacando
-		bool takingDmg;			//indica que o personagem sofreu dano <<< VARIAVEL TEMPORARIA
+		bool opponentAttacking;		//indica que o oponente está atacando <<< VARIAVEL TEMPORARIA
+		bool takingDmg;				//indica que o personagem sofreu dano <<< VARIAVEL TEMPORARIA
 		
 		//tempos das animações para o controle
 		int idle[2];				//animação numero 0

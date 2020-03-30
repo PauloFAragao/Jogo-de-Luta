@@ -1,13 +1,11 @@
 Construtor da classe Interface precisa receber os seguintes argumentos:
-vida maxima do personagem 1
-vida maxima do personagem 2
-
-Construtor da classe Player
-player number
-
-Construtor da classe Terry
-player number
+	vida maxima do personagem 1
+	vida maxima do personagem 2
 
 
-
-
+metodo que retorna bitmap da classe terry
+	posição do outro personagem (x & Y)
+	personagem inimigo atacando
+	personagem inimigo sofrendo dano
+	personagem inimigo sendo atingido
+	virar personagem

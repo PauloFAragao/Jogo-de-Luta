@@ -24,9 +24,12 @@ class Game
 	//atributos privados
 		
 		bool gameStart;
-		bool antLoopGameStart;
+		bool antLoopGameStart;		//VARIAVEL TEMPORARIA
 		bool gamePause;
 		bool antLoopPause;
+		
+		bool flipPlayer1Comand;
+		bool flipPlayer2Comand;
 		
 		int gameTime;
 		int gameTimeStart;
@@ -55,6 +58,8 @@ class Game
 		void GameTimeControl();
 		
 		void BuildDebugScreen();
+		
+		void FlipPlayers();
 };
 #endif//GAME_H
 

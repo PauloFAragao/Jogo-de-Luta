@@ -5,13 +5,13 @@
 BITMAP* Player::GetSprites(int side, int index)
 {
 	return sprites[side][index];
-}END_OF_FUNCTION(GetSprites)
+}END_OF_FUNCTION(GetSprites);
 
 //sprites
 void Player::SetSrites(BITMAP *sprite, int index, int side )
 {
 	this->sprites[side][index] = sprite;
-}END_OF_FUNCTION(SetSrite)
+}END_OF_FUNCTION(SetSrite);
 
 //x
 float Player::GetX()
@@ -77,11 +77,11 @@ void Player::SetFrame(int frame)
 bool Player::GetStartAnimation()
 {
 	return startAnimation;
-}
+}END_OF_FUNCTION(GetStartAnimation);
 void Player::SetStartAnimation(bool startAnimation)
 {
 	this->startAnimation = startAnimation;
-}
+}END_OF_FUNCTION(SetStartAnimation);
 
 //toRight
 bool  Player::GetToRight()
@@ -222,11 +222,11 @@ bool Player::GetPow()
 int Player::GetCapturaTempo()
 {
 	return capturaTempo;
-}
+}END_OF_FUNCTION(GetCapturaTempo);
 void Player::SetCapturaTempo(int capturaTempo)
 {
 	this->capturaTempo = capturaTempo;
-}
+}END_OF_FUNCTION(SetCapturaTempo);
 
 	//animações
 
@@ -234,299 +234,307 @@ void Player::SetCapturaTempo(int capturaTempo)
 void Player::SetIdle(int idle, int index)
 {
 	this->idle[index] = idle;
-}
+}END_OF_FUNCTION(SetIdle);
 int Player::GetIdle( int index )
 {
 	return idle[index];
-}
+}END_OF_FUNCTION(GetIdle);
 
 //crouching
 void Player::SetCrouching(int crouching, int index)
 {
 	this->crouching[index] = crouching;
-}
+}END_OF_FUNCTION(SetCrouching);
 int Player::GetCrouching( int index )
 {
 	return crouching[index];
-}
+}END_OF_FUNCTION(GetCrouching);
 
 //crouchedIdle
 void Player::SetCrouchedIdle(int crouchedIdle, int index)
 {
 	this->crouchedIdle[index] = crouchedIdle;
-}
+}END_OF_FUNCTION(SetCrouchedIdle);
 int Player::GetCrouchedIdle( int index )
 {
 	return crouchedIdle[index];
-}
+}END_OF_FUNCTION(GetCrouchedIdle);
 
 //walk
 void Player::SetWalk(int walk, int index)
 {
 	this->walk[index] = walk;
-}
+}END_OF_FUNCTION(SetWalk);
 int Player::GetWalk( int index )
 {
 	return walk[index];
-}
+}END_OF_FUNCTION(GetWalk);
 
 //walkBack
 void Player::SetWalkBack(int walkBack, int index)
 {
 	this->walkBack[index] = walkBack;
-}
+}END_OF_FUNCTION(SetWalkBack);
 int Player::GetWalkBack( int index )
 {
 	return walkBack[index];
-}
+}END_OF_FUNCTION(GetWalkBack);
 
 //rising
 void Player::SetRising(int rising, int index)
 {
 	this->rising[index] = rising;
-}
+}END_OF_FUNCTION(SetRising);
 int Player::GetRising( int index )
 {
 	return rising[index];
-}
+}END_OF_FUNCTION(GetRising);
 
 //endOfClimp
 void Player::SetEndOfClimp(int endOfClimp, int index)
 {
 	this->endOfClimp[index] = endOfClimp;
-}
+}END_OF_FUNCTION(SetEndOfClimp);
 int Player::GetEndOfClimp( int index )
 {
 	return endOfClimp[index];
-}
+}END_OF_FUNCTION(GetEndOfClimp);
 
 //falling
 void Player::SetFalling(int falling, int index)
 {
 	this->falling[index] = falling;
-}
+}END_OF_FUNCTION(SetFalling);
 int Player::GetFalling( int index )
 {
 	return falling[index];
-}
+}END_OF_FUNCTION(GetFalling);
 
 //fall
 void Player::SetFall(int fall, int index)
 {
 	this->fall[index] = fall;
-}
+}END_OF_FUNCTION(SetFall);
 int Player::GetFall( int index )
 {
 	return fall[index];
-}
+}END_OF_FUNCTION(GetFall);
 
 //strongFrontalDJ
 void Player::SetStrongFrontalDJ(int strongFrontalDJ, int index)
 {
 	this->strongFrontalDJ[index] = strongFrontalDJ;
-}
+}END_OF_FUNCTION(SetStrongFrontalDJ);
 int Player::GetStrongFrontalDJ( int index )
 {
 	return strongFrontalDJ[index];
-}
+}END_OF_FUNCTION(GetStrongFrontalDJ);
 
 //strongBackDJ
 void Player::SetStrongBackDJ(int strongBackDJ, int index)
 {
 	this->strongBackDJ[index] = strongBackDJ;
-}
+}END_OF_FUNCTION(SetStrongBackDJ);
 int Player::GetStrongBackDJ( int index )
 {
 	return strongBackDJ[index];
-}
+}END_OF_FUNCTION(GetStrongBackDJ);
 
 //run
 void Player::SetRun(int run, int index)
 {
 	this->run[index] = run;
-}
+}END_OF_FUNCTION(SetRun);
 int Player::GetRun( int index )
 {
 	return run[index];
-}
+}END_OF_FUNCTION(GetRun);
 
 //jumpBack
 void Player::SetJumpBack(int jumpBack, int index)
 {
 	this->jumpBack[index] = jumpBack;
-}
+}END_OF_FUNCTION(SetJumpBack);
 int Player::GetJumpBack( int index )
 {
 	return jumpBack[index];
-}
+}END_OF_FUNCTION(GetJumpBack);
 
 //jumpBackFall
 void Player::SetJumpBackFall(int jumpBackFall, int index)
 {
 	this->jumpBackFall[index] = jumpBackFall;
-}
+}END_OF_FUNCTION(SetJumpBackFall);
 int Player::GetJumpBackFall( int index )
 {
 	return jumpBackFall[index];
-}
+}END_OF_FUNCTION(GetJumpBackFall);
 
 //defending
 void Player::SetDefending (int defending, int index)
 {
 	this->defending[index] = defending;
-}
+}END_OF_FUNCTION(SetDefending);
 int Player::GetDefending( int index )
 {
 	return defending[index];
-}
+}END_OF_FUNCTION(GetDefending);
 
 //defence
 void Player::SetDefence(int defence, int index)
 {
 	this->defence[index] = defence;
-}
+}END_OF_FUNCTION(SetDefence);
 int Player::GetDefence( int index )
 {
 	return defence[index];
-}
+}END_OF_FUNCTION(GetDefence);
 
 //takingDamage
 void Player::SetTakingDamage(int takingDamage, int index)
 {
 	this->takingDamage[index] = takingDamage;
-}
+}END_OF_FUNCTION(SetTakingDamage);
 int Player::GetTakingDamage( int index )
 {
 	return takingDamage[index];
-}
+}END_OF_FUNCTION(GetTakingDamage);
 
 //defendExit
 void Player::SetDefendExit(int defendExit, int index)
 {
 	this->defendExit[index] = defendExit;
-}
+}END_OF_FUNCTION(SetDefendExit);
 int Player::GetDefendExit( int index )
 {
 	return defendExit[index];
-}
+}END_OF_FUNCTION(GetDefendExit);
 
 //defendingCrouched
 void Player::SetDefendingCrouched(int defendingCrouched, int index)
 {
 	this->defendingCrouched[index] = defendingCrouched;
-}
+}END_OF_FUNCTION(SetDefendingCrouched);
 int Player::GetDefendingCrouched( int index )
 {
 	return defendingCrouched[index];
-}
+}END_OF_FUNCTION(GetDefendingCrouched);
 
 //defenceCrouched
 void Player::SetDefenceCrouched(int defenceCrouched, int index)
 {
 	this->defenceCrouched[index]= defenceCrouched;
-}
+}END_OF_FUNCTION(SetDefenceCrouched);
 int Player::GetDefenceCrouched( int index )
 {
 	return defenceCrouched[index];
-}
+}END_OF_FUNCTION(GetDefenceCrouched);
 
 //takingDamageCrouched
 void Player::SetTakingDamageCrouched(int takingDamageCrouched, int index)
 {
 	this->takingDamageCrouched[index] = takingDamageCrouched;
-}
+}END_OF_FUNCTION(SetTakingDamageCrouched);
 int Player::GetTakingDamageCrouched( int index )
 {
 	return takingDamageCrouched[index];
-}
+}END_OF_FUNCTION(GetTakingDamageCrouched);
 
 //defendExitCrouched
 void Player::SetDefendExitCrouched(int defendExitCrouched, int index)
 {
 	this->defendExitCrouched[index] = defendExitCrouched;
-}
+}END_OF_FUNCTION(SetDefendExitCrouched);
 int Player::GetDefendExitCrouched( int index )
 {
 	return defendExitCrouched[index];
-}
+}END_OF_FUNCTION(GetDefendExitCrouched);
 
 //frontRolling
 void Player::SetFrontRolling(int frontRolling, int index)
 {
 	this->frontRolling[index] = frontRolling;
-}
+}END_OF_FUNCTION(SetFrontRolling);
 int Player::GetFrontRolling( int index )
 {
 	return frontRolling[index];
-}
+}END_OF_FUNCTION(GetFrontRolling);
 
 //backRolling
 void Player::SetBackRolling(int backRolling, int index)
 {
 	this->backRolling[index] = backRolling;
-}
+}END_OF_FUNCTION(SetBackRolling);
 int Player::GetBackRolling( int index )
 {
 	return backRolling[index];
-}
+}END_OF_FUNCTION(GetBackRolling);
 
 //slide
 void Player::SetSlide(int slide, int index)
 {
 	this->slide[index] = slide;
-}
+}END_OF_FUNCTION(SetSlide);
 int Player::GetSlide( int index )
 {
 	return slide[index];
-}
+}END_OF_FUNCTION(GetSlide);
 
 //frontRollingEnd
 void Player::SetFrontRollingEnd(int frontRollingEnd, int index)
 {
 	this->frontRollingEnd[index] = frontRollingEnd;
-}
+}END_OF_FUNCTION(SetFrontRollingEnd);
 int Player::GetFrontRollingEnd( int index )
 {
 	return frontRollingEnd[index];
-}
+}END_OF_FUNCTION(GetFrontRollingEnd);
 
 //backRollingEnd
 void Player::SetBackRollingEnd(int backRollingEnd, int index)
 {
 	this->backRollingEnd[index] = backRollingEnd;
-}
+}END_OF_FUNCTION(SetBackRollingEnd);
 int Player::GetBackRollingEnd( int index )
 {
 	return backRollingEnd[index];
-}
+}END_OF_FUNCTION(GetBackRollingEnd);
 
 //changeSide
 void Player::SetChangeSide(int changeSide, int index)
 {
 	this->changeSide[index] = changeSide;
-}
+}END_OF_FUNCTION(SetChangeSide);
 int Player::GetChangeSide( int index )
 {
 	return changeSide[index];
-}
+}END_OF_FUNCTION(GetChangeSide);
 
 //changeSideCrouched
 void Player::SetChangeSideCrouched(int changeSideCrouched, int index)
 {
 	this->changeSideCrouched[index] = changeSideCrouched;
-}
+}END_OF_FUNCTION(SetChangeSideCrouched);
 int Player::GetChangeSideCrouched( int index )
 {
 	return changeSideCrouched[index];
-}
+}END_OF_FUNCTION(GetChangeSideCrouched);
 
 //takingDmg
 void Player::SetTakingDmg(bool takingDmg)
 {
 	this->takingDmg = takingDmg;
-}
+}END_OF_FUNCTION(SetTakingDmg);
 
-
+//attacking
+bool Player::GetAttacking()
+{
+	return attacking;
+}END_OF_FUNCTION(GetAttacking);
+void Player::SetAttacking( bool attacking)
+{
+	this->attacking = attacking;
+}END_OF_FUNCTION(SetAttacking);
 
 
 

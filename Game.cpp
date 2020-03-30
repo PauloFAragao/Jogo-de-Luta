@@ -32,10 +32,12 @@ void Game::StartAttributes()
 	gamePause = false;
 	antLoopPause = false;
 	
+	flipPlayer1Comand = false;
+	flipPlayer2Comand = false;
+	
 	gameScreen = create_bitmap(SCREEN_W, SCREEN_H);
 	
-	
-}
+}END_OF_FUNCTION(StartAttributes);
 
 
 void Game::AllocateMemoryP1( int p1Index )
@@ -46,7 +48,7 @@ void Game::AllocateMemoryP1( int p1Index )
 			terryP1 = new Terry( 1 );
 		break;
 	}
-}
+}END_OF_FUNCTION(AllocateMemoryP1);
 
 
 void Game::AllocateMemoryP2( int p2Index )
@@ -57,7 +59,7 @@ void Game::AllocateMemoryP2( int p2Index )
 			terryP2 = new Terry( 2 );
 		break;
 	}
-}
+}END_OF_FUNCTION(AllocateMemoryP2);
 
 
 void Game::BuildGameScreen()
@@ -70,9 +72,11 @@ void Game::BuildGameScreen()
 	
 	//imprimir o player 1
 	switch( p1Index )
-	{
+	{//GetPlayerSprite( int enemyX, int enemyY, bool gamePause, bool gameStart, bool enemyAttacking, bool takingDmg, bool flipCharacter )
 		case 1:
-			draw_sprite( gameScreen, terryP1->GetPlayerSprite( gamePause, gameStart ), terryP1->GetX(), terryP1->GetY() );
+			draw_sprite( gameScreen, terryP1->GetPlayerSprite( terryP2->GetX(), terryP2->GetY(), 
+																gamePause, gameStart, terryP2->GetAttacking(), 
+																false, flipPlayer1Comand ), terryP1->GetX(), terryP1->GetY() );
 		break;
 	}
 	
@@ -80,7 +84,9 @@ void Game::BuildGameScreen()
 	switch( p2Index )
 	{
 		case 1:
-			draw_sprite( gameScreen, terryP2->GetPlayerSprite( gamePause, gameStart ), terryP2->GetX(), terryP2->GetY());
+			draw_sprite( gameScreen, terryP2->GetPlayerSprite( terryP1->GetX(), terryP1->GetY(), 
+																gamePause, gameStart, terryP1->GetAttacking(), 
+																false, flipPlayer2Comand ), terryP2->GetX(), terryP2->GetY());
 		break;
 	}
 	
@@ -98,7 +104,7 @@ void Game::BuildGameScreen()
 	if( gamePause ) textprintf_ex(gameScreen, font, 500, 315, makecol(255, 0, 0), -1, "Game Pause" );
 	
 	if( !gameStart ) textprintf_ex(gameScreen, font, 500, 315, makecol(255, 0, 0), -1, "Press Space To Start" );
-}
+}END_OF_FUNCTION(BuildGameScreen);
 
 
 BITMAP *Game::GetGameScreen()
@@ -107,10 +113,12 @@ BITMAP *Game::GetGameScreen()
 	
 	BuildGameScreen();
 	
+	FlipPlayers();
+	
 	if(COMPLETERENDER) BuildDebugScreen();
 	
 	return gameScreen;
-}
+}END_OF_FUNCTION(GetGameScreen);
 
 
 void Game::GameTimeControl()
@@ -151,7 +159,41 @@ void Game::GameTimeControl()
 	{
 		antLoopGameStart = false;
 	}
-}
+}END_OF_FUNCTION(GameTimeControl);
+
+
+void Game::FlipPlayers()
+{
+	//mudar o personagem 1 de lado
+	if( terryP1->GetToRight() && terryP1->GetX() > terryP2->GetX() )
+	{
+		flipPlayer1Comand = true;
+	}
+	else if( !terryP1->GetToRight() && terryP2->GetX() > terryP1->GetX() )
+	{
+		flipPlayer1Comand = true;
+	}
+	else
+	{
+		flipPlayer1Comand = false;
+	}
+	
+	//mudar o personagem 2 de lado
+	if( terryP2->GetToRight() && terryP2->GetX() > terryP1->GetX() )
+	{
+		flipPlayer2Comand = true;
+	}
+	else if( !terryP2->GetToRight() && terryP1->GetX() > terryP2->GetX() )
+	{
+		flipPlayer2Comand = true;
+	}
+	else
+	{
+		flipPlayer2Comand = false;
+	}
+	
+}END_OF_FUNCTION(FlipPlayers);
+
 
 void Game::BuildDebugScreen()
 {
@@ -172,7 +214,6 @@ void Game::BuildDebugScreen()
 		textprintf_ex(gameScreen, font, 10, 240, makecol(255, 0, 0), -1, "Virado para a esquerda");
 	
 	
-	
 	//imprime o frame
 	textprintf_ex(gameScreen, font, 950, 180, makecol(255, 0, 0), -1, "frame: %d ", terryP2->GetFrame());
 	
@@ -188,7 +229,7 @@ void Game::BuildDebugScreen()
 	else
 		textprintf_ex(gameScreen, font, 950, 240, makecol(255, 0, 0), -1, "Virado para a esquerda");
 	
-}
+}END_OF_FUNCTION(BuildDebugScreen);
 
 
 

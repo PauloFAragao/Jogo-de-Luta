@@ -17,16 +17,14 @@ class Terry:public Player
 			~Terry();
 			
 		//Metodos publicos
-		BITMAP* GetPlayerSprite( bool gamePause, bool gameStart );
+		BITMAP* GetPlayerSprite( int enemyX, int enemyY, bool gamePause, bool gameStart, bool enemyAttacking, bool takingDmg, bool flipCharacter );
 			
 	private:
-
 
 		//metodos privados
 		void LoadSprites();						//carrega os sprites na memoria
 		void StartAttributes();					//inicia os valores das variaveis
 		void TerryAnimations();					//centro das animações basicas
-		
 		
 		//animações
 		void Anim00();
