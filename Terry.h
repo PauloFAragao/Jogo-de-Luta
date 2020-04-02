@@ -57,6 +57,40 @@ class Terry:public Player
 		void Anim27();
 		void Anim28();
 		void Anim29();
+		void Anim30();
+		void Anim31();
+		void Anim32();
+		void Anim33();
+		void Anim34();
+		void Anim35();
+		void Anim36();
+		void Anim37();
+		void Anim38();
+		void Anim39();
+		void Anim40();
+		void Anim41();
+		void Anim42();
+		void Anim43();
+		void Anim44();
+		void Anim45();
+		void Anim46();
+		void Anim47();
 		
 };
 #endif//TERRY_H
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

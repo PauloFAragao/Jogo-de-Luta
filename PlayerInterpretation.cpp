@@ -33,11 +33,11 @@ void Player::InterpretationWalkWalkBackRun()
 
 void Player::InterpretationJumpBack()
 {
-	if( action == 110 && y >= CHAO )//animação do personagem pulando para tras em quando está no ar
+	if( action == 110 && y >= CHAO && frame >= jumpBack[1] )//animação do personagem pulando para tras em quando está no ar
 	{
 		ChangeAction(111);
 	}
-	if( action == 111 && clock() - capturaTempo > TEF )//animação do personagem caindo no chão e se recuperando da queda
+	if( action == 111 && clock() - capturaTempo > TEF+75 )//animação do personagem caindo no chão e se recuperando da queda
 	{
 		//continua antando para tras
 		if( button00 && toRight )

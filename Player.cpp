@@ -4,15 +4,15 @@
 
 #define TEF 120					//tempo entre os frames
 #define GRAVIDADE 0.7			//gravidade global
-#define CHAO 160				//posição do chão
+#define CHAO 260				//posição do chão
 
 #define	WALKSPEED 5				//velocidade que o personagem vai andar VELANDAR
 #define RUNSPEED 10				//velocidade que o personagem vai correr RUNSPEED
 #define WEAKJUMPSTRENGTH 17		//força do pulo fraco
 #define STRONGJUMPSTRENGTH 25	//força do pulo forte
 
-#define MINSCENARYWIDTH -200	//posição do fim do cenario a esquerda
-#define MAXSCENARYWIDTH 825	  	//posição do fim do cenario a direita
+#define MINSCENARYWIDTH -220	//posição do fim do cenario a esquerda
+#define MAXSCENARYWIDTH 800	  	//posição do fim do cenario a direita
 
 
 //construtor

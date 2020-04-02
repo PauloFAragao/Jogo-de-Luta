@@ -520,6 +520,176 @@ int Player::GetChangeSideCrouched( int index )
 	return changeSideCrouched[index];
 }END_OF_FUNCTION(GetChangeSideCrouched);
 
+//weakPunch
+int Player::GetWeakPunch( int index )
+{
+	return weakPunch[index];
+}END_OF_FUNCTION(GetWeakPunch);
+void Player::SetWeakPunch( int weakPunch, int index )
+{
+	this->weakPunch[index] = weakPunch;
+}END_OF_FUNCTION(SetWeakPunch);
+
+//strongPunch
+int Player::GetStrongPunch( int index )
+{
+	return strongPunch[index];
+}END_OF_FUNCTION(GetStrongPunch);
+void Player::SetStrongPunch( int strongPunch, int index )
+{
+	this-> strongPunch[index] = strongPunch;
+}END_OF_FUNCTION(SetStrongPunch);
+
+//weakKick
+int Player::GetWeakKick( int index )
+{
+	return weakKick[index];
+}END_OF_FUNCTION(GetWeakKick);
+void Player::SetWeakKick( int weakKick, int index )
+{
+	this-> weakKick[index] = weakKick;
+}END_OF_FUNCTION(SetWeakKick);
+
+//strongKick
+int Player::GetStrongKick( int index )
+{
+	return strongKick[index];
+}END_OF_FUNCTION(GetStrongKick);
+void Player::SetStrongKick( int strongKick, int index )
+{
+	this-> strongKick[index] = strongKick;
+}END_OF_FUNCTION(SetStrongKick);
+
+//strongKickEnd
+int Player::GetStrongKickEnd( int index )
+{
+	return strongKickEnd[index];
+}END_OF_FUNCTION(GetStrongKickEnd);
+void Player::SetStrongKickEnd( int strongKickEnd, int index )
+{
+	this->strongKickEnd[index] = strongKickEnd;
+}END_OF_FUNCTION(SetStrongKickEnd);
+
+//crouchedWeakPunch
+int Player::GetCrouchedWeakPunch( int index )
+{
+	return crouchedWeakPunch[index];
+}END_OF_FUNCTION(GetCrouchedWeakPunch);
+void Player::SetCrouchedWeakPunch( int crouchedWeakPunch, int index )
+{
+	this->crouchedWeakPunch[index] = crouchedWeakPunch;
+}END_OF_FUNCTION(SetCrouchedWeakPunch);
+
+//crouchedStrongPunch
+int Player::GetCrouchedStrongPunch( int index )
+{
+	return crouchedStrongPunch[index];
+}END_OF_FUNCTION(GetCrouchedStrongPunch);
+void Player::SetCrouchedStrongPunch( int crouchedStrongPunch, int index )
+{
+	this->crouchedStrongPunch[index] = crouchedStrongPunch ;
+}END_OF_FUNCTION(SetCrouchedStrongPunch);
+
+//crouchedWeakKick
+int Player::GetCrouchedWeakKick( int index )
+{
+	return crouchedWeakKick[index];
+}END_OF_FUNCTION(GetCrouchedWeakKick);
+void Player::SetCrouchedWeakKick( int crouchedWeakKick, int index )
+{
+	this->crouchedWeakKick[index] = crouchedWeakKick;
+}END_OF_FUNCTION(SetCrouchedWeakKick);
+
+//crouchedStrongKick
+int Player::Player::GetCrouchedStrongKick( int index )
+{
+	return crouchedStrongKick[index];
+}END_OF_FUNCTION(GetCrouchedStrongKick);
+void Player::SetCrouchedStrongKick( int crouchedStrongKick, int index )
+{
+	this->crouchedStrongKick[index] = crouchedStrongKick;
+}END_OF_FUNCTION(SetCrouchedStrongKick);
+
+//jumpingWeakPunch
+int Player::GetJumpingWeakPunch( int index )
+{
+	return jumpingWeakPunch[index];
+}END_OF_FUNCTION(GetJumpingWeakPunch);
+void Player::SetJumpingWeakPunch( int jumpingWeakPunch, int index )
+{
+	this->jumpingWeakPunch[index] = jumpingWeakPunch;
+}END_OF_FUNCTION(SetJumpingWeakPunch);
+
+//jumpingStrongPunch
+int Player::GetJumpingStrongPunch( int index )
+{
+	return jumpingStrongPunch[index];
+}END_OF_FUNCTION(GetJumpingStrongPunch);
+void Player::SetJumpingStrongPunch( int jumpingStrongPunch, int index )
+{
+	this->jumpingStrongPunch[index] = jumpingStrongPunch;
+}END_OF_FUNCTION(SetJumpingStrongPunch);
+
+//jumpingWeakKick
+int Player::GetJumpingWeakKick( int index )
+{
+	return jumpingWeakKick[index];
+}END_OF_FUNCTION(GetJumpingWeakKick);
+void Player::SetJumpingWeakKick( int jumpingWeakKick, int index )
+{
+	this->jumpingWeakKick[index] = jumpingWeakKick;
+}END_OF_FUNCTION(SetJumpingWeakKick);
+
+//jumpingStrongKick
+int Player::GetJumpingStrongKick( int index )
+{
+	return jumpingStrongKick[index];
+}END_OF_FUNCTION(GetJumpingStrongKick);
+void Player::SetJumpingStrongKick( int jumpingStrongKick, int index )
+{
+	this->jumpingStrongKick[index] = jumpingStrongKick;
+}END_OF_FUNCTION(SetJumpingStrongKick);
+
+//gluedStrongPunch
+int Player::GetGluedStrongPunch( int index )
+{
+	return gluedStrongPunch[index];
+}END_OF_FUNCTION(GetGluedStrongPunch);
+void Player::SetGluedStrongPunch( int gluedStrongPunch, int index )
+{
+	this->gluedStrongPunch[index] = gluedStrongPunch;
+}END_OF_FUNCTION(SetGluedStrongPunch);
+
+//gluedStrongKick
+int Player::GetGluedStrongKick( int index )
+{
+	return gluedStrongKick[index];
+}END_OF_FUNCTION(GetGluedStrongKick);
+void Player::SetGluedStrongKick( int gluedStrongKick, int index )
+{
+	this->gluedStrongKick[index] = gluedStrongKick;
+}END_OF_FUNCTION(SetGluedStrongKick);
+
+//jumpingSpecialAttack
+int Player::GetJumpingSpecialAttack( int index )
+{
+	return jumpingSpecialAttack[index];
+}END_OF_FUNCTION(GetJumpingSpecialAttack);
+void Player::SetJumpingSpecialAttack( int jumpingSpecialAttack, int index )
+{
+	this->jumpingSpecialAttack[index] = jumpingSpecialAttack;
+}END_OF_FUNCTION(SetJumpingSpecialAttack);
+
+//weakPunchForward
+int Player::GetWeakPunchForward( int index )
+{
+	return weakPunchForward[index];
+}END_OF_FUNCTION(GetWeakPunchForward);
+void Player::SetWeakPunchForward( int weakPunchForward, int index )
+{
+	this->weakPunchForward[index] = weakPunchForward;
+}END_OF_FUNCTION(SetWeakPunchForward);
+
 //takingDmg
 void Player::SetTakingDmg(bool takingDmg)
 {

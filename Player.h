@@ -3,7 +3,7 @@
 
 #include <allegro.h>
 
-#define QTDFRAMES 131
+#define QTDFRAMES 262
 
 class Player
 {
@@ -120,7 +120,41 @@ class Player
 		void SetChangeSide(int changeSide, int index);
 		int GetChangeSideCrouched( int index );
 		void SetChangeSideCrouched(int changeSideCrouched, int index);
-
+		int	GetWeakPunch( int index );
+		void SetWeakPunch( int weakPunch, int index );
+		int GetStrongPunch( int index );
+		void SetStrongPunch( int strongPunch, int index );
+		int GetWeakKick( int index );
+		void SetWeakKick( int weakKick, int index );
+		int GetStrongKick( int index );
+		void SetStrongKick( int strongKick, int index );
+		int GetStrongKickEnd( int index );
+		void SetStrongKickEnd( int strongKickEnd, int index );
+		int GetCrouchedWeakPunch( int index );
+		void SetCrouchedWeakPunch( int crouchedWeakPunch, int index );
+		int GetCrouchedStrongPunch( int index );
+		void SetCrouchedStrongPunch( int crouchedStrongPunch, int index );
+		int GetCrouchedWeakKick( int index );
+		void SetCrouchedWeakKick( int crouchedWeakKick, int index );
+		int GetCrouchedStrongKick( int index );
+		void SetCrouchedStrongKick( int crouchedStrongKick, int index );
+		int GetJumpingWeakPunch( int index );
+		void SetJumpingWeakPunch( int jumpingWeakPunch, int index );
+		int GetJumpingStrongPunch( int index );
+		void SetJumpingStrongPunch( int jumpingStrongPunch, int index );
+		int GetJumpingWeakKick( int index );
+		void SetJumpingWeakKick( int jumpingWeakKick, int index );
+		int GetJumpingStrongKick( int index );
+		void SetJumpingStrongKick( int jumpingStrongKick, int index );
+		int GetGluedStrongPunch( int index );
+		void SetGluedStrongPunch( int gluedStrongPunch, int index );
+		int GetGluedStrongKick( int index );
+		void SetGluedStrongKick( int gluedStrongKick, int index );
+		int GetJumpingSpecialAttack( int index );
+		void SetJumpingSpecialAttack( int jumpingSpecialAttack, int index );
+		int GetWeakPunchForward( int index );
+		void SetWeakPunchForward( int weakPunchForward, int index );
+		
 		void SetTakingDmg( bool takingDmg );
 		bool GetAttacking();
 		void SetAttacking( bool attacking);
@@ -241,6 +275,24 @@ class Player
 		int backRollingEnd[2];		//animação numero 27
 		int changeSide[2];			//animação numero 28
 		int changeSideCrouched[2];	//animação numero 29
+		
+		int weakPunch[2];			//animação numero 30
+		int strongPunch[2];			//animação numero 31
+		int weakKick[2];			//animação numero 32
+		int strongKick[2];			//animação numero 33
+		int strongKickEnd[2];		//animação numero 34
+		int crouchedWeakPunch[2];	//animação numero 35
+		int crouchedStrongPunch[2];	//animação numero 36
+		int crouchedWeakKick[2];	//animação numero 37
+		int crouchedStrongKick[2];	//animação numero 38
+		int jumpingWeakPunch[2];	//animação numero 39
+		int jumpingStrongPunch[2];	//animação numero 40
+		int jumpingWeakKick[2];		//animação numero 41
+		int jumpingStrongKick[2];	//animação numero 42
+		int gluedStrongPunch[2];	//animação numero 43
+		int gluedStrongKick[2];		//animação numero 44
+		int jumpingSpecialAttack[2];//animação numero 46
+		int weakPunchForward[2];	//animação numero 47
 		
 		//tempos em que os botões são pressionados
 		int btTPress[8][10];

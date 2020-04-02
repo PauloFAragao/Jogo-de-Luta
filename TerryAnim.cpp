@@ -277,7 +277,7 @@ void Terry::Anim13()//jumpingBack
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetJumpBack(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
-	else if( GetFrame() >= GetJumpBack(0) && GetFrame() < GetJumpBack(1) && clock() - GetCapturaTempo() > TEF+50 )
+	else if( GetFrame() >= GetJumpBack(0) && GetFrame() < GetJumpBack(1) && clock() - GetCapturaTempo() > TEF+75 )
 	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
 }END_OF_FUNCTION(Anim13);
 
@@ -286,7 +286,7 @@ void Terry::Anim14()//Fall - depois de Jumping Back
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetJumpBackFall(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
-	else if( GetFrame() >= GetJumpBackFall(0) && GetFrame() < GetJumpBackFall(1) && clock() - GetCapturaTempo() > TEF+50 )
+	else if( GetFrame() >= GetJumpBackFall(0) && GetFrame() < GetJumpBackFall(1) && clock() - GetCapturaTempo() > TEF+75 )
 	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
 }END_OF_FUNCTION(Anim14);
 
@@ -420,6 +420,146 @@ void Terry::Anim29()//changeSideCrouched				127-129
 	else if( GetFrame() >= GetChangeSideCrouched(0) && GetFrame() < GetChangeSideCrouched(1) && clock() - GetCapturaTempo() > TEF-50 )
 	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
 }END_OF_FUNCTION(Anim29);
+
+void Terry::Anim30()//Weak Punch
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetWeakPunch(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetWeakPunch(0) && GetFrame() < GetWeakPunch(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim30);
+
+void Terry::Anim31()//Strong Punch
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetStrongPunch(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetStrongPunch(0) && GetFrame() < GetStrongPunch(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim31);
+
+void Terry::Anim32()//Weak Kick
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetWeakKick(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetWeakKick(0) && GetFrame() < GetWeakKick(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim32);
+
+void Terry::Anim33()//Strong Kick
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetStrongKick(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetStrongKick(0) && GetFrame() < GetStrongKick(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim33);
+
+void Terry::Anim34()//Strong Kick End
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetStrongKickEnd(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetStrongKickEnd(0) && GetFrame() < GetStrongKickEnd(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim34);
+
+void Terry::Anim35()//Crouched Weak Punch
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetCrouchedWeakPunch(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetCrouchedWeakPunch(0) && GetFrame() < GetCrouchedWeakPunch(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim35);
+
+void Terry::Anim36()//Crouched Strong Punch
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetCrouchedStrongPunch(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetCrouchedStrongPunch(0) && GetFrame() < GetCrouchedStrongPunch(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim36);
+
+void Terry::Anim37()//Crouched Weak Kick
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetCrouchedWeakKick(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetCrouchedWeakKick(0) && GetFrame() < GetCrouchedWeakKick(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim37);
+
+void Terry::Anim38()//Crouched Strong Kick
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetCrouchedStrongKick(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetCrouchedStrongKick(0) && GetFrame() < GetCrouchedStrongKick(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim38);
+
+void Terry::Anim39()//Jumping Weak Punch
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetJumpingWeakPunch(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetJumpingWeakPunch(0) && GetFrame() < GetJumpingWeakPunch(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim39);
+
+void Terry::Anim40()//Jumping Strong Punch
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetJumpingStrongPunch(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetJumpingStrongPunch(0) && GetFrame() < GetJumpingStrongPunch(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim40);
+
+void Terry::Anim41()//Jumping Strong Kick
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetJumpingStrongKick(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetJumpingStrongKick(0) && GetFrame() < GetJumpingStrongKick(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim41);
+
+void Terry::Anim42()//Jumping Weak Kick
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetJumpingWeakKick(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetJumpingWeakKick(0) && GetFrame() < GetJumpingWeakKick(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim42);
+
+void Terry::Anim43()//Glued Strong Kick
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetGluedStrongKick(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetGluedStrongKick(0) && GetFrame() < GetGluedStrongKick(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim43);
+
+void Terry::Anim44()//Glued Strong Punch
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetGluedStrongPunch(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetGluedStrongPunch(0) && GetFrame() < GetGluedStrongPunch(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim44);
+
+void Terry::Anim46()//Jumping Special Attack
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetJumpingSpecialAttack(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetJumpingSpecialAttack(0) && GetFrame() < GetJumpingSpecialAttack(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim46);
+
+void Terry::Anim47()//Weak Punch Forward
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetWeakPunchForward(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetWeakPunchForward(0) && GetFrame() < GetWeakPunchForward(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim47);
+
+
+
+
 
 
 

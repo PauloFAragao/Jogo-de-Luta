@@ -44,9 +44,6 @@ class Game
 		Terry *terryP1;
 		Terry *terryP2;
 		
-		//Terry terryP1;
-		//Terry terryP2;
-		
 		BITMAP* gameScreen;
 		
 	//metodos privados

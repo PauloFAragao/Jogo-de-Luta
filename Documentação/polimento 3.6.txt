@@ -1,0 +1,15 @@
+-Corrigir o problema de resolução das imagens, provavelmente trocar a resolução das imagens
+para 566x512
+
+-Implementar que o personagem deve mudar de lado quando a animação terminar e não executar 
+outra animação antes de mudar de lado
+
+-Implementar que todas as animações podem cancelar a animação de mudar de lado
+
+-Implementação de todos os golpes basicos do personagem
+
+-Implementação da defesa no momento que o outro personagem está atacando
+
+-Fazer os personagens serem renderizados na frente da interface
+
+-Implementar na interface o "Round X" "Ready" "Fight" Winner"
