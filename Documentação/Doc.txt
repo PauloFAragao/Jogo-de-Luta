@@ -1,0 +1,114 @@
+-A verção polimento 3.1 é a re-emplementação do algoritimo agora orientado a objeto, nessa
+verção foi implementada pensando nas animações em conjunto com a movimentação e foram
+usadas imagens em maior resolução.
+-Animações implementadas:
+	-idle
+	-walk
+	-walkBack
+	-animação run incerida mais não implementada
+
+-Na verção polimento 3.2 foi implementado o algoritimo de pulo lateral funcional.
+-Mudança na resolução das imagens, agora estão sendo usadas as imagens com uma resolução menor
+-Algoritimo para fazer o personagem dar um pulo para tras terminado.
+-A forma de verificar se uma animação já foi iniciada foi alterada.
+-Implementado algoritimo de imterpletação das fases do pulo
+-Implementado colisão com o fim da cena
+-Implementando algoritimo de se abaixar e o metodo ValidadeAction
+-Animações implementadas:
+	-run
+	-jumpBack
+	-jumpDelay (que é usa os mesmos frames que crouching)
+	-rising
+	-endOfClimp
+	-falling
+	-fall
+	-weakFrontalDiagonalJump
+	-weakBackDiagonalJump
+	-strongFrontalDiagonalJump
+	-strongBackDiagonalJump
+	-crouching incerida mais não implementada
+	-raiseCrouched incerida mais não implementada
+
+-Na verção polimento 3.3 foram criadas as classes Interface e Scenario.
+-Foi iniciado a implementação da classe Inteface (agora o jogo tem uma interface simples 
+com um contador funcional)
+-Foi iniciado a implementação da classe Scenario (agora o cenario carrega pela classe)
+-Foram feitas as alterações nas regras de action, para isso foram feitas grandes mudanças na 
+logica do jogo, redusindo a quantidade de variaveis para indicação das ações do 
+personagem.
+-Foi adicionado um modo onde ou o cenario e a interface são carregados ou os outputs de debug
+-Forão criados novos arquivos para implementação dos metodos das classes diminuindo a quantidade de
+informação em um unico arquivo
+-A logica de movimentação das ações: andar, correr, andar para tras e pular para tras foi completamente
+alterada (essa alteração foi feita por uma intepletação errada de algo que não era um bug, mais foi 
+mantida por diminuir a quantidade de variaveis)
+-Os sprites foram trocados de lugar e foi iniciado o processo de alteração da resolução das
+imagens (os sprites dessas animações já estão totalmente redimencionados: idle, crouching, crouchedIdle)
+-Animações implementadas:
+	-slide
+
+-Na verção polimento 3.4 a resolução da tela foi almentada para 1728x900
+-As imagens da interface foram redimencionadas e suas posições corigidas
+-Foi implementada a logica das barras da classe interface (vida, escudo, especial)
+-O metodo InterpletationEngine foi colocado de volta na classe player
+-Foram criados novos arquivos .cpp distribuindo melhor os metodos das classes
+-O contorno rosa das imagens foi retirando porem as imagens perderam qualidade
+-O personagem agora pode virar para a esquerda
+-As imagens não estão centralizadas então quando a animação de mudar de lado roda acontece uma mudança
+brusca da posição do personagem
+-Animações implementadas:
+	-defending
+	-defence
+	-taking Damage
+	-defend Exit
+	-defending Crouched
+	-defence Crouched
+	-taking Damage Crouched
+	-defend Exit Crouched
+	-front Rolling
+	-back Rolling
+	-changeSide
+	-changeSideCrouched
+
+-Na verção polimento 3.5 a resolução da tela foi alterada para 1140x630
+-Os sprites estão sendo utilizados na resolução 512x512 (resolução original)
+-A interface foi adaptada para a nova resolução e a classe interface sofreu varias mudanças
+-As funções de animação do personagem foram otimizadas
+-Foi criada uma nova classe chamada Game, essa classe vai receber todas as declarações de 
+objetos, vai montar a tela do jogo e retornar para a função principal, vai fazer o 
+controle do game pause, etc
+-O vetor de bitmap onde eram carregados os sprites do personagem foi transformado em uma matrix,
+agora os sprites do personagem virado para a esquerda são carregados no mesmo lugar que os sprites
+do personagem virado para a direita
+-Os objetos dos personagens agora são alocados na memoria de forma dinamica
+-O metodo InterpletationEngine da classe player foi substituido por uma serie de outros metodos
+-Bug da animação agachar resolvido
+-Foi iniciada a implementação do segundo personagem
+	-O controle da quantidade de barra e da quantidade de especiais foi movido para
+	a classe player em definitivo
+	-O segundo personagem tem os seus proprios inputs
+	-Os personagem mudam de lado quando o outro personagem passa para as suas costas
+
+-Na verção polimento 3.6 a resolução das imangens foi alterada para 566x350
+-Foi adicionado um arquivo chamado include.h, nele estão todos os macros necessarios (foram criados novos
+macros para facilitar o posicionamento dos sprites da interface e a posição inicial dos personagens)
+-Foram feitas correções de comportamento e bugs
+-Foram implementadas as animações:
+	-Weak Punch
+	-Strong Punch
+	-Weak Kick
+	-Strong Kick
+	-Crouched Weak Punch
+	-Crouched Strong Punch
+	-Crouched Weak Kick
+	-Crouched Strong Kick
+	-Jumping Weak Punch
+	-Jumping Strong Punch
+	-Jumping Weak Kick
+	-Jumping Strong Kick
+	-Glued Strong Punch
+	-Glued Strong Kick
+	-Special AttackStart
+	-Special Attack
+	-Jumping Special Attack
+	-Weak Punch Forward
