@@ -58,7 +58,7 @@ void Player::StartAttributes()
 	especialBar = 0;				//quantidade de pontos de especial
 	especialQuantity = 0;			//quantos pontos de especial o personagem tem
 	powTime = 0;					//tempo restante da barra quando o jogador esroura uma barra
-	pow = false;					//se o jogador estourou uma barra
+	pow = true;					//se o jogador estourou uma barra
 	
 	attacking=false;				//indica que o personagema está atacando
 	takingDmg=false;				//indica que o personagem foi atacado enquanto estava na defesa
@@ -100,17 +100,25 @@ void Player::PlayerRoutine( bool flipCharacter, int opponentX, int opponentY )
 		{
 			if( lifePoints > 0 ) lifePoints -=25;
 			else lifePoints = 0;
-			//shildPoints -=5;
-			//especialBar -=1;
-			//powTime -= 100;
+			
+			if( shild > 0 ) shild -=5;
+			else shild = 0;
+				
+			especialBar -=10;
+		
+			powTime -= 100;
 		}
 		if( key[KEY_EQUALS] ) 
 		{
 			if( lifePoints < lifePointsMax ) lifePoints +=25;
 			else lifePoints = lifePointsMax;
-			//shildPoints +=5;
-			//especialBar +=1;
-			//powTime += 100;
+			
+			if( shild < 200 ) shild +=5;
+			else shild = 200;
+		
+			especialBar +=10;
+		
+			powTime += 100;
 		}
 		//TEMPORARIO
 		

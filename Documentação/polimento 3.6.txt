@@ -15,7 +15,7 @@ para 566x350 - Implementado
 -Consertar erro na animação idle: a animação está rodando errado, a animação reutiliza
 alguns frames para fazer o ciclo completo (ciclo correto: 0,1,2,3,4,5,6,7,2) - implementado
 
--Terminar de escrever os defines no arquivo includes.h
+-Terminar de escrever os defines no arquivo includes.h - Implementado
 
 -Implementar que o personagem deve mudar de lado quando a animação terminar e não executar 
 outra animação antes de mudar de lado

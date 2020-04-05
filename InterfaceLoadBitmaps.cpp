@@ -120,19 +120,19 @@ void Interface::InitializeBitmaps()
 	rectfill( completeInterface, 0, 0, SCREEN_W, SCREEN_H, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
 	
 //barras de vida
-	player1LifeBarGreen = create_bitmap(401, 19);//inicializa o bitmap
-	rectfill( player1LifeBarGreen, 0, 0, 401, 19, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
+	player1LifeBarGreen = create_bitmap( LIFEBARSIZEX, LIFEBARSIZEY  );//inicializa o bitmap
+	rectfill( player1LifeBarGreen, 0, 0, LIFEBARSIZEX, LIFEBARSIZEY, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
 	
-	player2LifeBarGreen = create_bitmap(401, 19);//inicializa o bitmap
-	rectfill( player2LifeBarGreen, 0, 0, 401, 19, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
+	player2LifeBarGreen = create_bitmap( LIFEBARSIZEX, LIFEBARSIZEY );//inicializa o bitmap
+	rectfill( player2LifeBarGreen, 0, 0, LIFEBARSIZEX, LIFEBARSIZEY, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
 
 	
 //barras de escudo
-	shildBarPlayer1 = create_bitmap(164, 15);//inicializa o bitmap
-	rectfill( shildBarPlayer1, 0, 0, 164, 15, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
+	shildBarPlayer1 = create_bitmap( SHILDBARSIZEX, SHILDBARSIZEY );//inicializa o bitmap
+	rectfill( shildBarPlayer1, 0, 0, SHILDBARSIZEX, SHILDBARSIZEY, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
 	
-	shildBarPlayer2 = create_bitmap(164, 15);//inicializa o bitmap
-	rectfill( shildBarPlayer2, 0, 0, 164, 15, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
+	shildBarPlayer2 = create_bitmap( SHILDBARSIZEX, SHILDBARSIZEY );//inicializa o bitmap
+	rectfill( shildBarPlayer2, 0, 0, SHILDBARSIZEX, SHILDBARSIZEY, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
 	
 	
 //contador de tempo do jogo
@@ -152,23 +152,11 @@ void Interface::InitializeBitmaps()
 	
 	
 //barra de pow
-	powBarPlayer1 = create_bitmap(147, 9);//inicializa o bitmap
-	rectfill( powBarPlayer1, 0, 0, 147, 9, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
+	powBarPlayer1 = create_bitmap( POWBARSIZEX, POWBARSIZEY );//inicializa o bitmap
+	rectfill( powBarPlayer1, 0, 0, POWBARSIZEX, POWBARSIZEY, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
 	
-	powBarPlayer2 = create_bitmap(147, 9);//inicializa o bitmap
-	rectfill( powBarPlayer2, 0, 0, 147, 9, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
+	powBarPlayer2 = create_bitmap( POWBARSIZEX, POWBARSIZEY );//inicializa o bitmap
+	rectfill( powBarPlayer2, 0, 0, POWBARSIZEX, POWBARSIZEY, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
 	
 	
 }END_OF_FUNCTION(InitializeBitmaps);
-
-
-
-
-
-
-
-
-
-
-
-

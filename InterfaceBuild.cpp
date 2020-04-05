@@ -11,17 +11,17 @@ void Interface::BuildInterface( int gameTime, int lifePointsP1, int lifePointsP2
 	rectfill( completeInterface, 0, 0, SCREEN_W, SCREEN_H, makecol(255,0,255) );//cobre tudo com o rosa que faz ficar trasnparente
 	
 	//frame dos personagens
-	draw_sprite( completeInterface, framePlayer1, 0, 0 );
-	draw_sprite( completeInterface, framePlayer2, 968, 0 );
+	draw_sprite( completeInterface, framePlayer1, FRAMEP1X, FRAMEP1Y );
+	draw_sprite( completeInterface, framePlayer2, FRAMEP2X, FRAMEP2Y );
 
 	BuildPlayer1LifeBar( lifePointsP1, lifePointsMaxP1 );	//barra de vida do personagem 1
 	BuildPlayer2LifeBar( lifePointsP2, lifePointsMaxP2 );	//barra de vida do personagem2
-	BuildPlayer1ShildBar( shildP1 );	//barra de escudo do personagem 1
-	BuildPlayer2ShildBar( shildP2 );	//barra de escudo do personagem 1
-	BuildTimer( gameTime );			//contador de tempo
+	BuildPlayer1ShildBar( shildP1 );						//barra de escudo do personagem 1
+	BuildPlayer2ShildBar( shildP2 );						//barra de escudo do personagem 1
+	BuildTimer( gameTime );									//contador de tempo
 	
 	//interface de barras de vida
-	draw_sprite( completeInterface, lifeBarsInterface, 105, 48 );
+	draw_sprite( completeInterface, lifeBarsInterface, LIFEBARINTERFACEX, LIFEBARINTERFACEY );
 	
 	
 //especial do player 1
@@ -31,13 +31,13 @@ void Interface::BuildInterface( int gameTime, int lifePointsP1, int lifePointsP2
 	if( powP1 )
 	{
 		BuildPlayer1PowBar( powTimeP1 );
-		draw_sprite( completeInterface, specialInterface2Player1, 21, 541 );//interface de especial para pow ativo
+		draw_sprite( completeInterface, specialInterface2Player1, SPECIALINTERFACEP1X, SPECIALINTERFACEP1Y );//interface de especial para pow ativo
 	}
-	else draw_sprite(completeInterface, specialInterface1Player1, 21, 541 );//interface de especial
+	else draw_sprite(completeInterface, specialInterface1Player1, SPECIALINTERFACEP1X, SPECIALINTERFACEP1Y );//interface de especial
 	
 	//barra de especial no nivel 5
 	if ( especialQuantityP1 == 5 )
-		 draw_sprite( completeInterface, maximumSpecialBarP1, 85, 567 );
+		 draw_sprite( completeInterface, maximumSpecialBarP1, SPECIALBARP1X, SPECIALBARP1Y );
 
 	//imprime o numero de barras de especial na interface
 	BuildPlayer1SpecialPoints( especialQuantityP1 );
@@ -49,13 +49,13 @@ void Interface::BuildInterface( int gameTime, int lifePointsP1, int lifePointsP2
 	if( powP2 )
 	{
 		BuildPlayer2PowBar( powTimeP2 );
-		draw_sprite( completeInterface, specialInterface2Player2, 829, 541 );//interface de especial para pow ativo
+		draw_sprite( completeInterface, specialInterface2Player2, SPECIALINTERFACEP2X, SPECIALINTERFACEP2Y );//interface de especial para pow ativo
 	}
-	else draw_sprite(completeInterface, specialInterface1Player2, 829, 541 );//interface de especial
+	else draw_sprite(completeInterface, specialInterface1Player2, SPECIALINTERFACEP2X, SPECIALINTERFACEP2Y );//interface de especial
 	
 	//barra de especial no nivel 5
 	if( especialQuantityP2 == 5 ) 
-		draw_sprite( completeInterface, maximumSpecialBarP2, 836, 567 );
+		draw_sprite( completeInterface, maximumSpecialBarP2, SPECIALBARP2X, SPECIALBARP2Y );
 	
 	BuildPlayer2SpecialPoints( especialQuantityP2 );
 	
@@ -74,18 +74,18 @@ void Interface::BuildPlayer1LifeBar( int lifePointsP1, int lifePointsP1Max )
 		if( lifePointsP1Memory < lifePointsP1 ) lifePointsP1Memory = lifePointsP1; 
 		
 		//imprime uma barra vermelha na interface
-		rectfill( completeInterface, 112 + ( 401 * ( 100 * ( lifePointsP1Max - lifePointsP1Memory ) ) / lifePointsP1Max ) / 100 , 55, 513, 74, makecol(245,9,9) );
+		rectfill( completeInterface, LIFEBARP1X + ( LIFEBARSIZEX * ( 100 * ( lifePointsP1Max - lifePointsP1Memory ) ) / lifePointsP1Max ) / 100 , LIFEBARP1Y, LIFEBARP1X+LIFEBARSIZEX, LIFEBARP1Y+LIFEBARSIZEY, makecol(245,9,9) );
 	}
 	
 //barra verde
 	//limpa o bitmap
 	clear( player1LifeBarGreen );
 	//cobre tudo com o rosa que faz ficar trasnparente
-	rectfill( player1LifeBarGreen, 0, 0, 401, 19, makecol(255,0,255) );
+	rectfill( player1LifeBarGreen, 0, 0, LIFEBARSIZEX, LIFEBARSIZEY, makecol(255,0,255) );
 	//imprime a barra verde no bitmap da barra de vida
-	draw_sprite( player1LifeBarGreen, LifeBarGreen, (401*(100*(lifePointsP1Max-lifePointsP1))/lifePointsP1Max)/100, 0 );
+	draw_sprite( player1LifeBarGreen, LifeBarGreen, (LIFEBARSIZEX*(100*(lifePointsP1Max-lifePointsP1))/lifePointsP1Max)/100, 0 );
 	//imprime a barra de vida no bitmap da interface
-	draw_sprite( completeInterface, player1LifeBarGreen, 112, 55 );
+	draw_sprite( completeInterface, player1LifeBarGreen, LIFEBARP1X, LIFEBARP1Y );
 }END_OF_FUNCTION(BuildPlayer1LifeBar);
 
 
@@ -101,18 +101,18 @@ void Interface::BuildPlayer2LifeBar( int lifePointsP2, int lifePointsP2Max )
 		if( lifePointsP2Memory < lifePointsP2 ) lifePointsP2Memory = lifePointsP2; 
 		
 		//imprime uma barra vermelha na interface
-		rectfill( completeInterface, 626, 55, 626-(401*(100*( lifePointsP2Max - lifePointsP2Memory )/ lifePointsP2Max-100)/100) , 74, makecol(245,9,9) );
+		rectfill( completeInterface, LIFEBARP2X, LIFEBARP2Y, LIFEBARP2X-(LIFEBARSIZEX*(100*( lifePointsP2Max - lifePointsP2Memory )/ lifePointsP2Max-100)/100) , LIFEBARP2Y+LIFEBARSIZEY, makecol(245,9,9) );
 	}
 	
 //barra de vida verde
 	//limpa o bitmap
 	clear( player2LifeBarGreen );
 	//cobre tudo com o rosa que faz ficar trasnparente
-	rectfill( player2LifeBarGreen, 0, 0, 401, 19, makecol(255,0,255) );
+	rectfill( player2LifeBarGreen, 0, 0, LIFEBARSIZEX, LIFEBARSIZEY, makecol(255,0,255) );
 	//imprime a barra verde no bitmap da barra de vida
-	draw_sprite( player2LifeBarGreen, LifeBarGreen, -1*(401*(100*(lifePointsP2Max-lifePointsP2))/lifePointsP2Max)/100, 0 );
+	draw_sprite( player2LifeBarGreen, LifeBarGreen, -1*(LIFEBARSIZEX*(100*(lifePointsP2Max-lifePointsP2))/lifePointsP2Max)/100, 0 );
 	//imprime a barra de vida no bitmap da interface
-	draw_sprite( completeInterface, player2LifeBarGreen, 626, 55 );
+	draw_sprite( completeInterface, player2LifeBarGreen, LIFEBARP2X, LIFEBARP2Y );
 }END_OF_FUNCTION(BuildPlayer2LifeBar);
 
 
@@ -124,11 +124,11 @@ void Interface::BuildPlayer1ShildBar( int shildPointsP1 )
 	//limpa o bitmap
 	clear( shildBarPlayer1 );
 	//cobre tudo com o rosa que faz ficar trasnparente
-	rectfill( shildBarPlayer1, 0, 0, 164, 15, makecol(255,0,255) );
+	rectfill( shildBarPlayer1, 0, 0, SHILDBARSIZEX, SHILDBARSIZEY, makecol(255,0,255) );
 	//imprime a barra azul no bitmap da barra de escudo
-	draw_sprite( shildBarPlayer1, shildBar, (164*(100*(200-shildPointsP1))/200)/100, 0 );
+	draw_sprite( shildBarPlayer1, shildBar, (SHILDBARSIZEX*(100*( 200 - shildPointsP1 ) ) / 200 ) / 100, 0 );
 	//imprime a barra de escudo no bitmap da interface
-	draw_sprite(completeInterface, shildBarPlayer1, 331, 81 );
+	draw_sprite(completeInterface, shildBarPlayer1, SHILDBARP1X, SHILDBARP1Y );
 }END_OF_FUNCTION(BuildPlayer1ShildBar);
 
 
@@ -140,11 +140,11 @@ void Interface::BuildPlayer2ShildBar( int shildPointsP2 )
 	//limpa o bitmap
 	clear( shildBarPlayer2 );
 	//cobre tudo com o rosa que faz ficar trasnparente
-	rectfill( shildBarPlayer2, 0, 0, 164, 15, makecol(255,0,255) );
+	rectfill( shildBarPlayer2, 0, 0, SHILDBARSIZEX, SHILDBARSIZEY, makecol(255,0,255) );
 	//imprime a barra azul no bitmap da barra de escudo
-	draw_sprite( shildBarPlayer2, shildBar, -1*(164*(100*(200-shildPointsP2))/200)/100, 0 );
+	draw_sprite( shildBarPlayer2, shildBar, -1*(SHILDBARSIZEX*(100*( 200 - shildPointsP2 ) ) / 200 ) / 100, 0 );
 	//imprime a barra de escudo no bitmap da interface
-	draw_sprite( completeInterface, shildBarPlayer2, 644, 81 );
+	draw_sprite( completeInterface, shildBarPlayer2, SHILDBARP2X, SHILDBARP2Y );
 }END_OF_FUNCTION(BuildPlayer2ShildBar);
 
 
@@ -411,8 +411,8 @@ void Interface::BuildTimer( int gameTime )
 	}
 	
 	//imprime no bitmap da interface os numeros
-	draw_sprite( completeInterface, conterUnity, 572, 43);
-	draw_sprite( completeInterface, conterDozen, 533, 43);
+	draw_sprite( completeInterface, conterUnity, TIMERDOZENX, TIMERDOZENY );
+	draw_sprite( completeInterface, conterDozen, TIMERUNITYX, TIMERUNITYY );
 	
 }END_OF_FUNCTION(BuildTimer);
 
@@ -425,35 +425,35 @@ void Interface::BuildPlayer1SpecialBar( int especialQuantityP1, int especialBarP
 	if( especialQuantityP1 == 0 )
 	{
 		//imprime uma barra azul na interface
-		rectfill( completeInterface, 85, 568, 85 + ( ( 220 * especialBarP1 ) / 100 ), 586, makecol(3,40,255) );
+		rectfill( completeInterface, SPECIALBARP1X, SPECIALBARP1Y, SPECIALBARP1X + ( ( SPECIALBARSIZEX * especialBarP1 ) / 100 ), 586, makecol(3,40,255) );
 	}
 	if( especialQuantityP1 == 1 )
 	{
 		//imprime uma barra azul na interface
-		rectfill( completeInterface, 85, 568, 305, 586, makecol(3,40,255) );
+		rectfill( completeInterface, SPECIALBARP1X, SPECIALBARP1Y, SPECIALBARP1X+SPECIALBARSIZEX, 586, makecol(3,40,255) );
 		//imprime uma barra roxa na interface
-		rectfill( completeInterface, 85, 568, 85 + ( ( 220 * especialBarP1 ) / 100 ), 586, makecol(145,12,200) );
+		rectfill( completeInterface, SPECIALBARP1X, SPECIALBARP1Y, SPECIALBARP1X + ( ( SPECIALBARSIZEX * especialBarP1 ) / 100 ), 586, makecol(145,12,200) );
 	}
 	if( especialQuantityP1 == 2 )
 	{
 		//imprime uma barra roxa na interface
-		rectfill( completeInterface, 85, 568, 305, 586, makecol(3,40,255) );
+		rectfill( completeInterface, SPECIALBARP1X, SPECIALBARP1Y, SPECIALBARP1X+SPECIALBARSIZEX, 586, makecol(3,40,255) );
 		//imprime uma barra amarela na interface
-		rectfill( completeInterface, 85, 568, 85 + ( ( 220 * especialBarP1 ) / 100 ), 586, makecol(255,242,0) );
+		rectfill( completeInterface, SPECIALBARP1X, SPECIALBARP1Y, SPECIALBARP1X + ( ( SPECIALBARSIZEX * especialBarP1 ) / 100 ), 586, makecol(255,242,0) );
 	}
 	if( especialQuantityP1 == 3 )
 	{
 		//imprime uma barra amarela na interface
-		rectfill( completeInterface, 85, 568, 305, 586, makecol(255,242,0) );
+		rectfill( completeInterface, SPECIALBARP1X, SPECIALBARP1Y, SPECIALBARP1X+SPECIALBARSIZEX, 586, makecol(255,242,0) );
 		//imprime uma barra verde na interface
-		rectfill( completeInterface, 85, 568, 85 + ( ( 220 * especialBarP1 ) / 100 ), 586, makecol(28,227,37) );
+		rectfill( completeInterface, SPECIALBARP1X, SPECIALBARP1Y, SPECIALBARP1X + ( ( SPECIALBARSIZEX * especialBarP1 ) / 100 ), 586, makecol(28,227,37) );
 	}
 	if( especialQuantityP1 == 4 )
 	{
 		//imprime uma barra verde na interface
-		rectfill( completeInterface, 85, 568, 305, 586,  makecol(28,227,37) );
+		rectfill( completeInterface, SPECIALBARP1X, SPECIALBARP1Y, SPECIALBARP1X+SPECIALBARSIZEX, 586,  makecol(28,227,37) );
 		//imprime uma barra laranja na interface
-		rectfill( completeInterface, 85, 568, 85 + ( ( 220 * especialBarP1 ) / 100 ), 586, makecol(241,154,35) );
+		rectfill( completeInterface, SPECIALBARP1X, SPECIALBARP1Y, SPECIALBARP1X + ( ( SPECIALBARSIZEX * especialBarP1 ) / 100 ), 586, makecol(241,154,35) );
 	}
 }END_OF_FUNCTION(BuildPlayer1SpecialBar);
 
@@ -466,36 +466,36 @@ void Interface::BuildPlayer2SpecialBar( int especialQuantityP2, int especialBarP
 	if( especialQuantityP2 == 0 )
 	{
 		//imprime uma barra azul na interface
-		rectfill( completeInterface, 1056-((220*especialBarP2)/100), 568, 1056, 586, makecol(3,40,255) );
+		rectfill( completeInterface, SPECIALBARP2X+SPECIALBARSIZEX-((SPECIALBARSIZEX*especialBarP2)/100), SPECIALBARP1Y, SPECIALBARP2X+SPECIALBARSIZEX, SPECIALBARP1Y+SPECIALBARSIZEY, makecol(3,40,255) );
 	}
 	if( especialQuantityP2 == 1 )
 	{
 		//imprime uma barra azul na interface
-		rectfill( completeInterface, 836, 568, 1056, 586, makecol(3,40,255) );
+		rectfill( completeInterface, SPECIALBARP2X, SPECIALBARP1Y, SPECIALBARP2X+SPECIALBARSIZEX, SPECIALBARP1Y+SPECIALBARSIZEY, makecol(3,40,255) );
 		
 		//imprime uma barra roxa na interface
-		rectfill( completeInterface, 1056-((220*especialBarP2)/100), 568, 1056, 586, makecol(145,12,200) );
+		rectfill( completeInterface, SPECIALBARP2X+SPECIALBARSIZEX-((SPECIALBARSIZEX*especialBarP2)/100), SPECIALBARP1Y, SPECIALBARP2X+SPECIALBARSIZEX, SPECIALBARP1Y+SPECIALBARSIZEY, makecol(145,12,200) );
 	}
 	if( especialQuantityP2 == 2 )
 	{
 		//imprime uma barra roxa na interface
-		rectfill( completeInterface, 836, 568, 1056, 586, makecol(3,40,255) );
+		rectfill( completeInterface, SPECIALBARP2X, SPECIALBARP1Y, SPECIALBARP2X+SPECIALBARSIZEX, SPECIALBARP1Y+SPECIALBARSIZEY, makecol(3,40,255) );
 		//imprime uma barra amarela na interface
-		rectfill( completeInterface, 1056-((220*especialBarP2)/100), 568, 1056, 586, makecol(255,242,0) );
+		rectfill( completeInterface, SPECIALBARP2X+SPECIALBARSIZEX-((SPECIALBARSIZEX*especialBarP2)/100), SPECIALBARP1Y, SPECIALBARP2X+SPECIALBARSIZEX, SPECIALBARP1Y+SPECIALBARSIZEY, makecol(255,242,0) );
 	}
 	if( especialQuantityP2 == 3 )
 	{
 		//imprime uma barra amarela na interface
-		rectfill( completeInterface, 836, 568, 1056, 586, makecol(255,242,0) );
+		rectfill( completeInterface, SPECIALBARP2X, SPECIALBARP1Y, SPECIALBARP2X+SPECIALBARSIZEX, SPECIALBARP1Y+SPECIALBARSIZEY, makecol(255,242,0) );
 		//imprime uma barra verde na interface
-		rectfill( completeInterface, 1056-((220*especialBarP2)/100), 568, 1056, 586, makecol(28,227,37) );
+		rectfill( completeInterface, SPECIALBARP2X+SPECIALBARSIZEX-((SPECIALBARSIZEX*especialBarP2)/100), SPECIALBARP1Y, SPECIALBARP2X+SPECIALBARSIZEX, SPECIALBARP1Y+SPECIALBARSIZEY, makecol(28,227,37) );
 	}
 	if( especialQuantityP2 == 4 )
 	{
 		//imprime uma barra verde na interface
-		rectfill( completeInterface, 836, 568, 1056, 586,  makecol(28,227,37) );
+		rectfill( completeInterface, SPECIALBARP2X, SPECIALBARP1Y, SPECIALBARP2X+SPECIALBARSIZEX, SPECIALBARP1Y+SPECIALBARSIZEY,  makecol(28,227,37) );
 		//imprime uma barra laranja na interface
-		rectfill( completeInterface, 1056-((220*especialBarP2)/100), 568, 1056, 586, makecol(241,154,35) );
+		rectfill( completeInterface, SPECIALBARP2X+SPECIALBARSIZEX-((SPECIALBARSIZEX*especialBarP2)/100), SPECIALBARP1Y, SPECIALBARP2X+SPECIALBARSIZEX, SPECIALBARP1Y+SPECIALBARSIZEY, makecol(241,154,35) );
 	}
 }END_OF_FUNCTION(BuildPlayer2SpecialBar);
 
@@ -508,11 +508,11 @@ void Interface::BuildPlayer1PowBar( int powTimeP1 )
 	//limpa o bitmap
 	clear( powBarPlayer1 );
 	//cobre tudo com o rosa que faz ficar trasnparente
-	rectfill( powBarPlayer1, 0, 0, 147, 9, makecol(255,0,255) );
+	rectfill( powBarPlayer1, 0, 0, POWBARSIZEX, POWBARSIZEY, makecol(255,0,255) );
 	//imprime a barra de pow no bitmap
-	draw_sprite( powBarPlayer1, powBarP1, ((147*((powTimeP1*100)/15000))/100)-147, 0);
+	draw_sprite( powBarPlayer1, powBarP1, ((POWBARSIZEX*((powTimeP1*100)/15000))/100)-POWBARSIZEX, 0);
 	//imprime no bitmap da interface a barra de pow
-	draw_sprite( completeInterface, powBarPlayer1, 69, 552);
+	draw_sprite( completeInterface, powBarPlayer1, POWBARP1X, POWBARP1Y );
 }END_OF_FUNCTION(BuildPlayer1PowBar);
 
 
@@ -524,11 +524,11 @@ void Interface::BuildPlayer2PowBar( int powTimeP2 )
 	//limpa o bitmap
 	clear( powBarPlayer2 );
 	//cobre tudo com o rosa que faz ficar trasnparente
-	rectfill( powBarPlayer2, 0, 0, 147, 9, makecol(255,0,255) );
+	rectfill( powBarPlayer2, 0, 0, POWBARSIZEX, POWBARSIZEY, makecol(255,0,255) );
 	//imprime a barra de pow no bitmap
-	draw_sprite( powBarPlayer2, powBarP2, 147-((147*((powTimeP2*100)/15000))/100), 0);
+	draw_sprite( powBarPlayer2, powBarP2, POWBARSIZEX-((POWBARSIZEX*((powTimeP2*100)/15000))/100), 0);
 	//imprime no bitmap da interface a barra de pow
-	draw_sprite( completeInterface, powBarPlayer2, 925, 552);
+	draw_sprite( completeInterface, powBarPlayer2, POWBARP2X, POWBARP2Y );
 }END_OF_FUNCTION(BuildPlayer2PowBar);
 
 
@@ -549,7 +549,7 @@ void Interface::BuildPlayer1SpecialPoints( int especialQuantityP1 )
 	if( especialQuantityP1 == 4 ) draw_sprite( specialNumberP1, specialNumber4, 0, 0 );
 	if( especialQuantityP1 == 5 ) draw_sprite( specialNumberP1, specialNumber5, 0, 0 );
 	//imprime no bitmap da interface o numero 
-	draw_sprite( completeInterface, specialNumberP1, 45, 551);
+	draw_sprite( completeInterface, specialNumberP1, SPECIALNUMBERP1X, SPECIALNUMBERP1Y);
 }END_OF_FUNCTION(BuildPlayer1SpecialPoints);
 
 
@@ -570,7 +570,7 @@ void Interface::BuildPlayer2SpecialPoints( int especialQuantityP2 )
 	if( especialQuantityP2 == 4 ) draw_sprite( specialNumberP2, specialNumber4, 0, 0 );
 	if( especialQuantityP2 == 5 ) draw_sprite( specialNumberP2, specialNumber5, 0, 0 );
 	//imprime no bitmap da interface o numero 
-	draw_sprite( completeInterface, specialNumberP2, 1072, 551);
+	draw_sprite( completeInterface, specialNumberP2, SPECIALNUMBERP2X, SPECIALNUMBERP2Y);
 }END_OF_FUNCTION(BuildPlayer2SpecialPoints);
 
 
