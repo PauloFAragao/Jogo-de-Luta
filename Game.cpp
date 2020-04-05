@@ -66,18 +66,8 @@ void Game::BuildGameScreen()
 	clear( gameScreen );
 	
 	//imprimir o cenario
-	//draw_sprite( gameScreen, scenario.GetScenarioSprite(), scenario.GetX(), scenario.GetY() );
-	
-	//imprimir a interface
-		draw_sprite( gameScreen, ui.GetCompleteInterface( gameTime, 
-														terryP1->GetLifePoints(), terryP2->GetLifePoints(), 
-														terryP1->GetLifePointsMax(), terryP2->GetLifePointsMax(), 
-														terryP1->GetShild(), terryP2->GetShild(), 
-														terryP1->GetEspecialBar(), terryP2->GetEspecialBar(), 
-														terryP1->GetEspecialQuantity(), terryP2->GetEspecialQuantity(), 
-														terryP1->GetPowTime(), terryP2->GetPowTime(), 
-														terryP1->GetPow(), terryP2->GetPow() ), 0, 0 );
-	
+	draw_sprite( gameScreen, scenario.GetScenarioSprite(), scenario.GetX(), scenario.GetY() );
+		
 	//imprimir o player 2
 	switch( p2Index )
 	{
@@ -97,6 +87,16 @@ void Game::BuildGameScreen()
 																false, flipPlayer1Comand ), terryP1->GetX(), terryP1->GetY() );
 		break;
 	}
+	
+	//imprimir a interface
+		draw_sprite( gameScreen, ui.GetCompleteInterface( gameTime, 
+														terryP1->GetLifePoints(), terryP2->GetLifePoints(), 
+														terryP1->GetLifePointsMax(), terryP2->GetLifePointsMax(), 
+														terryP1->GetShild(), terryP2->GetShild(), 
+														terryP1->GetEspecialBar(), terryP2->GetEspecialBar(), 
+														terryP1->GetEspecialQuantity(), terryP2->GetEspecialQuantity(), 
+														terryP1->GetPowTime(), terryP2->GetPowTime(), 
+														terryP1->GetPow(), terryP2->GetPow() ), 0, 0 );
 	
 	//texto Game Pause colocado no meio da tela
 	if( gamePause ) textprintf_ex(gameScreen, font, 500, 315, makecol(255, 0, 0), -1, "Game Pause" );

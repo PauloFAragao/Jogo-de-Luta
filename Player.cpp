@@ -202,7 +202,7 @@ void Player::HorizontalMove()
 			
 			}
 			
-			else if( toRight && ValidateAction(20) )//andando
+			else if( toRight && !button00 && ValidateAction(20) )//andando
 				ChangeAction(20);
 				
 			else if( opponentAttacking && !toRight )//ação de se defender
@@ -213,7 +213,7 @@ void Player::HorizontalMove()
 					ChangeAction(130);
 			}
 			
-			else if( !toRight && ValidateAction(30) && !opponentAttacking)//andando para tras
+			else if( !toRight && !button00 && ValidateAction(30) && !opponentAttacking )//andando para tras
 				ChangeAction(30);
 			
 		}
@@ -238,7 +238,7 @@ void Player::HorizontalMove()
 				}
 			}
 			
-			else if( !toRight && ValidateAction(20) )//andando
+			else if( !toRight && !button02 && ValidateAction(20) )//andando
 				ChangeAction(20);
 				
 			else if( opponentAttacking && toRight )//ação de se defender
@@ -249,9 +249,14 @@ void Player::HorizontalMove()
 					ChangeAction(130);
 			}
 			
-			else if( toRight && ValidateAction(30) ) //andando para tras
+			else if( toRight && !button02 && ValidateAction(30) ) //andando para tras
 				ChangeAction(30);
 			
+		}
+		
+		if( button00 && button02 )
+		{
+			ChangeAction(0);
 		}
 		
 	}
@@ -308,7 +313,7 @@ void Player::HorizontalMove()
 	}
 
 //desaceleração
-	if( !button00 || !button02 )
+	if( action == 0 || ( !button00 && !button02 ) )
 	{
 		if( y >= CHAO && speedX < 0 )
 		{

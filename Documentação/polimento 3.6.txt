@@ -8,30 +8,28 @@ para 566x350 - Implementado
 		-se o personagem estiver correndo antes de iniciar a animção no fim da 
 		animação ele volta a correr - Resolvido
 
--Implementação da defesa no momento que o outro personagem está atacando
-
 -Corrigir a altura dos pulos - Implementado
+
+-a animação defence está alguns pixels fora do lugar - implementado
+
+-Consertar erro na animação idle: a animação está rodando errado, a animação reutiliza
+alguns frames para fazer o ciclo completo (ciclo correto: 0,1,2,3,4,5,6,7,2) - implementado
+
+-Terminar de escrever os defines no arquivo includes.h
 
 -Implementar que o personagem deve mudar de lado quando a animação terminar e não executar 
 outra animação antes de mudar de lado
 
--Terminar de escrever os defines no arquivo includes.h
-
 -Implementar que todas as animações podem cancelar a animação de mudar de lado
 
--Fazer os personagens serem renderizados na frente da interface
+-Implementação da defesa no momento que o outro personagem está atacando
 
 -Implementar na interface o "Round X" "Ready" "Fight" Winner" "time up" "Draw"
 
--Consertar erro na animação idle: a animação está rodando errado, a animação reutiliza
-alguns frames para fazer o ciclo completo (ciclo correto: 0,1,2,3,4,5,6,7,2)
-
--a animação defence está alguns pixels fora do lugar
-
--a animação jumpStart deve cancelar a animação Raise Crouched e ir para o ultimo animação
-jumoStart
+-a animação jumpStart deve cancelar a animação Raise Crouched e ir para o ultimo frame da 
+animação jumpStart
 
 -BUG: Quando o jogador pressiona para tras e para frente o personagem anda para tras com a
-animação congelada
+animação congelada - Resolvido
 
--A DESACELERAÇÂO ESTÀ FUNCIONANDO ERRADO
+-A DESACELERAÇÂO ESTÀ FUNCIONANDO ERRADO - Resolvido

@@ -153,11 +153,10 @@ void Player::InterpretationDefence()
 		if( toRight && button00  ) ChangeAction(121);
 		if( !toRight && button02 ) ChangeAction(121);
 	}
-	if( ( action == 120 || action == 121 || action == 122 ) && ( ( !button00 && toRight ) || ( !button02 && !toRight ) || !opponentAttacking) )//animação de saida da defesa
+	if( ( action == 120 || action == 121 || action == 122 ) && ( ( !button00 && toRight ) || ( !button02 && !toRight ) || !opponentAttacking ) )//animação de saida da defesa
 	{
 		ChangeAction(123);
 	}
-
 	if( action == 123 && frame == defendExit[0] && clock() - capturaTempo > TEF )//voltando para idle
 	{
 		ChangeAction(0);

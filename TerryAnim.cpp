@@ -391,7 +391,7 @@ void Terry::Anim15()//Defending
 void Terry::Anim16()//Defence
 {
 	if( !GetStartAnimation() )
-	{ SetFrame(82); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
+	{ SetFrame(GetDefence(0)); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
 }END_OF_FUNCTION(Anim16);
 
 
