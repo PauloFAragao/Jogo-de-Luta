@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <allegro.h>
+#include "includes.h"
 #include "Scenario.h"
 #include "Interface.h"
 #include "Terry.h"

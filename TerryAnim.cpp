@@ -1,7 +1,5 @@
-#include <allegro.h>
+#include "includes.h"
 #include "Terry.h"
-
-#define TEF 120					//tempo entre os frames
 
 /**
  * controle central da animação do Terry
@@ -10,10 +8,18 @@ void Terry::TerryAnimations()
 {
 	switch( GetAction() )
 	{
+
+//animações basicas
 		case 0://idle
+		case 300://preparation to weak punch
+		case 310://preparation to strong punch
+		case 320://preparation to weak kick
+		case 330://preparation to strong kick
+		case 420://preparation to glued strong punch
+		case 430://preparation to glued strong kick
 			Anim00();
 		break;
-		
+	
 		case 10://Crouching
 		case 40://Jump Start
 		case 60://Jump Start
@@ -22,6 +28,10 @@ void Terry::TerryAnimations()
 		break;
 		
 		case 11://Crouched Idle
+		case 340://preparation to crouched weak punch
+		case 350://preparation to crouched strong punch
+		case 360://preparation to crouched weak kick
+		case 370://preparation to crouched strong kick
 			Anim02();
 		break;
 		
@@ -30,6 +40,7 @@ void Terry::TerryAnimations()
 		break;
 		
 		case 20://Walk
+
 			Anim04();
 		break;
 		
@@ -148,8 +159,85 @@ void Terry::TerryAnimations()
 		case 170://changeSideCrouched
 			Anim29();
 		break;
+		
+//ataques basicos
+		case 301://weak punch
+			Anim30();
+		break;
 	
-		default: //ERROR
+		case 311://strong punch
+			Anim31();
+		break;
+	
+		case 321://weak kick
+			Anim32();
+		break;
+	
+		case 331://strong kick
+			Anim33();
+		break;
+		
+		case 332://strong kick End
+			Anim34();
+		break;
+	
+		case 341://crouched weak punch
+			Anim35();
+		break;
+	
+		case 351://crouched strong punch
+			Anim36();
+		break;
+	
+		case 361://crouched weak kick
+			Anim37();
+		break;
+	
+		case 371://crouched strong kick
+			Anim38();
+		break;
+	
+		case 380://Jumping Weak Punch
+			Anim39();
+		break;
+	
+		case 390://Jumping strong Punch
+			Anim40();
+		break;
+	
+		case 400://Jumping Weak kick
+			Anim41();
+		break;
+	
+		case 410://Jumping strong kick
+			Anim42();
+		break;
+	
+		case 421://Glued strong punch
+			Anim43();
+		break;
+	
+		case 431://Glued strong kick
+			Anim44();
+		break;
+	
+		case 440://Special Attack
+			Anim45();
+		break;
+	
+		case 441://Special Attack
+			Anim48();
+		break;
+	
+		case 450://Jumping Special Attack
+			Anim46();
+		break;
+	
+		case 461://Weak Punch Forward
+			Anim47();
+		break;
+			
+		default://ERROR
 			SetFrame(0);
 		break;
 	}
@@ -179,7 +267,7 @@ void Terry::Anim02()//crouchedIdle
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetCrouchedIdle(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
-	else if( GetFrame() >= GetCrouchedIdle(0) && GetFrame() < GetCrouchedIdle(1) && clock() - GetCapturaTempo() > TEF+10 )
+	else if( GetFrame() >= GetCrouchedIdle(0) && GetFrame() < GetCrouchedIdle(1) && clock() - GetCapturaTempo() > TEF+50 )
 	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); if( GetFrame() == GetCrouchedIdle(1) ) SetFrame( GetCrouchedIdle(0) ); }
 }END_OF_FUNCTION(anim02);
 
@@ -282,16 +370,16 @@ void Terry::Anim13()//jumpingBack
 }END_OF_FUNCTION(Anim13);
 
 
-void Terry::Anim14()//Fall - depois de Jumping Back
+void Terry::Anim14()//Fall - depois de Jumping Back	
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetJumpBackFall(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
-	else if( GetFrame() >= GetJumpBackFall(0) && GetFrame() < GetJumpBackFall(1) && clock() - GetCapturaTempo() > TEF+75 )
+	else if( GetFrame() >= GetJumpBackFall(0) && GetFrame() < GetJumpBackFall(1) && clock() - GetCapturaTempo() > TEF )
 	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
 }END_OF_FUNCTION(Anim14);
 
 
-void Terry::Anim15()//Defending					78-81
+void Terry::Anim15()//Defending
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetDefending(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
@@ -300,14 +388,14 @@ void Terry::Anim15()//Defending					78-81
 }END_OF_FUNCTION(Anim15);
 
 
-void Terry::Anim16()//Defence					82
+void Terry::Anim16()//Defence
 {
 	if( !GetStartAnimation() )
 	{ SetFrame(82); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
 }END_OF_FUNCTION(Anim16);
 
 
-void Terry::Anim17()//Taking Damage				114-118
+void Terry::Anim17()//Taking Damage
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetTakingDamage(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
@@ -316,7 +404,7 @@ void Terry::Anim17()//Taking Damage				114-118
 }END_OF_FUNCTION(Anim17);
 
 
-void Terry::Anim18()//Defend Exit				81-79
+void Terry::Anim18()//Defend Exit
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetDefendExit(1) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
@@ -325,7 +413,7 @@ void Terry::Anim18()//Defend Exit				81-79
 }END_OF_FUNCTION(Anim18);
 
 
-void Terry::Anim19()//Defending Crouched		83-86		
+void Terry::Anim19()//Defending Crouched		
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetDefendingCrouched(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
@@ -334,14 +422,14 @@ void Terry::Anim19()//Defending Crouched		83-86
 }END_OF_FUNCTION(Anim19);
 
 
-void Terry::Anim20()//Defence Crouched			87
+void Terry::Anim20()//Defence Crouched
 {
 	if( !GetStartAnimation() )
 	{ SetFrame(87); SetStartAnimation(true); SetCapturaTempo(clock()); }//frame 0
 }END_OF_FUNCTION(Anim20);
 
 
-void Terry::Anim21()//Taking Damage Crouched	119-123
+void Terry::Anim21()//Taking Damage Crouched
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetTakingDamageCrouched(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
@@ -350,7 +438,7 @@ void Terry::Anim21()//Taking Damage Crouched	119-123
 }END_OF_FUNCTION(Anim21);
 
 
-void Terry::Anim22()//Defend Exit Crouched		85-84
+void Terry::Anim22()//Defend Exit Crouched
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetDefendExitCrouched(1) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
@@ -359,7 +447,7 @@ void Terry::Anim22()//Defend Exit Crouched		85-84
 }END_OF_FUNCTION(Anim22);
 
 
-void Terry::Anim23()//Front Rolling				88-93
+void Terry::Anim23()//Front Rolling
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetFrontRolling(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
@@ -368,7 +456,7 @@ void Terry::Anim23()//Front Rolling				88-93
 }END_OF_FUNCTION(Anim23);
 
 
-void Terry::Anim24()//Back Rolling				100-107
+void Terry::Anim24()//Back Rolling
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetBackRolling(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
@@ -386,7 +474,7 @@ void Terry::Anim25()//slide
 }END_OF_FUNCTION(Anim25);
 
 
-void Terry::Anim26()//Front Rolling End					94-99
+void Terry::Anim26()//Front Rolling End
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetFrontRollingEnd(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
@@ -395,7 +483,7 @@ void Terry::Anim26()//Front Rolling End					94-99
 }END_OF_FUNCTION(Anim26);
 
 
-void Terry::Anim27()//Back Rolling End					106 - 113
+void Terry::Anim27()//Back Rolling End
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetBackRollingEnd(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
@@ -404,7 +492,7 @@ void Terry::Anim27()//Back Rolling End					106 - 113
 }END_OF_FUNCTION(Anim27);
 
 
-void Terry::Anim28()//changeSide						124-126
+void Terry::Anim28()//changeSide
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetChangeSide(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
@@ -413,7 +501,7 @@ void Terry::Anim28()//changeSide						124-126
 }END_OF_FUNCTION(Anim28);
 
 
-void Terry::Anim29()//changeSideCrouched				127-129
+void Terry::Anim29()//changeSideCrouched
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetChangeSideCrouched(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
@@ -525,21 +613,29 @@ void Terry::Anim42()//Jumping Weak Kick
 	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
 }END_OF_FUNCTION(Anim42);
 
-void Terry::Anim43()//Glued Strong Kick
+void Terry::Anim43()//Glued Strong Punch
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetGluedStrongPunch(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetGluedStrongPunch(0) && GetFrame() < GetGluedStrongPunch(1) && clock() - GetCapturaTempo() > TEF-20 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim43);
+
+void Terry::Anim44()//Glued Strong Kick
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetGluedStrongKick(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
 	else if( GetFrame() >= GetGluedStrongKick(0) && GetFrame() < GetGluedStrongKick(1) && clock() - GetCapturaTempo() > TEF-60 )
 	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
-}END_OF_FUNCTION(Anim43);
+}END_OF_FUNCTION(Anim44);
 
-void Terry::Anim44()//Glued Strong Punch
+void Terry::Anim45()//Special Attack Start
 {
 	if( !GetStartAnimation() )
-	{ SetFrame( GetGluedStrongPunch(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
-	else if( GetFrame() >= GetGluedStrongPunch(0) && GetFrame() < GetGluedStrongPunch(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetSpecialAttackStart(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetSpecialAttackStart(0) && GetFrame() < GetSpecialAttackStart(1) && clock() - GetCapturaTempo() > TEF-60 )
 	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
-}END_OF_FUNCTION(Anim44);
+}END_OF_FUNCTION(Anim45);
 
 void Terry::Anim46()//Jumping Special Attack
 {
@@ -557,7 +653,13 @@ void Terry::Anim47()//Weak Punch Forward
 	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
 }END_OF_FUNCTION(Anim47);
 
-
+void Terry::Anim48()//Special Attack
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( GetSpecialAttack(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= GetSpecialAttack(0) && GetFrame() < GetSpecialAttack(1) && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim48);
 
 
 

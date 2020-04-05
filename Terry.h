@@ -75,6 +75,7 @@ class Terry:public Player
 		void Anim45();
 		void Anim46();
 		void Anim47();
+		void Anim48();
 		
 };
 #endif//TERRY_H

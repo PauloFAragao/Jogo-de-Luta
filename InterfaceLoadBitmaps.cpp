@@ -1,4 +1,4 @@
-#include <allegro.h>
+#include "includes.h"
 #include "Interface.h"
 
 
@@ -110,7 +110,6 @@ void Interface::LoadSprites()
 	
 }END_OF_FUNCTION(LoadSprites);
 
-
 /**
  * Inicializa os bitmaps que vão ser manipulados
  */
@@ -161,6 +160,13 @@ void Interface::InitializeBitmaps()
 	
 	
 }END_OF_FUNCTION(InitializeBitmaps);
+
+
+
+
+
+
+
 
 
 

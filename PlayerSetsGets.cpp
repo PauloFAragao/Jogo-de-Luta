@@ -1,4 +1,4 @@
-#include <allegro.h>
+#include "includes.h"
 #include "Player.h"
 
 //sprites
@@ -670,6 +670,16 @@ void Player::SetGluedStrongKick( int gluedStrongKick, int index )
 	this->gluedStrongKick[index] = gluedStrongKick;
 }END_OF_FUNCTION(SetGluedStrongKick);
 
+//specialAttackStart
+int Player::GetSpecialAttackStart( int index )
+{
+	return specialAttackStart[index];
+}END_OF_FUNCTION(GetSpecialAttackStart);
+void Player::SetSpecialAttackStart( int specialAttackStart, int index )
+{
+	this->specialAttackStart[index] = specialAttackStart;
+}END_OF_FUNCTION(SetSpecialAttackStart);
+
 //jumpingSpecialAttack
 int Player::GetJumpingSpecialAttack( int index )
 {
@@ -689,6 +699,16 @@ void Player::SetWeakPunchForward( int weakPunchForward, int index )
 {
 	this->weakPunchForward[index] = weakPunchForward;
 }END_OF_FUNCTION(SetWeakPunchForward);
+
+//specialAttack
+int Player::GetSpecialAttack( int index)
+{
+	return specialAttack[index];
+}END_OF_FUNCTION(GetSpecialAttack);
+void Player::SetSpecialAttack( int specialAttack, int index)
+{
+	this->specialAttack[index] = specialAttack;
+}END_OF_FUNCTION(SetSpecialAttack);
 
 //takingDmg
 void Player::SetTakingDmg(bool takingDmg)

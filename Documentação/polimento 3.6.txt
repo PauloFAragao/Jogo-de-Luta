@@ -1,15 +1,37 @@
 -Corrigir o problema de resolução das imagens, provavelmente trocar a resolução das imagens
-para 566x512
+para 566x350 - Implementado
+
+-Implementar o arquivo include.h - Implementado
+
+-Implementação de todos os golpes basicos do personagem - Implementado
+	problema ao implementar o ataque: soco fraco para frente 
+		-se o personagem estiver correndo antes de iniciar a animção no fim da 
+		animação ele volta a correr - Resolvido
+
+-Implementação da defesa no momento que o outro personagem está atacando
+
+-Corrigir a altura dos pulos - Implementado
 
 -Implementar que o personagem deve mudar de lado quando a animação terminar e não executar 
 outra animação antes de mudar de lado
 
+-Terminar de escrever os defines no arquivo includes.h
+
 -Implementar que todas as animações podem cancelar a animação de mudar de lado
-
--Implementação de todos os golpes basicos do personagem
-
--Implementação da defesa no momento que o outro personagem está atacando
 
 -Fazer os personagens serem renderizados na frente da interface
 
--Implementar na interface o "Round X" "Ready" "Fight" Winner"
+-Implementar na interface o "Round X" "Ready" "Fight" Winner" "time up" "Draw"
+
+-Consertar erro na animação idle: a animação está rodando errado, a animação reutiliza
+alguns frames para fazer o ciclo completo (ciclo correto: 0,1,2,3,4,5,6,7,2)
+
+-a animação defence está alguns pixels fora do lugar
+
+-a animação jumpStart deve cancelar a animação Raise Crouched e ir para o ultimo animação
+jumoStart
+
+-BUG: Quando o jogador pressiona para tras e para frente o personagem anda para tras com a
+animação congelada
+
+-A DESACELERAÇÂO ESTÀ FUNCIONANDO ERRADO

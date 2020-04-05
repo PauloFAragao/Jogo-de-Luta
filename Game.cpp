@@ -1,7 +1,5 @@
-#include <allegro.h>
+#include "includes.h"
 #include "Game.h"
-
-#define COMPLETERENDER true
 
 Game::Game( int p1Index, int p2Index )
 {
@@ -68,17 +66,17 @@ void Game::BuildGameScreen()
 	clear( gameScreen );
 	
 	//imprimir o cenario
-	draw_sprite( gameScreen, scenario.GetScenarioSprite(), scenario.GetX(), scenario.GetY() );
+	//draw_sprite( gameScreen, scenario.GetScenarioSprite(), scenario.GetX(), scenario.GetY() );
 	
-	//imprimir o player 1
-	switch( p1Index )
-	{//GetPlayerSprite( int enemyX, int enemyY, bool gamePause, bool gameStart, bool enemyAttacking, bool takingDmg, bool flipCharacter )
-		case 1:
-			draw_sprite( gameScreen, terryP1->GetPlayerSprite( terryP2->GetX(), terryP2->GetY(), 
-																gamePause, gameStart, terryP2->GetAttacking(), 
-																false, flipPlayer1Comand ), terryP1->GetX(), terryP1->GetY() );
-		break;
-	}
+	//imprimir a interface
+		draw_sprite( gameScreen, ui.GetCompleteInterface( gameTime, 
+														terryP1->GetLifePoints(), terryP2->GetLifePoints(), 
+														terryP1->GetLifePointsMax(), terryP2->GetLifePointsMax(), 
+														terryP1->GetShild(), terryP2->GetShild(), 
+														terryP1->GetEspecialBar(), terryP2->GetEspecialBar(), 
+														terryP1->GetEspecialQuantity(), terryP2->GetEspecialQuantity(), 
+														terryP1->GetPowTime(), terryP2->GetPowTime(), 
+														terryP1->GetPow(), terryP2->GetPow() ), 0, 0 );
 	
 	//imprimir o player 2
 	switch( p2Index )
@@ -90,15 +88,15 @@ void Game::BuildGameScreen()
 		break;
 	}
 	
-	//imprimir a interface
-		draw_sprite( gameScreen, ui.GetCompleteInterface( gameTime, 
-														terryP1->GetLifePoints(), terryP2->GetLifePoints(), 
-														terryP1->GetLifePointsMax(), terryP2->GetLifePointsMax(), 
-														terryP1->GetShild(), terryP2->GetShild(), 
-														terryP1->GetEspecialBar(), terryP2->GetEspecialBar(), 
-														terryP1->GetEspecialQuantity(), terryP2->GetEspecialQuantity(), 
-														terryP1->GetPowTime(), terryP2->GetPowTime(), 
-														terryP1->GetPow(), terryP2->GetPow() ), 0, 0 );
+	//imprimir o player 1
+	switch( p1Index )
+	{//GetPlayerSprite( int enemyX, int enemyY, bool gamePause, bool gameStart, bool enemyAttacking, bool takingDmg, bool flipCharacter )
+		case 1:
+			draw_sprite( gameScreen, terryP1->GetPlayerSprite( terryP2->GetX(), terryP2->GetY(), 
+																gamePause, gameStart, terryP2->GetAttacking(), 
+																false, flipPlayer1Comand ), terryP1->GetX(), terryP1->GetY() );
+		break;
+	}
 	
 	//texto Game Pause colocado no meio da tela
 	if( gamePause ) textprintf_ex(gameScreen, font, 500, 315, makecol(255, 0, 0), -1, "Game Pause" );
@@ -117,6 +115,13 @@ BITMAP *Game::GetGameScreen()
 	
 	if(COMPLETERENDER) BuildDebugScreen();
 	
+	textprintf_ex(gameScreen, font, 500, 10, makecol(255, 0, 0), -1, "Distancia  %f ", ( terryP1->GetX() - terryP2->GetX() )   );
+	
+	if( terryP1->GetX() - terryP2->GetX()>= -140 && terryP1->GetX() - terryP2->GetX()<= 140 )
+		textprintf_ex(gameScreen, font, 500, 20, makecol(255, 0, 0), -1, " dentro da distancia");
+	else
+		textprintf_ex(gameScreen, font, 500, 20, makecol(255, 0, 0), -1, " fora da distancia");
+		
 	return gameScreen;
 }END_OF_FUNCTION(GetGameScreen);
 
@@ -214,6 +219,10 @@ void Game::BuildDebugScreen()
 		textprintf_ex(gameScreen, font, 10, 240, makecol(255, 0, 0), -1, "Virado para a esquerda");
 	
 	
+	textprintf_ex(gameScreen, font, 120, 48, makecol(255, 0, 0), -1, "Quantidade de pontos de vida: %d ", terryP1->GetLifePoints() );
+	
+	
+	
 	//imprime o frame
 	textprintf_ex(gameScreen, font, 950, 180, makecol(255, 0, 0), -1, "frame: %d ", terryP2->GetFrame());
 	
@@ -228,6 +237,10 @@ void Game::BuildDebugScreen()
 		textprintf_ex(gameScreen, font, 950, 240, makecol(255, 0, 0), -1, "Virado para a direita");
 	else
 		textprintf_ex(gameScreen, font, 950, 240, makecol(255, 0, 0), -1, "Virado para a esquerda");
+	
+	
+	textprintf_ex(gameScreen, font, 640, 48, makecol(255, 0, 0), -1, "Quantidade de pontos de vida: %d ", terryP1->GetLifePoints() );
+	
 	
 }END_OF_FUNCTION(BuildDebugScreen);
 

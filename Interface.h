@@ -2,7 +2,7 @@
 #define INTERFACE_H
 
 
-#include <allegro.h>
+#include "includes.h"
 
 
 class Interface

@@ -1,19 +1,5 @@
-#include <allegro.h>
 #include "Player.h"
-
-
-#define TEF 120					//tempo entre os frames
-#define GRAVIDADE 0.7			//gravidade global
-#define CHAO 260				//posição do chão
-
-#define	WALKSPEED 5				//velocidade que o personagem vai andar VELANDAR
-#define RUNSPEED 10				//velocidade que o personagem vai correr RUNSPEED
-#define WEAKJUMPSTRENGTH 17		//força do pulo fraco
-#define STRONGJUMPSTRENGTH 25	//força do pulo forte
-
-#define MINSCENARYWIDTH -220	//posição do fim do cenario a esquerda
-#define MAXSCENARYWIDTH 800	  	//posição do fim do cenario a direita
-
+#include "includes.h"
 
 //construtor
 Player::Player( int playerNumber )
@@ -43,12 +29,12 @@ void Player::StartAttributes()
 	if( playerNumber == 1 )
 	{
 		toRight=true;				//indica para que lado o personagem está virado
-		x=-50;						//posição em X do player
+		x=P1XSTARTPOS;						//posição em X do player
 	}
 	else
 	{
 		toRight=false;				//indica para que lado o personagem está virado
-		x=680;						//posição em X do player
+		x=P2XSTARTPOS;						//posição em X do player
 	}
 	
 	button00=false;					//esquerda
@@ -80,6 +66,12 @@ void Player::StartAttributes()
 	
 	antLoopBT0 = true;
 	antLoopBT2 = true;
+	antLoopBT4 = true;				
+	antLoopBT5 = true;
+	antLoopBT6 = true;
+	antLoopBT7 = true;
+	
+	timeDelay=0;
 	
 	for (int a=0; a<8; a++)//iniciando o vetor de tempos
 	{
@@ -96,7 +88,7 @@ void Player::StartAttributes()
 /**
  * Esse metodo faz a chamada dos outros metodos importantes da classe player
  */
-void Player::PlayerRoutine( bool flipCharacter )
+void Player::PlayerRoutine( bool flipCharacter, int opponentX, int opponentY )
 {
 		//TEMPORARIO
 		if( key[ KEY_0_PAD ]  ) opponentAttacking = true;
@@ -106,16 +98,18 @@ void Player::PlayerRoutine( bool flipCharacter )
 		
 		if( key[KEY_MINUS]  ) 
 		{
-			//lifePoints -=25;
+			if( lifePoints > 0 ) lifePoints -=25;
+			else lifePoints = 0;
 			//shildPoints -=5;
-			especialBar -=1;
+			//especialBar -=1;
 			//powTime -= 100;
 		}
 		if( key[KEY_EQUALS] ) 
 		{
-			//lifePoints +=25;
+			if( lifePoints < lifePointsMax ) lifePoints +=25;
+			else lifePoints = lifePointsMax;
 			//shildPoints +=5;
-			especialBar +=1;
+			//especialBar +=1;
 			//powTime += 100;
 		}
 		//TEMPORARIO
@@ -138,7 +132,14 @@ void Player::PlayerRoutine( bool flipCharacter )
 	InterpretationDefence();
 	InterpretationRolling();
 	InterpretationChangeSide( flipCharacter );
+	InterpretationSpecialAttack();
 	SpecialControl();
+	
+	//ataques basicos
+	InterpretationWeakPunch( opponentX, opponentY );
+	InterpretationStrongPunch( opponentX, opponentY );
+	InterpretationWeakKick( opponentX, opponentY );
+	InterpretationStrongKick( opponentX, opponentY );
 		
 }END_OF_FUNCTION(PlayerRoutine);
 
@@ -200,7 +201,8 @@ void Player::HorizontalMove()
 				}
 			
 			}
-			else if( toRight && ValidateAction(20) ) //andando
+			
+			else if( toRight && ValidateAction(20) )//andando
 				ChangeAction(20);
 				
 			else if( opponentAttacking && !toRight )//ação de se defender
@@ -211,7 +213,7 @@ void Player::HorizontalMove()
 					ChangeAction(130);
 			}
 			
-			else if( !toRight && ValidateAction(30) && !opponentAttacking) //andando para tras
+			else if( !toRight && ValidateAction(30) && !opponentAttacking)//andando para tras
 				ChangeAction(30);
 			
 		}
@@ -235,7 +237,8 @@ void Player::HorizontalMove()
 					ChangeAction(110);
 				}
 			}
-			else if( !toRight && ValidateAction(20) ) //andando
+			
+			else if( !toRight && ValidateAction(20) )//andando
 				ChangeAction(20);
 				
 			else if( opponentAttacking && toRight )//ação de se defender
@@ -256,7 +259,6 @@ void Player::HorizontalMove()
 	//Rolamento
 	if( button04 && button06 )
 	{
-		
 		if( toRight && button00 && ValidateAction(150) )//Back Rolling
 		{
 			ChangeAction(150);
@@ -269,7 +271,6 @@ void Player::HorizontalMove()
 		{
 			ChangeAction(140);
 		}
-		
 	}
 	
 //modificação da velocidade de acordo com a ação
@@ -295,7 +296,7 @@ void Player::HorizontalMove()
 		if( button00 )
 		{
 			if( action == 100 ) speedX = -RUNSPEED;
-			if( action == 20  ) speedX = -WALKSPEED;
+			if( action == 20 ) speedX = -WALKSPEED;
 		}
 	
 		//movimentar da direita para a esquerda
@@ -424,7 +425,7 @@ void Player::VerticalMove()
 				{
 					if( toRight )	speedX = 10;
 					else			speedX = -10;
-					speedY = -WEAKJUMPSTRENGTH-5;
+					speedY = -WEAKJUMPSTRENGTH-2;
 					ChangeAction(61);
 				}
 				
@@ -432,7 +433,7 @@ void Player::VerticalMove()
 				{
 					if( toRight )	speedX = -10;
 					else			speedX = 10;
-					speedY = -WEAKJUMPSTRENGTH-5;
+					speedY = -WEAKJUMPSTRENGTH-2;
 					ChangeAction(81);
 				}
 			}
@@ -482,12 +483,6 @@ bool Player::ValidateAction(int value)
 			else return false;
 		break;
 	
-		case 40: //Weak Jump
-			if( action == 0 )
-				return true;
-			else return false;
-		break;
-	
 		case 20: //Walk
 			if( action == 0 || action == 30 || action == 101 )
 				return true;
@@ -496,6 +491,12 @@ bool Player::ValidateAction(int value)
 	
 		case 30: //WalkBack
 			if( action == 0 || action == 20 || action == 100 || action == 101 )
+				return true;
+			else return false;
+		break;
+	
+		case 40: //Weak Jump
+			if( action == 0 )
 				return true;
 			else return false;
 		break;
@@ -513,7 +514,7 @@ bool Player::ValidateAction(int value)
 		break;
 	
 		case 100: //Run
-			if( action == 0 || action == 20 || action == 101  )
+			if( action == 0 || action == 20 || action == 101 )
 				return true;
 			else return false;
 		break;
@@ -543,13 +544,13 @@ bool Player::ValidateAction(int value)
 		break;
 	
 		case 140://Front Rolling
-			if( action == 0  || action == 20 )
+			if( action == 0  || action == 20 || action == 300 || action == 320 )
 				return true;
 			else return false;
 		break;
 	
 		case 150://Back Rolling
-			if( action == 0 || action == 30 )
+			if( action == 0 || action == 30 || action == 300 || action == 320 )
 				return true;
 			else return false;
 		break;
@@ -565,7 +566,130 @@ bool Player::ValidateAction(int value)
 				return true;
 			else return false;
 		break;
+	
+		case 300://preparation to Weak Punch
+		case 310://preparation to Strong Punch
+		case 320://preparation to Weak kick
+		case 330://preparation to Strong kick
+		case 420://preparation to Glued Strong Punch
+		case 430://preparation to Glued Strong kick
+			if( action == 0 )
+				return true;
+			else return false;
+		break;
+	
+		case 301://Weak Punch
+			if( action == 300 )
+				return true;
+			else return false;
+		break;
+	
+		case 311://Strong Punch
+			if( action == 310 )
+				return true;
+			else return false;
+		break;
+	
+		case 321://Weak kick
+			if( action == 320 )
+				return true;
+			else return false;
+		break;
+	
+		case 331://Strong kick
+			if( action == 330 )
+				return true;
+			else return false;
+		break;
+	
+		case 421://Weak kick
+			if( action == 420 )
+				return true;
+			else return false;
+		break;
+	
+		case 431://Strong kick
+			if( action == 430 )
+				return true;
+			else return false;
+		break;
+	
+		case 340://preparation to Crouched Weak Punch
+		case 350://preparation to Crouched Strong Punch
+		case 360://preparation to Crouched Weak kick
+		case 370://preparation to Crouched Strong kick
+			if( action == 11 )
+				return true;
+			else return false;
+		break;
+	
+		case 341://Crouched Weak Punch
+			if( action == 340 )
+				return true;
+			else return false;
+		break;
+	
+		case 351://Crouched Strong Punch
+			if( action == 350 )
+				return true;
+			else return false;
+		break;
+	
+		case 361://Crouched Weak kick
+			if( action == 360 )
+				return true;
+			else return false;
+		break;
+	
+		case 371://Crouched Strong kick
+			if( action == 370 )
+				return true;
+			else return false;
+		break;
+	
+		case 380://Jumping Weak Punch
+		case 390://Jumping Strong Punch
+		case 400://Jumping Weak kick
+		case 410://Jumping Strong kick
+			if( action == 40 || action == 41 || action == 42 || action == 43 || action == 44 || 
+				action == 50 || action == 51 || action == 52 || action == 53 || action == 54 || 
+				action == 60 || action == 61 || action == 62 ||
+				action == 70 || action == 71 ||
+				action == 80 || action == 81 || action == 82 ||
+				action == 90 || action == 91 )
+				return true;
+			else return false;
+		break;
 		
+		case 460://weakPunchForward
+			if( action == 0 || action == 20 || action == 100 )
+				return true;
+			else return false;
+		break;
+	
+		case 461://weakPunchForward
+			if( action == 460 )
+				return true;
+			else return false;
+		break;
+		
+		case 440://specialAttack
+			if( action == 0 || action == 310 || action == 330  )
+				return true;
+			else return false;
+		break;
+	
+		case 450://jumpingSpecialAttack
+			if( action == 40 || action == 41 || action == 42 || action == 43 || action == 44 || 
+				action == 50 || action == 51 || action == 52 || action == 53 || action == 54 || 
+				action == 60 || action == 61 || action == 62 ||
+				action == 70 || action == 71 ||
+				action == 80 || action == 81 || action == 82 ||
+				action == 90 || action == 91 )
+				return true;
+			else return false;
+		break;
+	
 		default:
 			return false;
 		break;
@@ -582,6 +706,10 @@ bool Player::VerifyFrame(int value)
 	switch( value )
 	{
 		case 0://idle
+		case 300://preparation to weak punch
+		case 310://preparation to strong punch
+		case 320://preparation to weak kick
+		case 330://preparation to strong kick
 			if( frame < idle[0] || frame > idle[1] )
 				return true;
 		break;
@@ -745,8 +873,103 @@ bool Player::VerifyFrame(int value)
 			if(	frame <= changeSideCrouched[0] || frame >= changeSideCrouched[1] ) 
 				return true;
 		break;
+
+		case 301://weakPunch
+			if(	frame <= weakPunch[0] || frame >= weakPunch[1] ) 
+				return true;
+		break;
 	
-		default: //ERROR
+		case 311://strongPunch
+			if(	frame <= strongPunch[0] || frame >= strongPunch[1] ) 
+				return true;
+		break;
+	
+		case 321://weakKick
+			if(	frame <= weakKick[0] || frame >= weakKick[1] ) 
+				return true;
+		break;
+	
+		case 331://strongKick
+			if(	frame <= strongKick[0] || frame >= strongKick[1] ) 
+				return true;
+		break;
+	
+		case 332://strongKickEnd
+			if(	frame <= strongKickEnd[0] || frame >= strongKickEnd[1] ) 
+				return true;
+		break;
+	
+		case 341://crouchedWeakPunch
+			if(	frame <= crouchedWeakPunch[0] || frame >= crouchedWeakPunch[1] ) 
+				return true;
+		break;
+	
+		case 351://crouchedStrongPunch
+			if(	frame <= crouchedStrongPunch[0] || frame >= crouchedStrongPunch[1] ) 
+				return true;
+		break;
+	
+		case 361://crouchedWeakKick
+			if(	frame <= crouchedWeakKick[0] || frame >= crouchedWeakKick[1] ) 
+				return true;
+		break;
+	
+		case 371://crouchedStrongKick
+			if(	frame <= crouchedStrongKick[0] || frame >= crouchedStrongKick[1] ) 
+				return true;
+		break;
+	
+		case 380://jumpingWeakPunch
+			if(	frame <= jumpingWeakPunch[0] || frame >= jumpingWeakPunch[1] ) 
+				return true;
+		break;
+	
+		case 390://jumpingStrongPunch
+			if(	frame <= jumpingStrongPunch[0] || frame >= jumpingStrongPunch[1] ) 
+				return true;
+		break;
+	
+		case 400://jumpingWeakKick
+			if(	frame <= jumpingWeakKick[0] || frame >= jumpingWeakKick[1] ) 
+				return true;
+		break;
+	
+		case 410://jumpingStrongKick
+			if(	frame <= jumpingStrongKick[0] || frame >= jumpingStrongKick[1] ) 
+				return true;
+		break;
+	
+		case 421://gluedStrongPunch
+			if(	frame <= gluedStrongPunch[0] || frame >= gluedStrongPunch[1] ) 
+				return true;
+		break;
+	
+		case 431://gluedStrongKick
+			if(	frame <= gluedStrongKick[0] || frame >= gluedStrongKick[1] ) 
+				return true;
+		break;
+	
+		case 440://specialAttackStart
+			if(	frame <= specialAttackStart[0] || frame >= specialAttackStart[1] ) 
+				return true;
+		break;
+	
+		case 441://specialAttack
+			if(	frame <= specialAttack[0] || frame >= specialAttack[1] ) 
+				return true;
+		break;
+	
+		case 450://jumpingSpecialAttack
+			if(	frame <= jumpingSpecialAttack[0] || frame >= jumpingSpecialAttack[1] ) 
+				return true;
+		break;
+	
+		case 461://weakPunchForward
+			if(	frame <= weakPunchForward[0] || frame >= weakPunchForward[1] ) 
+				return true;
+		break;
+	
+		default://ERROR
 			return false;
 		break;
 	}

@@ -1,7 +1,7 @@
 #ifndef CENARIO_H
 #define CENARIO_H
 
-#include <allegro.h>
+#include "includes.h"
 
 class Scenario
 {

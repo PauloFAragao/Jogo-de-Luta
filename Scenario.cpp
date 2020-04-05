@@ -1,6 +1,5 @@
-#include <allegro.h>
+#include "includes.h"
 #include "Scenario.h"
-
 
 //construtor
 Scenario::Scenario(){ LoadSprites(); StartAttributes();}

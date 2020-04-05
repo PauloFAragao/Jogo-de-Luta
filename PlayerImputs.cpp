@@ -1,4 +1,4 @@
-#include <allegro.h>
+#include "includes.h"
 #include "Player.h"
 
 /**

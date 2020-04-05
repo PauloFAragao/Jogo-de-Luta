@@ -2,8 +2,7 @@
 #define PLAYER_H
 
 #include <allegro.h>
-
-#define QTDFRAMES 262
+#include "includes.h"
 
 class Player
 {
@@ -17,7 +16,7 @@ class Player
 		~Player();
 		
 		//Metodos publicos
-		void PlayerRoutine( bool flipCharacter );
+		void PlayerRoutine( bool flipCharacter, int opponentX, int opponentY );
 		
 		bool ValidateAction(int value);				//verifica se uma ação pode ser feita
 		bool VerifyFrame(int value);
@@ -150,10 +149,14 @@ class Player
 		void SetGluedStrongPunch( int gluedStrongPunch, int index );
 		int GetGluedStrongKick( int index );
 		void SetGluedStrongKick( int gluedStrongKick, int index );
+		int GetSpecialAttackStart( int index);
+		void SetSpecialAttackStart( int specialAttack, int index);
 		int GetJumpingSpecialAttack( int index );
 		void SetJumpingSpecialAttack( int jumpingSpecialAttack, int index );
 		int GetWeakPunchForward( int index );
 		void SetWeakPunchForward( int weakPunchForward, int index );
+		int GetSpecialAttack( int index);
+		void SetSpecialAttack( int specialAttack, int index);
 		
 		void SetTakingDmg( bool takingDmg );
 		bool GetAttacking();
@@ -190,7 +193,14 @@ class Player
 		void InterpretationDefence();
 		void InterpretationRolling();
 		void InterpretationChangeSide( bool flipCharacter );
+		void InterpretationSpecialAttack();
 		void SpecialControl();
+		
+		//ataques basicos
+		void InterpretationWeakPunch( int opponentX, int opponentY );
+		void InterpretationStrongPunch( int opponentX, int opponentY );
+		void InterpretationWeakKick( int opponentX, int opponentY );
+		void InterpretationStrongKick( int opponentX, int opponentY );
 
 		//atributos privados
 		float x;				//posição em X do player
@@ -219,6 +229,12 @@ class Player
 		//variaveis para resolver o bug da corrida
 		bool antLoopBT0;
 		bool antLoopBT2;
+		bool antLoopBT4;
+		bool antLoopBT5;
+		bool antLoopBT6;
+		bool antLoopBT7;
+		
+		int timeDelay;
 		
 	//direcionais
 		bool button00;			//esquerda
@@ -275,7 +291,6 @@ class Player
 		int backRollingEnd[2];		//animação numero 27
 		int changeSide[2];			//animação numero 28
 		int changeSideCrouched[2];	//animação numero 29
-		
 		int weakPunch[2];			//animação numero 30
 		int strongPunch[2];			//animação numero 31
 		int weakKick[2];			//animação numero 32
@@ -291,8 +306,10 @@ class Player
 		int jumpingStrongKick[2];	//animação numero 42
 		int gluedStrongPunch[2];	//animação numero 43
 		int gluedStrongKick[2];		//animação numero 44
+		int specialAttackStart[2];	//animação numero 45
 		int jumpingSpecialAttack[2];//animação numero 46
 		int weakPunchForward[2];	//animação numero 47
+		int specialAttack[2];		//animação numero 48
 		
 		//tempos em que os botões são pressionados
 		int btTPress[8][10];
