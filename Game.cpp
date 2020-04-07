@@ -10,25 +10,84 @@ Game::Game( int p1Index, int p2Index )
 	AllocateMemoryP2(p2Index);
 	
 	StartAttributes();
+	
+	LoadSprites();
 }
 
 Game::~Game()
 {
 	delete terryP1;
 	delete terryP2;
+	
+	destroy_bitmap( g );
+	destroy_bitmap( o );
+	destroy_bitmap( drawGameFrame0 );
+	destroy_bitmap( drawGameFrame1 );
+	destroy_bitmap( drawGameFrame2 );
+	destroy_bitmap( drawGameFrame3 );
+	destroy_bitmap( drawGameFrame4 );
+	destroy_bitmap( drawGameFrame5 );
+	destroy_bitmap( drawGameFrame6 );
+	destroy_bitmap( readyFrame0 );
+	destroy_bitmap( readyFrame1 );
+	destroy_bitmap( readyFrame2 );
+	destroy_bitmap( readyFrame3 );
+	destroy_bitmap( readyFrame4 );
+	destroy_bitmap( roundFrame0 );
+	destroy_bitmap( roundFrame1 );
+	destroy_bitmap( roundFrame2 );
+	destroy_bitmap( roundFrame3 );
+	destroy_bitmap( roundFrame4 );
+	destroy_bitmap( timeOverFrame0 );
+	destroy_bitmap( timeOverFrame1 );
+	destroy_bitmap( timeOverFrame2 );
+	destroy_bitmap( timeOverFrame3 );
+	destroy_bitmap( winnerFrame0 );
+	destroy_bitmap( winnerFrame1 );
+	destroy_bitmap( winnerFrame2 );
+	destroy_bitmap( winnerFrame3 );
+	destroy_bitmap( winnerFrame4 );
+	destroy_bitmap( winnerFrame5 );
+	destroy_bitmap( roundNumber1Frame0 );
+	destroy_bitmap( roundNumber1Frame1 );
+	destroy_bitmap( roundNumber1Frame2 );
+	destroy_bitmap( roundNumber1Frame3 );
+	destroy_bitmap( roundNumber1Frame4 );
+	destroy_bitmap( roundNumber2Frame0 );
+	destroy_bitmap( roundNumber2Frame1 );
+	destroy_bitmap( roundNumber2Frame2 );
+	destroy_bitmap( roundNumber2Frame3 );
+	destroy_bitmap( roundNumber2Frame4 );
+	destroy_bitmap( roundNumber3Frame0 );
+	destroy_bitmap( roundNumber3Frame1 );
+	destroy_bitmap( roundNumber3Frame2 );
+	destroy_bitmap( roundNumber3Frame3 );
+	destroy_bitmap( roundNumber3Frame4 );
+	destroy_bitmap( roundNumber4Frame0 );
+	destroy_bitmap( roundNumber4Frame1 );
+	destroy_bitmap( roundNumber4Frame2 );
+	destroy_bitmap( roundNumber4Frame3 );
+	destroy_bitmap( roundNumber4Frame4 );
+	destroy_bitmap( roundNumber5Frame0 );
+	destroy_bitmap( roundNumber5Frame1 );
+	destroy_bitmap( roundNumber5Frame2 );
+	destroy_bitmap( roundNumber5Frame3 );
+	destroy_bitmap( roundNumber5Frame4 );
 	destroy_bitmap( gameScreen );
 }
 
 
 void Game::StartAttributes()
 {
-	
-	gameTime = 0;
+
 	pauseTime = 0;
+	gameStartCommand = false;
 	gameStart = false;
 	antLoopGameStart = false;
 	gamePause = false;
 	antLoopPause = false;
+	
+	round = 1;
 	
 	flipPlayer1Comand = false;
 	flipPlayer2Comand = false;
@@ -62,13 +121,13 @@ void Game::AllocateMemoryP2( int p2Index )
 
 void Game::BuildGameScreen()
 {
-	
+
 	clear( gameScreen );
-	
-	//imprimir o cenario
+
+//imprimir o cenario
 	draw_sprite( gameScreen, scenario.GetScenarioSprite(), scenario.GetX(), scenario.GetY() );
-		
-	//imprimir o player 2
+
+//imprimir o player 2
 	switch( p2Index )
 	{
 		case 1:
@@ -77,51 +136,58 @@ void Game::BuildGameScreen()
 																false, flipPlayer2Comand ), terryP2->GetX(), terryP2->GetY());
 		break;
 	}
-	
-	//imprimir o player 1
+
+//imprimir o player 1
 	switch( p1Index )
-	{//GetPlayerSprite( int enemyX, int enemyY, bool gamePause, bool gameStart, bool enemyAttacking, bool takingDmg, bool flipCharacter )
+	{
 		case 1:
 			draw_sprite( gameScreen, terryP1->GetPlayerSprite( terryP2->GetX(), terryP2->GetY(), 
 																gamePause, gameStart, terryP2->GetAttacking(), 
 																false, flipPlayer1Comand ), terryP1->GetX(), terryP1->GetY() );
 		break;
 	}
-	
-	//imprimir a interface
-		draw_sprite( gameScreen, ui.GetCompleteInterface( gameTime, 
-														terryP1->GetLifePoints(), terryP2->GetLifePoints(), 
-														terryP1->GetLifePointsMax(), terryP2->GetLifePointsMax(), 
-														terryP1->GetShild(), terryP2->GetShild(), 
-														terryP1->GetEspecialBar(), terryP2->GetEspecialBar(), 
-														terryP1->GetEspecialQuantity(), terryP2->GetEspecialQuantity(), 
-														terryP1->GetPowTime(), terryP2->GetPowTime(), 
+
+//imprimir a interface
+	if( gameStart )
+		draw_sprite( gameScreen, ui.GetCompleteInterface( clock() - gameTimeStart,
+														terryP1->GetLifePoints(), terryP2->GetLifePoints(),
+														terryP1->GetLifePointsMax(), terryP2->GetLifePointsMax(),
+														terryP1->GetShild(), terryP2->GetShild(),
+														terryP1->GetEspecialBar(), terryP2->GetEspecialBar(),
+														terryP1->GetEspecialQuantity(), terryP2->GetEspecialQuantity(),
+														terryP1->GetPowTime(), terryP2->GetPowTime(),
 														terryP1->GetPow(), terryP2->GetPow() ), 0, 0 );
-	
-	//texto Game Pause colocado no meio da tela
+
+	else
+		draw_sprite( gameScreen, ui.GetCompleteInterface( 0,
+														terryP1->GetLifePoints(), terryP2->GetLifePoints(),
+														terryP1->GetLifePointsMax(), terryP2->GetLifePointsMax(),
+														terryP1->GetShild(), terryP2->GetShild(),
+														terryP1->GetEspecialBar(), terryP2->GetEspecialBar(),
+														terryP1->GetEspecialQuantity(), terryP2->GetEspecialQuantity(),
+														terryP1->GetPowTime(), terryP2->GetPowTime(),
+														terryP1->GetPow(), terryP2->GetPow() ), 0, 0 );
+
+	if(gameStartCommand) BuildGameStartText();
+
+//texto Game Pause colocado no meio da tela
 	if( gamePause ) textprintf_ex(gameScreen, font, 500, 315, makecol(255, 0, 0), -1, "Game Pause" );
-	
-	if( !gameStart ) textprintf_ex(gameScreen, font, 500, 315, makecol(255, 0, 0), -1, "Press Space To Start" );
+
+	if( !gameStartCommand && !gameStart ) textprintf_ex(gameScreen, font, 500, 315, makecol(255, 0, 0), -1, "Press Space To Start" );
+
 }END_OF_FUNCTION(BuildGameScreen);
 
 
 BITMAP *Game::GetGameScreen()
 {
 	GameTimeControl();
-	
+
 	BuildGameScreen();
-	
+
 	FlipPlayers();
-	
+
 	if(COMPLETERENDER) BuildDebugScreen();
-	
-	textprintf_ex(gameScreen, font, 500, 10, makecol(255, 0, 0), -1, "Distancia  %f ", ( terryP1->GetX() - terryP2->GetX() )   );
-	
-	if( terryP1->GetX() - terryP2->GetX()>= -140 && terryP1->GetX() - terryP2->GetX()<= 140 )
-		textprintf_ex(gameScreen, font, 500, 20, makecol(255, 0, 0), -1, " dentro da distancia");
-	else
-		textprintf_ex(gameScreen, font, 500, 20, makecol(255, 0, 0), -1, " fora da distancia");
-		
+
 	return gameScreen;
 }END_OF_FUNCTION(GetGameScreen);
 
@@ -129,18 +195,13 @@ BITMAP *Game::GetGameScreen()
 void Game::GameTimeControl()
 {
 	
-	if( !gameStart && key[KEY_SPACE] )
+	if( !gameStartCommand && key[KEY_SPACE] )
 	{
 		antLoopGameStart = true;
-		gameStart = true;
+		gameStartCommand = true;
 		gameTimeStart = clock();
 	}
-	
-	if( gameStart && !gamePause)
-	{
-		gameTime = clock() - gameTimeStart;
-	}
-	
+		
 	if( !gamePause && gameStart && key[KEY_SPACE] && !antLoopPause && !antLoopGameStart)
 	{
 		gamePause = true;
@@ -156,46 +217,35 @@ void Game::GameTimeControl()
 	}
 	
 	if( antLoopPause && !key[KEY_SPACE] )
-	{
 		antLoopPause = false;
-	}
-	
+
 	if( antLoopGameStart && !key[KEY_SPACE] )
-	{
 		antLoopGameStart = false;
-	}
+
 }END_OF_FUNCTION(GameTimeControl);
 
 
 void Game::FlipPlayers()
 {
-	//mudar o personagem 1 de lado
+//mudar o personagem 1 de lado
 	if( terryP1->GetToRight() && terryP1->GetX() > terryP2->GetX() )
-	{
 		flipPlayer1Comand = true;
-	}
+
 	else if( !terryP1->GetToRight() && terryP2->GetX() > terryP1->GetX() )
-	{
 		flipPlayer1Comand = true;
-	}
+
 	else
-	{
 		flipPlayer1Comand = false;
-	}
-	
-	//mudar o personagem 2 de lado
+
+//mudar o personagem 2 de lado
 	if( terryP2->GetToRight() && terryP2->GetX() > terryP1->GetX() )
-	{
 		flipPlayer2Comand = true;
-	}
+
 	else if( !terryP2->GetToRight() && terryP1->GetX() > terryP2->GetX() )
-	{
 		flipPlayer2Comand = true;
-	}
+
 	else
-	{
 		flipPlayer2Comand = false;
-	}
 	
 }END_OF_FUNCTION(FlipPlayers);
 
@@ -222,7 +272,6 @@ void Game::BuildDebugScreen()
 	textprintf_ex(gameScreen, font, 120, 48, makecol(255, 0, 0), -1, "Quantidade de pontos de vida: %d ", terryP1->GetLifePoints() );
 	
 	
-	
 	//imprime o frame
 	textprintf_ex(gameScreen, font, 950, 180, makecol(255, 0, 0), -1, "frame: %d ", terryP2->GetFrame());
 	
@@ -240,6 +289,15 @@ void Game::BuildDebugScreen()
 	
 	
 	textprintf_ex(gameScreen, font, 640, 48, makecol(255, 0, 0), -1, "Quantidade de pontos de vida: %d ", terryP1->GetLifePoints() );
+	
+	
+	textprintf_ex(gameScreen, font, 500, 10, makecol(255, 0, 0), -1, "Distancia  %f ", ( terryP1->GetX() - terryP2->GetX() )   );
+
+	if( terryP1->GetX() - terryP2->GetX()>= -140 && terryP1->GetX() - terryP2->GetX()<= 140 )
+		textprintf_ex(gameScreen, font, 500, 20, makecol(255, 0, 0), -1, " dentro da distancia");
+
+	else
+		textprintf_ex(gameScreen, font, 500, 20, makecol(255, 0, 0), -1, " fora da distancia");
 	
 	
 }END_OF_FUNCTION(BuildDebugScreen);

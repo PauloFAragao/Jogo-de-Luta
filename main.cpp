@@ -11,8 +11,6 @@
 #include <allegro.h>
 #include "Game.h"
 
-#define COMPLETERENDER true
-
 int WINDOW_WIDTH  = 1140;
 int WINDOW_HEIGHT = 630;
 

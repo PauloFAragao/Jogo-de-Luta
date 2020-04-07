@@ -20,7 +20,7 @@
 
 #define CHAO 260				//posição do chão
 
-#define COMPLETERENDER true		//modo debug
+#define COMPLETERENDER false		//modo debug
 
 //posições iniciais dos players
 #define P1XSTARTPOS -50			//posição em X de onde o player 1 deve iniciaro jogo
@@ -76,6 +76,39 @@
 #define SPECIALBARSIZEY 20		//tamanho em Y da barra de especial
 #define POWBARSIZEX 147			//tamanho em X da barra de especial
 #define POWBARSIZEY 9			//tamanho em Y da barra de especial
+
+//posição dos textos de inicio e de termino do combate
+	//posição dos textos
+#define DRAWGAMEX 473			//posição em X do texto draw game
+#define DRAWGAMEY 258			//posição em Y do texto draw game
+#define TIMEOVERX 481			//posição em X do texto time over
+#define TIMEOVERY 255			//posição em Y do texto time over
+#define WINNERP1X 10			//posição em X do texto winner
+#define WINNERP1Y 160			//posição em Y do texto winner
+#define WINNERP2X 854			//posição em X do texto winner
+#define WINNERP2Y 160			//posição em Y do texto winner
+#define READYX 469				//posição em X do texto ready
+#define READYY 285				//posição em Y do texto ready
+#define ROUNDX 437				//posição em X do texto round
+#define ROUNDY 285				//posição em Y do texto round
+
+#define GSTARTX -94				//posição em X inicial da letra G
+#define GENDX 472				//posição em X final da letra G
+#define OSTARTX 1140			//posição em X inicial da letra O
+#define OENDX 574				//posição em X final da letra O
+#define GOY 250					//posição em Y do texto Go
+
+	//posição dos numeros do texto Round 
+#define ROUNDNUMBER1X 649		//posição em X do numero 1
+#define ROUNDNUMBER1Y 235		//posição em Y do numero 1
+#define ROUNDNUMBER2X 659		//posição em X do numero 2
+#define ROUNDNUMBER2Y 228		//posição em Y do numero 2
+#define ROUNDNUMBER3X 637		//posição em X do numero 3
+#define ROUNDNUMBER3Y 218		//posição em Y do numero 3
+#define ROUNDNUMBER4X 656		//posição em X do numero 4
+#define ROUNDNUMBER4Y 228		//posição em Y do numero 4
+#define ROUNDNUMBER5X 659		//posição em X do numero 5
+#define ROUNDNUMBER5Y 221		//posição em Y do numero 5
 
 #endif//INCLUDES_H
 
