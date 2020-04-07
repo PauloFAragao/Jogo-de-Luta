@@ -29,12 +29,12 @@ void Player::StartAttributes()
 	if( playerNumber == 1 )
 	{
 		toRight=true;				//indica para que lado o personagem está virado
-		x=P1XSTARTPOS;						//posição em X do player
+		x=P1XSTARTPOS;				//posição em X do player
 	}
 	else
 	{
 		toRight=false;				//indica para que lado o personagem está virado
-		x=P2XSTARTPOS;						//posição em X do player
+		x=P2XSTARTPOS;				//posição em X do player
 	}
 	
 	button00=false;					//esquerda
@@ -58,11 +58,11 @@ void Player::StartAttributes()
 	especialBar = 0;				//quantidade de pontos de especial
 	especialQuantity = 0;			//quantos pontos de especial o personagem tem
 	powTime = 0;					//tempo restante da barra quando o jogador esroura uma barra
-	pow = true;					//se o jogador estourou uma barra
+	pow = true;						//se o jogador estourou uma barra
 	
 	attacking=false;				//indica que o personagema está atacando
 	takingDmg=false;				//indica que o personagem foi atacado enquanto estava na defesa
-	opponentAttacking=false;		//indica que o oponente está atacando
+	//opponentAttacking=false;		//indica que o oponente está atacando
 	
 	antLoopBT0 = true;
 	antLoopBT2 = true;
@@ -88,11 +88,11 @@ void Player::StartAttributes()
 /**
  * Esse metodo faz a chamada dos outros metodos importantes da classe player
  */
-void Player::PlayerRoutine( bool flipCharacter, int opponentX, int opponentY )
+void Player::PlayerRoutine( bool flipCharacter, int opponentX, int opponentY, bool opponentAttacking )
 {
 		//TEMPORARIO
-		if( key[ KEY_0_PAD ]  ) opponentAttacking = true;
-		if( !key[ KEY_0_PAD ] ) opponentAttacking = false;
+		//if( key[ KEY_0_PAD ]  ) opponentAttacking = true;
+		//if( !key[ KEY_0_PAD ] ) opponentAttacking = false;
 		
 		if( key[ KEY_1_PAD ]  ) takingDmg = true;
 		
@@ -126,7 +126,7 @@ void Player::PlayerRoutine( bool flipCharacter, int opponentX, int opponentY )
 	TrackImputs();
 	
 	//movimenta o player na horizontal
-	HorizontalMove();
+	HorizontalMove( opponentAttacking );
 	
 	//movimenta o player na vertical
 	VerticalMove();
@@ -137,7 +137,7 @@ void Player::PlayerRoutine( bool flipCharacter, int opponentX, int opponentY )
 	InterpretationJump();
 	InterpretationStrongDiagonalJump();
 	InterpretationCrouch();
-	InterpretationDefence();
+	InterpretationDefence( opponentAttacking );
 	InterpretationRolling();
 	InterpretationChangeSide( flipCharacter );
 	InterpretationSpecialAttack();
@@ -184,7 +184,7 @@ void Player::ChangeAction(int value)
 /**
  * Logica da movimentação do player na horizontal
  */
-void Player::HorizontalMove()
+void Player::HorizontalMove( bool opponentAttacking )
 {
 
 //Verificação dos imputs
@@ -491,55 +491,55 @@ bool Player::ValidateAction(int value)
 		break;
 		
 		case 10: //Crouched
-			if( action == 0 || action == 12 )
+			if( action == 0 || action == 12 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 20: //Walk
-			if( action == 0 || action == 30 || action == 101 )
+			if( action == 0 || action == 30 || action == 101 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 30: //WalkBack
-			if( action == 0 || action == 20 || action == 100 || action == 101 )
+			if( action == 0 || action == 20 || action == 100 || action == 101 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 40: //Weak Jump
-			if( action == 0 )
+			if( action == 0 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 60://Weak Frontal Diagonal Jump
-			if( action == 0 || action == 20 || action == 100 )
+			if( action == 0 || action == 20 || action == 100 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 80://Weak Back Diagonal Jump
-			if( action == 0 || action == 30 )
+			if( action == 0 || action == 30 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 100: //Run
-			if( action == 0 || action == 20 || action == 101 )
+			if( action == 0 || action == 20 || action == 101 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 110: //Jump Back
-			if( action == 0 || action == 30 )
+			if( action == 0 || action == 30 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 120://Defending
-			if( action == 0 || action == 30 )
+			if( action == 0 || action == 30 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
@@ -551,19 +551,19 @@ bool Player::ValidateAction(int value)
 		break;
 	
 		case 130://Defending Crouched
-			if( action == 10 || action == 11 )
+			if( action == 10 || action == 11 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 140://Front Rolling
-			if( action == 0  || action == 20 || action == 300 || action == 320 )
+			if( action == 0  || action == 20 || action == 300 || action == 320 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 150://Back Rolling
-			if( action == 0 || action == 30 || action == 300 || action == 320 )
+			if( action == 0 || action == 30 || action == 300 || action == 320 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
@@ -586,43 +586,43 @@ bool Player::ValidateAction(int value)
 		case 330://preparation to Strong kick
 		case 420://preparation to Glued Strong Punch
 		case 430://preparation to Glued Strong kick
-			if( action == 0 )
+			if( action == 0 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 301://Weak Punch
-			if( action == 300 )
+			if( action == 300 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 311://Strong Punch
-			if( action == 310 )
+			if( action == 310 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 321://Weak kick
-			if( action == 320 )
+			if( action == 320 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 331://Strong kick
-			if( action == 330 )
+			if( action == 330 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 421://Weak kick
-			if( action == 420 )
+			if( action == 420 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 431://Strong kick
-			if( action == 430 )
+			if( action == 430 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
@@ -637,25 +637,25 @@ bool Player::ValidateAction(int value)
 		break;
 	
 		case 341://Crouched Weak Punch
-			if( action == 340 )
+			if( action == 340 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 351://Crouched Strong Punch
-			if( action == 350 )
+			if( action == 350 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 361://Crouched Weak kick
-			if( action == 360 )
+			if( action == 360 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
 	
 		case 371://Crouched Strong kick
-			if( action == 370 )
+			if( action == 370 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
@@ -675,7 +675,7 @@ bool Player::ValidateAction(int value)
 		break;
 		
 		case 460://weakPunchForward
-			if( action == 0 || action == 20 || action == 100 )
+			if( action == 0 || action == 20 || action == 100 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
@@ -687,7 +687,7 @@ bool Player::ValidateAction(int value)
 		break;
 		
 		case 440://specialAttack
-			if( action == 0 || action == 310 || action == 330  )
+			if( action == 0 || action == 310 || action == 330  || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;

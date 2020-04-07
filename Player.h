@@ -16,7 +16,7 @@ class Player
 		~Player();
 		
 		//Metodos publicos
-		void PlayerRoutine( bool flipCharacter, int opponentX, int opponentY );
+		void PlayerRoutine( bool flipCharacter, int opponentX, int opponentY, bool opponentAttacking );
 		
 		bool ValidateAction(int value);				//verifica se uma ação pode ser feita
 		bool VerifyFrame(int value);
@@ -178,11 +178,11 @@ class Player
 	private:
 		
 		//Metodos privados
-		void TrackImputs();							//captura os imputs do player
-		void HorizontalMove();						//movimentação do personagem na horizontal
-		void VerticalMove();						//movimentação do personagem na vertical
-		void writeOnBtTmPress(int pos, bool valor);	//escreve no array de tempos os tempos em que os botões foram pressionados
-		void StartAttributes();						//inicia os atributos com os valores coretos
+		void TrackImputs();								//captura os imputs do player
+		void HorizontalMove( bool opponentAttacking );	//movimentação do personagem na horizontal
+		void VerticalMove();							//movimentação do personagem na vertical
+		void writeOnBtTmPress(int pos, bool valor);		//escreve no array de tempos os tempos em que os botões foram pressionados
+		void StartAttributes();							//inicia os atributos com os valores coretos
 
 		//motor de imterpletação
 		void InterpretationWalkWalkBackRun();
@@ -190,7 +190,7 @@ class Player
 		void InterpretationJump();
 		void InterpretationStrongDiagonalJump();
 		void InterpretationCrouch();
-		void InterpretationDefence();
+		void InterpretationDefence( bool opponentAttacking );
 		void InterpretationRolling();
 		void InterpretationChangeSide( bool flipCharacter );
 		void InterpretationSpecialAttack();
@@ -258,7 +258,7 @@ class Player
 		bool bt7TimeCapture;
 		
 		bool attacking;				//indica que o personagema está atacando
-		bool opponentAttacking;		//indica que o oponente está atacando <<< VARIAVEL TEMPORARIA
+		//bool opponentAttacking;		//indica que o oponente está atacando <<< VARIAVEL TEMPORARIA
 		bool takingDmg;				//indica que o personagem sofreu dano <<< VARIAVEL TEMPORARIA
 		
 		//tempos das animações para o controle

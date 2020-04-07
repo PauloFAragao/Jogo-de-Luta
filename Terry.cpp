@@ -125,7 +125,7 @@ BITMAP* Terry::GetPlayerSprite( int opponentX, int opponentY, bool gamePause, bo
 	if( !gamePause )
 	{
 		//rotina da classe player
-		if( gameStart ) PlayerRoutine( flipCharacter, opponentX, opponentY);
+		if( gameStart ) PlayerRoutine( flipCharacter, opponentX, opponentY, opponentAttacking);
 		
 		//controle das animações do personagem
 		TerryAnimations();

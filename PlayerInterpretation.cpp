@@ -135,7 +135,7 @@ void Player::InterpretationCrouch()
 /**
  *	Esse metodo é responsavel por imterpetar as ações: (defence) Defending-120/130, Defence-121/131, Taking Damage-122/132, Defend Exit-123/133
  */
-void Player::InterpretationDefence()
+void Player::InterpretationDefence( bool opponentAttacking )
 {
 //defence
 	if( action == 120 && opponentAttacking && frame == defending[1] && clock() - capturaTempo > TEF )//animação que inicia a defesa
@@ -224,29 +224,31 @@ void Player::InterpretationChangeSide( bool flipCharacter )
 	{
 		if( ValidateAction(160) )
 		{
+			//toRight = !toRight;
 			ChangeAction(160);
 		}
 	}
-	if( action == 160 && frame == changeSide[1] && clock() - capturaTempo > TEF-50 )
-	{
+	if( action == 160 )
 		toRight = !toRight;
+
+	if( action == 160 && frame == changeSide[1] && clock() - capturaTempo > TEF-50 )
 		ChangeAction(0);
-	}
-	
+
 //personagem agachado
 	if( button01 && flipCharacter )
 	{
 		if( ValidateAction(170) )
 		{
+			//toRight = !toRight;
 			ChangeAction(170);
 		}
 	}
-	if( action == 170 && frame == changeSideCrouched[1] && clock() - capturaTempo > TEF-50 )
-	{
+	if( action == 160 )
 		toRight = !toRight;
-		ChangeAction(11);
-	}
 	
+	if( action == 170 && frame == changeSideCrouched[1] && clock() - capturaTempo > TEF-50 )
+		ChangeAction(11);
+
 }END_OF_FUNCTION(InterpretationChangeSide);
 
 /**
@@ -278,19 +280,32 @@ void Player::InterpretationWeakPunch( int opponentX, int opponentY )
 		
 		//soco pulando
 		if( y < CHAO && ValidateAction(380) )
+		{
 			ChangeAction(380);
+			attacking = true;
+		}
 		
 		//soco agachado
 		else  if( button01 && ValidateAction(340) )
+		{
 			ChangeAction(340);
+			attacking = true;
+		}
+			
 		
 		//soco fraco para frente
 		else if( ValidateAction(460) && ( (button02 && toRight) || (button00 && !toRight) ) )
+		{
 			ChangeAction(460);
+			attacking = true;
+		}	
 
 		//soco normal
 		else if( ValidateAction(300) )
+		{
 			ChangeAction(300);
+			attacking = true;
+		}	
 	}
 	
 	//weakPunchForward
@@ -300,6 +315,8 @@ void Player::InterpretationWeakPunch( int opponentX, int opponentY )
 	}
 	if( action == 461 && frame == weakPunchForward[1] && clock() - capturaTempo > TEF - 60 )
 	{
+		attacking = false;
+		
 		if( toRight && button02 )
 		{
 			antLoopBT2 = false;
@@ -321,6 +338,7 @@ void Player::InterpretationWeakPunch( int opponentX, int opponentY )
 	}
 	if( action == 301 && frame == weakPunch[1] && clock() - capturaTempo > TEF - 60 )
 	{
+		attacking = false;
 		ChangeAction(0);
 	}
 	
@@ -331,6 +349,7 @@ void Player::InterpretationWeakPunch( int opponentX, int opponentY )
 	}
 	if( action == 341 && frame == crouchedWeakPunch[1] && clock() - capturaTempo > TEF - 60 )
 	{
+		attacking = false;
 		if(button01)
 			ChangeAction(11);
 		else
@@ -340,6 +359,7 @@ void Player::InterpretationWeakPunch( int opponentX, int opponentY )
 	//jumpingWeakPunch
 	if( action == 380 && y > CHAO )
 	{
+		attacking = false;
 		//animação fall
 		ChangeAction(44);
 	}
@@ -368,21 +388,29 @@ void Player::InterpretationStrongPunch( int opponentX, int opponentY )
 		
 		//soco pulando
 		if( y < CHAO && ValidateAction(390) )
+		{
+			attacking = true;
 			ChangeAction(390);
+		}	
 		
 		//soco agachado
 		else if( button01 && ValidateAction(350) )
+		{
+			attacking = true;
 			ChangeAction(350);
+		}
 		
 		//soco forte colado
 		else if( x - opponentX >= -140 && x - opponentX <= 140 && ValidateAction(420) )
 		{
+			attacking = true;
 			ChangeAction(420);
 		}
 		
 		//soco normal
 		else if( ValidateAction(310) )
 		{
+			attacking = true;
 			ChangeAction(310);
 		}
 	}
@@ -394,6 +422,7 @@ void Player::InterpretationStrongPunch( int opponentX, int opponentY )
 	}
 	if( action == 311 && frame == strongPunch[1] && clock() - capturaTempo > TEF - 60 )
 	{
+		attacking = false;
 		ChangeAction(0);
 	}
 	
@@ -404,6 +433,7 @@ void Player::InterpretationStrongPunch( int opponentX, int opponentY )
 	}
 	if( action == 421 && frame == gluedStrongPunch[1] && clock() - capturaTempo > TEF - 60 )
 	{
+		attacking = false;
 		ChangeAction(0);
 	}
 	
@@ -414,6 +444,7 @@ void Player::InterpretationStrongPunch( int opponentX, int opponentY )
 	}
 	if( action == 351 && frame == crouchedStrongPunch[1] && clock() - capturaTempo > TEF - 60 )
 	{
+		attacking = false;
 		if(button01)
 			ChangeAction(11);
 		else
@@ -423,6 +454,7 @@ void Player::InterpretationStrongPunch( int opponentX, int opponentY )
 	//jumpingStrongPunch
 	if( action == 390 && y > CHAO )
 	{
+		attacking = false;
 		//animação fall
 		ChangeAction(44);
 	}
@@ -450,15 +482,22 @@ void Player::InterpretationWeakKick( int opponentX, int opponentY )
 		
 		//chute pulando
 		if( y < CHAO && ValidateAction(400) )
+		{
+			attacking = true;
 			ChangeAction(400);
+		}	
 		
 		//chute agachado
 		else if( button01 && ValidateAction(360) )
+		{
+			attacking = true;
 			ChangeAction(360);
+		}
 				
 		//chute normal
 		else if( ValidateAction(320) )
 		{
+			attacking = true;
 			ChangeAction(320);
 		}
 		
@@ -470,6 +509,7 @@ void Player::InterpretationWeakKick( int opponentX, int opponentY )
 	}
 	if( action == 321 && frame == weakKick[1] && clock() - capturaTempo > TEF - 60 )
 	{
+		attacking = false;
 		ChangeAction(0);
 	}
 	
@@ -480,6 +520,7 @@ void Player::InterpretationWeakKick( int opponentX, int opponentY )
 	}
 	if( action == 361 && frame == crouchedWeakKick[1] && clock() - capturaTempo > TEF - 60 )
 	{
+		attacking = false;
 		if(button01)
 			ChangeAction(11);
 		else
@@ -489,6 +530,7 @@ void Player::InterpretationWeakKick( int opponentX, int opponentY )
 	//jumpingWeakKick
 	if( action == 400 && y > CHAO )
 	{
+		attacking = false;
 		//animação fall
 		ChangeAction(44);
 	}
@@ -516,21 +558,29 @@ void Player::InterpretationStrongKick( int opponentX, int opponentY )
 		
 		//chute pulando
 		if( y < CHAO && ValidateAction(410) )
+		{
+			attacking = true;
 			ChangeAction(410);
+		}
 		
 		//chute agachado
 		else if( button01 && ValidateAction(370) )
+		{
+			attacking = true;
 			ChangeAction(370);
+		}	
 		
 		//soco forte colado
 		else if( x - opponentX >= -140 && x - opponentX <= 140 && ValidateAction(430) )
 		{
+			attacking = true;
 			ChangeAction(430);
 		}
 		
 		//chute normal
 		else if( ValidateAction(330) )
 		{
+			attacking = true;
 			ChangeAction(330);
 		}
 		
@@ -554,6 +604,7 @@ void Player::InterpretationStrongKick( int opponentX, int opponentY )
 	}
 	if( action == 332 && frame == strongKickEnd[1] && clock() - capturaTempo > TEF - 60 )
 	{
+		attacking = false;
 		ChangeAction(0);
 	}
 	
@@ -565,6 +616,7 @@ void Player::InterpretationStrongKick( int opponentX, int opponentY )
 	}
 	if( action == 431 && frame == gluedStrongKick[1] && clock() - capturaTempo > TEF - 60 )
 	{
+		attacking = false;
 		ChangeAction(0);
 	}
 	
@@ -575,6 +627,7 @@ void Player::InterpretationStrongKick( int opponentX, int opponentY )
 	}
 	if( action == 371 && frame == crouchedStrongKick[1] && clock() - capturaTempo > TEF - 60 )
 	{
+		attacking = false;
 		if(button01)
 			ChangeAction(11);
 		else
@@ -584,6 +637,7 @@ void Player::InterpretationStrongKick( int opponentX, int opponentY )
 	//jumpingStrongKick
 	if( action == 410 && y > CHAO )
 	{
+		attacking = false;
 		//animação fall
 		ChangeAction(44);
 	}
@@ -595,6 +649,9 @@ void Player::InterpretationStrongKick( int opponentX, int opponentY )
 	
 }END_OF_FUNCTION(InterpretationStrongKick);
 
+/**
+ * Esse metodo é responsavel por imterpetar as ações de ataque especial
+ */
 void Player::InterpretationSpecialAttack()
 {
 	
@@ -603,12 +660,14 @@ void Player::InterpretationSpecialAttack()
 		//jumping special attack
 		if( y < CHAO && ValidateAction(450) )
 		{
+			attacking = true;
 			ChangeAction(450);
 		}
 		
 		//special attack
 		if( ValidateAction(440) )
 		{
+			attacking = true;
 			ChangeAction(440);
 		}
 	}
@@ -624,6 +683,7 @@ void Player::InterpretationSpecialAttack()
 		
 		if( frame == specialAttack[1] && clock() - capturaTempo > TEF - 60 )
 		{
+			attacking = false;
 			ChangeAction(0);
 		}
 		
@@ -632,6 +692,7 @@ void Player::InterpretationSpecialAttack()
 	//jumping special attack
 	if( action == 450 && y >= CHAO /*&& frame == specialAttackStart[1] && clock() - capturaTempo > TEF - 60*/ )
 	{
+		attacking = false;
 		//animação fall
 		ChangeAction(44);
 	}

@@ -20,7 +20,7 @@
 
 #define CHAO 260				//posição do chão
 
-#define COMPLETERENDER false		//modo debug
+#define COMPLETERENDER true		//modo debug
 
 //posições iniciais dos players
 #define P1XSTARTPOS -50			//posição em X de onde o player 1 deve iniciaro jogo

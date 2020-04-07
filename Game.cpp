@@ -313,7 +313,9 @@ void Game::BuildDebugScreen()
 	else
 		textprintf_ex(gameScreen, font, 10, 240, makecol(255, 0, 0), -1, "Virado para a esquerda");
 	
-	
+	if( terryP1->GetAttacking() )
+		textprintf_ex(gameScreen, font, 10, 250, makecol(255, 0, 0), -1, "Atacando");
+		
 	textprintf_ex(gameScreen, font, 120, 48, makecol(255, 0, 0), -1, "Quantidade de pontos de vida: %d ", terryP1->GetLifePoints() );
 	
 	
@@ -332,18 +334,23 @@ void Game::BuildDebugScreen()
 	else
 		textprintf_ex(gameScreen, font, 950, 240, makecol(255, 0, 0), -1, "Virado para a esquerda");
 	
+	if( terryP2->GetAttacking() )
+		textprintf_ex(gameScreen, font, 950, 250, makecol(255, 0, 0), -1, "Atacando");
+	
+
 	
 	textprintf_ex(gameScreen, font, 640, 48, makecol(255, 0, 0), -1, "Quantidade de pontos de vida: %d ", terryP1->GetLifePoints() );
-	
-	
 	textprintf_ex(gameScreen, font, 500, 10, makecol(255, 0, 0), -1, "Distancia  %f ", ( terryP1->GetX() - terryP2->GetX() )   );
 
+	
+	
 	if( terryP1->GetX() - terryP2->GetX()>= -140 && terryP1->GetX() - terryP2->GetX()<= 140 )
 		textprintf_ex(gameScreen, font, 500, 20, makecol(255, 0, 0), -1, " dentro da distancia");
 
 	else
 		textprintf_ex(gameScreen, font, 500, 20, makecol(255, 0, 0), -1, " fora da distancia");
 	
+
 	
 }END_OF_FUNCTION(BuildDebugScreen);
 

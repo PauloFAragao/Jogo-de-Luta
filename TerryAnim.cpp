@@ -383,7 +383,7 @@ void Terry::Anim15()//Defending
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetDefending(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
-	else if( GetFrame() >= GetDefending(0) && GetFrame() < GetDefending(1) && clock() - GetCapturaTempo() > TEF-50 )
+	else if( GetFrame() >= GetDefending(0) && GetFrame() < GetDefending(1) && clock() - GetCapturaTempo() > TEF-75 )
 	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
 }END_OF_FUNCTION(Anim15);
 
@@ -408,7 +408,7 @@ void Terry::Anim18()//Defend Exit
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetDefendExit(1) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
-	else if( GetFrame() > GetDefendExit(0) && GetFrame() <= GetDefendExit(1) && clock() - GetCapturaTempo() > TEF )
+	else if( GetFrame() > GetDefendExit(0) && GetFrame() <= GetDefendExit(1) && clock() - GetCapturaTempo() > TEF-75 )
 	{ SetFrame( GetFrame()-1 ); SetCapturaTempo(clock()); }
 }END_OF_FUNCTION(Anim18);
 
@@ -417,7 +417,7 @@ void Terry::Anim19()//Defending Crouched
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetDefendingCrouched(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
-	else if( GetFrame() >= GetDefendingCrouched(0) && GetFrame() < GetDefendingCrouched(1) && clock() - GetCapturaTempo() > TEF-20 )
+	else if( GetFrame() >= GetDefendingCrouched(0) && GetFrame() < GetDefendingCrouched(1) && clock() - GetCapturaTempo() > TEF-75 )
 	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
 }END_OF_FUNCTION(Anim19);
 
@@ -442,7 +442,7 @@ void Terry::Anim22()//Defend Exit Crouched
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetDefendExitCrouched(1) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
-	else if( GetFrame() > GetDefendExitCrouched(0) && GetFrame() <= GetDefendExitCrouched(1) && clock() - GetCapturaTempo() > TEF )
+	else if( GetFrame() > GetDefendExitCrouched(0) && GetFrame() <= GetDefendExitCrouched(1) && clock() - GetCapturaTempo() > TEF-75 )
 	{ SetFrame( GetFrame()-1 ); SetCapturaTempo(clock()); }
 }END_OF_FUNCTION(Anim22);
 
