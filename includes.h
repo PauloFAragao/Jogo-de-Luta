@@ -92,11 +92,22 @@
 #define ROUNDX 437				//posição em X do texto round
 #define ROUNDY 285				//posição em Y do texto round
 
-#define GSTARTX -94				//posição em X inicial da letra G
 #define GENDX 472				//posição em X final da letra G
 #define OSTARTX 1140			//posição em X inicial da letra O
 #define OENDX 574				//posição em X final da letra O
 #define GOY 250					//posição em Y do texto Go
+
+
+#define KPENDX 433				//posição em X final da letra K
+#define KPY 252					//posição em Y da letra K
+
+#define OPSTARTX 1140			//posição em X inicial da letra O
+#define OPENDX 562				//posição em X final da letra O
+#define OPY 252					//posição em Y da letra O
+
+#define PERFECTX 380			//posição em X do texto perfect
+#define PERFECTY 273			//posição em Y do texto perfect
+
 
 	//posição dos numeros do texto Round 
 #define ROUNDNUMBER1X 649		//posição em X do numero 1

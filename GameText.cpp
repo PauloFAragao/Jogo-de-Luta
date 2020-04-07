@@ -2,36 +2,7 @@
 #include "Game.h"
 
 void Game::BuildGameStartText()
-{
-		//ready
-	//draw_sprite( gameScreen, readyFrame4, READYX, READYY );
-	
-		//round
-	//draw_sprite( gameScreen, roundFrame4, ROUNDX, ROUNDY );
-	//draw_sprite( gameScreen, roundNumber1Frame4, ROUNDNUMBER1X, ROUNDNUMBER1Y );
-	//draw_sprite( gameScreen, roundNumber2Frame4, ROUNDNUMBER2X, ROUNDNUMBER2Y );
-	//draw_sprite( gameScreen, roundNumber3Frame4, ROUNDNUMBER3X, ROUNDNUMBER3Y );
-	//draw_sprite( gameScreen, roundNumber4Frame4, ROUNDNUMBER4X, ROUNDNUMBER4Y );
-	//draw_sprite( gameScreen, roundNumber5Frame4, ROUNDNUMBER5X, ROUNDNUMBER5Y );
-	
-		//winner
-	//draw_sprite( gameScreen, winnerFrame5, WINNERP1X, WINNERP1Y );
-	//draw_sprite( gameScreen, winnerFrame5, WINNERP2X, WINNERP2Y );
-	
-		//draw game
-	//draw_sprite( gameScreen, drawGameFrame6, DRAWGAMEX, DRAWGAMEY );
-	
-		//time over
-	//draw_sprite( gameScreen, timeOverFrame3, TIMEOVERX, TIMEOVERY );
-	
-		//Letra G
-	//draw_sprite( gameScreen, g, GENDX, GOY );
-		//Letra O
-	//draw_sprite( gameScreen, o, OENDX, GOY );
-	
-	//draw_sprite( gameScreen, g, GSTARTX, GOY );	Letra G
-	//draw_sprite( gameScreen, o, OSTARTX, GOY );	Letra O
-	
+{	
 	if( clock() - gameTimeStart >= 183 && clock() - gameTimeStart < 266  )//11 frames depois de começar
 	{
 		draw_sprite( gameScreen, roundFrame0, ROUNDX, ROUNDY );
@@ -152,7 +123,6 @@ void Game::BuildGameStartText()
 	{
 		//imterpolação
 		draw_sprite( gameScreen, g, ( GENDX * ( ( ( clock() - gameTimeStart - 2000 ) * 100 ) / 500 ) ) / 100, GOY );
-		
 		draw_sprite( gameScreen, o, OSTARTX + -1*( ( ( OSTARTX - OENDX ) * ( ( ( clock() - gameTimeStart - 2000 ) * 100 ) / 500 ) ) / 100 ), GOY );
 	}
 	else if( clock() - gameTimeStart >= 2500 && clock() - gameTimeStart < 3000 )//135 frames depois de começar
@@ -171,6 +141,16 @@ void Game::BuildGameStartText()
 	
 }
 
+//time over
+//void Game::BuildTimeOver()
+
+//k.o.
+//void Game::BuildKOText()
+
+//winner
+//void Game::BuildWinnerText( bool perfect )
+
+
 /**
  * Carrega as imagens do disco para a construção dos textos de inicio e termino de jogo
  */
@@ -184,29 +164,38 @@ void Game::LoadSprites()
 	drawGameFrame4 = load_bitmap("sprites/text/TXTDrawGame4.bmp", NULL);
 	drawGameFrame5 = load_bitmap("sprites/text/TXTDrawGame5.bmp", NULL);
 	drawGameFrame6 = load_bitmap("sprites/text/TXTDrawGame6.bmp", NULL);
-	
+
 	timeOverFrame0 = load_bitmap("sprites/text/TXTTimeOver0.bmp", NULL);
 	timeOverFrame1 = load_bitmap("sprites/text/TXTTimeOver1.bmp", NULL);
 	timeOverFrame2 = load_bitmap("sprites/text/TXTTimeOver2.bmp", NULL);
 	timeOverFrame3 = load_bitmap("sprites/text/TXTTimeOver3.bmp", NULL);
-	
+
 	winnerFrame0 = load_bitmap("sprites/text/TXTWinner0.bmp", NULL);
 	winnerFrame1 = load_bitmap("sprites/text/TXTWinner1.bmp", NULL);
 	winnerFrame2 = load_bitmap("sprites/text/TXTWinner2.bmp", NULL);
 	winnerFrame3 = load_bitmap("sprites/text/TXTWinner3.bmp", NULL);
 	winnerFrame4 = load_bitmap("sprites/text/TXTWinner4.bmp", NULL);
 	winnerFrame5 = load_bitmap("sprites/text/TXTWinner5.bmp", NULL);
-	
+
+	perfect0 = load_bitmap("sprites/text/TXTPerfect0.bmp", NULL);
+	perfect1 = load_bitmap("sprites/text/TXTPerfect1.bmp", NULL);
+	perfect2 = load_bitmap("sprites/text/TXTPerfect2.bmp", NULL);
+	perfect3 = load_bitmap("sprites/text/TXTPerfect3.bmp", NULL);
+	perfect4 = load_bitmap("sprites/text/TXTPerfect4.bmp", NULL);
+
+	kP = load_bitmap("sprites/text/kP.bmp", NULL);
+	oP = load_bitmap("sprites/text/oP.bmp", NULL);
+
 	//texto de inicio
 	g = load_bitmap("sprites/text/g.bmp", NULL);
 	o = load_bitmap("sprites/text/o.bmp", NULL);
-	
+
 	readyFrame0 = load_bitmap("sprites/text/TXTReady0.bmp", NULL);
 	readyFrame1 = load_bitmap("sprites/text/TXTReady1.bmp", NULL);
 	readyFrame2 = load_bitmap("sprites/text/TXTReady2.bmp", NULL);
 	readyFrame3 = load_bitmap("sprites/text/TXTReady3.bmp", NULL);
 	readyFrame4 = load_bitmap("sprites/text/TXTReady4.bmp", NULL);
-	
+
 	roundFrame0 = load_bitmap("sprites/text/TXTRound0.bmp", NULL);
 	roundFrame1 = load_bitmap("sprites/text/TXTRound1.bmp", NULL);
 	roundFrame2 = load_bitmap("sprites/text/TXTRound2.bmp", NULL);
@@ -218,29 +207,29 @@ void Game::LoadSprites()
 	roundNumber1Frame2 = load_bitmap("sprites/text/TXT102.bmp", NULL);
 	roundNumber1Frame3 = load_bitmap("sprites/text/TXT103.bmp", NULL);
 	roundNumber1Frame4 = load_bitmap("sprites/text/TXT104.bmp", NULL);
-	
+
 	roundNumber2Frame0 = load_bitmap("sprites/text/TXT200.bmp", NULL);
 	roundNumber2Frame1 = load_bitmap("sprites/text/TXT201.bmp", NULL);
 	roundNumber2Frame2 = load_bitmap("sprites/text/TXT202.bmp", NULL);
 	roundNumber2Frame3 = load_bitmap("sprites/text/TXT203.bmp", NULL);
 	roundNumber2Frame4 = load_bitmap("sprites/text/TXT204.bmp", NULL);
-	
+
 	roundNumber3Frame0 = load_bitmap("sprites/text/TXT300.bmp", NULL);
 	roundNumber3Frame1 = load_bitmap("sprites/text/TXT301.bmp", NULL);
 	roundNumber3Frame2 = load_bitmap("sprites/text/TXT302.bmp", NULL);
 	roundNumber3Frame3 = load_bitmap("sprites/text/TXT303.bmp", NULL);
 	roundNumber3Frame4 = load_bitmap("sprites/text/TXT304.bmp", NULL);
-	
+
 	roundNumber4Frame0 = load_bitmap("sprites/text/TXT400.bmp", NULL);
 	roundNumber4Frame1 = load_bitmap("sprites/text/TXT401.bmp", NULL);
 	roundNumber4Frame2 = load_bitmap("sprites/text/TXT402.bmp", NULL);
 	roundNumber4Frame3 = load_bitmap("sprites/text/TXT403.bmp", NULL);
 	roundNumber4Frame4 = load_bitmap("sprites/text/TXT404.bmp", NULL);
-	
+
 	roundNumber5Frame0 = load_bitmap("sprites/text/TXT500.bmp", NULL);
 	roundNumber5Frame1 = load_bitmap("sprites/text/TXT501.bmp", NULL);
 	roundNumber5Frame2 = load_bitmap("sprites/text/TXT502.bmp", NULL);
 	roundNumber5Frame3 = load_bitmap("sprites/text/TXT503.bmp", NULL);
 	roundNumber5Frame4 = load_bitmap("sprites/text/TXT504.bmp", NULL);
-	
+
 }

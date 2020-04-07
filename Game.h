@@ -49,6 +49,8 @@ class Game
 		//texto de inicio e termino
 		BITMAP *g;
 		BITMAP *o;
+		BITMAP *kP;
+		BITMAP *oP;
 		BITMAP *drawGameFrame0;
 		BITMAP *drawGameFrame1;
 		BITMAP *drawGameFrame2;
@@ -76,6 +78,11 @@ class Game
 		BITMAP *winnerFrame3;
 		BITMAP *winnerFrame4;
 		BITMAP *winnerFrame5;
+		BITMAP *perfect0;
+		BITMAP *perfect1;
+		BITMAP *perfect2;
+		BITMAP *perfect3;
+		BITMAP *perfect4;
 		BITMAP *roundNumber1Frame0;
 		BITMAP *roundNumber1Frame1;
 		BITMAP *roundNumber1Frame2;

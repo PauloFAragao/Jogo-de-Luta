@@ -93,6 +93,15 @@ do personagem virado para a direita
 -Foi adicionado um arquivo chamado include.h, nele estão todos os macros necessarios (foram criados novos
 macros para facilitar o posicionamento dos sprites da interface e a posição inicial dos personagens)
 -Foram feitas correções de comportamento e bugs
+-Foi iniciado a implementação dos textos da interface:
+	"Round X" - implementado
+	"Ready"  - implementado
+	"Go" - implementado
+	"Winner" - não implementado
+	"time up" - não implementado
+	"Draw Game" - não implementado
+	"K.O." - não implementado
+	"Perfetc" - não implementado
 -Foram implementadas as animações:
 	-Weak Punch
 	-Strong Punch

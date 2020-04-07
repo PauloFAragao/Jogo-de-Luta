@@ -17,16 +17,15 @@ alguns frames para fazer o ciclo completo (ciclo correto: 0,1,2,3,4,5,6,7,2) - i
 
 -Terminar de escrever os defines no arquivo includes.h - Implementado
 
+-iniciar a implementação dos textos: "Round X" "Ready" "Go" Winner" "time up" "Draw Game" 
+"K.O." "Perfetc" - implementado
+
 -Implementar que o personagem deve mudar de lado quando a animação terminar e não executar 
 outra animação antes de mudar de lado
 
 -Implementar que todas as animações podem cancelar a animação de mudar de lado
 
 -Implementação da defesa no momento que o outro personagem está atacando
-
--Implementar na interface o "Round X" "Ready" "Fight" Winner" "time up" "Draw"
-
--a variavel gameTime dentro da classe game pode ser retirada
 
 -a animação jumpStart deve cancelar a animação Raise Crouched e ir para o ultimo frame da 
 animação jumpStart

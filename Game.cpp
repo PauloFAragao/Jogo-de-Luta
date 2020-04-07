@@ -21,6 +21,8 @@ Game::~Game()
 	
 	destroy_bitmap( g );
 	destroy_bitmap( o );
+	destroy_bitmap( kP );
+	destroy_bitmap( oP );
 	destroy_bitmap( drawGameFrame0 );
 	destroy_bitmap( drawGameFrame1 );
 	destroy_bitmap( drawGameFrame2 );
@@ -48,6 +50,11 @@ Game::~Game()
 	destroy_bitmap( winnerFrame3 );
 	destroy_bitmap( winnerFrame4 );
 	destroy_bitmap( winnerFrame5 );
+	destroy_bitmap( perfect0 );
+	destroy_bitmap( perfect1 );
+	destroy_bitmap( perfect2 );
+	destroy_bitmap( perfect3 );
+	destroy_bitmap( perfect4 );
 	destroy_bitmap( roundNumber1Frame0 );
 	destroy_bitmap( roundNumber1Frame1 );
 	destroy_bitmap( roundNumber1Frame2 );
@@ -188,6 +195,44 @@ BITMAP *Game::GetGameScreen()
 
 	if(COMPLETERENDER) BuildDebugScreen();
 
+	
+		//ready
+	//draw_sprite( gameScreen, readyFrame4, READYX, READYY );
+	
+		//round
+	//draw_sprite( gameScreen, roundFrame4, ROUNDX, ROUNDY );
+	//draw_sprite( gameScreen, roundNumber1Frame4, ROUNDNUMBER1X, ROUNDNUMBER1Y );
+	//draw_sprite( gameScreen, roundNumber2Frame4, ROUNDNUMBER2X, ROUNDNUMBER2Y );
+	//draw_sprite( gameScreen, roundNumber3Frame4, ROUNDNUMBER3X, ROUNDNUMBER3Y );
+	//draw_sprite( gameScreen, roundNumber4Frame4, ROUNDNUMBER4X, ROUNDNUMBER4Y );
+	//draw_sprite( gameScreen, roundNumber5Frame4, ROUNDNUMBER5X, ROUNDNUMBER5Y );
+	
+		//winner
+	//draw_sprite( gameScreen, winnerFrame5, WINNERP1X, WINNERP1Y );
+	//draw_sprite( gameScreen, winnerFrame5, WINNERP2X, WINNERP2Y );
+	
+		//draw game
+	//draw_sprite( gameScreen, drawGameFrame6, DRAWGAMEX, DRAWGAMEY );
+	
+		//time over
+	//draw_sprite( gameScreen, timeOverFrame3, TIMEOVERX, TIMEOVERY );
+	
+		//Letra G
+	//draw_sprite( gameScreen, g, GENDX, GOY );
+	//draw_sprite( gameScreen, g, GSTARTX, GOY );	Letra G
+		//Letra O
+	//draw_sprite( gameScreen, o, OENDX, GOY );
+	//draw_sprite( gameScreen, o, OSTARTX, GOY );	Letra O
+	
+		//Letra K
+	//draw_sprite( gameScreen, kP, KPENDX, KPY );
+		//Letra O
+	//draw_sprite( gameScreen, oP, OPENDX, OPY );
+	
+		//perfect
+	//draw_sprite( gameScreen, perfect4, PERFECTX, PERFECTY );
+	
+	
 	return gameScreen;
 }END_OF_FUNCTION(GetGameScreen);
 
