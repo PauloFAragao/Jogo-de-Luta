@@ -37,6 +37,8 @@ void Player::StartAttributes()
 		x=P2XSTARTPOS;				//posição em X do player
 	}
 	
+	canFastMove = true;					//Booleana para resolver o bug da corrida
+	
 	button00=false;					//esquerda
 	button01=false;					//baixo
 	button02=false;					//direita
@@ -58,7 +60,7 @@ void Player::StartAttributes()
 	especialBar = 0;				//quantidade de pontos de especial
 	especialQuantity = 0;			//quantos pontos de especial o personagem tem
 	powTime = 0;					//tempo restante da barra quando o jogador esroura uma barra
-	pow = true;						//se o jogador estourou uma barra
+	pow = false;						//se o jogador estourou uma barra
 	
 	attacking=false;				//indica que o personagema está atacando
 	takingDmg=false;				//indica que o personagem foi atacado enquanto estava na defesa
@@ -91,9 +93,6 @@ void Player::StartAttributes()
 void Player::PlayerRoutine( bool flipCharacter, int opponentX, int opponentY, bool opponentAttacking )
 {
 		//TEMPORARIO
-		//if( key[ KEY_0_PAD ]  ) opponentAttacking = true;
-		//if( !key[ KEY_0_PAD ] ) opponentAttacking = false;
-		
 		if( key[ KEY_1_PAD ]  ) takingDmg = true;
 		
 		if( key[KEY_MINUS]  ) 
@@ -121,33 +120,41 @@ void Player::PlayerRoutine( bool flipCharacter, int opponentX, int opponentY, bo
 			powTime += 100;
 		}
 		//TEMPORARIO
+	
+	//reset das booleanas para resolver o bug da corrida e do pulo para tras
+	if( !canFastMove && !button02 && !button00  )
+		canFastMove = true;
+
 		
 	//captura os imputs do plauer
 	TrackImputs();
 	
 	//movimenta o player na horizontal
-	HorizontalMove( opponentAttacking );
+	HorizontalMove( opponentAttacking, flipCharacter );
+	
+	//desacelera o player na horizontal
+	Slowdown();
 	
 	//movimenta o player na vertical
-	VerticalMove();
-	
+	VerticalMove( flipCharacter );
+
 	//motor de imterpletação	
-	InterpretationWalkWalkBackRun();
-	InterpretationJumpBack();
-	InterpretationJump();
-	InterpretationStrongDiagonalJump();
-	InterpretationCrouch();
-	InterpretationDefence( opponentAttacking );
-	InterpretationRolling();
+	InterpretationWalkWalkBackRun( flipCharacter );
+	InterpretationJumpBack( flipCharacter );
+	InterpretationJump( flipCharacter );
+	InterpretationStrongDiagonalJump( flipCharacter );
+	InterpretationCrouch( flipCharacter );
+	InterpretationDefence( opponentAttacking, flipCharacter );
+	InterpretationRolling( flipCharacter );
 	InterpretationChangeSide( flipCharacter );
-	InterpretationSpecialAttack();
+	InterpretationSpecialAttack( flipCharacter );
 	SpecialControl();
 	
 	//ataques basicos
-	InterpretationWeakPunch( opponentX, opponentY );
-	InterpretationStrongPunch( opponentX, opponentY );
-	InterpretationWeakKick( opponentX, opponentY );
-	InterpretationStrongKick( opponentX, opponentY );
+	InterpretationWeakPunch( opponentX, opponentY, flipCharacter );
+	InterpretationStrongPunch( opponentX, opponentY, flipCharacter );
+	InterpretationWeakKick( opponentX, opponentY, flipCharacter );
+	InterpretationStrongKick( opponentX, opponentY, flipCharacter );
 		
 }END_OF_FUNCTION(PlayerRoutine);
 
@@ -182,9 +189,23 @@ void Player::ChangeAction(int value)
 
 
 /**
+ * Esse metodo é responsavel por fazer o controle da barra de especial e o 
+ * controle da quantidade de especiais que o personagem tem
+ */
+void Player::SpecialControl()
+{
+	if( especialBar >= 100 )
+	{
+		especialBar = 0;
+		if( especialQuantity < 5 ) especialQuantity++;
+	}
+}END_OF_FUNCTION(SpecialControl);
+
+
+/**
  * Logica da movimentação do player na horizontal
  */
-void Player::HorizontalMove( bool opponentAttacking )
+void Player::HorizontalMove( bool opponentAttacking, bool flipCharacter )
 {
 
 //Verificação dos imputs
@@ -193,14 +214,14 @@ void Player::HorizontalMove( bool opponentAttacking )
 		if( button02 && antLoopBT2 )
 		{
 			
-			if( btTPress[2][8] - btTPress[2][7] < 100 )
+			if( btTPress[2][8] - btTPress[2][7] < 100 && canFastMove )
 			{
 				//correndo
-				if( toRight && ValidateAction(100) )
+				if( toRight && ValidateAction( 100, flipCharacter ) )
 					ChangeAction(100);
-			
+
 				//pulando para tras
-				else if( !toRight && ValidateAction(110) )
+				else if( !toRight && ValidateAction( 110, flipCharacter ) )
 				{
 					antLoopBT2 = false;
 					speedX = RUNSPEED + 2 ;
@@ -210,18 +231,18 @@ void Player::HorizontalMove( bool opponentAttacking )
 			
 			}
 			
-			else if( toRight && !button00 && ValidateAction(20) )//andando
+			else if( toRight && !button00 && ValidateAction( 20, flipCharacter ) )//andando
 				ChangeAction(20);
 				
 			else if( opponentAttacking && !toRight )//ação de se defender
 			{
-				if( ValidateAction(120) )//se o personagem está de pé
+				if( ValidateAction( 120, flipCharacter ) )//se o personagem está de pé
 					ChangeAction(120);
-				if( ValidateAction(130) )//se o personagem está agachado
+				if( ValidateAction( 130, flipCharacter ) )//se o personagem está agachado
 					ChangeAction(130);
 			}
 			
-			else if( !toRight && !button00 && ValidateAction(30) && !opponentAttacking )//andando para tras
+			else if( !toRight && !button00 && ValidateAction( 30, flipCharacter ) && !opponentAttacking )//andando para tras
 				ChangeAction(30);
 			
 		}
@@ -229,15 +250,15 @@ void Player::HorizontalMove( bool opponentAttacking )
 		if( button00 && antLoopBT0 )
 		{
 			
-			if( btTPress[0][8] - btTPress[0][7] < 150 )
+			if( btTPress[0][8] - btTPress[0][7] < 150 && canFastMove)
 			{
 				
 				//correndo
-				if( !toRight && ValidateAction(100) )
+				if( !toRight && ValidateAction(100, flipCharacter ) )
 					ChangeAction(100);
 				
 				//pulando para tras
-				else if( toRight && ValidateAction(110) )
+				else if( toRight && ValidateAction(110, flipCharacter ) )
 				{
 					antLoopBT0 = false;
 					speedX = -( RUNSPEED + 2 ) ;
@@ -246,18 +267,18 @@ void Player::HorizontalMove( bool opponentAttacking )
 				}
 			}
 			
-			else if( !toRight && !button02 && ValidateAction(20) )//andando
+			else if( !toRight && !button02 && ValidateAction(20, flipCharacter ) )//andando
 				ChangeAction(20);
 				
 			else if( opponentAttacking && toRight )//ação de se defender
 			{
-				if( ValidateAction(120) )//se o personagem está de pé
+				if( ValidateAction( 120, flipCharacter ) )//se o personagem está de pé
 					ChangeAction(120);
-				if( ValidateAction(130) )//se o personagem está agachado
+				if( ValidateAction( 130, flipCharacter ) )//se o personagem está agachado
 					ChangeAction(130);
 			}
 			
-			else if( toRight && !button02 && ValidateAction(30) ) //andando para tras
+			else if( toRight && !button02 && ValidateAction( 30, flipCharacter ) ) //andando para tras
 				ChangeAction(30);
 			
 		}
@@ -267,23 +288,6 @@ void Player::HorizontalMove( bool opponentAttacking )
 			ChangeAction(0);
 		}
 		
-	}
-
-	//Rolamento
-	if( button04 && button06 )
-	{
-		if( toRight && button00 && ValidateAction(150) )//Back Rolling
-		{
-			ChangeAction(150);
-		}
-		else if( !toRight && button02 && ValidateAction(150))//Back Rolling
-		{
-			ChangeAction(150);
-		}
-		else if( ValidateAction(140) )//Front Rolling
-		{
-			ChangeAction(140);
-		}
 	}
 	
 //modificação da velocidade de acordo com a ação
@@ -320,22 +324,6 @@ void Player::HorizontalMove( bool opponentAttacking )
 		if( action == 150 ) speedX = RUNSPEED;
 	}
 
-//desaceleração
-	if( action == 0 || ( !button00 && !button02 ) )
-	{
-		if( y >= CHAO && speedX < 0 )
-		{
-			speedX += 0.8;
-			if( speedX > 0 ) speedX =0;
-		}
-		if( y >= CHAO && speedX > 0 )
-		{
-			speedX -= 0.8;
-			if( speedX < 0 ) speedX =0;
-		}
-	}
-	
-	
 //alterando os valores das variaveis para evitar loop
 	if( !antLoopBT0 && !button00 ) antLoopBT0 = true;
 
@@ -353,27 +341,84 @@ void Player::HorizontalMove( bool opponentAttacking )
 	
 }END_OF_FUNCTION(HorizontalMove);
 
+/**
+ * Esse metodo desacelera o personagem
+ */
+void Player::Slowdown()
+{
+	if( action == 0 )//ação idle
+		speedX =0;
+	
+	if( action == 20 && ( ( toRight && !button02 ) || ( !toRight && !button00 ) ) )//ação walk
+		speedX =0;
+	
+	if( action == 30 && ( ( toRight && !button00 ) || ( !toRight && !button02 ) ) )//ação walk Back
+		speedX =0;
+	
+	if( action == 101 && ( ( toRight && !button02 ) || ( !toRight && !button00 ) ) )//ação slide
+	{
+		if( y >= CHAO && speedX < 0 )
+		{ speedX += 0.8; if( speedX > 0 ) speedX =0; }
+		if( y >= CHAO && speedX > 0 )
+		{ speedX -= 0.8; if( speedX < 0 ) speedX =0; }
+	}
+	
+	if( action == 111 )//ação Jump Back Fall
+	{
+		if( y >= CHAO && speedX < 0 )
+		{ speedX += 1.2; if( speedX > 0 ) speedX =0; }
+		if( y >= CHAO && speedX > 0 )
+		{ speedX -= 1.2; if( speedX < 0 ) speedX =0; }
+	}
+	
+	if( action == 141 )//ação Front Rolling End
+	{
+		if( y >= CHAO && speedX < 0 )
+		{ speedX += 0.8; if( speedX > 0 ) speedX =0; }
+		if( y >= CHAO && speedX > 0 )
+		{ speedX -= 0.8; if( speedX < 0 ) speedX =0; }
+	}
+	
+	if( action == 151 )//ação Back Rolling End
+	{
+		if( y >= CHAO && speedX < 0 )
+		{ speedX += 0.8; if( speedX > 0 ) speedX =0; }
+		if( y >= CHAO && speedX > 0 )
+		{ speedX -= 0.8; if( speedX < 0 ) speedX =0; }
+	}
+	
+	if( action == 132 )//ação Strong kick
+	{
+		if( y >= CHAO && speedX < 0 )
+		{ speedX += 1.2; if( speedX > 0 ) speedX =0; }
+		if( y >= CHAO && speedX > 0 )
+		{ speedX -= 1.2; if( speedX < 0 ) speedX =0; }
+	}
+	
+}
 
 /**
  * logica de movimentação do player na vertical
  */
-void Player::VerticalMove()
+void Player::VerticalMove( bool flipCharacter )
 {
 	
-	if( button03 && y >= CHAO && ValidateAction(-5) ) 
+	if( button03 && y >= CHAO && ValidateAction( -5, flipCharacter ) ) 
 	{
 		speedX = 0;
 		if( button00 && !button02 ) 
 		{
-			if(toRight && ValidateAction(80) )	ChangeAction(80);
-			else if( ValidateAction(60) )		ChangeAction(60);
+			if( action == 100 || action == 110 ) canFastMove = false;
+			if(toRight && ValidateAction( 80, flipCharacter ) )	ChangeAction(80);
+			else if( ValidateAction( 60, flipCharacter ) )		ChangeAction(60);
 		}
 		else if( button02 && !button00 )
 		{
-			if(toRight && ValidateAction(60) )	ChangeAction(60);
-			else if( ValidateAction(80) )		ChangeAction(80);
+			if( action == 100 || action == 110 ) canFastMove = false;
+			if(toRight && ValidateAction( 60, flipCharacter ) )	ChangeAction(60);
+			else if( ValidateAction( 80, flipCharacter ) )		ChangeAction(80);
 		}
-		else if( ValidateAction(40) ) ChangeAction(40);
+		else if( ValidateAction( 40, flipCharacter ) ) ChangeAction(40);
 	}
 	
 
@@ -398,7 +443,7 @@ void Player::VerticalMove()
 				else if( button02 || ( btTPress[3][8] - btTPress[2][8] >= -30 && btTPress[3][8] - btTPress[2][8] <= 30 ) )
 	// se btTPress[3][8] - btTPress[2][8] (botão para cima e botão para frente) foi entre -30 e 30 (60 ms de diferença entre os botões terem sido pressionados)
 				{
-					if(toRight) {speedX =  RUNSPEED; ChangeAction(71);  } //pulando na diagonal para frente
+					if(toRight) {speedX =  RUNSPEED; ChangeAction(71); } //pulando na diagonal para frente
 					else 		{speedX =  RUNSPEED; ChangeAction(91); }  //pulando na diagonal para tras
 					speedY = -STRONGJUMPSTRENGTH;
 				}
@@ -479,85 +524,85 @@ void Player::VerticalMove()
  * Recebe o valor da ação que se pretende cancelar a ação atual
  * 		ValidateAction(-5) - verifica se um comando de pulo já foi gerado
  */
-bool Player::ValidateAction(int value)
+bool Player::ValidateAction( int value, bool flipCharacter )
 {
 	
 	switch(value)
 	{	
 		case -5://verifica se já está fazendo alguma dessas ações quando o personagem vai pular
-			if( action != 80 || action != 60 || action != 40 )
+			if( !flipCharacter && ( action != 80 || action != 60 || action != 40 ) )
 				return true;
 			else return false;
 		break;
 		
 		case 10: //Crouched
-			if( action == 0 || action == 12 || action == 160 || action == 170 )
+			if( !flipCharacter && ( action == 0 || action == 12 ) )
 				return true;
 			else return false;
 		break;
 	
 		case 20: //Walk
-			if( action == 0 || action == 30 || action == 101 || action == 160 || action == 170 )
+			if( !flipCharacter && ( action == 0 || action == 30 || action == 101 || action == 160 || action == 170 ) )
 				return true;
 			else return false;
 		break;
 	
 		case 30: //WalkBack
-			if( action == 0 || action == 20 || action == 100 || action == 101 || action == 160 || action == 170 )
+			if( !flipCharacter && ( action == 0 || action == 20 || action == 100 || action == 101 || action == 160 || action == 170 ) )
 				return true;
 			else return false;
 		break;
 	
 		case 40: //Weak Jump
-			if( action == 0 || action == 160 || action == 170 )
+			if( !flipCharacter && ( action == 0 || action == 160 || action == 170 ) )
 				return true;
 			else return false;
 		break;
 	
 		case 60://Weak Frontal Diagonal Jump
-			if( action == 0 || action == 20 || action == 100 || action == 160 || action == 170 )
+			if( !flipCharacter && ( action == 0 || action == 20 || action == 100 || action == 160 || action == 170 ) )
 				return true;
 			else return false;
 		break;
 	
 		case 80://Weak Back Diagonal Jump
-			if( action == 0 || action == 30 || action == 160 || action == 170 )
+			if( !flipCharacter && ( action == 0 || action == 30 || action == 160 || action == 170 ) )
 				return true;
 			else return false;
 		break;
 	
 		case 100: //Run
-			if( action == 0 || action == 20 || action == 101 || action == 160 || action == 170 )
+			if( !flipCharacter && ( action == 0 || action == 20 || action == 101 || action == 160 || action == 170 ) )
 				return true;
 			else return false;
 		break;
 	
 		case 110: //Jump Back
-			if( action == 0 || action == 30 || action == 160 || action == 170 )
+			if( !flipCharacter && ( action == 0 || action == 30 || action == 160 || action == 170 ) )
 				return true;
 			else return false;
 		break;
 	
 		case 120://Defending
-			if( action == 0 || action == 30 || action == 160 || action == 170 )
+			if( !flipCharacter && ( action == 0 || action == 30 || action == 160 || action == 170 ) )
 				return true;
 			else return false;
 		break;
 	
 		case 123://Defending
-			if( action == 120 || action == 121 )
+			if( !flipCharacter && ( action == 120 || action == 121 ) )
 				return true;
 			else return false;
 		break;
 	
 		case 130://Defending Crouched
-			if( action == 10 || action == 11 || action == 160 || action == 170 )
+			if( !flipCharacter && ( action == 10 || action == 11 || action == 160 || action == 170 ) )
 				return true;
 			else return false;
 		break;
 	
 		case 140://Front Rolling
-			if( action == 0  || action == 20 || action == 300 || action == 320 || action == 160 || action == 170 )
+			if( action == 0  || action == 20 || action == 100 || action == 101 || action == 300 || action == 320 || action == 160 || action == 170 )
 				return true;
 			else return false;
 		break;
@@ -586,7 +631,7 @@ bool Player::ValidateAction(int value)
 		case 330://preparation to Strong kick
 		case 420://preparation to Glued Strong Punch
 		case 430://preparation to Glued Strong kick
-			if( action == 0 || action == 160 || action == 170 )
+			if( !flipCharacter && ( action == 0 || action == 20 || action == 30 || action == 100 || action == 160 || action == 170 ) )
 				return true;
 			else return false;
 		break;
@@ -598,7 +643,7 @@ bool Player::ValidateAction(int value)
 		break;
 	
 		case 311://Strong Punch
-			if( action == 310 || action == 160 || action == 170 )
+			if( action == 310 || action == 160 || action == 170  )
 				return true;
 			else return false;
 		break;
@@ -631,7 +676,7 @@ bool Player::ValidateAction(int value)
 		case 350://preparation to Crouched Strong Punch
 		case 360://preparation to Crouched Weak kick
 		case 370://preparation to Crouched Strong kick
-			if( action == 11 )
+			if( !flipCharacter && ( action == 11 || action == 170 ) )
 				return true;
 			else return false;
 		break;
@@ -675,7 +720,7 @@ bool Player::ValidateAction(int value)
 		break;
 		
 		case 460://weakPunchForward
-			if( action == 0 || action == 20 || action == 100 || action == 160 || action == 170 )
+			if( !flipCharacter && ( action == 0 || action == 20 || action == 100 || action == 160 || action == 170 ) )
 				return true;
 			else return false;
 		break;
@@ -687,7 +732,7 @@ bool Player::ValidateAction(int value)
 		break;
 		
 		case 440://specialAttack
-			if( action == 0 || action == 310 || action == 330  || action == 160 || action == 170 )
+			if( !flipCharacter && ( action == 0 || action == 20 || action == 30 || action == 100 || action == 310 || action == 330  || action == 160 || action == 170 ) )
 				return true;
 			else return false;
 		break;

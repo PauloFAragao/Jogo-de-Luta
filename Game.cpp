@@ -89,7 +89,7 @@ void Game::StartAttributes()
 
 	pauseTime = 0;
 	gameStartCommand = false;
-	gameStart = false;
+	gameStart = true;				//essa variavel tem que iniciar false
 	antLoopGameStart = false;
 	gamePause = false;
 	antLoopPause = false;
@@ -315,7 +315,10 @@ void Game::BuildDebugScreen()
 	
 	if( terryP1->GetAttacking() )
 		textprintf_ex(gameScreen, font, 10, 250, makecol(255, 0, 0), -1, "Atacando");
-		
+	
+	if( flipPlayer1Comand )
+		textprintf_ex(gameScreen, font, 10, 260, makecol(255, 0, 0), -1, "Comando para mudar de lado");
+
 	textprintf_ex(gameScreen, font, 120, 48, makecol(255, 0, 0), -1, "Quantidade de pontos de vida: %d ", terryP1->GetLifePoints() );
 	
 	
@@ -337,7 +340,9 @@ void Game::BuildDebugScreen()
 	if( terryP2->GetAttacking() )
 		textprintf_ex(gameScreen, font, 950, 250, makecol(255, 0, 0), -1, "Atacando");
 	
-
+	if( flipPlayer2Comand )
+		textprintf_ex(gameScreen, font, 950, 260, makecol(255, 0, 0), -1, "Comando para mudar de lado");
+	
 	
 	textprintf_ex(gameScreen, font, 640, 48, makecol(255, 0, 0), -1, "Quantidade de pontos de vida: %d ", terryP1->GetLifePoints() );
 	textprintf_ex(gameScreen, font, 500, 10, makecol(255, 0, 0), -1, "Distancia  %f ", ( terryP1->GetX() - terryP2->GetX() )   );

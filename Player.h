@@ -18,9 +18,9 @@ class Player
 		//Metodos publicos
 		void PlayerRoutine( bool flipCharacter, int opponentX, int opponentY, bool opponentAttacking );
 		
-		bool ValidateAction(int value);				//verifica se uma ação pode ser feita
+		bool ValidateAction(int value, bool flipCharacter );		//verifica se uma ação pode ser feita
 		bool VerifyFrame(int value);
-		void ChangeAction(int value);				//muda o valor da ação
+		void ChangeAction(int value);								//muda o valor da ação
 		
 		
 		//---gets & sets---
@@ -178,29 +178,30 @@ class Player
 	private:
 		
 		//Metodos privados
-		void TrackImputs();								//captura os imputs do player
-		void HorizontalMove( bool opponentAttacking );	//movimentação do personagem na horizontal
-		void VerticalMove();							//movimentação do personagem na vertical
-		void writeOnBtTmPress(int pos, bool valor);		//escreve no array de tempos os tempos em que os botões foram pressionados
-		void StartAttributes();							//inicia os atributos com os valores coretos
+		void TrackImputs();													//captura os imputs do player
+		void HorizontalMove( bool opponentAttacking, bool flipCharacter );	//movimentação do personagem na horizontal
+		void Slowdown();													//desaceleração do personagem
+		void VerticalMove( bool flipCharacter );							//movimentação do personagem na vertical
+		void writeOnBtTmPress(int pos, bool valor);							//escreve no array de tempos os tempos em que os botões foram pressionados
+		void StartAttributes();												//inicia os atributos com os valores coretos
 
 		//motor de imterpletação
-		void InterpretationWalkWalkBackRun();
-		void InterpretationJumpBack();
-		void InterpretationJump();
-		void InterpretationStrongDiagonalJump();
-		void InterpretationCrouch();
-		void InterpretationDefence( bool opponentAttacking );
-		void InterpretationRolling();
+		void InterpretationWalkWalkBackRun( bool flipCharacter );
+		void InterpretationJumpBack( bool flipCharacter );
+		void InterpretationJump( bool flipCharacter );
+		void InterpretationStrongDiagonalJump( bool flipCharacter );
+		void InterpretationCrouch( bool flipCharacter );
+		void InterpretationDefence( bool opponentAttacking, bool flipCharacter );
+		void InterpretationRolling( bool flipCharacter );
 		void InterpretationChangeSide( bool flipCharacter );
-		void InterpretationSpecialAttack();
+		void InterpretationSpecialAttack( bool flipCharacter );
 		void SpecialControl();
 		
 		//ataques basicos
-		void InterpretationWeakPunch( int opponentX, int opponentY );
-		void InterpretationStrongPunch( int opponentX, int opponentY );
-		void InterpretationWeakKick( int opponentX, int opponentY );
-		void InterpretationStrongKick( int opponentX, int opponentY );
+		void InterpretationWeakPunch( int opponentX, int opponentY, bool flipCharacter );
+		void InterpretationStrongPunch( int opponentX, int opponentY, bool flipCharacter );
+		void InterpretationWeakKick( int opponentX, int opponentY, bool flipCharacter );
+		void InterpretationStrongKick( int opponentX, int opponentY, bool flipCharacter );
 
 		//atributos privados
 		float x;				//posição em X do player
@@ -210,6 +211,8 @@ class Player
 		int action;				//define a ação que o player está executando
 		int playerNumber;		//define se o personagem é o jogador numero 1 ou 2
 		
+		bool canFastMove;		//Booleana para resolver o bug da corrida
+			  		
 		//caracteristicas do personagem
 		int lifePoints;			//quantidade de pontos de vida atual do personagem
 		int lifePointsMax;		//quantidade maxima de pontos de vida do personagem
@@ -258,7 +261,6 @@ class Player
 		bool bt7TimeCapture;
 		
 		bool attacking;				//indica que o personagema está atacando
-		//bool opponentAttacking;		//indica que o oponente está atacando <<< VARIAVEL TEMPORARIA
 		bool takingDmg;				//indica que o personagem sofreu dano <<< VARIAVEL TEMPORARIA
 		
 		//tempos das animações para o controle

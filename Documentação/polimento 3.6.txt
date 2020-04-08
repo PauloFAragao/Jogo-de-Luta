@@ -7,6 +7,9 @@ para 566x350 - Implementado
 	problema ao implementar o ataque: soco fraco para frente 
 		-se o personagem estiver correndo antes de iniciar a animção no fim da 
 		animação ele volta a correr - Resolvido
+	Faltou implementar:
+		-os golpes basicos devem cancelar a ação de andar para frente e para tras e 
+		corrida - implementado
 
 -Corrigir a altura dos pulos - Implementado
 
@@ -21,14 +24,41 @@ alguns frames para fazer o ciclo completo (ciclo correto: 0,1,2,3,4,5,6,7,2) - i
 "K.O." "Perfetc" - implementado
 
 -Implementar que o personagem deve mudar de lado quando a animação terminar e não executar 
-outra animação antes de mudar de lado
+outra animação antes de mudar de lado - implementando
+	-Ainda não está funcionando perfeitamente
+	BUGS:
+	-se o personagem estiver correndo quando mudar de lado e o jogador solar e 
+	pressinar o botão a animação slide buga repordusindo um frame que não é da 
+	animação - resolvido
+	-se o personagem estiver andando quando mudar de lado e o jogador soltar o botão de 
+	andar para frente e pressinar o botão de andar para tras a desaceleração não ocorre 
+	e a ação de andar continua rodando por que o jogador ainda está pressionando o 
+	botão - resolvido
+	-se o outro personagem estiver agachado quando o personagem mudar de lado o outro 
+	personagem executa a ação de se abaixar novamente antes de mudar de lado - resolvido
+	-se o personagem der um rolamento para frente e o jogador continuar pressionando
+	o botão para frente o personagem ganha velocidade extra - resolvido
+	-se o personagem ao mudar de lado fizer: ataque+rolamento a variavel atacando não
+	muda de valor - resolvido
 
--Implementar que todas as animações podem cancelar a animação de mudar de lado
+-Implementar que todas as animações podem cancelar a animação de mudar de lado - implementado
 
--Implementação da defesa no momento que o outro personagem está atacando
+-Implementação da defesa no momento que o outro personagem está atacando - implementado
 
 -a animação jumpStart deve cancelar a animação Raise Crouched e ir para o ultimo frame da 
 animação jumpStart
+
+-BUG: se o personagem estiver correndo e realizar um rolamento e o jogador continuar pressionando
+para frente o personagem volta a correr no fim do rolamento, e se o personagem der um rolamento
+para o outro lado do presonagem inimigo o personagem executa um pulo para tras apos o rolamento
+	-tambem acontece se o personagem realizar um pulo diagonal para frente - implementado
+
+-BUG: a ação de rolamento está sofrendo desaceleração - resolvido
+
+-BUG: quando o personagem está virado para a esquerda e usa o ataque especial ele se movimenta 
+para o lado errado - resolvido
+
+-BUG: Quando o personagem usa o soco fraco para frente ele continua andando - Resolvido
 
 -BUG: Quando o jogador pressiona para tras e para frente o personagem anda para tras com a
 animação congelada - Resolvido

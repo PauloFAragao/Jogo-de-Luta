@@ -469,7 +469,7 @@ void Terry::Anim25()//slide
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetSlide(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
-	else if( GetFrame() >= GetSlide(0) && GetFrame() <= GetSlide(1) && clock() - GetCapturaTempo() > TEF )
+	else if( GetFrame() >= GetSlide(0) && GetFrame() < GetSlide(1) && clock() - GetCapturaTempo() > TEF )
 	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
 }END_OF_FUNCTION(Anim25);
 
