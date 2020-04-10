@@ -89,7 +89,7 @@ void Game::StartAttributes()
 
 	pauseTime = 0;
 	gameStartCommand = false;
-	gameStart = true;				//essa variavel tem que iniciar false
+	gameStart = false;
 	antLoopGameStart = false;
 	gamePause = false;
 	antLoopPause = false;
