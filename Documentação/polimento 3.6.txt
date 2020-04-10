@@ -24,8 +24,7 @@ alguns frames para fazer o ciclo completo (ciclo correto: 0,1,2,3,4,5,6,7,2) - i
 "K.O." "Perfetc" - implementado
 
 -Implementar que o personagem deve mudar de lado quando a animação terminar e não executar 
-outra animação antes de mudar de lado - implementando
-	-Ainda não está funcionando perfeitamente
+outra animação antes de mudar de lado - implementado
 	BUGS:
 	-se o personagem estiver correndo quando mudar de lado e o jogador solar e 
 	pressinar o botão a animação slide buga repordusindo um frame que não é da 
@@ -40,13 +39,15 @@ outra animação antes de mudar de lado - implementando
 	o botão para frente o personagem ganha velocidade extra - resolvido
 	-se o personagem ao mudar de lado fizer: ataque+rolamento a variavel atacando não
 	muda de valor - resolvido
-
+	-se o jogador usar um ataque quando o personagem passar para o outro lado o ataque 
+	não sai - resolvido
+	
 -Implementar que todas as animações podem cancelar a animação de mudar de lado - implementado
 
 -Implementação da defesa no momento que o outro personagem está atacando - implementado
 
 -a animação jumpStart deve cancelar a animação Raise Crouched e ir para o ultimo frame da 
-animação jumpStart
+animação jumpStart - implementado
 
 -BUG: se o personagem estiver correndo e realizar um rolamento e o jogador continuar pressionando
 para frente o personagem volta a correr no fim do rolamento, e se o personagem der um rolamento

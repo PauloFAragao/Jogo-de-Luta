@@ -92,8 +92,7 @@ do personagem virado para a direita
 -Na verção polimento 3.6 a resolução das imangens foi alterada para 566x350
 -Foi adicionado um arquivo chamado include.h, nele estão todos os macros necessarios (foram criados novos
 macros para facilitar o posicionamento dos sprites da interface e a posição inicial dos personagens)
--Foram feitas correções de comportamento e bugs
--Foi iniciado a coreção do comportamento do personagem quando ele muda de lado
+-Foram feitas varias correções de comportamento e bugs
 -Agora o personagem inicia a animação de defesa quando o oponente ataca
 -Foi iniciado a implementação dos textos da interface:
 	"Round X" - implementado

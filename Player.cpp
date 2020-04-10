@@ -125,6 +125,8 @@ void Player::PlayerRoutine( bool flipCharacter, int opponentX, int opponentY, bo
 	if( !canFastMove && !button02 && !button00  )
 		canFastMove = true;
 
+	if( flipCharacter && ( action == 101 ) ) canFastMove = false;
+	
 		
 	//captura os imputs do plauer
 	TrackImputs();
@@ -355,7 +357,7 @@ void Player::Slowdown()
 	if( action == 30 && ( ( toRight && !button00 ) || ( !toRight && !button02 ) ) )//ação walk Back
 		speedX =0;
 	
-	if( action == 101 && ( ( toRight && !button02 ) || ( !toRight && !button00 ) ) )//ação slide
+	if( action == 101 )//ação slide
 	{
 		if( y >= CHAO && speedX < 0 )
 		{ speedX += 0.8; if( speedX > 0 ) speedX =0; }
@@ -406,19 +408,59 @@ void Player::VerticalMove( bool flipCharacter )
 	if( button03 && y >= CHAO && ValidateAction( -5, flipCharacter ) ) 
 	{
 		speedX = 0;
-		if( button00 && !button02 ) 
+		if( button00 && !button02 )
 		{
 			if( action == 100 || action == 110 ) canFastMove = false;
-			if(toRight && ValidateAction( 80, flipCharacter ) )	ChangeAction(80);
-			else if( ValidateAction( 60, flipCharacter ) )		ChangeAction(60);
+			if(toRight && ValidateAction( 80, flipCharacter ) )
+			{	
+				if( action == 12 )//coreção para não executar a animação de se preparar para o pulo depois de executar a animação de se levantar
+				{
+					frame = GetCrouching(1);
+					capturaTempo = clock();
+				}
+				ChangeAction(80);
+			}
+			else if( ValidateAction( 60, flipCharacter ) )
+			{
+				if( action == 12 )//coreção para não executar a animação de se preparar para o pulo depois de executar a animação de se levantar
+				{
+					frame = GetCrouching(1);
+					capturaTempo = clock();
+				}
+				ChangeAction(60);
+			}
 		}
 		else if( button02 && !button00 )
 		{
 			if( action == 100 || action == 110 ) canFastMove = false;
-			if(toRight && ValidateAction( 60, flipCharacter ) )	ChangeAction(60);
-			else if( ValidateAction( 80, flipCharacter ) )		ChangeAction(80);
+			if(toRight && ValidateAction( 60, flipCharacter ) )
+			{
+				if( action == 12 )//coreção para não executar a animação de se preparar para o pulo depois de executar a animação de se levantar
+				{
+					frame = GetCrouching(1);
+					capturaTempo = clock();
+				}
+				ChangeAction(60);
+			}
+			else if( ValidateAction( 80, flipCharacter ) )
+			{	
+				if( action == 12 )//coreção para não executar a animação de se preparar para o pulo depois de executar a animação de se levantar
+				{
+					frame = GetCrouching(1);
+					capturaTempo = clock();
+				}
+				ChangeAction(80);
+			}	
 		}
-		else if( ValidateAction( 40, flipCharacter ) ) ChangeAction(40);
+		else if( ValidateAction( 40, flipCharacter ) )
+		{
+			if( action == 12 )//coreção para não executar a animação de se preparar para o pulo depois de executar a animação de se levantar
+			{
+				frame = GetCrouching(1);
+				capturaTempo = clock();
+			}
+			ChangeAction(40);
+		}
 	}
 	
 
@@ -554,7 +596,7 @@ bool Player::ValidateAction( int value, bool flipCharacter )
 		break;
 	
 		case 40: //Weak Jump
-			if( !flipCharacter && ( action == 0 || action == 160 || action == 170 ) )
+			if( !flipCharacter && ( action == 0 || action == 12 || action == 160 || action == 170 ) )
 				return true;
 			else return false;
 		break;

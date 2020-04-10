@@ -296,8 +296,8 @@ void Player::InterpretationWeakPunch( int opponentX, int opponentY, bool flipCha
 		else if( ValidateAction( 460, flipCharacter ) && ( (button02 && toRight) || (button00 && !toRight) ) )
 		{
 			if( action == 100 || action == 110 ) canFastMove = false;
-			ChangeAction(460);
 			speedX = 0;
+			ChangeAction(460);
 		}
 
 		//soco normal
@@ -404,14 +404,16 @@ void Player::InterpretationStrongPunch( int opponentX, int opponentY, bool flipC
 		//soco forte colado
 		else if( x - opponentX >= -140 && x - opponentX <= 140 && ValidateAction( 420, flipCharacter ) )
 		{
-			if( action == 100 || action == 110 ) {canFastMove = false; speedX = 0; }
+			if( action == 100 || action == 110 ) { canFastMove = false; }
+			speedX = 0;
 			ChangeAction(420);
 		}
 		
 		//soco normal
 		else if( ValidateAction( 310, flipCharacter ) )
 		{
-			if( action == 100 || action == 110 ) {canFastMove = false; speedX = 0; }
+			if( action == 100 || action == 110 ) {canFastMove = false;}
+			speedX = 0;
 			ChangeAction(310);
 		}
 		
@@ -501,7 +503,8 @@ void Player::InterpretationWeakKick( int opponentX, int opponentY, bool flipChar
 		//chute normal
 		else if( ValidateAction( 320, flipCharacter ) )
 		{
-			if( action == 100 || action == 110 ) {canFastMove = false; speedX = 0; }
+			if( action == 100 || action == 110 ) {canFastMove = false; }
+			speedX = 0;
 			ChangeAction(320);
 		}
 		

@@ -496,7 +496,7 @@ void Terry::Anim28()//changeSide
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetChangeSide(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
-	else if( GetFrame() >= GetChangeSide(0) && GetFrame() < GetChangeSide(1) && clock() - GetCapturaTempo() > TEF-50 )
+	else if( GetFrame() >= GetChangeSide(0) && GetFrame() < GetChangeSide(1) && clock() - GetCapturaTempo() > TEF-75 )
 	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
 }END_OF_FUNCTION(Anim28);
 
@@ -505,7 +505,7 @@ void Terry::Anim29()//changeSideCrouched
 {
 	if( !GetStartAnimation() )
 	{ SetFrame( GetChangeSideCrouched(0) ); SetStartAnimation(true); SetCapturaTempo(clock()); }
-	else if( GetFrame() >= GetChangeSideCrouched(0) && GetFrame() < GetChangeSideCrouched(1) && clock() - GetCapturaTempo() > TEF-50 )
+	else if( GetFrame() >= GetChangeSideCrouched(0) && GetFrame() < GetChangeSideCrouched(1) && clock() - GetCapturaTempo() > TEF-75 )
 	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
 }END_OF_FUNCTION(Anim29);
 
