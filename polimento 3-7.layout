@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Layout>
+	<Files>
+		<File Name="TerryAnim.cpp" Top="Yes" Tabpos="1" TopLine="16">
+			<Cursor Line="59" Column="4"/>
+		</File>
+		<File Name="Terry.h" Top="No" Tabpos="2" TopLine="81">
+			<Cursor Line="113" Column="20"/>
+			<Selection Line="113" Column="7"/>
+		</File>
+	</Files>
+</Layout>

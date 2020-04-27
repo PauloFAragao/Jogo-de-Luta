@@ -76,6 +76,43 @@ class Terry:public Player
 		void Anim46();
 		void Anim47();
 		void Anim48();
+		void Anim49();
+		void Anim50();
+		void Anim51();
+		void Anim52();
+		void Anim53();
+		void Anim54();
+		void Anim55();
+		void Anim56();
+		void Anim57();
+		void Anim58();
+		void Anim59();
+		void Anim60();
+		void Anim61();
+		void Anim62();
+		void Anim63();
+		void Anim64();
+		void Anim65();
+		
+		//atributos privados
+		int roundWave[2];
+		int powerWave[2];
+		int crackShoot[2];
+		int crackShootJumping[2];
+		int powerDunkStart[2];
+		int powerDunkJumping[2];
+		int powerDunkFalling[2];
+		int weakBurnigKnuckleStart[2];
+		int strongBurnigKnuckleStart[2];
+		int burnigKnuckle[2];
+		int risingTackleStart[2];
+		int risingTackleJumping[2];
+		int risingTackleEnd[2];
+		int busterWolfStart[2];
+		int busterWolf[2];
+		int busterWolfEnd[2];
+		int busterWolfFail[2];
+		
 		
 };
 #endif//TERRY_H

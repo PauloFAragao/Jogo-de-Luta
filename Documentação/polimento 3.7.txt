@@ -1,0 +1,5 @@
+-Implementar os golpes de comando
+
+-Implementar o controle de audio
+
+-Terminar de implementar os textos da interface

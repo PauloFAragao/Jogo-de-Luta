@@ -90,8 +90,9 @@ do personagem virado para a direita
 	-Os personagem mudam de lado quando o outro personagem passa para as suas costas
 
 -Na verção polimento 3.6 a resolução das imangens foi alterada para 566x350
--Foi adicionado um arquivo chamado include.h, nele estão todos os macros necessarios (foram criados novos
-macros para facilitar o posicionamento dos sprites da interface e a posição inicial dos personagens)
+-Foi adicionado um arquivo chamado include.h, nele estão todos os macros necessarios (foram criados 
+novos macros para facilitar o posicionamento dos sprites da interface e a posição inicial dos 
+personagens)
 -Foram feitas varias correções de comportamento e bugs
 -Agora o personagem inicia a animação de defesa quando o oponente ataca
 -Foi iniciado a implementação dos textos da interface:

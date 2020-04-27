@@ -374,6 +374,146 @@ void Terry::LoadSprites()
 	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/48specialAttack/05.bmp", NULL), 269, 0 );//frame 5
 	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/48specialAttack/06.bmp", NULL), 270, 0 );//frame 6
 	
+	//round Wave
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/49roundWave/00.bmp", NULL), 271, 0 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/49roundWave/01.bmp", NULL), 272, 0 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/49roundWave/02.bmp", NULL), 273, 0 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/49roundWave/03.bmp", NULL), 274, 0 );//frame 3	
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/49roundWave/04.bmp", NULL), 275, 0 );//frame 4
+	
+	//power Wave
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/50powerWave/00.bmp", NULL), 276, 0 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/50powerWave/01.bmp", NULL), 277, 0 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/50powerWave/02.bmp", NULL), 278, 0 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/50powerWave/03.bmp", NULL), 279, 0 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/50powerWave/04.bmp", NULL), 280, 0 );//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/50powerWave/05.bmp", NULL), 281, 0 );//frame 5
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/50powerWave/06.bmp", NULL), 282, 0 );//frame 6	
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/50powerWave/07.bmp", NULL), 283, 0 );//frame 7
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/50powerWave/08.bmp", NULL), 284, 0 );//frame 8
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/50powerWave/09.bmp", NULL), 285, 0 );//frame 9
+	
+	//crack Shoot
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/51crackShoot/00.bmp", NULL), 286, 0 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/51crackShoot/01.bmp", NULL), 287, 0 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/51crackShoot/02.bmp", NULL), 288, 0 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/51crackShoot/03.bmp", NULL), 289, 0 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/51crackShoot/04.bmp", NULL), 290, 0 );//frame 4
+	
+	//crack Shoot Jumping
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/52crackShootJumping/00.bmp", NULL), 291, 0 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/52crackShootJumping/01.bmp", NULL), 292, 0 );//frame 1	
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/52crackShootJumping/02.bmp", NULL), 293, 0 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/52crackShootJumping/03.bmp", NULL), 294, 0 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/52crackShootJumping/04.bmp", NULL), 295, 0 );//frame 4
+	
+	//power Dunk Start
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/53powerDunkStart/00.bmp", NULL), 296, 0 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/53powerDunkStart/01.bmp", NULL), 297, 0 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/53powerDunkStart/02.bmp", NULL), 298, 0 );//frame 2
+	
+	//power Dunk Jumping
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/54powerDunkJumping/00.bmp", NULL), 299, 0 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/54powerDunkJumping/01.bmp", NULL), 300, 0 );//frame 1
+	
+	//power Dunk Falling
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/55powerDunkFalling/00.bmp", NULL), 301, 0 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/55powerDunkFalling/01.bmp", NULL), 302, 0 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/55powerDunkFalling/02.bmp", NULL), 303, 0 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/55powerDunkFalling/03.bmp", NULL), 304, 0 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/55powerDunkFalling/04.bmp", NULL), 305, 0 );//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/55powerDunkFalling/05.bmp", NULL), 306, 0 );//frame 5
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/55powerDunkFalling/06.bmp", NULL), 307, 0 );//frame 6
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/55powerDunkFalling/07.bmp", NULL), 308, 0 );//frame 7
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/55powerDunkFalling/08.bmp", NULL), 309, 0 );//frame 8
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/55powerDunkFalling/09.bmp", NULL), 310, 0 );//frame 9
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/55powerDunkFalling/10.bmp", NULL), 311, 0 );//frame 10
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/55powerDunkFalling/11.bmp", NULL), 312, 0 );//frame 11
+
+	//weak Burnig Knuckle Start
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/56weakBurnigKnuckleStart/00.bmp", NULL), 313, 0 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/56weakBurnigKnuckleStart/01.bmp", NULL), 314, 0 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/56weakBurnigKnuckleStart/02.bmp", NULL), 315, 0 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/56weakBurnigKnuckleStart/03.bmp", NULL), 316, 0 );//frame 3
+	
+	//strong Burnig Knuckle Start
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/57strongBurnigKnuckleStart/00.bmp", NULL), 317, 0 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/57strongBurnigKnuckleStart/01.bmp", NULL), 318, 0 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/57strongBurnigKnuckleStart/02.bmp", NULL), 319, 0 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/57strongBurnigKnuckleStart/03.bmp", NULL), 320, 0 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/57strongBurnigKnuckleStart/04.bmp", NULL), 321, 0 );//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/57strongBurnigKnuckleStart/05.bmp", NULL), 322, 0 );//frame 5
+	
+	//burnig Knuckle
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/58burnigKnuckle/00.bmp", NULL), 323, 0 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/58burnigKnuckle/01.bmp", NULL), 324, 0 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/58burnigKnuckle/02.bmp", NULL), 325, 0 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/58burnigKnuckle/03.bmp", NULL), 326, 0 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/58burnigKnuckle/04.bmp", NULL), 327, 0 );//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/58burnigKnuckle/05.bmp", NULL), 328, 0 );//frame 5
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/58burnigKnuckle/06.bmp", NULL), 329, 0 );//frame 6
+	
+	//rising Tackle Start
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/59risingTackleStart/00.bmp", NULL), 330, 0 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/59risingTackleStart/01.bmp", NULL), 331, 0 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/59risingTackleStart/02.bmp", NULL), 332, 0 );//frame 2
+	
+	//power Dunk Jumping
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/60risingTackleJumping/00.bmp", NULL), 333, 0 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/60risingTackleJumping/01.bmp", NULL), 334, 0 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/60risingTackleJumping/02.bmp", NULL), 335, 0 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/60risingTackleJumping/03.bmp", NULL), 336, 0 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/60risingTackleJumping/04.bmp", NULL), 337, 0 );//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/60risingTackleJumping/05.bmp", NULL), 338, 0 );//frame 5
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/60risingTackleJumping/06.bmp", NULL), 339, 0 );//frame 6
+	
+	//power Dunk End
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/61risingTackleEnd/00.bmp", NULL), 340, 0 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/61risingTackleEnd/01.bmp", NULL), 341, 0 );//frame 1
+	
+	//buster Wolf Start
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/62busterWolfStart/00.bmp", NULL), 342, 0 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/62busterWolfStart/01.bmp", NULL), 343, 0 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/62busterWolfStart/02.bmp", NULL), 344, 0 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/62busterWolfStart/03.bmp", NULL), 345, 0 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/62busterWolfStart/04.bmp", NULL), 346, 0 );//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/62busterWolfStart/05.bmp", NULL), 347, 0 );//frame 5
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/62busterWolfStart/06.bmp", NULL), 348, 0 );//frame 6
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/62busterWolfStart/07.bmp", NULL), 349, 0 );//frame 7
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/62busterWolfStart/08.bmp", NULL), 350, 0 );//frame 8
+	
+	//buster Wolf
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/63busterWolf/00.bmp", NULL), 351, 0 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/63busterWolf/01.bmp", NULL), 352, 0 );//frame 1
+	
+	//buster Wolf End
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/00.bmp", NULL), 353, 0 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/01.bmp", NULL), 354, 0 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/02.bmp", NULL), 355, 0 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/03.bmp", NULL), 356, 0 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/04.bmp", NULL), 357, 0 );//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/05.bmp", NULL), 358, 0 );//frame 5
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/06.bmp", NULL), 359, 0 );//frame 6
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/07.bmp", NULL), 360, 0 );//frame 7
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/08.bmp", NULL), 361, 0 );//frame 8
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/09.bmp", NULL), 362, 0 );//frame 9
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/10.bmp", NULL), 363, 0 );//frame 10
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/11.bmp", NULL), 364, 0 );//frame 11
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/12.bmp", NULL), 365, 0 );//frame 12
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/13.bmp", NULL), 366, 0 );//frame 13
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/14.bmp", NULL), 367, 0 );//frame 14
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/15.bmp", NULL), 368, 0 );//frame 15
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/16.bmp", NULL), 369, 0 );//frame 16
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/17.bmp", NULL), 370, 0 );//frame 17
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/64busterWolfEnd/18.bmp", NULL), 371, 0 );//frame 18
+	
+	//buster Wolf Fail
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/65busterWolfFail/00.bmp", NULL), 372, 0 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/65busterWolfFail/01.bmp", NULL), 373, 0 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/65busterWolfFail/02.bmp", NULL), 374, 0 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/65busterWolfFail/03.bmp", NULL), 375, 0 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/toRight/standardColor/65busterWolfFail/04.bmp", NULL), 376, 0 );//frame 4
+	
 //Sprites do personagem virado para a esquerda
 	//idle
 	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/00idle/00.bmp", NULL), 0, 1 );//frame 0
@@ -737,6 +877,146 @@ void Terry::LoadSprites()
 	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/48specialAttack/04.bmp", NULL), 268, 1 );//frame 4
 	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/48specialAttack/05.bmp", NULL), 269, 1 );//frame 5
 	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/48specialAttack/06.bmp", NULL), 270, 1 );//frame 6
+	
+	//round Wave
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/49roundWave/00.bmp", NULL), 271, 1 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/49roundWave/01.bmp", NULL), 272, 1 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/49roundWave/02.bmp", NULL), 273, 1 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/49roundWave/03.bmp", NULL), 274, 1 );//frame 3	
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/49roundWave/04.bmp", NULL), 275, 1 );//frame 4
+	
+	//power Wave
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/50powerWave/00.bmp", NULL), 276, 1 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/50powerWave/01.bmp", NULL), 277, 1 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/50powerWave/02.bmp", NULL), 278, 1 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/50powerWave/03.bmp", NULL), 279, 1 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/50powerWave/04.bmp", NULL), 280, 1 );//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/50powerWave/05.bmp", NULL), 281, 1 );//frame 5
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/50powerWave/06.bmp", NULL), 282, 1 );//frame 6	
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/50powerWave/07.bmp", NULL), 283, 1 );//frame 7
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/50powerWave/08.bmp", NULL), 284, 1 );//frame 8
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/50powerWave/09.bmp", NULL), 285, 1 );//frame 9
+	
+	//crack Shoot
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/51crackShoot/00.bmp", NULL), 286, 1 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/51crackShoot/01.bmp", NULL), 287, 1 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/51crackShoot/02.bmp", NULL), 288, 1 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/51crackShoot/03.bmp", NULL), 289, 1 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/51crackShoot/04.bmp", NULL), 290, 1 );//frame 4
+	
+	//crack Shoot Jumping
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/52crackShootJumping/00.bmp", NULL), 291, 1 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/52crackShootJumping/01.bmp", NULL), 292, 1 );//frame 1	
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/52crackShootJumping/02.bmp", NULL), 293, 1 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/52crackShootJumping/03.bmp", NULL), 294, 1 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/52crackShootJumping/04.bmp", NULL), 295, 1 );//frame 4
+	
+	//power Dunk Start
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/53powerDunkStart/00.bmp", NULL), 296, 1 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/53powerDunkStart/01.bmp", NULL), 297, 1 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/53powerDunkStart/02.bmp", NULL), 298, 1 );//frame 2
+	
+	//power Dunk Jumping
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/54powerDunkJumping/00.bmp", NULL), 299, 1 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/54powerDunkJumping/01.bmp", NULL), 300, 1 );//frame 1
+	
+	//power Dunk Falling
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/55powerDunkFalling/00.bmp", NULL), 301, 1 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/55powerDunkFalling/01.bmp", NULL), 302, 1 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/55powerDunkFalling/02.bmp", NULL), 303, 1 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/55powerDunkFalling/03.bmp", NULL), 304, 1 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/55powerDunkFalling/04.bmp", NULL), 305, 1 );//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/55powerDunkFalling/05.bmp", NULL), 306, 1 );//frame 5
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/55powerDunkFalling/06.bmp", NULL), 307, 1 );//frame 6
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/55powerDunkFalling/07.bmp", NULL), 308, 1 );//frame 7
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/55powerDunkFalling/08.bmp", NULL), 309, 1 );//frame 8
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/55powerDunkFalling/09.bmp", NULL), 310, 1 );//frame 9
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/55powerDunkFalling/10.bmp", NULL), 311, 1 );//frame 10
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/55powerDunkFalling/11.bmp", NULL), 312, 1 );//frame 11
+
+	//weak Burnig Knuckle Start
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/56weakBurnigKnuckleStart/00.bmp", NULL), 313, 1 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/56weakBurnigKnuckleStart/01.bmp", NULL), 314, 1 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/56weakBurnigKnuckleStart/02.bmp", NULL), 315, 1 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/56weakBurnigKnuckleStart/03.bmp", NULL), 316, 1 );//frame 3
+
+	//strong Burnig Knuckle Start
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/57strongBurnigKnuckleStart/00.bmp", NULL), 317, 1 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/57strongBurnigKnuckleStart/01.bmp", NULL), 318, 1 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/57strongBurnigKnuckleStart/02.bmp", NULL), 319, 1 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/57strongBurnigKnuckleStart/03.bmp", NULL), 320, 1 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/57strongBurnigKnuckleStart/04.bmp", NULL), 321, 1 );//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/57strongBurnigKnuckleStart/05.bmp", NULL), 322, 1 );//frame 5
+	
+	//burnig Knuckle
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/58burnigKnuckle/00.bmp", NULL), 323, 1 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/58burnigKnuckle/01.bmp", NULL), 324, 1 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/58burnigKnuckle/02.bmp", NULL), 325, 1 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/58burnigKnuckle/03.bmp", NULL), 326, 1 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/58burnigKnuckle/04.bmp", NULL), 327, 1 );//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/58burnigKnuckle/05.bmp", NULL), 328, 1 );//frame 5
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/58burnigKnuckle/06.bmp", NULL), 329, 1 );//frame 6
+	
+	//rising Tackle Start
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/59risingTackleStart/00.bmp", NULL), 330, 1 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/59risingTackleStart/01.bmp", NULL), 331, 1 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/59risingTackleStart/02.bmp", NULL), 332, 1 );//frame 2
+	
+	//power Dunk Jumping
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/60risingTackleJumping/00.bmp", NULL), 333, 1 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/60risingTackleJumping/01.bmp", NULL), 334, 1 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/60risingTackleJumping/02.bmp", NULL), 335, 1 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/60risingTackleJumping/03.bmp", NULL), 336, 1 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/60risingTackleJumping/04.bmp", NULL), 337, 1 );//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/60risingTackleJumping/05.bmp", NULL), 338, 1 );//frame 5
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/60risingTackleJumping/06.bmp", NULL), 339, 1 );//frame 6
+	
+	//power Dunk End
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/61risingTackleEnd/00.bmp", NULL), 340, 1 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/61risingTackleEnd/01.bmp", NULL), 341, 1 );//frame 1
+	
+	//buster Wolf Start
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/62busterWolfStart/00.bmp", NULL), 342, 1 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/62busterWolfStart/01.bmp", NULL), 343, 1 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/62busterWolfStart/02.bmp", NULL), 344, 1 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/62busterWolfStart/03.bmp", NULL), 345, 1 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/62busterWolfStart/04.bmp", NULL), 346, 1 );//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/62busterWolfStart/05.bmp", NULL), 347, 1 );//frame 5
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/62busterWolfStart/06.bmp", NULL), 348, 1 );//frame 6
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/62busterWolfStart/07.bmp", NULL), 349, 1 );//frame 7
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/62busterWolfStart/08.bmp", NULL), 350, 1 );//frame 8
+	
+	//buster Wolf
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/63busterWolf/00.bmp", NULL), 351, 1 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/63busterWolf/01.bmp", NULL), 352, 1 );//frame 1
+	
+	//buster Wolf End
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/00.bmp", NULL), 353, 1 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/01.bmp", NULL), 354, 1 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/02.bmp", NULL), 355, 1 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/03.bmp", NULL), 356, 1 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/04.bmp", NULL), 357, 1 );//frame 4
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/05.bmp", NULL), 358, 1 );//frame 5
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/06.bmp", NULL), 359, 1 );//frame 6
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/07.bmp", NULL), 360, 1 );//frame 7
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/08.bmp", NULL), 361, 1 );//frame 8
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/09.bmp", NULL), 362, 1 );//frame 9
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/10.bmp", NULL), 363, 1 );//frame 10
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/11.bmp", NULL), 364, 1 );//frame 11
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/12.bmp", NULL), 365, 1 );//frame 12
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/13.bmp", NULL), 366, 1 );//frame 13
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/14.bmp", NULL), 367, 1 );//frame 14
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/15.bmp", NULL), 368, 1 );//frame 15
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/16.bmp", NULL), 369, 1 );//frame 16
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/17.bmp", NULL), 370, 1 );//frame 17
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/64busterWolfEnd/18.bmp", NULL), 371, 1 );//frame 18
+	
+	//buster Wolf Fail
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/65busterWolfFail/00.bmp", NULL), 372, 1 );//frame 0
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/65busterWolfFail/01.bmp", NULL), 373, 1 );//frame 1
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/65busterWolfFail/02.bmp", NULL), 374, 1 );//frame 2
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/65busterWolfFail/03.bmp", NULL), 375, 1 );//frame 3
+	SetSrites( load_bitmap("sprites/personagens/terry/notToRight/standardColor/65busterWolfFail/04.bmp", NULL), 376, 1 );//frame 4
 	
 }END_OF_FUNCTION(LoadSprites)
 

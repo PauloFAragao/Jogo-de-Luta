@@ -39,9 +39,24 @@ void Terry::TerryAnimations()
 			Anim03();
 		break;
 		
-		case 20://Walk
-
-			Anim04();
+		case 20://Walk 56-57
+			//Anim49();
+			//Anim50();
+			//Anim51();
+			//Anim52();
+			//Anim53();
+			//Anim54();
+			//Anim55();
+			//Anim58();
+			//Anim59();
+			//Anim60();
+			//Anim61();
+			//Anim62();
+			//Anim63();
+			//Anim64();
+			Anim65();
+			
+			//Anim04();
 		break;
 		
 		case 30://Walk Back
@@ -660,6 +675,147 @@ void Terry::Anim48()//Special Attack
 	else if( GetFrame() >= GetSpecialAttack(0) && GetFrame() < GetSpecialAttack(1) && clock() - GetCapturaTempo() > TEF-60 )
 	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
 }END_OF_FUNCTION(Anim48);
+
+void Terry::Anim49()//round Wave
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( roundWave[0] ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= roundWave[0] && GetFrame() < powerWave[1] && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim49);
+
+void Terry::Anim50()//power Wave
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( powerWave[0] ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= powerWave[0] && GetFrame() < powerWave[1] && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim50);
+
+void Terry::Anim51()//crack Shoot
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( crackShoot[0] ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= crackShoot[0] && GetFrame() < crackShoot[1] && clock() - GetCapturaTempo() > TEF-30 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim51);
+
+void Terry::Anim52()//crack Shoot Jumping
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( crackShootJumping[0] ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= crackShootJumping[0] && GetFrame() < crackShootJumping[1] && clock() - GetCapturaTempo() > TEF-30 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim52);
+
+void Terry::Anim53()//power Dunk Start
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( powerDunkStart[0] ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= powerDunkStart[0] && GetFrame() < powerDunkStart[1] && clock() - GetCapturaTempo() > TEF )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim53);
+
+void Terry::Anim54()//power Dunk Jumping
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( powerDunkJumping[0] ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= powerDunkJumping[0] && GetFrame() < powerDunkJumping[1] && clock() - GetCapturaTempo() > TEF )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim54);
+
+void Terry::Anim55()//power Dunk Falling
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( powerDunkFalling[0] ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= powerDunkFalling[0] && GetFrame() < powerDunkFalling[1] && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim55);
+
+void Terry::Anim56()//weak Burnig Knuckle Start
+{
+
+}END_OF_FUNCTION(Anim56);
+
+void Terry::Anim57()//strong Burnig Knuckle Start
+{
+
+}END_OF_FUNCTION(Anim57);
+
+void Terry::Anim58()//burnig Knuckle
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( burnigKnuckle[0] ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= burnigKnuckle[0] && GetFrame() < burnigKnuckle[1] && clock() - GetCapturaTempo() > TEF - 30 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); if( GetFrame() == burnigKnuckle[1] ) SetFrame( burnigKnuckle[0] ); }
+}END_OF_FUNCTION(Anim58);
+
+void Terry::Anim59()//rising Tackle Start
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( risingTackleStart[0] ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= risingTackleStart[0] && GetFrame() < risingTackleStart[1] && clock() - GetCapturaTempo() > TEF-30 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim59);
+
+void Terry::Anim60()//rising Tackle Jumping
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( risingTackleJumping[0] ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= risingTackleJumping[0] && GetFrame() < risingTackleJumping[1] && clock() - GetCapturaTempo() > TEF )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim60);
+
+void Terry::Anim61()//rising Tackle End
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( risingTackleEnd[0] ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= risingTackleEnd[0] && GetFrame() < risingTackleEnd[1] && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim61);
+
+void Terry::Anim62()//buster Wolf Start
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( busterWolfStart[0] ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= busterWolfStart[0] && GetFrame() < busterWolfStart[1] && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim62);
+
+void Terry::Anim63()//buster Wolf
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( busterWolf[0] ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= busterWolf[0] && GetFrame() <= busterWolf[1] && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); if( GetFrame() == busterWolf[1]+1 ) SetFrame( busterWolf[0] ); }
+}END_OF_FUNCTION(Anim63);
+
+void Terry::Anim64()//buster Wolf End
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( busterWolfEnd[0] ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= busterWolfEnd[0] && GetFrame() < busterWolfEnd[1] && clock() - GetCapturaTempo() > TEF-60 )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim64);
+
+void Terry::Anim65()//buster Wolf Fail
+{
+	if( !GetStartAnimation() )
+	{ SetFrame( busterWolfFail[0] ); SetStartAnimation(true); SetCapturaTempo(clock()); }
+	else if( GetFrame() >= busterWolfFail[0] && GetFrame() < busterWolfFail[1] && clock() - GetCapturaTempo() > TEF )
+	{ SetFrame( GetFrame()+1 ); SetCapturaTempo(clock()); }
+}END_OF_FUNCTION(Anim65);
+
+
+
+
+
+
+
+
+
+
+
 
 
 

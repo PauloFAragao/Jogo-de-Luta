@@ -11,7 +11,7 @@
 #include <allegro.h>
 #include "Game.h"
 
-int WINDOW_WIDTH  = 1140;
+int WINDOW_WIDTH  = 1000;//1140
 int WINDOW_HEIGHT = 630;
 
 volatile int exitGame=false;

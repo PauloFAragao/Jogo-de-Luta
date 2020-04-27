@@ -12,7 +12,7 @@
 #define MINSCENARYWIDTH -220	//posição do fim do cenario a esquerda
 #define MAXSCENARYWIDTH 800	  	//posição do fim do cenario a direita
 
-#define QTDFRAMES 271			//quantidade de frames que os personagem tem
+#define QTDFRAMES 377			//quantidade de frames que os personagem tem
 
 #define TEF 120					//tempo entre os frames
 
